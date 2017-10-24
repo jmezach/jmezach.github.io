@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Visual Studio on Jonathan&#39;s Blog</title>
+    <link>https://jmezach.github.io/tags/visual-studio/</link>
+    <description>Recent content in Visual Studio on Jonathan&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <lastBuildDate>Tue, 07 Feb 2017 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://jmezach.github.io/tags/visual-studio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Migrating existing .NET projects to SDK-based projects</title>
+      <link>https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/</link>
+      <pubDate>Tue, 07 Feb 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/</guid>
+      <description>In my previous blog post I talked about sharing .NET code across the various .NET platforms we now have within the .NET ecosystem (.NET Framework, .NET Core, Xamarin). In that post I also showed the new tooling within Visual Studio 2017 that enables (among other things) cross-targeting a lot easier than it was before. Since then two new versions of the new tooling experience for .NET projects have been released, and things have matured quite nicely.</description>
+    </item>
+    
+    <item>
+      <title>Sharing code across .NET platforms with .NET Standard</title>
+      <link>https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/</link>
+      <pubDate>Mon, 05 Dec 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/</guid>
+      <description>One of the key things that makes Xamarin such a great platform for developing mobile applications is that you can leverage your existing skills with C# and .NET and use them to create awesome Android and iOS apps. This also meant that you could take existing code written for .NET and use it in your Xamarin apps.
+Of course, in the early days of MonoDroid and MonoTouch (before Xamarin was even a company) this wasn’t as easy as it is today.</description>
+    </item>
+    
+  </channel>
+</rss>

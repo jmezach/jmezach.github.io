@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software Architecture on Jonathan&#39;s Blog</title>
+    <link>https://jmezach.github.io/categories/software-architecture/</link>
+    <description>Recent content in Software Architecture on Jonathan&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <lastBuildDate>Sat, 30 Jun 2012 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://jmezach.github.io/categories/software-architecture/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Some thoughts on MS TechEd Europe 2012</title>
+      <link>https://jmezach.github.io/2012/06/30/some-thoughts-on-ms-teched-europe-2012/</link>
+      <pubDate>Sat, 30 Jun 2012 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2012/06/30/some-thoughts-on-ms-teched-europe-2012/</guid>
+      <description>Last week I attended Microsoft’s TechEd Europe conference in the RAI in Amsterdam. I had a great week. I’ve learned a lot of new stuff and I met with some interesting people. And since it has been a while since I’ve written anything on this blog I’d thought I’d do a little wrap-up of the conference and share with you some of my personal thoughts. I would like to stress that these are just my thoughts.</description>
+    </item>
+    
+  </channel>
+</rss>

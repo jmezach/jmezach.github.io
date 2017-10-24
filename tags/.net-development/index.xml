@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>.Net Development on Jonathan&#39;s Blog</title>
+    <link>https://jmezach.github.io/tags/.net-development/</link>
+    <description>Recent content in .Net Development on Jonathan&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <lastBuildDate>Mon, 05 Dec 2016 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://jmezach.github.io/tags/.net-development/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sharing code across .NET platforms with .NET Standard</title>
+      <link>https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/</link>
+      <pubDate>Mon, 05 Dec 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/</guid>
+      <description>One of the key things that makes Xamarin such a great platform for developing mobile applications is that you can leverage your existing skills with C# and .NET and use them to create awesome Android and iOS apps. This also meant that you could take existing code written for .NET and use it in your Xamarin apps.
+Of course, in the early days of MonoDroid and MonoTouch (before Xamarin was even a company) this wasn’t as easy as it is today.</description>
+    </item>
+    
+    <item>
+      <title>.NET Core versioning</title>
+      <link>https://jmezach.github.io/2016/11/18/.net-core-versioning/</link>
+      <pubDate>Fri, 18 Nov 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2016/11/18/.net-core-versioning/</guid>
+      <description>Unless you have been living underneath a rock you’ve probably noticed that yesterday, during Microsoft’s Connect() virtual event, .NET Core 1.1 was released. In addition ASP.NET Core 1.1 and Entity Framework 1.1 have been released. You can read up on the announcements in the following posts:
+ .NET Core 1.1 - https://blogs.msdn.microsoft.com/dotnet/2016/11/16/announcing-net-core-1-1/ ASP.NET Core 1.1 - https://blogs.msdn.microsoft.com/dotnet/2016/11/16/announcing-net-core-1-1/ EF Core 1.1 - https://blogs.msdn.microsoft.com/dotnet/2016/11/16/announcing-entity-framework-core-1-1/  At first sight this doesn&amp;rsquo;t seem like much of a deal.</description>
+    </item>
+    
+  </channel>
+</rss>

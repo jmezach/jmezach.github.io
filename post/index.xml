@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Jonathan&#39;s Blog</title>
+    <link>https://jmezach.github.io/post/</link>
+    <description>Recent content in Posts on Jonathan&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <lastBuildDate>Sat, 13 May 2017 20:33:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://jmezach.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>.NET Core and .NET Standard 2.0</title>
+      <link>https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/</link>
+      <pubDate>Sat, 13 May 2017 20:33:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/</guid>
+      <description>This week I’ve attended Microsoft’s Build conference in beautiful Seattle. It has a been a very busy week, but we had a lot of fun attending the different sessions as well as talking to some of the members on the various product teams.
+Of course, during the week, my focus has been on .NET Core. I’ve attended most (if not all) of the sessions on .NET Core (and related technologies such as ASP.</description>
+    </item>
+    
+    <item>
+      <title>My experience with my first .NET Core contribution</title>
+      <link>https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/</link>
+      <pubDate>Sat, 15 Apr 2017 15:36:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/</guid>
+      <description>I’ve written quite a few blogs here on how you can use .NET Core in your applications and what to expect when developing for this new platform. But with .NET Core being open source there’s also another story to be told, namely that of extending and improving the platform itself through open source contributions. So when Karel Zikmund from the .NET Core team reached out on Twitter asking the community to help them fix bugs before the .</description>
+    </item>
+    
+    <item>
+      <title>Migrating existing .NET projects to SDK-based projects</title>
+      <link>https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/</link>
+      <pubDate>Tue, 07 Feb 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/</guid>
+      <description>In my previous blog post I talked about sharing .NET code across the various .NET platforms we now have within the .NET ecosystem (.NET Framework, .NET Core, Xamarin). In that post I also showed the new tooling within Visual Studio 2017 that enables (among other things) cross-targeting a lot easier than it was before. Since then two new versions of the new tooling experience for .NET projects have been released, and things have matured quite nicely.</description>
+    </item>
+    
+    <item>
+      <title>Sharing code across .NET platforms with .NET Standard</title>
+      <link>https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/</link>
+      <pubDate>Mon, 05 Dec 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/</guid>
+      <description>One of the key things that makes Xamarin such a great platform for developing mobile applications is that you can leverage your existing skills with C# and .NET and use them to create awesome Android and iOS apps. This also meant that you could take existing code written for .NET and use it in your Xamarin apps.
+Of course, in the early days of MonoDroid and MonoTouch (before Xamarin was even a company) this wasn’t as easy as it is today.</description>
+    </item>
+    
+    <item>
+      <title>.NET Core versioning</title>
+      <link>https://jmezach.github.io/2016/11/18/.net-core-versioning/</link>
+      <pubDate>Fri, 18 Nov 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2016/11/18/.net-core-versioning/</guid>
+      <description>Unless you have been living underneath a rock you’ve probably noticed that yesterday, during Microsoft’s Connect() virtual event, .NET Core 1.1 was released. In addition ASP.NET Core 1.1 and Entity Framework 1.1 have been released. You can read up on the announcements in the following posts:
+ .NET Core 1.1 - https://blogs.msdn.microsoft.com/dotnet/2016/11/16/announcing-net-core-1-1/ ASP.NET Core 1.1 - https://blogs.msdn.microsoft.com/dotnet/2016/11/16/announcing-net-core-1-1/ EF Core 1.1 - https://blogs.msdn.microsoft.com/dotnet/2016/11/16/announcing-entity-framework-core-1-1/  At first sight this doesn&amp;rsquo;t seem like much of a deal.</description>
+    </item>
+    
+    <item>
+      <title>.NET Platform Standard and the magic of &#34;imports&#34;</title>
+      <link>https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/</link>
+      <pubDate>Tue, 24 May 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/</guid>
+      <description>In case you missed it, .NET Core RC2 has been released by Microsoft last week along with ASP.NET Core RC2 and a preview of the tooling. Lots of exciting new stuff that I highly encourage checking out.
+Now that RC2 is out there I guess a lot more people will be checking it out and playing with it and there’s one topic that seems to confuse a lot of people.</description>
+    </item>
+    
+    <item>
+      <title>Developing for .NET Core</title>
+      <link>https://jmezach.github.io/2016/04/22/developing-for-.net-core/</link>
+      <pubDate>Fri, 22 Apr 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2016/04/22/developing-for-.net-core/</guid>
+      <description>If you’ve read my previous post you know that I have a keen interest in .NET Core. For the last two weeks I’ve been installing new RC2 builds on my machine almost on a daily basis to see if I could get something working and I’m glad to see that as of a couple of days ago things seem to be coming together. Obviously it still is a bit of a moving target but I feel like a lot of things are starting to settle.</description>
+    </item>
+    
+    <item>
+      <title>Creating a VSTS dashboard widget</title>
+      <link>https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/</link>
+      <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/</guid>
+      <description>On the 30th of October last year Microsoft deployed an update for Visual Studio Team Services (still named Visual Studio Online at the time) which introduced a new start page that could be completely customized. The feature was named dashboards and when I first saw it I realized its potential for putting all kinds of information relevant to a development team right at their fingertips. For those who haven’t seen it yet, this is what the out of the box dashboard looks like:</description>
+    </item>
+    
+    <item>
+      <title>.NET Core at Build 2016</title>
+      <link>https://jmezach.github.io/2016/04/02/.net-core-at-build-2016/</link>
+      <pubDate>Sat, 02 Apr 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2016/04/02/.net-core-at-build-2016/</guid>
+      <description>As some of you might have seen on Twitter or Facebook I have attended Microsoft’s Build 2016 conference in San Francisco over the last week. It was an interesting experience with some good announcements, although to be honest I was expecting a little bit more. Then again Microsoft has become a lot more open about what they are doing which kind of takes the thunder away from these conferences. Free Xamarin, Azure Service Fabric generally available, Microsoft Cognitive Services and the Bot Framework are still great announcements though.</description>
+    </item>
+    
+    <item>
+      <title>Using Invoke-SqlCmd in TFS Build 2015</title>
+      <link>https://jmezach.github.io/2015/07/03/using-invoke-sqlcmd-in-tfs-build-2015/</link>
+      <pubDate>Fri, 03 Jul 2015 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2015/07/03/using-invoke-sqlcmd-in-tfs-build-2015/</guid>
+      <description>Lately I&amp;rsquo;ve been diving into the new build engine in TFS 2015 RC (RTM release is planned for 20th of July). While running a build, I got the following error message:
+ Mixed mode assembly is built against version &amp;lsquo;v2.0.50727&amp;rsquo; of the runtime and cannot be loaded in the 4.0 runtime without additional configuration information.
+ This got me puzzled for a while, especially since the build continued to run and it was doing what it was supposed to do, except that at the end the build turned red because of this error.</description>
+    </item>
+    
+    <item>
+      <title>Some thoughts on MS TechEd Europe 2012</title>
+      <link>https://jmezach.github.io/2012/06/30/some-thoughts-on-ms-teched-europe-2012/</link>
+      <pubDate>Sat, 30 Jun 2012 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2012/06/30/some-thoughts-on-ms-teched-europe-2012/</guid>
+      <description>Last week I attended Microsoft’s TechEd Europe conference in the RAI in Amsterdam. I had a great week. I’ve learned a lot of new stuff and I met with some interesting people. And since it has been a while since I’ve written anything on this blog I’d thought I’d do a little wrap-up of the conference and share with you some of my personal thoughts. I would like to stress that these are just my thoughts.</description>
+    </item>
+    
+    <item>
+      <title>Extension methods and generic type constraints</title>
+      <link>https://jmezach.github.io/2011/05/16/extension-methods-and-generic-type-constraints/</link>
+      <pubDate>Mon, 16 May 2011 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2011/05/16/extension-methods-and-generic-type-constraints/</guid>
+      <description>I ran into an interesting problem the other day regarding extension methods and generic type constraints, so I though I’d write about it here. First, let me explain what I was trying to do. I wanted to define an extension method on any type that implements both INotifyCollectionChanged and ICollection. Now as far as I know there is only one type that actually implements both interfaces, ObservableCollection, but that’s not the point.</description>
+    </item>
+    
+    <item>
+      <title>Data binding in code using Reactive Extensions</title>
+      <link>https://jmezach.github.io/2011/03/10/data-binding-in-code-using-reactive-extensions/</link>
+      <pubDate>Thu, 10 Mar 2011 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2011/03/10/data-binding-in-code-using-reactive-extensions/</guid>
+      <description>First of all, it’s been a while since my last post here. I’ve busy working with SharePoint in the past few months and although there is plenty to write about SharePoint, a lot of it has already been written by other people, so I didn’t feel the need to write about it here. But lately I’ve found the time to experiment with Reactive Extensions again, which I’m quite fond of as you might remember from me previous post about the subject.</description>
+    </item>
+    
+    <item>
+      <title>Reactive Extensions</title>
+      <link>https://jmezach.github.io/2010/11/04/reactive-extensions/</link>
+      <pubDate>Thu, 04 Nov 2010 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2010/11/04/reactive-extensions/</guid>
+      <description>For the past couple of weeks I’ve been looking into the Reactive Extensions framework. This resulted into a presentation for some of my colleagues about what Rx is, how it can be used and some of the cool stuff you can do with it. I delivered that presentation yesterday evening. Today I wanted to share the sources of the demo’s I’ve used during this presentation. You can download these from here: RxDemos.</description>
+    </item>
+    
+    <item>
+      <title>Throttling workflow services</title>
+      <link>https://jmezach.github.io/2010/01/25/throttling-workflow-services/</link>
+      <pubDate>Mon, 25 Jan 2010 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2010/01/25/throttling-workflow-services/</guid>
+      <description>For the project I’m currently working on I did some research into the throttling of workflow services using WCF and WF with .NET 3.5. We didn’t have much experience with throttling of services, let alone workflow services so we decided to some simple tests to determine the possibilities and effects of throttling. Before diving into the technical details of how to do throttling I want to look at the scenario we had.</description>
+    </item>
+    
+    <item>
+      <title>Creating a workflow image from a workflow service</title>
+      <link>https://jmezach.github.io/2009/11/18/creating-a-workflow-image-from-a-workflow-service/</link>
+      <pubDate>Wed, 18 Nov 2009 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2009/11/18/creating-a-workflow-image-from-a-workflow-service/</guid>
+      <description>Introduction For the project I’m currently working on we wanted to be able to display an image of a running workflow instance for diagnostic purposes. There are numerous examples of this floating around the internet, but most of them focused on a client side application that would generate the image. This is fine if your client application has access to all the necessary assemblies, but if does not you’re going to run into some problems.</description>
+    </item>
+    
+    <item>
+      <title>Even better message based correlation</title>
+      <link>https://jmezach.github.io/2009/03/02/even-better-message-based-correlation/</link>
+      <pubDate>Mon, 02 Mar 2009 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2009/03/02/even-better-message-based-correlation/</guid>
+      <description>As a follow up to my previous post, I&amp;rsquo;ve been extending my implementation a bit. In the comments section of my last post you might have read that we were thinking about creating a CorrelationSequenceActivity. I&amp;rsquo;ve implemented this activity now and it currently accepts only one child activity which should be a ReceiveActivity. This is validated using an activity validator. It has an attached property called CorrelationKey which will then appear on the ReceiveActivity.</description>
+    </item>
+    
+    <item>
+      <title>Message based correlation with WF/WCF in .NET 3.5</title>
+      <link>https://jmezach.github.io/2009/02/24/message-based-correlation-with-wf/wcf-in-.net-3.5/</link>
+      <pubDate>Tue, 24 Feb 2009 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2009/02/24/message-based-correlation-with-wf/wcf-in-.net-3.5/</guid>
+      <description>When .NET 3.0 was released we got Windows Communication Foundation (WCF) and Windows Workflow Foundation (WF). These were great technologies, but they would have been even greater if they were used together. Unfortunately, Microsoft decided not to include this for .NET 3.0. However, with the release of .NET 3.5 we got the WCF Send and Receive activities that you can use in your workflows in order to implement a WCF service contract by using a workflow.</description>
+    </item>
+    
+    <item>
+      <title>Workflows mysteriously being aborted</title>
+      <link>https://jmezach.github.io/2008/06/19/workflows-mysteriously-being-aborted/</link>
+      <pubDate>Thu, 19 Jun 2008 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2008/06/19/workflows-mysteriously-being-aborted/</guid>
+      <description>Part of the project I&amp;rsquo;m currently working on involves a workflow system we have build ourselves on top of Windows Workflow Foundation. It consist of a WCF service that contains task, a front end that displays these to users and of course several workflow activities for creating tasks and waiting for them to be completed by the users. Last Friday it was finally time to perform an installation of the system on our acceptance environment so the users could test it.</description>
+    </item>
+    
+    <item>
+      <title>Service Pack 1 for .NET fixes XML serialization?</title>
+      <link>https://jmezach.github.io/2008/06/10/service-pack-1-for-.net-fixes-xml-serialization/</link>
+      <pubDate>Tue, 10 Jun 2008 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2008/06/10/service-pack-1-for-.net-fixes-xml-serialization/</guid>
+      <description>Today we ran into an issue with a Windows Forms application we had written. It was working fine on our development virtual PC&amp;rsquo;s, but for some reason it failed on the actual host machines that we needed it to run on. The application is written purely against the .NET Framework version 2.0. We do communicate with a service that is using WCF, which is part of the .NET Framework version 3.</description>
+    </item>
+    
+    <item>
+      <title>Cool tools: NetMassDownloader</title>
+      <link>https://jmezach.github.io/2008/05/23/cool-tools-netmassdownloader/</link>
+      <pubDate>Fri, 23 May 2008 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2008/05/23/cool-tools-netmassdownloader/</guid>
+      <description>Today I was working on an issue in our application that was brought to our attention by one of the users. So I started investigating this issue and soon found out that the problem was situated in our ASP.Net front end. While I was debugging and analyzing the call stack I found out that something went wrong between the page that is being posted and the Mediator, which is responsible for actually saving the data to our back end services.</description>
+    </item>
+    
+    <item>
+      <title>Issue fixed</title>
+      <link>https://jmezach.github.io/2008/04/30/issue-fixed/</link>
+      <pubDate>Wed, 30 Apr 2008 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2008/04/30/issue-fixed/</guid>
+      <description>I thought I&amp;rsquo;d write a little follow up on my previous post. We found out yesterday that the bug we found in Windows Workflow Foundation which caused us to make a work around, has been fixed in the recently released .NET Framework 2.0 and 3.0 SP1. We haven&amp;rsquo;t been able to find a mention of this bug in the release notes, but we had a small application that showed the bug was there, so we tested it on our development machine which were using the service packs and then on a test server which didn&amp;rsquo;t have the service pack installed and it showed that it was working find on our development machines, but it didn&amp;rsquo;t work on our test servers.</description>
+    </item>
+    
+    <item>
+      <title>State machine workflows</title>
+      <link>https://jmezach.github.io/2008/04/28/state-machine-workflows/</link>
+      <pubDate>Mon, 28 Apr 2008 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2008/04/28/state-machine-workflows/</guid>
+      <description>At the beginning of last week a report came in from our users which said that they were experiencing timeout issues while working with the application that has been running in production quite stable since the beginning of this year. Because this was a blocking issue we quickly started investigating what went wrong. After looking at the code for about half an hour we decided we needed to put on tracing to find out what really happens.</description>
+    </item>
+    
+    <item>
+      <title>WF: Required bindable properties</title>
+      <link>https://jmezach.github.io/2007/09/19/wf-required-bindable-properties/</link>
+      <pubDate>Wed, 19 Sep 2007 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2007/09/19/wf-required-bindable-properties/</guid>
+      <description>Today I was working on a bit of workflow we have in our project. We&amp;rsquo;ve written a couple of activities to handle some of the processing done in our application (such as sending out emails at a specified point in time). These activities have been working quite well, but they lacked some kind of validation on required properties or how they were used in the workflow. So I was assigned the task to implement some of that stuff.</description>
+    </item>
+    
+    <item>
+      <title>Silverlight 1.0 RTM</title>
+      <link>https://jmezach.github.io/2007/09/06/silverlight-1.0-rtm/</link>
+      <pubDate>Thu, 06 Sep 2007 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2007/09/06/silverlight-1.0-rtm/</guid>
+      <description>As my colleague Willem mentioned, Microsoft has finally released Silverlight 1.0. I find it amazing how fast this technology has gone. A year ago nobody heard of Silverlight, and now there is a first release. Although I&amp;rsquo;m quite impressed by the features of Silverlight 1.0, I think that Silverlight 1.1 has far more potential. Having the power of C# inside the browser, that must be awesome. It is going to open up a lot of possibilities for a richer end-user experience, while a lot of the advantages of web applications are still there.</description>
+    </item>
+    
+    <item>
+      <title>More on this WCF issue</title>
+      <link>https://jmezach.github.io/2007/08/31/more-on-this-wcf-issue/</link>
+      <pubDate>Fri, 31 Aug 2007 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2007/08/31/more-on-this-wcf-issue/</guid>
+      <description>This week I&amp;rsquo;ve been spending some more time on this WCF issue I&amp;rsquo;ve blogged about before. Unfortunately I still don&amp;rsquo;t have a solution for the problem, and I doubt that I will ever find one. However, I did find some interesting things I thought I should blog about.
+I found out that the bug isn&amp;rsquo;t in the actual serialization process, but rather in the generation of the code that is supposed to do the actual serialization.</description>
+    </item>
+    
+    <item>
+      <title>Possible WCF Serialization Issue?</title>
+      <link>https://jmezach.github.io/2007/08/15/possible-wcf-serialization-issue/</link>
+      <pubDate>Wed, 15 Aug 2007 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2007/08/15/possible-wcf-serialization-issue/</guid>
+      <description>As I was writing in my previous post there is something interesting going on in WCF. But before I go into the details, let me explain the situation.
+There are 3 services in our project, one business service, one process service and one front end. We use WCF to communicate between these services. We are using basicHttpBinding and we have a central set of XSD schema&amp;rsquo;s from which we generate code using the svcutil tool provided with .</description>
+    </item>
+    
+  </channel>
+</rss>

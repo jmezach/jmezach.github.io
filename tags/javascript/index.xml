@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript on Jonathan&#39;s Blog</title>
+    <link>https://jmezach.github.io/tags/javascript/</link>
+    <description>Recent content in Javascript on Jonathan&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <lastBuildDate>Mon, 18 Apr 2016 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://jmezach.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Creating a VSTS dashboard widget</title>
+      <link>https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/</link>
+      <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/</guid>
+      <description>On the 30th of October last year Microsoft deployed an update for Visual Studio Team Services (still named Visual Studio Online at the time) which introduced a new start page that could be completely customized. The feature was named dashboards and when I first saw it I realized its potential for putting all kinds of information relevant to a development team right at their fingertips. For those who haven’t seen it yet, this is what the out of the box dashboard looks like:</description>
+    </item>
+    
+    <item>
+      <title>Some thoughts on MS TechEd Europe 2012</title>
+      <link>https://jmezach.github.io/2012/06/30/some-thoughts-on-ms-teched-europe-2012/</link>
+      <pubDate>Sat, 30 Jun 2012 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2012/06/30/some-thoughts-on-ms-teched-europe-2012/</guid>
+      <description>Last week I attended Microsoft’s TechEd Europe conference in the RAI in Amsterdam. I had a great week. I’ve learned a lot of new stuff and I met with some interesting people. And since it has been a while since I’ve written anything on this blog I’d thought I’d do a little wrap-up of the conference and share with you some of my personal thoughts. I would like to stress that these are just my thoughts.</description>
+    </item>
+    
+  </channel>
+</rss>

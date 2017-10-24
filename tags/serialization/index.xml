@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Serialization on Jonathan&#39;s Blog</title>
+    <link>https://jmezach.github.io/tags/serialization/</link>
+    <description>Recent content in Serialization on Jonathan&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <lastBuildDate>Tue, 10 Jun 2008 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://jmezach.github.io/tags/serialization/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Service Pack 1 for .NET fixes XML serialization?</title>
+      <link>https://jmezach.github.io/2008/06/10/service-pack-1-for-.net-fixes-xml-serialization/</link>
+      <pubDate>Tue, 10 Jun 2008 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2008/06/10/service-pack-1-for-.net-fixes-xml-serialization/</guid>
+      <description>Today we ran into an issue with a Windows Forms application we had written. It was working fine on our development virtual PC&amp;rsquo;s, but for some reason it failed on the actual host machines that we needed it to run on. The application is written purely against the .NET Framework version 2.0. We do communicate with a service that is using WCF, which is part of the .NET Framework version 3.</description>
+    </item>
+    
+  </channel>
+</rss>

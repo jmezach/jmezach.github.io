@@ -7,9 +7,55 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <lastBuildDate>Sat, 13 May 2017 20:33:00 +0200</lastBuildDate>
     
 	<atom:link href="https://jmezach.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>.Net</title>
+      <link>https://jmezach.github.io/categories/.net/</link>
+      <pubDate>Sat, 13 May 2017 20:33:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/categories/.net/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cloud</title>
+      <link>https://jmezach.github.io/categories/cloud/</link>
+      <pubDate>Sat, 30 Jun 2012 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/categories/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Continuous Delivery</title>
+      <link>https://jmezach.github.io/categories/continuous-delivery/</link>
+      <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/categories/continuous-delivery/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Integration</title>
+      <link>https://jmezach.github.io/categories/integration/</link>
+      <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/categories/integration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Software Architecture</title>
+      <link>https://jmezach.github.io/categories/software-architecture/</link>
+      <pubDate>Sat, 30 Jun 2012 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/categories/software-architecture/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

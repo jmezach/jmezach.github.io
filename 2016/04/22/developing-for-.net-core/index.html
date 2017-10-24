@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>Developing for .NET Core &middot; Jonathan&#39;s Blog</title>
+    <meta name="generator" content="Hugo 0.30.2" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Jonathan Mezach">
+    
+      <meta name="description" content="">
+    
+    
+    <link rel="canonical" href="https://jmezach.github.io/2016/04/22/developing-for-.net-core/"/>
+    <link rel="icon" href="https://jmezach.github.io/favicon.ico">
+    <link rel="apple-touch-icon" href="https://jmezach.github.io/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="https://jmezach.github.io/css/style.css">
+    <link rel="stylesheet" href="https://jmezach.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://jmezach.github.io/css/monokai.css">
+    <link rel="stylesheet" href="https://jmezach.github.io/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Developing for .NET Core" />
+<meta property="og:description" content="If you’ve read my previous post you know that I have a keen interest in .NET Core. For the last two weeks I’ve been installing new RC2 builds on my machine almost on a daily basis to see if I could get something working and I’m glad to see that as of a couple of days ago things seem to be coming together. Obviously it still is a bit of a moving target but I feel like a lot of things are starting to settle." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jmezach.github.io/2016/04/22/developing-for-.net-core/" />
+
+
+
+<meta property="article:published_time" content="2016-04-22T00:00:00&#43;02:00"/>
+
+<meta property="article:modified_time" content="2016-04-22T00:00:00&#43;02:00"/>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Developing for .NET Core">
+<meta itemprop="description" content="If you’ve read my previous post you know that I have a keen interest in .NET Core. For the last two weeks I’ve been installing new RC2 builds on my machine almost on a daily basis to see if I could get something working and I’m glad to see that as of a couple of days ago things seem to be coming together. Obviously it still is a bit of a moving target but I feel like a lot of things are starting to settle.">
+
+
+<meta itemprop="datePublished" content="2016-04-22T00:00:00&#43;02:00" />
+<meta itemprop="dateModified" content="2016-04-22T00:00:00&#43;02:00" />
+<meta itemprop="wordCount" content="1746">
+
+
+
+<meta itemprop="keywords" content=".NET Core,Linux,OSX,Windows," />
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Developing for .NET Core"/>
+<meta name="twitter:description" content="If you’ve read my previous post you know that I have a keen interest in .NET Core. For the last two weeks I’ve been installing new RC2 builds on my machine almost on a daily basis to see if I could get something working and I’m glad to see that as of a couple of days ago things seem to be coming together. Obviously it still is a bit of a moving target but I feel like a lot of things are starting to settle."/>
+<meta name="twitter:site" content="@jmezach"/>
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="https://jmezach.github.io/" id="logo">
+          
+          <i class="logo" style="background-image: url('https://jmezach.github.io/css/images/logo.png')"></i>
+          
+          <span class="site-title">Jonathan&#39;s Blog</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="https://jmezach.github.io/">Home</a>
+          
+          
+          
+          
+          
+          
+
+          
+          <a class="main-nav-link" href="/about/">About</a>
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="https://jmezach.github.io/tags/">Tags</a>
+          
+          
+          
+          <a class="main-nav-link" href="https://jmezach.github.io/categories/">Categories</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="https://jmezach.github.io/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="https://jmezach.github.io/" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="https://jmezach.github.io/">Home</a></td>
+          
+          
+          
+          
+          
+          
+
+          
+          <td><a class="main-nav-link" href="/about/">About</a></td>
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="https://jmezach.github.io/tags/">Tags</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="https://jmezach.github.io/categories/">Categories</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="https://jmezach.github.io/" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   	
+    	<aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      
+      <img id="avatar" src="https://www.gravatar.com/avatar/0ebf1748cdf6c187a42761a103c1437f?s=100&d=identicon"/>
+      
+      <h2 id="name">Jonathan Mezach</h2>
+      <h3 id="title">Architect - Programmer - Speaker</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Deventer, The Netherlands</span>
+      
+          <a id="follow" href="https://github.com/jmezach">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        27
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          29
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/jmezach" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//linkedin.com/in/jmezach" target="_blank" title="LinkedIn"><i class="fa fa-linkedin"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//facebook.com/jmezach" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></td>
+
+
+
+<td><a href="//twitter.com/jmezach" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="https://jmezach.github.io/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+    
+
+    <section id="main">
+    
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2016/04/22/developing-for-.net-core/">
+    <h1 class="article-title" itemprop="name">
+        Developing for .NET Core
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-04-22 00:00:00 &#43;0200 CEST" itemprop="datePublished">2016-04-22</time>
+            &middot;
+            1746
+            words
+            &middot;
+            9
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-core">.NET Core</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/linux">Linux</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/osx">OSX</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/windows">Windows</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            
+
+<p>If you’ve read my <a href="/2016/04/02/.net-core-at-build-2016/">previous post</a> you know that I have a keen interest in .NET Core. For the last two weeks I’ve been installing new RC2 builds on my machine almost on a daily basis to see if I could get something working and I’m glad to see that as of a couple of days ago things seem to be coming together. Obviously it still is a bit of a moving target but I feel like a lot of things are starting to settle.</p>
+
+<p>In this post I wanted to share a bit about my experience working with all the new stuff and to give a bit of a look at what the developer experience is going to be when .NET Core goes RTM.</p>
+
+<h2 id="command-line-tools">Command line tools</h2>
+
+<p>As you might have noticed a lot of the work being done on .NET Core is centered around the new command line interface (or <a href="https://github.com/dotnet/cli">dotnet-cli</a>). Being a Windows developer this might be a bit of surprise since we’re all used to just doing File –&gt; New Project in Visual Studio and we take it from there. But consider for a moment that .NET Core is all about being cross-platform (on Linux and Mac OS) where the Visual Studio that we all know and love doesn’t run and it makes a lot more sense. That’s not to say that we can’t do File –&gt; New Project anymore with .NET Core, it just means that there is more than one way to create a new .NET project which I think is a good thing.</p>
+
+<p>So let’s suppose for a moment that we are working on a Mac and we want to create a new .NET project. How do we do that? Well, it’s simple, just type the following on a command line and press enter:</p>
+
+<pre><code class="language-bash">dotnet new
+</code></pre>
+
+<p>This command creates two files in our current folder, a <em>project.json</em> and a <em>Program.cs</em>. <em>Program.cs</em> contains a bit of code which you would also see when you create a new console application in Visual Studio so nothing new there. In <em>project.json</em> you will find something like this:</p>
+
+<pre><code class="language-json">{
+  &quot;version&quot;: &quot;1.0.0-*&quot;,
+  &quot;compilationOptions&quot;: {
+    &quot;emitEntryPoint&quot;: true
+  },
+  &quot;dependencies&quot;: {
+    &quot;Microsoft.NETCore.App&quot;: {
+      &quot;type&quot;: &quot;platform&quot;,
+      &quot;version&quot;: &quot;1.0.0-rc2-3002439&quot;
+    }
+  },
+  &quot;frameworks&quot;: {
+    &quot;netcoreapp1.0&quot;: {
+      &quot;imports&quot;: &quot;dnxcore50&quot;
+    }
+  }
+}
+</code></pre>
+
+<p>In a sense <em>project.json</em> contains much of the same information that you would find in the project file that is created by Visual Studio. It is also the place where you define what external dependencies (or NuGet packages) you want to pull in. At the moment we’re only pulling in Microsoft.NETCore.App which is in fact a meta-package that includes a whole bunch of NuGet packages that all together make up the Base Class Library (BCL) as we know it (albeit slightly different).</p>
+
+<p>Since we are pulling in all those packages we need to be able to restore those to our machine so that we can use them. To do that we can run the following command:</p>
+
+<pre><code class="language-bash">dotnet restore
+</code></pre>
+
+<p>There are quite a few packages that you need to get a simple app running and if you look closely at the output of the restore command you’ll see some familiar namespaces come by such as <em>System.Collections.Generic</em>, <em>System.IO</em> and <em>System.Linq</em>. They all used to be in one assembly called mscorlib.dll, but now they are all their own NuGet package meaning that they can (more or less) version independently from each other which I think is a great feature and will surely help stimulate innovation on the .NET platform. Have a look at the <em>.nuget</em> folder in your user profile to get a sense of all the packages you are pulling in.</p>
+
+<p>With the packages restored we can now build our application. To do that we simply run the following command:</p>
+
+<pre><code class="language-bash">dotnet build
+</code></pre>
+
+<p>Behind the scenes this will eventually run csc to compile our C# code into a .NET assembly. If we have a look at the <em>bindebugnetcoreapp1.0</em> folder we will find a DLL here with the name of the folder where we created our application (in my case <em>dotnetcore.dll</em>). Interestingly there is no executable (.exe) here even though I have a <em>Main()</em>. This is because if we run <em>dotnet build</em> we get what’s called a portable app. The idea here is that I can take the contents of my bin folder to another machine which already has .NET Core installed and run it there (using <em>dotnet run).</em> This also works cross-platform. I can take a binary build on a Windows machine, copy it to a Mac or Linux machine and run it there or do it the other way around.</p>
+
+<p>To show you that this actually works, here is a screenshot of compiling and running a brand new project (created using <em>dotnet new</em>) on OSX:</p>
+
+<p><a href="https://blogs.infosupport.com/wp-content/uploads/2016/04/Screenshot-2016-04-22-15.35.45.png"><img src="https://blogs.infosupport.com/wp-content/uploads/2016/04/Screenshot-2016-04-22-15.35.45_thumb.png" alt="dotnet run on OSX" title="Screenshot 2016-04-22 15.35.45" /></a></p>
+
+<p>I then copied the <em>dotnetcore-osx.dll</em> (produced by <em>dotnet build</em>) from my OSX machine to my Windows machine and ran it there:</p>
+
+<p><a href="https://blogs.infosupport.com/wp-content/uploads/2016/04/image-1.png"><img src="https://blogs.infosupport.com/wp-content/uploads/2016/04/image_thumb-1.png" alt="Run the same assembly on Windows" title="image" /></a></p>
+
+<p>Of course building a project on Windows and running it on OSX works just as well and although I haven’t tried it myself yet it should also work with Linux. I did notice that I need to have the exact same build of the dotnet-cli on both machines for this to work, but that will obviously change once .NET Core is released.</p>
+
+<p>To make this work I need to have .NET Core installed on the target machine I want to run on which isn’t always convenient. On top of that, I’m sharing the runtime and framework libraries with all the apps on the machine which means that if I update .NET Core on the machine all of the apps start using the new version. In fact, that is the situation with the .NET Framework that we know right now but it isn’t always what you want.</p>
+
+<p>Luckily we can transform our portable app into a standalone app by publishing our application with the following command:</p>
+
+<pre><code class="language-bash">dotnet publish
+</code></pre>
+
+<p>Publish will gather everything we need to run the application on a particular runtime and framework. Before we can use it we need to specify what the runtimes and frameworks are that we want to run on. We’ve already specified the framework that we want to run on in our project.json, which is <em>netcoreapp1.0,</em> but we haven’t specified the runtimes. So we need to add a little bit more to our <em>project.json</em>:</p>
+
+<pre><code class="language-json">&quot;runtimes&quot;: {
+  &quot;win7-x64&quot;: { }
+}
+</code></pre>
+
+<p>In this case I’m telling the tools that I want my application to run on 64-bit Windows 7 and up. There is a whole bunch of those runtimes available and you can use <em>dotnet –info</em> to figure out what the runtime identifier (or RID) is for your current environment. Once I’ve added that to my <em>project.json</em> and ran <em>dotnet restore</em> again (which will bring down native assemblies for many of the NuGet packages we’ve been using so far) I can use the publish command to get a complete set of files that I need for my application to run on a particular platform. Here is a screenshot of what that looks like:</p>
+
+<p><a href="https://blogs.infosupport.com/wp-content/uploads/2016/04/image-2.png"><img src="https://blogs.infosupport.com/wp-content/uploads/2016/04/image_thumb-2.png" alt="Publish output" title="image" /></a></p>
+
+<p>As you can see in the screenshot there are <strong>115</strong> files there which is quite a lot. You’ll also notice that I now have an executable that I can use to run my application.</p>
+
+<p>What’s important here though is that with this approach I loose the ability to take these files and run them on a Mac for instance. However, I can put these files onto a USB-drive or a file share and run them on some other Windows machine without having to install anything. I don’t have to install the .NET Framework and more importantly I get to use a version of .NET Core that I want to use without having to worry about other .NET applications running on the same machine getting broken.</p>
+
+<h2 id="editing-and-debugging-code">Editing and debugging code</h2>
+
+<p>So, enough about the command line tools. Let’s have a look at what the editing experience looks like. As noted above, there will be support in Visual Studio for building .NET Core applications. In fact, the team has shown an early version of that in the <font color="#ff0000"><a href="https://www.youtube.com/watch?v=hfJgGHqVcLI">ASP.NET Community Standup on July 19th</a></font>. However we won’t be seeing the full blown Visual Studio running on Linux or OSX anytime soon, so what do we use if we want to develop .NET applications on those platforms (if you’re not into vim, Emacs, nano or any other console editor out there)?</p>
+
+<p>My guess is that Visual Studio Code, a more lightweight version of Visual Studio that runs cross-platform (including Windows) will be the tool of choice here. It was launched last year as a preview, but has already seen its <a href="http://code.visualstudio.com/blogs/2016/04/14/vscode-1.0">1.0 release</a> and it is advancing rapidly. It also has great support for C# and .NET, although that’s no longer included out-of-the-box. Instead you’ll have to install the C# extension. For that you’ll get syntax highlighting, IntelliSense and a lot of other features you might be familiar with from Visual Studio.</p>
+
+<p>What is really interesting is the debugging support that is now available for .NET Core applications within Visual Studio Code. To get that, you’ll need to install a prerelease version at the moment, which you can get from <font color="#ff0000"><a href="https://github.com/OmniSharp/omnisharp-vscode/releases">here</a></font>. Once you’ve got it all installed you can debug a .NET Core application almost as if you were using the full-blown Visual Studio. Just hit F5 and watch the magic happen:</p>
+
+<p><a href="https://blogs.infosupport.com/wp-content/uploads/2016/04/image-3.png"><img src="https://blogs.infosupport.com/wp-content/uploads/2016/04/image_thumb-3.png" alt="Debugging on OSX with Visual Studio Code" title="image" /></a></p>
+
+<p>Once again, this works across all three platforms (although I couldn’t get Visual Studio Code to run on Linux due to <font color="#ff0000"><a href="https://github.com/Microsoft/vscode/issues/3451">this bug</a></font>). In fact, the debugger itself is an application that is build on .NET Core and you’ll see it being build when you install the C# extension which is pretty neat.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>It looks like things are really starting to come together with .NET Core. I now have a working development environment set up on Windows, OSX and Linux (except for Visual Studio Code) and the power of running the following commands to get going shouldn’t be underestimated:</p>
+
+<pre><code class="language-bash">dotnet new
+code .
+</code></pre>
+
+<p>Of course there are still quite a few rough edges. Sometimes when I install a new build things stop working that used to work before, but I guess that is to be expected with not yet released stuff. I’m looking forward to the RC2 and RTM releases and of course the tooling in Visual Studio. If you want to try it out for yourself, go to the <a href="https://github.com/dotnet/cli">dotnet-cli</a> repository on GitHub, download the latest version of the .NET Core SDK Installer for your platform and get going.</p>
+
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2016/04/22/developing-for-.net-core/" data-id="fc2e5a91f4477a19fd628e22cbf8f19f" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2016/04/22/developing-for-.net-core/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+
+    
+<nav id="article-nav">
+    
+    <a href="https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Creating a VSTS dashboard widget</div>
+    </a>
+    
+
+    
+    <a href="https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Newer
+      </strong>
+      <div class="article-nav-title">.NET Platform Standard and the magic of &#34;imports&#34;</div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+
+<section id="comments">
+    <div id="disqus_thread">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jonathanmezach" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+</section>
+
+
+    </section>
+
+   	
+    	<aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/" class="title">.NET Core and .NET Standard 2.0</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-05-13 20:33:00 &#43;0200 CEST" itemprop="datePublished">2017-05-13</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/" class="title">My experience with my first .NET Core contribution</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-15 15:36:00 &#43;0200 CEST" itemprop="datePublished">2017-04-15</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/" class="title">Migrating existing .NET projects to SDK-based projects</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-02-07 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2017-02-07</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/" class="title">Sharing code across .NET platforms with .NET Standard</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-12-05 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2016-12-05</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/" class="title">.NET Core versioning</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-11-18 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2016-11-18</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/.net">
+                    .net
+                </a>
+                <span class="category-list-count">25</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/cloud">
+                    cloud
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/continuous-delivery">
+                    continuous-delivery
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/integration">
+                    integration
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/software-architecture">
+                    software-architecture
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net">
+                    .net
+                </a>
+                <span class="category-list-count">20</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-core">
+                    .net-core
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-development">
+                    .net-development
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-framework">
+                    .net-framework
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-standard">
+                    .net-standard
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/async">
+                    async
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/azure">
+                    azure
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/c">
+                    c#
+                </a>
+                <span class="category-list-count">3</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/css">
+                    css
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/html">
+                    html
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/javascript">
+                    javascript
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/linux">
+                    linux
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/microsoft">
+                    microsoft
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/open-source">
+                    open-source
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/osx">
+                    osx
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/rx">
+                    rx
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/serialization">
+                    serialization
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/silverlight">
+                    silverlight
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/team-build">
+                    team-build
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/teched">
+                    teched
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/tfs">
+                    tfs
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/tfs-2015">
+                    tfs-2015
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/tools">
+                    tools
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/visual-studio">
+                    visual-studio
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/vsts">
+                    vsts
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/wcf">
+                    wcf
+                </a>
+                <span class="category-list-count">11</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/wf">
+                    wf
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/windows">
+                    windows
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/windows-server-2012">
+                    windows-server-2012
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="https://jmezach.github.io/tags/.net" style="font-size: 12px;">.net</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-core" style="font-size: 12px;">.net-core</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-development" style="font-size: 12px;">.net-development</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-framework" style="font-size: 12px;">.net-framework</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-standard" style="font-size: 12px;">.net-standard</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/async" style="font-size: 12px;">async</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/azure" style="font-size: 12px;">azure</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/c" style="font-size: 12px;">c#</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/css" style="font-size: 12px;">css</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/html" style="font-size: 12px;">html</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/javascript" style="font-size: 12px;">javascript</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/linux" style="font-size: 12px;">linux</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/microsoft" style="font-size: 12px;">microsoft</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/open-source" style="font-size: 12px;">open-source</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/osx" style="font-size: 12px;">osx</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/rx" style="font-size: 12px;">rx</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/serialization" style="font-size: 12px;">serialization</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/silverlight" style="font-size: 12px;">silverlight</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/team-build" style="font-size: 12px;">team-build</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/teched" style="font-size: 12px;">teched</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/tfs" style="font-size: 12px;">tfs</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/tfs-2015" style="font-size: 12px;">tfs-2015</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/tools" style="font-size: 12px;">tools</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/visual-studio" style="font-size: 12px;">visual-studio</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/vsts" style="font-size: 12px;">vsts</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/wcf" style="font-size: 12px;">wcf</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/wf" style="font-size: 12px;">wf</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/windows" style="font-size: 12px;">windows</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/windows-server-2012" style="font-size: 12px;">windows-server-2012</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://jmezach.github.io/fancybox/jquery.fancybox.pack.js"></script>
+<script src="https://jmezach.github.io/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+</body>
+</html>

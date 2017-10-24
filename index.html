@@ -30,7 +30,7 @@
 
 
 
-
+<meta property="og:updated_time" content="2017-05-13T20:33:00&#43;02:00"/>
 
 
 
@@ -175,12 +175,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        0
+        27
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          0
+          29
         
         <span>
             Tags
@@ -263,8 +263,1559 @@
     
     
 
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/">
+    <h1 class="article-title" itemprop="name">
+        .NET Core and .NET Standard 2.0
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-05-13 20:33:00 &#43;0200 CEST" itemprop="datePublished">2017-05-13</time>
+            &middot;
+            1321
+            words
+            &middot;
+            7
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-core">.NET Core</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                This week I’ve attended Microsoft’s Build conference in beautiful Seattle. It has a been a very busy week, but we had a lot of fun attending the different sessions as well as talking to some of the members on the various product teams.
+Of course, during the week, my focus has been on .NET Core. I’ve attended most (if not all) of the sessions on .NET Core (and related technologies such as ASP.
+            </p>
+            <p class="article-more-link">
+                <a href="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/" data-id="a7ac097fe83e6108ca26d7bad5d5adcf" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/">
+    <h1 class="article-title" itemprop="name">
+        My experience with my first .NET Core contribution
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-04-15 15:36:00 &#43;0200 CEST" itemprop="datePublished">2017-04-15</time>
+            &middot;
+            1864
+            words
+            &middot;
+            9
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-core">.NET Core</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/open-source">Open Source</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                I’ve written quite a few blogs here on how you can use .NET Core in your applications and what to expect when developing for this new platform. But with .NET Core being open source there’s also another story to be told, namely that of extending and improving the platform itself through open source contributions. So when Karel Zikmund from the .NET Core team reached out on Twitter asking the community to help them fix bugs before the .
+            </p>
+            <p class="article-more-link">
+                <a href="https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/" data-id="349feea74d7de5c21f5800f5ddf66882" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/">
+    <h1 class="article-title" itemprop="name">
+        Migrating existing .NET projects to SDK-based projects
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-02-07 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2017-02-07</time>
+            &middot;
+            1591
+            words
+            &middot;
+            8
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-core">.NET Core</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/visual-studio">Visual Studio</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                In my previous blog post I talked about sharing .NET code across the various .NET platforms we now have within the .NET ecosystem (.NET Framework, .NET Core, Xamarin). In that post I also showed the new tooling within Visual Studio 2017 that enables (among other things) cross-targeting a lot easier than it was before. Since then two new versions of the new tooling experience for .NET projects have been released, and things have matured quite nicely.
+            </p>
+            <p class="article-more-link">
+                <a href="https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/" data-id="c5b05ecf7f6d2ab3b2e1f4982cf60717" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/">
+    <h1 class="article-title" itemprop="name">
+        Sharing code across .NET platforms with .NET Standard
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-12-05 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2016-12-05</time>
+            &middot;
+            2599
+            words
+            &middot;
+            13
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-core">.NET Core</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-development">.NET Development</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/visual-studio">Visual Studio</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                One of the key things that makes Xamarin such a great platform for developing mobile applications is that you can leverage your existing skills with C# and .NET and use them to create awesome Android and iOS apps. This also meant that you could take existing code written for .NET and use it in your Xamarin apps.
+Of course, in the early days of MonoDroid and MonoTouch (before Xamarin was even a company) this wasn’t as easy as it is today.
+            </p>
+            <p class="article-more-link">
+                <a href="https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/" data-id="c33b20ee86407e4f8a9f6719fab005d7" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/">
+    <h1 class="article-title" itemprop="name">
+        .NET Core versioning
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-11-18 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2016-11-18</time>
+            &middot;
+            1706
+            words
+            &middot;
+            9
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-core">.NET Core</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-development">.NET Development</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                Unless you have been living underneath a rock you’ve probably noticed that yesterday, during Microsoft’s Connect() virtual event, .NET Core 1.1 was released. In addition ASP.NET Core 1.1 and Entity Framework 1.1 have been released. You can read up on the announcements in the following posts:
+ .NET Core 1.1 - https://blogs.msdn.microsoft.com/dotnet/2016/11/16/announcing-net-core-1-1/ ASP.NET Core 1.1 - https://blogs.msdn.microsoft.com/dotnet/2016/11/16/announcing-net-core-1-1/ EF Core 1.1 - https://blogs.msdn.microsoft.com/dotnet/2016/11/16/announcing-entity-framework-core-1-1/  At first sight this doesn&rsquo;t seem like much of a deal.
+            </p>
+            <p class="article-more-link">
+                <a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2016/11/18/.net-core-versioning/" data-id="23368df0f920a5fa3a9733a0ab2f3458" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/">
+    <h1 class="article-title" itemprop="name">
+        .NET Platform Standard and the magic of &#34;imports&#34;
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-05-24 00:00:00 &#43;0200 CEST" itemprop="datePublished">2016-05-24</time>
+            &middot;
+            1677
+            words
+            &middot;
+            8
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-core">.NET Core</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-standard">.NET Standard</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                In case you missed it, .NET Core RC2 has been released by Microsoft last week along with ASP.NET Core RC2 and a preview of the tooling. Lots of exciting new stuff that I highly encourage checking out.
+Now that RC2 is out there I guess a lot more people will be checking it out and playing with it and there’s one topic that seems to confuse a lot of people.
+            </p>
+            <p class="article-more-link">
+                <a href="https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/" data-id="8b6e535a9510e82bec33c574eb8e11b6" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2016/04/22/developing-for-.net-core/">
+    <h1 class="article-title" itemprop="name">
+        Developing for .NET Core
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-04-22 00:00:00 &#43;0200 CEST" itemprop="datePublished">2016-04-22</time>
+            &middot;
+            1746
+            words
+            &middot;
+            9
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-core">.NET Core</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/linux">Linux</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/osx">OSX</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/windows">Windows</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                If you’ve read my previous post you know that I have a keen interest in .NET Core. For the last two weeks I’ve been installing new RC2 builds on my machine almost on a daily basis to see if I could get something working and I’m glad to see that as of a couple of days ago things seem to be coming together. Obviously it still is a bit of a moving target but I feel like a lot of things are starting to settle.
+            </p>
+            <p class="article-more-link">
+                <a href="https://jmezach.github.io/2016/04/22/developing-for-.net-core/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2016/04/22/developing-for-.net-core/" data-id="fc2e5a91f4477a19fd628e22cbf8f19f" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2016/04/22/developing-for-.net-core/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/">
+    <h1 class="article-title" itemprop="name">
+        Creating a VSTS dashboard widget
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-04-18 00:00:00 &#43;0200 CEST" itemprop="datePublished">2016-04-18</time>
+            &middot;
+            1911
+            words
+            &middot;
+            9
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/continuous-delivery">Continuous Delivery</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/integration">Integration</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/vsts">VSTS</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/javascript">JavaScript</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/html">HTML</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/css">CSS</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                On the 30th of October last year Microsoft deployed an update for Visual Studio Team Services (still named Visual Studio Online at the time) which introduced a new start page that could be completely customized. The feature was named dashboards and when I first saw it I realized its potential for putting all kinds of information relevant to a development team right at their fingertips. For those who haven’t seen it yet, this is what the out of the box dashboard looks like:
+            </p>
+            <p class="article-more-link">
+                <a href="https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/" data-id="8a6a7ed52d003cf2fe964de336e31b5c" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2016/04/02/.net-core-at-build-2016/">
+    <h1 class="article-title" itemprop="name">
+        .NET Core at Build 2016
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-04-02 00:00:00 &#43;0200 CEST" itemprop="datePublished">2016-04-02</time>
+            &middot;
+            959
+            words
+            &middot;
+            5
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-core">.NET Core</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                As some of you might have seen on Twitter or Facebook I have attended Microsoft’s Build 2016 conference in San Francisco over the last week. It was an interesting experience with some good announcements, although to be honest I was expecting a little bit more. Then again Microsoft has become a lot more open about what they are doing which kind of takes the thunder away from these conferences. Free Xamarin, Azure Service Fabric generally available, Microsoft Cognitive Services and the Bot Framework are still great announcements though.
+            </p>
+            <p class="article-more-link">
+                <a href="https://jmezach.github.io/2016/04/02/.net-core-at-build-2016/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2016/04/02/.net-core-at-build-2016/" data-id="b9180bc3c8b1cce1cebfea23b0595c8b" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2016/04/02/.net-core-at-build-2016/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2015/07/03/using-invoke-sqlcmd-in-tfs-build-2015/">
+    <h1 class="article-title" itemprop="name">
+        Using Invoke-SqlCmd in TFS Build 2015
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2015-07-03 00:00:00 &#43;0200 CEST" itemprop="datePublished">2015-07-03</time>
+            &middot;
+            451
+            words
+            &middot;
+            3
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/continuous-delivery">Continuous Delivery</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/team-build">Team Build</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/tfs">TFS</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/tfs-2015">TFS 2015</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                Lately I&rsquo;ve been diving into the new build engine in TFS 2015 RC (RTM release is planned for 20th of July). While running a build, I got the following error message:
+ Mixed mode assembly is built against version &lsquo;v2.0.50727&rsquo; of the runtime and cannot be loaded in the 4.0 runtime without additional configuration information.
+ This got me puzzled for a while, especially since the build continued to run and it was doing what it was supposed to do, except that at the end the build turned red because of this error.
+            </p>
+            <p class="article-more-link">
+                <a href="https://jmezach.github.io/2015/07/03/using-invoke-sqlcmd-in-tfs-build-2015/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2015/07/03/using-invoke-sqlcmd-in-tfs-build-2015/" data-id="7758a2af735793c98d639d3677ffdd0a" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2015/07/03/using-invoke-sqlcmd-in-tfs-build-2015/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
+
 
 <nav id="page-nav">
+
+    
+    
+        <a class="extend next" rel="next" href="https://jmezach.github.io/page/2/">
+            Next »
+        </a>
+    
 
 </nav>
 
@@ -281,6 +1832,136 @@
     <div class="widget">
         <ul id="recent-post">
             
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/" class="title">.NET Core and .NET Standard 2.0</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-05-13 20:33:00 &#43;0200 CEST" itemprop="datePublished">2017-05-13</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/" class="title">My experience with my first .NET Core contribution</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-15 15:36:00 &#43;0200 CEST" itemprop="datePublished">2017-04-15</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/" class="title">Migrating existing .NET projects to SDK-based projects</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-02-07 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2017-02-07</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/" class="title">Sharing code across .NET platforms with .NET Standard</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-12-05 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2016-12-05</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/" class="title">.NET Core versioning</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-11-18 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2016-11-18</time>
+                    </p>
+                </div>
+            </li>
+            
         </ul>
     </div>
 </div>
@@ -289,17 +1970,405 @@
     
 
 
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/.net">
+                    .net
+                </a>
+                <span class="category-list-count">25</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/cloud">
+                    cloud
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/continuous-delivery">
+                    continuous-delivery
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/integration">
+                    integration
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/software-architecture">
+                    software-architecture
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
 
 
 
     
 
 
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net">
+                    .net
+                </a>
+                <span class="category-list-count">20</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-core">
+                    .net-core
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-development">
+                    .net-development
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-framework">
+                    .net-framework
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-standard">
+                    .net-standard
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/async">
+                    async
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/azure">
+                    azure
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/c">
+                    c#
+                </a>
+                <span class="category-list-count">3</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/css">
+                    css
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/html">
+                    html
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/javascript">
+                    javascript
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/linux">
+                    linux
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/microsoft">
+                    microsoft
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/open-source">
+                    open-source
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/osx">
+                    osx
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/rx">
+                    rx
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/serialization">
+                    serialization
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/silverlight">
+                    silverlight
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/team-build">
+                    team-build
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/teched">
+                    teched
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/tfs">
+                    tfs
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/tfs-2015">
+                    tfs-2015
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/tools">
+                    tools
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/visual-studio">
+                    visual-studio
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/vsts">
+                    vsts
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/wcf">
+                    wcf
+                </a>
+                <span class="category-list-count">11</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/wf">
+                    wf
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/windows">
+                    windows
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/windows-server-2012">
+                    windows-server-2012
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
 
 
 
     
 
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="https://jmezach.github.io/tags/.net" style="font-size: 12px;">.net</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-core" style="font-size: 12px;">.net-core</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-development" style="font-size: 12px;">.net-development</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-framework" style="font-size: 12px;">.net-framework</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-standard" style="font-size: 12px;">.net-standard</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/async" style="font-size: 12px;">async</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/azure" style="font-size: 12px;">azure</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/c" style="font-size: 12px;">c#</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/css" style="font-size: 12px;">css</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/html" style="font-size: 12px;">html</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/javascript" style="font-size: 12px;">javascript</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/linux" style="font-size: 12px;">linux</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/microsoft" style="font-size: 12px;">microsoft</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/open-source" style="font-size: 12px;">open-source</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/osx" style="font-size: 12px;">osx</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/rx" style="font-size: 12px;">rx</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/serialization" style="font-size: 12px;">serialization</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/silverlight" style="font-size: 12px;">silverlight</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/team-build" style="font-size: 12px;">team-build</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/teched" style="font-size: 12px;">teched</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/tfs" style="font-size: 12px;">tfs</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/tfs-2015" style="font-size: 12px;">tfs-2015</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/tools" style="font-size: 12px;">tools</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/visual-studio" style="font-size: 12px;">visual-studio</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/vsts" style="font-size: 12px;">vsts</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/wcf" style="font-size: 12px;">wcf</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/wf" style="font-size: 12px;">wf</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/windows" style="font-size: 12px;">windows</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/windows-server-2012" style="font-size: 12px;">windows-server-2012</a>
+        
+    </div>
+</div>
 
 
 

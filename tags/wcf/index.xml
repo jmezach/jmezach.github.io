@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wcf on Jonathan&#39;s Blog</title>
+    <link>https://jmezach.github.io/tags/wcf/</link>
+    <description>Recent content in Wcf on Jonathan&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <lastBuildDate>Mon, 25 Jan 2010 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://jmezach.github.io/tags/wcf/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Throttling workflow services</title>
+      <link>https://jmezach.github.io/2010/01/25/throttling-workflow-services/</link>
+      <pubDate>Mon, 25 Jan 2010 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2010/01/25/throttling-workflow-services/</guid>
+      <description>For the project I’m currently working on I did some research into the throttling of workflow services using WCF and WF with .NET 3.5. We didn’t have much experience with throttling of services, let alone workflow services so we decided to some simple tests to determine the possibilities and effects of throttling. Before diving into the technical details of how to do throttling I want to look at the scenario we had.</description>
+    </item>
+    
+    <item>
+      <title>Creating a workflow image from a workflow service</title>
+      <link>https://jmezach.github.io/2009/11/18/creating-a-workflow-image-from-a-workflow-service/</link>
+      <pubDate>Wed, 18 Nov 2009 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2009/11/18/creating-a-workflow-image-from-a-workflow-service/</guid>
+      <description>Introduction For the project I’m currently working on we wanted to be able to display an image of a running workflow instance for diagnostic purposes. There are numerous examples of this floating around the internet, but most of them focused on a client side application that would generate the image. This is fine if your client application has access to all the necessary assemblies, but if does not you’re going to run into some problems.</description>
+    </item>
+    
+    <item>
+      <title>Even better message based correlation</title>
+      <link>https://jmezach.github.io/2009/03/02/even-better-message-based-correlation/</link>
+      <pubDate>Mon, 02 Mar 2009 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2009/03/02/even-better-message-based-correlation/</guid>
+      <description>As a follow up to my previous post, I&amp;rsquo;ve been extending my implementation a bit. In the comments section of my last post you might have read that we were thinking about creating a CorrelationSequenceActivity. I&amp;rsquo;ve implemented this activity now and it currently accepts only one child activity which should be a ReceiveActivity. This is validated using an activity validator. It has an attached property called CorrelationKey which will then appear on the ReceiveActivity.</description>
+    </item>
+    
+    <item>
+      <title>Message based correlation with WF/WCF in .NET 3.5</title>
+      <link>https://jmezach.github.io/2009/02/24/message-based-correlation-with-wf/wcf-in-.net-3.5/</link>
+      <pubDate>Tue, 24 Feb 2009 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2009/02/24/message-based-correlation-with-wf/wcf-in-.net-3.5/</guid>
+      <description>When .NET 3.0 was released we got Windows Communication Foundation (WCF) and Windows Workflow Foundation (WF). These were great technologies, but they would have been even greater if they were used together. Unfortunately, Microsoft decided not to include this for .NET 3.0. However, with the release of .NET 3.5 we got the WCF Send and Receive activities that you can use in your workflows in order to implement a WCF service contract by using a workflow.</description>
+    </item>
+    
+    <item>
+      <title>Workflows mysteriously being aborted</title>
+      <link>https://jmezach.github.io/2008/06/19/workflows-mysteriously-being-aborted/</link>
+      <pubDate>Thu, 19 Jun 2008 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2008/06/19/workflows-mysteriously-being-aborted/</guid>
+      <description>Part of the project I&amp;rsquo;m currently working on involves a workflow system we have build ourselves on top of Windows Workflow Foundation. It consist of a WCF service that contains task, a front end that displays these to users and of course several workflow activities for creating tasks and waiting for them to be completed by the users. Last Friday it was finally time to perform an installation of the system on our acceptance environment so the users could test it.</description>
+    </item>
+    
+    <item>
+      <title>Service Pack 1 for .NET fixes XML serialization?</title>
+      <link>https://jmezach.github.io/2008/06/10/service-pack-1-for-.net-fixes-xml-serialization/</link>
+      <pubDate>Tue, 10 Jun 2008 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2008/06/10/service-pack-1-for-.net-fixes-xml-serialization/</guid>
+      <description>Today we ran into an issue with a Windows Forms application we had written. It was working fine on our development virtual PC&amp;rsquo;s, but for some reason it failed on the actual host machines that we needed it to run on. The application is written purely against the .NET Framework version 2.0. We do communicate with a service that is using WCF, which is part of the .NET Framework version 3.</description>
+    </item>
+    
+    <item>
+      <title>Issue fixed</title>
+      <link>https://jmezach.github.io/2008/04/30/issue-fixed/</link>
+      <pubDate>Wed, 30 Apr 2008 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2008/04/30/issue-fixed/</guid>
+      <description>I thought I&amp;rsquo;d write a little follow up on my previous post. We found out yesterday that the bug we found in Windows Workflow Foundation which caused us to make a work around, has been fixed in the recently released .NET Framework 2.0 and 3.0 SP1. We haven&amp;rsquo;t been able to find a mention of this bug in the release notes, but we had a small application that showed the bug was there, so we tested it on our development machine which were using the service packs and then on a test server which didn&amp;rsquo;t have the service pack installed and it showed that it was working find on our development machines, but it didn&amp;rsquo;t work on our test servers.</description>
+    </item>
+    
+    <item>
+      <title>State machine workflows</title>
+      <link>https://jmezach.github.io/2008/04/28/state-machine-workflows/</link>
+      <pubDate>Mon, 28 Apr 2008 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2008/04/28/state-machine-workflows/</guid>
+      <description>At the beginning of last week a report came in from our users which said that they were experiencing timeout issues while working with the application that has been running in production quite stable since the beginning of this year. Because this was a blocking issue we quickly started investigating what went wrong. After looking at the code for about half an hour we decided we needed to put on tracing to find out what really happens.</description>
+    </item>
+    
+    <item>
+      <title>WF: Required bindable properties</title>
+      <link>https://jmezach.github.io/2007/09/19/wf-required-bindable-properties/</link>
+      <pubDate>Wed, 19 Sep 2007 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2007/09/19/wf-required-bindable-properties/</guid>
+      <description>Today I was working on a bit of workflow we have in our project. We&amp;rsquo;ve written a couple of activities to handle some of the processing done in our application (such as sending out emails at a specified point in time). These activities have been working quite well, but they lacked some kind of validation on required properties or how they were used in the workflow. So I was assigned the task to implement some of that stuff.</description>
+    </item>
+    
+    <item>
+      <title>More on this WCF issue</title>
+      <link>https://jmezach.github.io/2007/08/31/more-on-this-wcf-issue/</link>
+      <pubDate>Fri, 31 Aug 2007 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2007/08/31/more-on-this-wcf-issue/</guid>
+      <description>This week I&amp;rsquo;ve been spending some more time on this WCF issue I&amp;rsquo;ve blogged about before. Unfortunately I still don&amp;rsquo;t have a solution for the problem, and I doubt that I will ever find one. However, I did find some interesting things I thought I should blog about.
+I found out that the bug isn&amp;rsquo;t in the actual serialization process, but rather in the generation of the code that is supposed to do the actual serialization.</description>
+    </item>
+    
+    <item>
+      <title>Possible WCF Serialization Issue?</title>
+      <link>https://jmezach.github.io/2007/08/15/possible-wcf-serialization-issue/</link>
+      <pubDate>Wed, 15 Aug 2007 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2007/08/15/possible-wcf-serialization-issue/</guid>
+      <description>As I was writing in my previous post there is something interesting going on in WCF. But before I go into the details, let me explain the situation.
+There are 3 services in our project, one business service, one process service and one front end. We use WCF to communicate between these services. We are using basicHttpBinding and we have a central set of XSD schema&amp;rsquo;s from which we generate code using the svcutil tool provided with .</description>
+    </item>
+    
+  </channel>
+</rss>

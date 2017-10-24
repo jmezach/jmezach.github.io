@@ -7,9 +7,271 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <lastBuildDate>Sat, 13 May 2017 20:33:00 +0200</lastBuildDate>
     
 	<atom:link href="https://jmezach.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>.Net</title>
+      <link>https://jmezach.github.io/tags/.net/</link>
+      <pubDate>Sat, 13 May 2017 20:33:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/.net/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>.Net Core</title>
+      <link>https://jmezach.github.io/tags/.net-core/</link>
+      <pubDate>Sat, 13 May 2017 20:33:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/.net-core/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>.Net Development</title>
+      <link>https://jmezach.github.io/tags/.net-development/</link>
+      <pubDate>Mon, 05 Dec 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/.net-development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>.Net Framework</title>
+      <link>https://jmezach.github.io/tags/.net-framework/</link>
+      <pubDate>Mon, 16 May 2011 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/.net-framework/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>.Net Standard</title>
+      <link>https://jmezach.github.io/tags/.net-standard/</link>
+      <pubDate>Tue, 24 May 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/.net-standard/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Async</title>
+      <link>https://jmezach.github.io/tags/async/</link>
+      <pubDate>Thu, 04 Nov 2010 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/async/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Azure</title>
+      <link>https://jmezach.github.io/tags/azure/</link>
+      <pubDate>Sat, 30 Jun 2012 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/azure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C#</title>
+      <link>https://jmezach.github.io/tags/c#/</link>
+      <pubDate>Mon, 16 May 2011 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/c#/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Css</title>
+      <link>https://jmezach.github.io/tags/css/</link>
+      <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Html</title>
+      <link>https://jmezach.github.io/tags/html/</link>
+      <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/html/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Javascript</title>
+      <link>https://jmezach.github.io/tags/javascript/</link>
+      <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://jmezach.github.io/tags/linux/</link>
+      <pubDate>Fri, 22 Apr 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Microsoft</title>
+      <link>https://jmezach.github.io/tags/microsoft/</link>
+      <pubDate>Sat, 30 Jun 2012 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/microsoft/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Open Source</title>
+      <link>https://jmezach.github.io/tags/open-source/</link>
+      <pubDate>Sat, 15 Apr 2017 15:36:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/open-source/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Osx</title>
+      <link>https://jmezach.github.io/tags/osx/</link>
+      <pubDate>Fri, 22 Apr 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/osx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rx</title>
+      <link>https://jmezach.github.io/tags/rx/</link>
+      <pubDate>Thu, 10 Mar 2011 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/rx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Serialization</title>
+      <link>https://jmezach.github.io/tags/serialization/</link>
+      <pubDate>Tue, 10 Jun 2008 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/serialization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Silverlight</title>
+      <link>https://jmezach.github.io/tags/silverlight/</link>
+      <pubDate>Thu, 06 Sep 2007 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/silverlight/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Team Build</title>
+      <link>https://jmezach.github.io/tags/team-build/</link>
+      <pubDate>Fri, 03 Jul 2015 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/team-build/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Teched</title>
+      <link>https://jmezach.github.io/tags/teched/</link>
+      <pubDate>Sat, 30 Jun 2012 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/teched/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tfs</title>
+      <link>https://jmezach.github.io/tags/tfs/</link>
+      <pubDate>Fri, 03 Jul 2015 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/tfs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tfs 2015</title>
+      <link>https://jmezach.github.io/tags/tfs-2015/</link>
+      <pubDate>Fri, 03 Jul 2015 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/tfs-2015/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tools</title>
+      <link>https://jmezach.github.io/tags/tools/</link>
+      <pubDate>Fri, 23 May 2008 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Visual Studio</title>
+      <link>https://jmezach.github.io/tags/visual-studio/</link>
+      <pubDate>Tue, 07 Feb 2017 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/visual-studio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vsts</title>
+      <link>https://jmezach.github.io/tags/vsts/</link>
+      <pubDate>Mon, 18 Apr 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/vsts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Wcf</title>
+      <link>https://jmezach.github.io/tags/wcf/</link>
+      <pubDate>Mon, 25 Jan 2010 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/wcf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Wf</title>
+      <link>https://jmezach.github.io/tags/wf/</link>
+      <pubDate>Mon, 25 Jan 2010 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/wf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://jmezach.github.io/tags/windows/</link>
+      <pubDate>Fri, 22 Apr 2016 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows Server 2012</title>
+      <link>https://jmezach.github.io/tags/windows-server-2012/</link>
+      <pubDate>Sat, 30 Jun 2012 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/windows-server-2012/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

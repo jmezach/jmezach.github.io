@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>Cool tools: NetMassDownloader &middot; Jonathan&#39;s Blog</title>
+    <meta name="generator" content="Hugo 0.30.2" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Jonathan Mezach">
+    
+      <meta name="description" content="">
+    
+    
+    <link rel="canonical" href="https://jmezach.github.io/2008/05/23/cool-tools-netmassdownloader/"/>
+    <link rel="icon" href="https://jmezach.github.io/favicon.ico">
+    <link rel="apple-touch-icon" href="https://jmezach.github.io/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="https://jmezach.github.io/css/style.css">
+    <link rel="stylesheet" href="https://jmezach.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://jmezach.github.io/css/monokai.css">
+    <link rel="stylesheet" href="https://jmezach.github.io/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Cool tools: NetMassDownloader" />
+<meta property="og:description" content="Today I was working on an issue in our application that was brought to our attention by one of the users. So I started investigating this issue and soon found out that the problem was situated in our ASP.Net front end. While I was debugging and analyzing the call stack I found out that something went wrong between the page that is being posted and the Mediator, which is responsible for actually saving the data to our back end services." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jmezach.github.io/2008/05/23/cool-tools-netmassdownloader/" />
+
+
+
+<meta property="article:published_time" content="2008-05-23T00:00:00&#43;02:00"/>
+
+<meta property="article:modified_time" content="2008-05-23T00:00:00&#43;02:00"/>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Cool tools: NetMassDownloader">
+<meta itemprop="description" content="Today I was working on an issue in our application that was brought to our attention by one of the users. So I started investigating this issue and soon found out that the problem was situated in our ASP.Net front end. While I was debugging and analyzing the call stack I found out that something went wrong between the page that is being posted and the Mediator, which is responsible for actually saving the data to our back end services.">
+
+
+<meta itemprop="datePublished" content="2008-05-23T00:00:00&#43;02:00" />
+<meta itemprop="dateModified" content="2008-05-23T00:00:00&#43;02:00" />
+<meta itemprop="wordCount" content="393">
+
+
+
+<meta itemprop="keywords" content=".NET,Tools," />
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Cool tools: NetMassDownloader"/>
+<meta name="twitter:description" content="Today I was working on an issue in our application that was brought to our attention by one of the users. So I started investigating this issue and soon found out that the problem was situated in our ASP.Net front end. While I was debugging and analyzing the call stack I found out that something went wrong between the page that is being posted and the Mediator, which is responsible for actually saving the data to our back end services."/>
+<meta name="twitter:site" content="@jmezach"/>
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="https://jmezach.github.io/" id="logo">
+          
+          <i class="logo" style="background-image: url('https://jmezach.github.io/css/images/logo.png')"></i>
+          
+          <span class="site-title">Jonathan&#39;s Blog</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="https://jmezach.github.io/">Home</a>
+          
+          
+          
+          
+          
+          
+
+          
+          <a class="main-nav-link" href="/about/">About</a>
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="https://jmezach.github.io/tags/">Tags</a>
+          
+          
+          
+          <a class="main-nav-link" href="https://jmezach.github.io/categories/">Categories</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="https://jmezach.github.io/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="https://jmezach.github.io/" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="https://jmezach.github.io/">Home</a></td>
+          
+          
+          
+          
+          
+          
+
+          
+          <td><a class="main-nav-link" href="/about/">About</a></td>
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="https://jmezach.github.io/tags/">Tags</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="https://jmezach.github.io/categories/">Categories</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="https://jmezach.github.io/" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   	
+    	<aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      
+      <img id="avatar" src="https://www.gravatar.com/avatar/0ebf1748cdf6c187a42761a103c1437f?s=100&d=identicon"/>
+      
+      <h2 id="name">Jonathan Mezach</h2>
+      <h3 id="title">Architect - Programmer - Speaker</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Deventer, The Netherlands</span>
+      
+          <a id="follow" href="https://github.com/jmezach">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        27
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          29
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/jmezach" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//linkedin.com/in/jmezach" target="_blank" title="LinkedIn"><i class="fa fa-linkedin"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//facebook.com/jmezach" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></td>
+
+
+
+<td><a href="//twitter.com/jmezach" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="https://jmezach.github.io/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+    
+
+    <section id="main">
+    
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2008/05/23/cool-tools-netmassdownloader/">
+    <h1 class="article-title" itemprop="name">
+        Cool tools: NetMassDownloader
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2008-05-23 00:00:00 &#43;0200 CEST" itemprop="datePublished">2008-05-23</time>
+            &middot;
+            393
+            words
+            &middot;
+            2
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/tools">Tools</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>Today I was working on an issue in our application that was brought to our attention by one of the users. So I started investigating this issue and soon found out that the problem was situated in our ASP.Net front end. While I was debugging and analyzing the call stack I found out that something went wrong between the page that is being posted and the Mediator, which is responsible for actually saving the data to our back end services. We were using a GridView on our page and for some reason the objects that got to the Mediator didn&rsquo;t have its properties set right, so values from one row in the grid were being saved to another row. Unfortunately I couldn&rsquo;t really figure out what went wrong in between.</p>
+
+<p>I then remembered that a while ago Microsoft released symbol files and source code for the .NET Framework. So I figured out that if I could get this, I could step into the code of some of the ASP.NET WebControls and see what was going on there. After a quick Google search I found a patch for Visual Studio that I needed to install and then change some Visual Studio settings and I was good to go. The patch would retrieve the needed source code from Microsoft&rsquo;s server on the fly, as I was stepping through the code. Unfortunately the said patch was only supposed to work for Visual Studio 2008 and we are still using Visual Studio 2005. As upgrading wasn&rsquo;t a real option, I was kinda stuck.</p>
+
+<p>After Googling some more, I found this tool called <a href="http://www.codeplex.com/NetMassDownloader">NetMassDownloader</a>, over at CodePlex. What it basically does is download the necessary .PDB and source code files for a specific assembly, or a directory containing one or more assemblies. The <a href="http://www.wintellect.com/cs/blogs/jrobbins/archive/2008/02/06/download-all-the-net-reference-source-code-at-once-with-net-mass-downloader.aspx">original article</a> I found about this also explained how to set up Visual Studio 2005 to use these. So after downloading the tool, using it to download the PDB and source files for System.Web and setting up Visual Studio 2005 to use them, I was stepping through the GridView code and finally discovered what the problem was. Too bad that the problem was in fact in something I had written, but well, you can&rsquo;t get everything right the first time. I&rsquo;m sure though that this will come in handy at some point in the future.</p>
+
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2008/05/23/cool-tools-netmassdownloader/" data-id="d98eab0e3550dc41972c563203702abf" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2008/05/23/cool-tools-netmassdownloader/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+
+    
+<nav id="article-nav">
+    
+    <a href="https://jmezach.github.io/2008/04/30/issue-fixed/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Issue fixed</div>
+    </a>
+    
+
+    
+    <a href="https://jmezach.github.io/2008/06/10/service-pack-1-for-.net-fixes-xml-serialization/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Newer
+      </strong>
+      <div class="article-nav-title">Service Pack 1 for .NET fixes XML serialization?</div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+
+<section id="comments">
+    <div id="disqus_thread">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jonathanmezach" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+</section>
+
+
+    </section>
+
+   	
+    	<aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/" class="title">.NET Core and .NET Standard 2.0</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-05-13 20:33:00 &#43;0200 CEST" itemprop="datePublished">2017-05-13</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/" class="title">My experience with my first .NET Core contribution</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-15 15:36:00 &#43;0200 CEST" itemprop="datePublished">2017-04-15</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/" class="title">Migrating existing .NET projects to SDK-based projects</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-02-07 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2017-02-07</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/" class="title">Sharing code across .NET platforms with .NET Standard</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-12-05 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2016-12-05</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/" class="title">.NET Core versioning</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-11-18 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2016-11-18</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/.net">
+                    .net
+                </a>
+                <span class="category-list-count">25</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/cloud">
+                    cloud
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/continuous-delivery">
+                    continuous-delivery
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/integration">
+                    integration
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/software-architecture">
+                    software-architecture
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net">
+                    .net
+                </a>
+                <span class="category-list-count">20</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-core">
+                    .net-core
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-development">
+                    .net-development
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-framework">
+                    .net-framework
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-standard">
+                    .net-standard
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/async">
+                    async
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/azure">
+                    azure
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/c">
+                    c#
+                </a>
+                <span class="category-list-count">3</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/css">
+                    css
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/html">
+                    html
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/javascript">
+                    javascript
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/linux">
+                    linux
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/microsoft">
+                    microsoft
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/open-source">
+                    open-source
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/osx">
+                    osx
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/rx">
+                    rx
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/serialization">
+                    serialization
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/silverlight">
+                    silverlight
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/team-build">
+                    team-build
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/teched">
+                    teched
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/tfs">
+                    tfs
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/tfs-2015">
+                    tfs-2015
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/tools">
+                    tools
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/visual-studio">
+                    visual-studio
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/vsts">
+                    vsts
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/wcf">
+                    wcf
+                </a>
+                <span class="category-list-count">11</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/wf">
+                    wf
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/windows">
+                    windows
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/windows-server-2012">
+                    windows-server-2012
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="https://jmezach.github.io/tags/.net" style="font-size: 12px;">.net</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-core" style="font-size: 12px;">.net-core</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-development" style="font-size: 12px;">.net-development</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-framework" style="font-size: 12px;">.net-framework</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-standard" style="font-size: 12px;">.net-standard</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/async" style="font-size: 12px;">async</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/azure" style="font-size: 12px;">azure</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/c" style="font-size: 12px;">c#</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/css" style="font-size: 12px;">css</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/html" style="font-size: 12px;">html</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/javascript" style="font-size: 12px;">javascript</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/linux" style="font-size: 12px;">linux</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/microsoft" style="font-size: 12px;">microsoft</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/open-source" style="font-size: 12px;">open-source</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/osx" style="font-size: 12px;">osx</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/rx" style="font-size: 12px;">rx</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/serialization" style="font-size: 12px;">serialization</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/silverlight" style="font-size: 12px;">silverlight</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/team-build" style="font-size: 12px;">team-build</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/teched" style="font-size: 12px;">teched</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/tfs" style="font-size: 12px;">tfs</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/tfs-2015" style="font-size: 12px;">tfs-2015</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/tools" style="font-size: 12px;">tools</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/visual-studio" style="font-size: 12px;">visual-studio</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/vsts" style="font-size: 12px;">vsts</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/wcf" style="font-size: 12px;">wcf</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/wf" style="font-size: 12px;">wf</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/windows" style="font-size: 12px;">windows</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/windows-server-2012" style="font-size: 12px;">windows-server-2012</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://jmezach.github.io/fancybox/jquery.fancybox.pack.js"></script>
+<script src="https://jmezach.github.io/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+</body>
+</html>

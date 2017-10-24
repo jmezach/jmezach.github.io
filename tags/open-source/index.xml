@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Open Source on Jonathan&#39;s Blog</title>
+    <link>https://jmezach.github.io/tags/open-source/</link>
+    <description>Recent content in Open Source on Jonathan&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
+    <lastBuildDate>Sat, 15 Apr 2017 15:36:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://jmezach.github.io/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My experience with my first .NET Core contribution</title>
+      <link>https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/</link>
+      <pubDate>Sat, 15 Apr 2017 15:36:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/</guid>
+      <description>I’ve written quite a few blogs here on how you can use .NET Core in your applications and what to expect when developing for this new platform. But with .NET Core being open source there’s also another story to be told, namely that of extending and improving the platform itself through open source contributions. So when Karel Zikmund from the .NET Core team reached out on Twitter asking the community to help them fix bugs before the .</description>
+    </item>
+    
+  </channel>
+</rss>

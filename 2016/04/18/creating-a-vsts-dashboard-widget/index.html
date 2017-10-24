@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>Creating a VSTS dashboard widget &middot; Jonathan&#39;s Blog</title>
+    <meta name="generator" content="Hugo 0.30.2" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Jonathan Mezach">
+    
+      <meta name="description" content="">
+    
+    
+    <link rel="canonical" href="https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/"/>
+    <link rel="icon" href="https://jmezach.github.io/favicon.ico">
+    <link rel="apple-touch-icon" href="https://jmezach.github.io/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="https://jmezach.github.io/css/style.css">
+    <link rel="stylesheet" href="https://jmezach.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://jmezach.github.io/css/monokai.css">
+    <link rel="stylesheet" href="https://jmezach.github.io/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Creating a VSTS dashboard widget" />
+<meta property="og:description" content="On the 30th of October last year Microsoft deployed an update for Visual Studio Team Services (still named Visual Studio Online at the time) which introduced a new start page that could be completely customized. The feature was named dashboards and when I first saw it I realized its potential for putting all kinds of information relevant to a development team right at their fingertips. For those who haven’t seen it yet, this is what the out of the box dashboard looks like:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/" />
+
+
+
+<meta property="article:published_time" content="2016-04-18T00:00:00&#43;02:00"/>
+
+<meta property="article:modified_time" content="2016-04-18T00:00:00&#43;02:00"/>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Creating a VSTS dashboard widget">
+<meta itemprop="description" content="On the 30th of October last year Microsoft deployed an update for Visual Studio Team Services (still named Visual Studio Online at the time) which introduced a new start page that could be completely customized. The feature was named dashboards and when I first saw it I realized its potential for putting all kinds of information relevant to a development team right at their fingertips. For those who haven’t seen it yet, this is what the out of the box dashboard looks like:">
+
+
+<meta itemprop="datePublished" content="2016-04-18T00:00:00&#43;02:00" />
+<meta itemprop="dateModified" content="2016-04-18T00:00:00&#43;02:00" />
+<meta itemprop="wordCount" content="1911">
+
+
+
+<meta itemprop="keywords" content="VSTS,JavaScript,HTML,CSS," />
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Creating a VSTS dashboard widget"/>
+<meta name="twitter:description" content="On the 30th of October last year Microsoft deployed an update for Visual Studio Team Services (still named Visual Studio Online at the time) which introduced a new start page that could be completely customized. The feature was named dashboards and when I first saw it I realized its potential for putting all kinds of information relevant to a development team right at their fingertips. For those who haven’t seen it yet, this is what the out of the box dashboard looks like:"/>
+<meta name="twitter:site" content="@jmezach"/>
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="https://jmezach.github.io/" id="logo">
+          
+          <i class="logo" style="background-image: url('https://jmezach.github.io/css/images/logo.png')"></i>
+          
+          <span class="site-title">Jonathan&#39;s Blog</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="https://jmezach.github.io/">Home</a>
+          
+          
+          
+          
+          
+          
+
+          
+          <a class="main-nav-link" href="/about/">About</a>
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="https://jmezach.github.io/tags/">Tags</a>
+          
+          
+          
+          <a class="main-nav-link" href="https://jmezach.github.io/categories/">Categories</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="https://jmezach.github.io/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="https://jmezach.github.io/" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="https://jmezach.github.io/">Home</a></td>
+          
+          
+          
+          
+          
+          
+
+          
+          <td><a class="main-nav-link" href="/about/">About</a></td>
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="https://jmezach.github.io/tags/">Tags</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="https://jmezach.github.io/categories/">Categories</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="https://jmezach.github.io/" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   	
+    	<aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      
+      <img id="avatar" src="https://www.gravatar.com/avatar/0ebf1748cdf6c187a42761a103c1437f?s=100&d=identicon"/>
+      
+      <h2 id="name">Jonathan Mezach</h2>
+      <h3 id="title">Architect - Programmer - Speaker</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Deventer, The Netherlands</span>
+      
+          <a id="follow" href="https://github.com/jmezach">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        27
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          29
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/jmezach" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//linkedin.com/in/jmezach" target="_blank" title="LinkedIn"><i class="fa fa-linkedin"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//facebook.com/jmezach" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></td>
+
+
+
+<td><a href="//twitter.com/jmezach" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="https://jmezach.github.io/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+    
+
+    <section id="main">
+    
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/">
+    <h1 class="article-title" itemprop="name">
+        Creating a VSTS dashboard widget
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-04-18 00:00:00 &#43;0200 CEST" itemprop="datePublished">2016-04-18</time>
+            &middot;
+            1911
+            words
+            &middot;
+            9
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/continuous-delivery">Continuous Delivery</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/integration">Integration</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/vsts">VSTS</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/javascript">JavaScript</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/html">HTML</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/css">CSS</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            
+
+<p>On the 30th of October last year Microsoft deployed an update for Visual Studio Team Services (still named Visual Studio Online at the time) which introduced a new start page that could be completely customized. The feature was named dashboards and when I first saw it I realized its potential for putting all kinds of information relevant to a development team right at their fingertips. For those who haven’t seen it yet, this is what the out of the box dashboard looks like:</p>
+
+<p><a href="https://blogs.infosupport.com/wp-content/uploads/2016/04/image.png"><img src="https://blogs.infosupport.com/wp-content/uploads/2016/04/image_thumb.png" alt="Out-of-the-box VSTS Dashboard" title="image" /></a></p>
+
+<p>As can be seen above a dashboard is a grid like system on which various widgets can be placed. When the feature initially shipped the set of widgets that were available was fairly limited and at the the time there wasn’t way to extend them. Fortunately that changed earlier this year when a preview for the Widget SDK was released. Using this SDK we can create our very own widgets and do all kinds of things. All we need is an idea to build one.</p>
+
+<h2 id="motivation">Motivation</h2>
+
+<p>At a customer I’ve been working at for a while now we’ve been using <a href="http://newrelic.com/">New Relic</a> to monitor the performance of our applications and servers. If you don’t know New Relic I encourage you to take a look because its an awesome tool and it gave us a lot of insights into how our application behaves in production. However, I thought it would be nice if we could integrate some of the data we get from New Relic and put it back into our VSTS dashboards so its readily available for everyone to see. So I set out to do just that. Basically what I wanted is something like this:</p>
+
+<p><a href="https://blogs.infosupport.com/wp-content/uploads/2016/04/app-widget-preview.png"><img src="https://blogs.infosupport.com/wp-content/uploads/2016/04/app-widget-preview_thumb.png" alt="New Relic App Widget Preview" title="app-widget-preview" /></a></p>
+
+<h2 id="setting-up">Setting up</h2>
+
+<p>Dashboard widgets in VSTS are really nothing more than an extension. In fact, VSTS has a fairly extensive extensibility system nowadays that allows you to plug-in to VSTS almost everywhere and extend its capabilities. This works with so called contribution points and a dashboard widget is just another contribution point that you can leverage. To avoid having to create all kinds of files by hand I used a template that’s available on the <a href="https://visualstudiogallery.msdn.microsoft.com/a00f6cfc-4dbb-4b9a-a1b8-4d24bf46770b">Visual Studio Gallery</a> that gets you up and running really quickly. Just open Visual Studio, create a new project based on the template and off you go.</p>
+
+<h2 id="registering-a-widget-s">Registering a widget(s)</h2>
+
+<p>New Relic separates the server and application data so I figured it would be better to separate those in this extension as well. So I’ll create two separate widgets which work more or less in the same way. I started with the server monitoring widget since that was what I needed the most at the time. First thing to do is to open up the <em>vss-extension.json</em> file. This file contains all kinds of metadata about your extension so be sure to set some useful values in there (such as the name, description, tags, links etc.) for your extension. Next, you’ll want to go the contributions section which is where you define what it is your extension contributes to VSTS. This is what it looks like for the server monitoring widget:</p>
+
+<pre><code class="language-json">&quot;contributions&quot;: [
+    {
+      &quot;id&quot;: &quot;ServerStatusWidget&quot;,
+      &quot;type&quot;: &quot;ms.vss-dashboards-web.widget&quot;,
+      &quot;targets&quot;: [
+        &quot;ms.vss-dashboards-web.widget-catalog&quot;,
+        &quot;jonathan-mezach.new-relic-dashboard-widgets.ServerStatusWidget.Configuration&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;name&quot;: &quot;Server Status Widget&quot;,
+        &quot;description&quot;: &quot;Displays the New Relic status of a server.&quot;,
+        &quot;previewImageUrl&quot;: &quot;img/server-widget-preview.png&quot;,
+        &quot;uri&quot;: &quot;server-status-widget.html&quot;,
+        &quot;isNameConfigurable&quot;: true,
+        &quot;supportedSizes&quot;: [
+          {
+            &quot;rowSpan&quot;: 1,
+            &quot;columnSpan&quot;: 1
+          }
+        ],
+        &quot;supportedScopes&quot;: [ &quot;project_team&quot; ]
+      }
+    }
+]
+</code></pre>
+
+<p>There are quite a few things going on here, so let me break it down. First of all, each contribution must have an id. This is just a name you can use to reference back to it. Next, it needs a type which defines what kind of contribution you’re creating. Obviously, in this case we’re making a dashboard widget, but there are quite a few others to choose from. Have a look at the <a href="https://www.visualstudio.com/en-us/integrate/extensions/overview">official documentation</a> to get a sense of the options here. Next up are the targets which is where your contribution is going to show up. In this case we want it to show up in the widget catalog and we also want it to show up in our configuration panel (which I’ll show you later on). Finally there are a bunch of properties you need to set, which are specific to the type of contribution your making. In this case we need a name for the widget (as can be seen in the widget catalog), a description, a URL to a preview image (which can be bundled with your extension), the URL to the HTML page for the widget, whether the name of the widget can be configured by the user and a list of supported sizes for the widget. You’ll also notice the supportedScopes property which can only have the project_team value at the moment (but that might change in the future). Once you’ve configured all these, we can go ahead and actually implement our widget.</p>
+
+<h2 id="implementing-the-widget">Implementing the widget</h2>
+
+<p>Basically a widget is nothing more than an HTML page with some JavaScript. You use the HTML page to control the look and feel of the widget and the JavaScript to interact with VSTS and the Widget SDK. For my widget the look and feel is quite straight forward:</p>
+
+<pre><code class="language-html">&lt;div id=&quot;app-status-container&quot; class=&quot;status-container&quot;&gt;
+    &lt;div id=&quot;app-health-status&quot; class=&quot;health-status&quot;&gt;
+        &lt;div id=&quot;app-name&quot; class=&quot;header&quot;&gt;&lt;/div&gt;
+        &lt;div id=&quot;app-metric&quot; class=&quot;value&quot;&gt;&lt;/div&gt;
+        &lt;div id=&quot;metric-name&quot; class=&quot;footer&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>It boils down to three div’s, one for the header text, one for the numeric value and one for the footer text. Those are wrapped in some containers to give it the nice color you can see in the screenshot above. Note that I’m using some custom CSS classes here to do the styling. In a recent update to the Widget SDK its now possible to use the out of the box styling used by many of the built-in widgets in VSTS which makes it a bit easier to seamlessly integrate into VSTS. I’ll probably do an update to the extension which makes use of that once I’ve finished writing this blog post ;).</p>
+
+<p>Much more interesting though is the JavaScript needed to get everything working. In fact, we need to do two things: initialize the VSTS integration and register our widget with the system. The first step is simple:</p>
+
+<pre><code class="language-javascript">VSS.init({
+    explicitNotifyLoaded: true,
+    usePlatformStyles: true
+});
+</code></pre>
+
+<p>This initializes the VSTS integration and allows us to interact with VSTS through various API’s. The next step is much more interesting:</p>
+
+<pre><code class="language-javascript">VSS.require([&quot;TFS/Dashboards/WidgetHelpers&quot;],
+  function (WidgetHelpers) {
+    VSS.register&quot;ServerStatusWidget&quot;, function () {
+      return {
+        load: function (widgetSettings) {
+          // Do something
+          return WidgetHelpers.WidgetStatusHelper.Success();
+        },
+        reload: function (widgetSettings) {
+          // Do something
+          return WidgetHelpers.WidgetStatusHelper.Success();
+        }
+      }
+    }
+    VSS.notifyLoadSucceeded();
+});
+</code></pre>
+
+<p>What happens here is that we ask VSTS to load WidgetHelpers and to call our function when that’s done. When that happens we register our widget with the system using <em>VSS.register()</em>. Note that the name you pass to the register call needs to match the id used in the vss-extension.json file otherwise it won’t work. The second parameter to the register call is an object that needs to have at least a load function. That function is what gets called when a dashboard opens with your widget on it. The reload call is invoked by the system when the configuration of your widget changes (read on to find out about widget configuration). You get passed an object with the settings for your widget and what you do with it is up to you. In my case I wrote some logic to call out to the New Relic API and update the div’s accordingly. The return statement in the code snippet above is important since it is used by the system to determine whether your widget has loaded successfully. Obviously if something went wrong you’ll want to call <em>Failure()</em> instead and provide a reason as to why the widget could not be loaded. Also, make sure you call <em>VSS.notifyLoadSucceeded()</em> so that the system knows that you’re all done. That is really all you need to get a very simple widget going that requires no configuration. Obviously in my case I wanted to provide the user with a little more flexibility so I introduced configuration for my widgets.</p>
+
+<h2 id="widget-configuration">Widget configuration</h2>
+
+<p>In order to allow a widget to be configured by the user we need to add another contribution:</p>
+
+<pre><code class="language-json">{
+  &quot;id&amp;&quot;: &quot;ServerStatusWidget.Configuration&quot;,
+  &quot;type&quot;: &quot;ms.vss-dashboards-web.widget-configuration&quot;,
+  &quot;targets&quot;: [ &quot;ms.vss-dashboards-web.widget-configuration&quot; ],
+  &quot;properties&quot;: {
+    &quot;name&quot;:&quot;ServerStatusWidget Configuration&quot;,
+    &quot;description&quot;: &quot;Configures ServerStatusWidget&quot;,
+    &quot;uri&quot;: &quot;server-status-widget-configuration.html&quot;
+  }
+}
+</code></pre>
+
+<p>This one is much simpler than the widget itself. Basically we need to tell the extension system what the ID of the contribution is (line 2) and the URL to the HTML page that hosts the actual configuration (line 8). You’ll also need to provide a name and description but as far as I can tell those don’t show up anywhere. Once you’ve added the contribution you’ll want to add an HTML page that will contain the implementation of your configuration page. As with the widget itself, the configuration page also consists of some HTML to do the look and feel and a bit of JavaScript to tie it together. As for the look and feel I just put in a div and a couple of fieldsets for the various parameters I want the user to be able to configure. Unfortunately its a bit hard to match the look and feel of VSTS itself when it comes to configuration pages but hopefully that will improve in the future. To actually implement the configuration page you’ll need to write some JavaScript again. At first glance it looks almost the same as the widget itself, you first call <em>VSS.init()</em> and then <em>VSS.require()</em> and when the WidgetHelpers have been loaded you call <em>VSS.register()</em>. This time though you’ll need to implement a load function (as with the widget) and an onSave function like this:</p>
+
+<pre><code class="language-javascript">VSS.require(&quot;TFS/Dashboards/WidgetHelpers&quot;, function (WidgetHelpers) {
+  VSS.register(&quot;ServerStatusWidget.Configuration&quot;, function () {
+    return {
+      load: function (widgetSettings, widgetConfigurationContext) {
+        return WidgetHelpers.WidgetStatusHelper.Success();
+      },
+      onSave: function () {
+        var customSettings = {
+          data: JSON.stringify({
+            &lt;customField&gt;: someValue,
+          })
+        };
+        return WidgetHelpers.WidgetConfigurationSave.Valid(customSettings);
+      }
+    }
+  });
+  VSS.notifyLoadSucceeded();
+});
+</code></pre>
+
+<p>The <em>load</em> function works the same as with the widget and you use it to set up the configuration page with the values you currently have configured (stored in the <em>widgetSettings</em> parameter). In the <em>onSave</em> method you need to save the settings that are currently set so that your widget can access them. The easiest way to do this is is to construct an object with the configuration values and serialize that with JSON as shown above. The resulting string can then be passed to the system so that it can be stored and passed on to the widget. With that setup you should be able to configure the widget with whatever configuration parameters you think are needed for the widget.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>As you’ve seen its really easy to build a custom dashboard widget using just a bit of HTML and JavaScript. Its this simplicity that also makes it very powerful and I’m curious to see what people come up with. I haven’t yet shown how you can test and debug your widget (or an extension for that matter) but I’ll leave that for another post. In the mean time be sure to check out the <a href="https://marketplace.visualstudio.com/items?itemName=jonathan-mezach.new-relic-dashboard-widgets">New Relic Dashboard Widgets</a> extension and try it out for yourself. Or if you’re curious to see how it works check out the code for it on <a href="https://github.com/jmezach/NewRelicDashboardWidgets">GitHub</a>. Also check out the <a href="https://www.visualstudio.com/en-us/integrate/extensions/overview">official documentation</a> on how to create extensions for VSTS and TFS (although it seems that dashboard extensions aren’t yet supported in TFS on-premise).</p>
+
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/" data-id="8a6a7ed52d003cf2fe964de336e31b5c" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+
+    
+<nav id="article-nav">
+    
+    <a href="https://jmezach.github.io/2016/04/02/.net-core-at-build-2016/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">.NET Core at Build 2016</div>
+    </a>
+    
+
+    
+    <a href="https://jmezach.github.io/2016/04/22/developing-for-.net-core/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Newer
+      </strong>
+      <div class="article-nav-title">Developing for .NET Core</div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+
+<section id="comments">
+    <div id="disqus_thread">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jonathanmezach" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+</section>
+
+
+    </section>
+
+   	
+    	<aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/" class="title">.NET Core and .NET Standard 2.0</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-05-13 20:33:00 &#43;0200 CEST" itemprop="datePublished">2017-05-13</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/" class="title">My experience with my first .NET Core contribution</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-15 15:36:00 &#43;0200 CEST" itemprop="datePublished">2017-04-15</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/" class="title">Migrating existing .NET projects to SDK-based projects</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-02-07 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2017-02-07</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/" class="title">Sharing code across .NET platforms with .NET Standard</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-12-05 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2016-12-05</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/" class="title">.NET Core versioning</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-11-18 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2016-11-18</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/.net">
+                    .net
+                </a>
+                <span class="category-list-count">25</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/cloud">
+                    cloud
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/continuous-delivery">
+                    continuous-delivery
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/integration">
+                    integration
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/software-architecture">
+                    software-architecture
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net">
+                    .net
+                </a>
+                <span class="category-list-count">20</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-core">
+                    .net-core
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-development">
+                    .net-development
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-framework">
+                    .net-framework
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-standard">
+                    .net-standard
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/async">
+                    async
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/azure">
+                    azure
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/c">
+                    c#
+                </a>
+                <span class="category-list-count">3</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/css">
+                    css
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/html">
+                    html
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/javascript">
+                    javascript
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/linux">
+                    linux
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/microsoft">
+                    microsoft
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/open-source">
+                    open-source
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/osx">
+                    osx
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/rx">
+                    rx
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/serialization">
+                    serialization
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/silverlight">
+                    silverlight
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/team-build">
+                    team-build
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/teched">
+                    teched
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/tfs">
+                    tfs
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/tfs-2015">
+                    tfs-2015
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/tools">
+                    tools
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/visual-studio">
+                    visual-studio
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/vsts">
+                    vsts
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/wcf">
+                    wcf
+                </a>
+                <span class="category-list-count">11</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/wf">
+                    wf
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/windows">
+                    windows
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/windows-server-2012">
+                    windows-server-2012
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="https://jmezach.github.io/tags/.net" style="font-size: 12px;">.net</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-core" style="font-size: 12px;">.net-core</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-development" style="font-size: 12px;">.net-development</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-framework" style="font-size: 12px;">.net-framework</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-standard" style="font-size: 12px;">.net-standard</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/async" style="font-size: 12px;">async</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/azure" style="font-size: 12px;">azure</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/c" style="font-size: 12px;">c#</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/css" style="font-size: 12px;">css</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/html" style="font-size: 12px;">html</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/javascript" style="font-size: 12px;">javascript</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/linux" style="font-size: 12px;">linux</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/microsoft" style="font-size: 12px;">microsoft</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/open-source" style="font-size: 12px;">open-source</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/osx" style="font-size: 12px;">osx</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/rx" style="font-size: 12px;">rx</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/serialization" style="font-size: 12px;">serialization</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/silverlight" style="font-size: 12px;">silverlight</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/team-build" style="font-size: 12px;">team-build</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/teched" style="font-size: 12px;">teched</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/tfs" style="font-size: 12px;">tfs</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/tfs-2015" style="font-size: 12px;">tfs-2015</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/tools" style="font-size: 12px;">tools</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/visual-studio" style="font-size: 12px;">visual-studio</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/vsts" style="font-size: 12px;">vsts</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/wcf" style="font-size: 12px;">wcf</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/wf" style="font-size: 12px;">wf</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/windows" style="font-size: 12px;">windows</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/windows-server-2012" style="font-size: 12px;">windows-server-2012</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://jmezach.github.io/fancybox/jquery.fancybox.pack.js"></script>
+<script src="https://jmezach.github.io/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+</body>
+</html>

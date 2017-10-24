@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>.NET Platform Standard and the magic of &#34;imports&#34; &middot; Jonathan&#39;s Blog</title>
+    <meta name="generator" content="Hugo 0.30.2" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Jonathan Mezach">
+    
+      <meta name="description" content="">
+    
+    
+    <link rel="canonical" href="https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/"/>
+    <link rel="icon" href="https://jmezach.github.io/favicon.ico">
+    <link rel="apple-touch-icon" href="https://jmezach.github.io/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="https://jmezach.github.io/css/style.css">
+    <link rel="stylesheet" href="https://jmezach.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://jmezach.github.io/css/monokai.css">
+    <link rel="stylesheet" href="https://jmezach.github.io/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content=".NET Platform Standard and the magic of &#34;imports&#34;" />
+<meta property="og:description" content="In case you missed it, .NET Core RC2 has been released by Microsoft last week along with ASP.NET Core RC2 and a preview of the tooling. Lots of exciting new stuff that I highly encourage checking out.
+Now that RC2 is out there I guess a lot more people will be checking it out and playing with it and there’s one topic that seems to confuse a lot of people." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/" />
+
+
+
+<meta property="article:published_time" content="2016-05-24T00:00:00&#43;02:00"/>
+
+<meta property="article:modified_time" content="2016-05-24T00:00:00&#43;02:00"/>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content=".NET Platform Standard and the magic of &#34;imports&#34;">
+<meta itemprop="description" content="In case you missed it, .NET Core RC2 has been released by Microsoft last week along with ASP.NET Core RC2 and a preview of the tooling. Lots of exciting new stuff that I highly encourage checking out.
+Now that RC2 is out there I guess a lot more people will be checking it out and playing with it and there’s one topic that seems to confuse a lot of people.">
+
+
+<meta itemprop="datePublished" content="2016-05-24T00:00:00&#43;02:00" />
+<meta itemprop="dateModified" content="2016-05-24T00:00:00&#43;02:00" />
+<meta itemprop="wordCount" content="1677">
+
+
+
+<meta itemprop="keywords" content=".NET,.NET Core,.NET Standard," />
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content=".NET Platform Standard and the magic of &#34;imports&#34;"/>
+<meta name="twitter:description" content="In case you missed it, .NET Core RC2 has been released by Microsoft last week along with ASP.NET Core RC2 and a preview of the tooling. Lots of exciting new stuff that I highly encourage checking out.
+Now that RC2 is out there I guess a lot more people will be checking it out and playing with it and there’s one topic that seems to confuse a lot of people."/>
+<meta name="twitter:site" content="@jmezach"/>
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="https://jmezach.github.io/" id="logo">
+          
+          <i class="logo" style="background-image: url('https://jmezach.github.io/css/images/logo.png')"></i>
+          
+          <span class="site-title">Jonathan&#39;s Blog</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="https://jmezach.github.io/">Home</a>
+          
+          
+          
+          
+          
+          
+
+          
+          <a class="main-nav-link" href="/about/">About</a>
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="https://jmezach.github.io/tags/">Tags</a>
+          
+          
+          
+          <a class="main-nav-link" href="https://jmezach.github.io/categories/">Categories</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="https://jmezach.github.io/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="https://jmezach.github.io/" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="https://jmezach.github.io/">Home</a></td>
+          
+          
+          
+          
+          
+          
+
+          
+          <td><a class="main-nav-link" href="/about/">About</a></td>
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="https://jmezach.github.io/tags/">Tags</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="https://jmezach.github.io/categories/">Categories</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="https://jmezach.github.io/" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   	
+    	<aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      
+      <img id="avatar" src="https://www.gravatar.com/avatar/0ebf1748cdf6c187a42761a103c1437f?s=100&d=identicon"/>
+      
+      <h2 id="name">Jonathan Mezach</h2>
+      <h3 id="title">Architect - Programmer - Speaker</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Deventer, The Netherlands</span>
+      
+          <a id="follow" href="https://github.com/jmezach">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        27
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          29
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/jmezach" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//linkedin.com/in/jmezach" target="_blank" title="LinkedIn"><i class="fa fa-linkedin"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//facebook.com/jmezach" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></td>
+
+
+
+<td><a href="//twitter.com/jmezach" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="https://jmezach.github.io/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+    
+
+    <section id="main">
+    
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/">
+    <h1 class="article-title" itemprop="name">
+        .NET Platform Standard and the magic of &#34;imports&#34;
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-05-24 00:00:00 &#43;0200 CEST" itemprop="datePublished">2016-05-24</time>
+            &middot;
+            1677
+            words
+            &middot;
+            8
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-core">.NET Core</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-standard">.NET Standard</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            
+
+<p>In case you missed it, <a href="https://blogs.msdn.microsoft.com/dotnet/2016/05/16/announcing-net-core-rc2/">.NET Core RC2</a> has been released by Microsoft last week along with <a href="https://blogs.msdn.microsoft.com/webdev/2016/05/16/announcing-asp-net-core-rc2/">ASP.NET Core RC2</a> and a <a href="https://blogs.msdn.microsoft.com/visualstudio/2016/05/16/announcing-updated-web-development-tools-for-asp-net-core-rc2/">preview of the tooling</a>. Lots of exciting new stuff that I highly encourage checking out.</p>
+
+<p>Now that RC2 is out there I guess a lot more people will be checking it out and playing with it and there’s one topic that seems to confuse a lot of people. So I thought I’d write a blog about it to clear things up a bit. It all has to do with a new concept called…</p>
+
+<h2 id="net-platform-standard">.NET Platform Standard</h2>
+
+<p>So what is it? Well, according to the <a href="https://github.com/dotnet/corefx/blob/master/Documentation/architecture/net-platform-standard.md">documentation</a> it is:</p>
+
+<blockquote>
+<p>a specific versioned set of reference assemblies that all .NET Platforms must support as defined in the <a href="https://github.com/dotnet/corefx">CoreFX repo</a></p>
+</blockquote>
+
+<p>But what does that actually mean? I guess the easiest way to think of it is as an interface that sits between your code and a particular place where .NET can run such as the full .NET Framework, .NET Core, Mono, UWP, Silverlight, etc. Basically it guarantees that your code can run on top of all the platforms that implement that interface. And that interface is versioned, meaning that if your code targets a lower version of the interface it will run on more platforms, but the interface will also be smaller. If instead you target a higher version of the interface, you’ll restrict your code to run on less platforms, but it will have a larger interface available to it.</p>
+
+<h3 id="why-was-it-introduced">Why was it introduced?</h3>
+
+<p>Basically the .NET Platform Standard is meant as a better version of the Portable Class Library (or PCL’s) concept that we already know. As you might recall, Portable Class Libraries were introduced to make it easier to write .NET code that could run on a variety of platforms without having to cross-compile your code making it easier to share code between backend and frontend for example.</p>
+
+<p>However, there is a big problem with how PCL’s work today. When you create a new PCL project you have to pick which platforms you want to support and as a result you get the API surface that is common between all those platforms. This works fine, but what happens when an entirely new platform comes along? I have to go back to my PCL project, add the new platform, recompile my library and produce a new NuGet package (since the platforms I’m targeting are hardcoded into the package). In fact a new version of NuGet must also be made since it knows about all the possible combinations of platforms.</p>
+
+<p>This is exactly why the .NET Platform Standard was introduced. Whenever a new platform comes along, it will need to implement a particular version of the .NET Platform Standard and every library that targets that version (or a lower version) will just work on that platform without requiring a rebuild or a different package.</p>
+
+<h3 id="how-does-it-work-in-practice">How does it work in practice?</h3>
+
+<p>Typically if you’re writing a library that you intend to share publicly (ie. on NuGet.org) you’ll want to target the lowest possible .NET Platform Standard version since that means your code can be used in the most places. At the moment, those versions are defined as <em>netstandard1.0</em> through to <em>netstandard1.5</em> so you’ll want to target <em>netstandard1.0</em>. But of course it is not that easy, since you might need to use a particular API in your library that’s not available in <em>netstandard1.0</em> (for instance System.Collections.Concurrent). So you’ll have to move to a higher version and while you do that you’re going to exclude some of the older platforms so there is a tradeoff here.</p>
+
+<p>Be careful though, since at the moment at least there’s nothing blocking you from including the missing pieces as a dependency. For example having the following in your project.json will compile just fine:</p>
+
+<pre><code class="language-json">{
+  &quot;version&quot;: &quot;1.0.0-*&quot;,
+
+  &quot;dependencies&quot;: {
+    &quot;NETStandard.Library&quot;: &quot;1.5.0-rc2-24027&quot;,
+    &quot;System.Collections.Concurrent&quot;: &quot;4.0.12-rc2-24027&quot;
+  },
+
+  &quot;frameworks&quot;: {
+    &quot;netstandard1.0&quot;: {
+      &quot;imports&quot;: &quot;dnxcore50&quot;
+    }
+  }
+}
+</code></pre>
+
+<p>When I first tried this it didn’t make much sense to me because why then wouldn’t <em>netstandard1.0</em> include <em>System.Collections.Concurrent</em> in the first place? The point is that <em>System.Collections.Concurrent</em> wasn’t available in some of the earlier versions of .NET hence it is not included in <em>netstandard1.0</em>. If I add it as a dependency it might work as long as it doesn’t require anything from the underlying platform. In other words, as long as the dependency I’m bringing in is purely managed code it should work, but as soon as it requires platform support things will be a bit more tricky. If you want to be sure that your library will work stick with the dependencies you pull in by depending on NETStandard.Library.</p>
+
+<p>Talking about that, you might have noticed in the project.json that I’m depending on <em>NETStandard.Library</em> 1.5.0-rc2-24027 and not on 1.0. How does that work? Let’s have a look at that NETStandard.Library package:</p>
+
+<p><a href="https://blogs.infosupport.com/wp-content/uploads/2016/05/image.png"><img src="https://blogs.infosupport.com/wp-content/uploads/2016/05/image_thumb.png" alt="Dependencies" title="image" /></a></p>
+
+<p>As can be seen in the screenshot above <em>NETStandard.Library</em> simply lists different dependencies depending on the target framework of the project it is being installed in. You can also see <em>System.Collection.Concurrent</em> being included with <em>netstandard1.1</em>, but not under <em>netstandard1.0</em>. The same for <em>System.Net.Http</em>. You can also nicely see the difference in Visual Studio when you change the “frameworks” part of your project.json from netstandard1.0 to netstandard1.1 for example. Once the automatic package restore runs you will see different packages show up beneath <em>NETStandard.Library</em> in your References folder.</p>
+
+<p><a href="https://blogs.infosupport.com/wp-content/uploads/2016/05/image-1.png"><img src="https://blogs.infosupport.com/wp-content/uploads/2016/05/image_thumb-1.png" alt="References for .NET Standard 1.0" title="image" /></a></p>
+
+<p><a href="https://blogs.infosupport.com/wp-content/uploads/2016/05/image-2.png"><img src="https://blogs.infosupport.com/wp-content/uploads/2016/05/image_thumb-2.png" alt="References for .NET Standard 1.1" title="image" /></a></p>
+
+<h2 id="the-magic-of-imports">The magic of “imports”</h2>
+
+<p>Now all this .NET Platform Standard library stuff is nice and definitely an improvement over the current PCL model, but there is a problem. As it is right now, there aren’t many libraries on NuGet.org that actually target one of the <em>netstandard</em> versions. So if I want to build an application that runs on .NET Core and I want to use a library from NuGet.org I need to wait until there is a version of the library available that targets netstandard.</p>
+
+<p>Obviously that’s not a really good situation to be in since it will slow down adoption of .NET Core, which in turn causes slow downs in library authors to start targeting netstandard. It is a bit of chicken and egg problem. So to remedy this situation “imports” was added to the project.json. But what does it do?</p>
+
+<p>If I create a new .NET Core application, I get the following in my project.json:</p>
+
+<pre><code class="language-json">&quot;frameworks&quot;: {
+  &quot;netcoreapp1.0&quot;: {
+    &quot;imports&quot;: &quot;dnxcore50&quot;
+  }
+}
+</code></pre>
+
+<p>What it says right here is that I’m targeting the <em>netcoreapp1.0</em> framework (which is the default framework for a .NET Core application). With the “imports” bit I’m also stating that any dependency I want to include that targets <em>dnxcore50</em> should be treated as compatible with <em>netcoreapp1.0</em>. Basically I’m instructing the tooling to ignore the fact that <em>dnxcore50</em> isn’t the same thing as <em>netcoreapp1.0</em> because I know it is the same thing (or more precisely Microsoft knows that they are the same).</p>
+
+<p>Interestingly I can put any other framework in there as well. For example, lets add Reactive Extensions to our application:</p>
+
+<pre><code class="language-json">{
+  &quot;version&quot;: &quot;1.0.0-*&quot;,
+  &quot;buildOptions&quot;: {
+    &quot;emitEntryPoint&quot;: true
+  },
+
+  &quot;dependencies&quot;: {
+    &quot;Microsoft.NETCore.App&quot;: {
+      &quot;type&quot;: &quot;platform&quot;,
+      &quot;version&quot;: &quot;1.0.0-rc2-3002702&quot;
+    },
+    &quot;Rx-Main&quot;: &quot;2.2.5&quot;
+  },
+
+  &quot;frameworks&quot;: {
+    &quot;netcoreapp1.0&quot;: {
+      &quot;imports&quot;: &quot;dnxcore50&quot;
+    }
+  }
+}
+</code></pre>
+
+<p>Unfortunately Rx-Main (or more precisely its dependencies) do not currently support <em>netcoreapp1.0</em> so we get an error when restoring packages:</p>
+
+<p><a href="https://blogs.infosupport.com/wp-content/uploads/2016/05/image-3.png"><img src="https://blogs.infosupport.com/wp-content/uploads/2016/05/image_thumb-3.png" alt="Unsupported target framework" title="image" /></a></p>
+
+<p>Let’s have a look at what the package does support:</p>
+
+<p><a href="https://blogs.infosupport.com/wp-content/uploads/2016/05/image-4.png"><img src="https://blogs.infosupport.com/wp-content/uploads/2016/05/image_thumb-4.png" alt="Supported target frameworks" title="image" /></a></p>
+
+<p>Quite a lot of them, but not what we need. Good thing is that we can “import” one of these frameworks to get things working again. For example, adding <em>portable-net45+winrt45+wp8+wpa81</em> to our “imports” causes the package restore to complete successfully and we can use those assemblies.</p>
+
+<p>A word of warning is in order here though. Theoretically I could “import” any framework that’s currently out there I can install pretty much any package into my project. However, that doesn’t mean that my application will actually run and work. If a package I installed into my project is using an API that’s not available on the platform that my application will be running on it will simply fail at runtime.</p>
+
+<p>Therefore you should be careful when using “imports” and make sure that you test your application properly on the actual framework it will be running on. Think of it as when you’re using “imports” you’ve turned off the tooling and you are on your own and its your job to make sure that your application works correctly.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Introducing something new into an existing ecosystem is always a tricky thing, especially if you try to do it retroactively which is what Microsoft is trying to do here. Using “imports” seems to do something magical while in reality it just turns off some of the guardrails that are in place to protect you from doing something that won’t or might not work. But still, I think that the direction that this is going is a good one.</p>
+
+<p>I hope that sometime in the not too distant future all libraries available on NuGet.org (or at least the most commonly used ones) will be targeting one of the <em>netstandard</em> versions removing some of the weird framework names that we have right now (all the portable ones and dnxcore and dotnet5.4) in the process. I’m sure that Microsoft will be helping out with that effort by providing library authors with some <a href="https://twitter.com/davidfowl/status/733926411224776705">tools</a> to make this transition easier. Once that is in place it will become a lot easier to figure out which libraries I can use in my application depending on where I want my application to run.</p>
+
+<p>Unfortunately we are not there yet which means we’ll have to endure some pain as the community makes this transition. I’m pretty confident though that the .NET Platform Standard is here to stay and it will be an improvement over the current model. Be sure to check out the <a href="https://github.com/dotnet/corefx/blob/master/Documentation/architecture/net-platform-standard.md">documentation</a> on this subject and if you want to know a little bit more about the reasons behind all this check out this <a href="https://channel9.msdn.com/events/ASPNET-Events/ASPNET-Fall-Sessions/Class-Libraries">video</a> by David Fowler and Damian Edwards from the ASP.NET team who do quite a good job at explaining it (although with different names).</p>
+
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/" data-id="8b6e535a9510e82bec33c574eb8e11b6" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+
+    
+<nav id="article-nav">
+    
+    <a href="https://jmezach.github.io/2016/04/22/developing-for-.net-core/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Developing for .NET Core</div>
+    </a>
+    
+
+    
+    <a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Newer
+      </strong>
+      <div class="article-nav-title">.NET Core versioning</div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+
+<section id="comments">
+    <div id="disqus_thread">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jonathanmezach" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+</section>
+
+
+    </section>
+
+   	
+    	<aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/" class="title">.NET Core and .NET Standard 2.0</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-05-13 20:33:00 &#43;0200 CEST" itemprop="datePublished">2017-05-13</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/" class="title">My experience with my first .NET Core contribution</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-04-15 15:36:00 &#43;0200 CEST" itemprop="datePublished">2017-04-15</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/" class="title">Migrating existing .NET projects to SDK-based projects</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-02-07 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2017-02-07</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/" class="title">Sharing code across .NET platforms with .NET Standard</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-12-05 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2016-12-05</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/" class="title">.NET Core versioning</a></p>
+                    <p class="item-date">
+                        <time datetime="2016-11-18 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2016-11-18</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/.net">
+                    .net
+                </a>
+                <span class="category-list-count">25</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/cloud">
+                    cloud
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/continuous-delivery">
+                    continuous-delivery
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/integration">
+                    integration
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/software-architecture">
+                    software-architecture
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net">
+                    .net
+                </a>
+                <span class="category-list-count">20</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-core">
+                    .net-core
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-development">
+                    .net-development
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-framework">
+                    .net-framework
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/.net-standard">
+                    .net-standard
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/async">
+                    async
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/azure">
+                    azure
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/c">
+                    c#
+                </a>
+                <span class="category-list-count">3</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/css">
+                    css
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/html">
+                    html
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/javascript">
+                    javascript
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/linux">
+                    linux
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/microsoft">
+                    microsoft
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/open-source">
+                    open-source
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/osx">
+                    osx
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/rx">
+                    rx
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/serialization">
+                    serialization
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/silverlight">
+                    silverlight
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/team-build">
+                    team-build
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/teched">
+                    teched
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/tfs">
+                    tfs
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/tfs-2015">
+                    tfs-2015
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/tools">
+                    tools
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/visual-studio">
+                    visual-studio
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/vsts">
+                    vsts
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/wcf">
+                    wcf
+                </a>
+                <span class="category-list-count">11</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/wf">
+                    wf
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/windows">
+                    windows
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/windows-server-2012">
+                    windows-server-2012
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="https://jmezach.github.io/tags/.net" style="font-size: 12px;">.net</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-core" style="font-size: 12px;">.net-core</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-development" style="font-size: 12px;">.net-development</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-framework" style="font-size: 12px;">.net-framework</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/.net-standard" style="font-size: 12px;">.net-standard</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/async" style="font-size: 12px;">async</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/azure" style="font-size: 12px;">azure</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/c" style="font-size: 12px;">c#</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/css" style="font-size: 12px;">css</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/html" style="font-size: 12px;">html</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/javascript" style="font-size: 12px;">javascript</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/linux" style="font-size: 12px;">linux</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/microsoft" style="font-size: 12px;">microsoft</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/open-source" style="font-size: 12px;">open-source</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/osx" style="font-size: 12px;">osx</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/rx" style="font-size: 12px;">rx</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/serialization" style="font-size: 12px;">serialization</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/silverlight" style="font-size: 12px;">silverlight</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/team-build" style="font-size: 12px;">team-build</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/teched" style="font-size: 12px;">teched</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/tfs" style="font-size: 12px;">tfs</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/tfs-2015" style="font-size: 12px;">tfs-2015</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/tools" style="font-size: 12px;">tools</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/visual-studio" style="font-size: 12px;">visual-studio</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/vsts" style="font-size: 12px;">vsts</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/wcf" style="font-size: 12px;">wcf</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/wf" style="font-size: 12px;">wf</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/windows" style="font-size: 12px;">windows</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/windows-server-2012" style="font-size: 12px;">windows-server-2012</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://jmezach.github.io/fancybox/jquery.fancybox.pack.js"></script>
+<script src="https://jmezach.github.io/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+</body>
+</html>
