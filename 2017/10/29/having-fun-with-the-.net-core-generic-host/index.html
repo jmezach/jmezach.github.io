@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <title>Wf &middot; Jonathan&#39;s Blog</title>
+    <title>Having Fun with the .NET Core Generic Host &middot; Jonathan&#39;s Blog</title>
     <meta name="generator" content="Hugo 0.30.2" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,10 +10,7 @@
       <meta name="description" content="">
     
     
-      <link href="https://jmezach.github.io/tags/wf/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan&#39;s Blog" />
-      <link href="https://jmezach.github.io/tags/wf/index.xml" rel="feed" type="application/rss+xml" title="Jonathan&#39;s Blog" />
-    
-    <link rel="canonical" href="https://jmezach.github.io/tags/wf/"/>
+    <link rel="canonical" href="https://jmezach.github.io/2017/10/29/having-fun-with-the-.net-core-generic-host/"/>
     <link rel="icon" href="https://jmezach.github.io/favicon.ico">
     <link rel="apple-touch-icon" href="https://jmezach.github.io/apple-touch-icon.png"/>
     <link rel="stylesheet" href="https://jmezach.github.io/css/style.css">
@@ -23,14 +20,18 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Wf" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://jmezach.github.io/tags/wf/" />
+    <meta property="og:title" content="Having Fun with the .NET Core Generic Host" />
+<meta property="og:description" content="As ASP.NET developers we’re fairly used to hosting our code inside Internet Information Services (IIS). However, since ASP.NET Core is cross-platform, hosting inside IIS isn&rsquo;t always an option. For that reason, the hosting model for ASP.NET Core applications looks quite a bit different. Of course, we can still host our code in IIS, but we also have the option to use Kestrel and run as a standalone application.
+This new hosting model is visible in code through the WebHostBuilder API from Microsoft." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jmezach.github.io/2017/10/29/having-fun-with-the-.net-core-generic-host/" />
 
 
 
-<meta property="og:updated_time" content="2010-01-25T00:00:00&#43;02:00"/>
+<meta property="article:published_time" content="2017-10-29T13:07:00&#43;02:00"/>
+
+<meta property="article:modified_time" content="2017-10-29T13:07:00&#43;02:00"/>
+
 
 
 
@@ -43,12 +44,22 @@
 
     
     
-<meta itemprop="name" content="Wf">
-<meta itemprop="description" content="">
+<meta itemprop="name" content="Having Fun with the .NET Core Generic Host">
+<meta itemprop="description" content="As ASP.NET developers we’re fairly used to hosting our code inside Internet Information Services (IIS). However, since ASP.NET Core is cross-platform, hosting inside IIS isn&rsquo;t always an option. For that reason, the hosting model for ASP.NET Core applications looks quite a bit different. Of course, we can still host our code in IIS, but we also have the option to use Kestrel and run as a standalone application.
+This new hosting model is visible in code through the WebHostBuilder API from Microsoft.">
 
 
-    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Wf"/>
-<meta name="twitter:description" content=""/>
+<meta itemprop="datePublished" content="2017-10-29T13:07:00&#43;02:00" />
+<meta itemprop="dateModified" content="2017-10-29T13:07:00&#43;02:00" />
+<meta itemprop="wordCount" content="1651">
+
+
+
+<meta itemprop="keywords" content=".NET,.NET Core," />
+
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Having Fun with the .NET Core Generic Host"/>
+<meta name="twitter:description" content="As ASP.NET developers we’re fairly used to hosting our code inside Internet Information Services (IIS). However, since ASP.NET Core is cross-platform, hosting inside IIS isn&rsquo;t always an option. For that reason, the hosting model for ASP.NET Core applications looks quite a bit different. Of course, we can still host our code in IIS, but we also have the option to use Kestrel and run as a standalone application.
+This new hosting model is visible in code through the WebHostBuilder API from Microsoft."/>
 <meta name="twitter:site" content="@jmezach"/>
 
     
@@ -261,199 +272,446 @@
 
     <section id="main">
     
-    
-    
-    
-    <section class="archives-wrap">
-        <div class="archive-category-wrap">
-            <span class="archive-category">Wf</span>
-        </div>
-        <div class="archives">
-            
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2010/01/25/throttling-workflow-services/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2010/01/25/throttling-workflow-services/">Throttling workflow services</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2010-01-25 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2010-01-25</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2009/11/18/creating-a-workflow-image-from-a-workflow-service/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2009/11/18/creating-a-workflow-image-from-a-workflow-service/">Creating a workflow image from a workflow service</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2009-11-18 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2009-11-18</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2009/03/02/even-better-message-based-correlation/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2009/03/02/even-better-message-based-correlation/">Even better message based correlation</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2009-03-02 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2009-03-02</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2009/02/24/message-based-correlation-with-wf/wcf-in-.net-3.5/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2009/02/24/message-based-correlation-with-wf/wcf-in-.net-3.5/">Message based correlation with WF/WCF in .NET 3.5</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2009-02-24 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2009-02-24</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2008/06/19/workflows-mysteriously-being-aborted/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2008/06/19/workflows-mysteriously-being-aborted/">Workflows mysteriously being aborted</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2008-06-19 00:00:00 &#43;0200 CEST" itemprop="datePublished">2008-06-19</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2008/04/30/issue-fixed/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2008/04/30/issue-fixed/">Issue fixed</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2008-04-30 00:00:00 &#43;0200 CEST" itemprop="datePublished">2008-04-30</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2008/04/28/state-machine-workflows/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2008/04/28/state-machine-workflows/">State machine workflows</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2008-04-28 00:00:00 &#43;0200 CEST" itemprop="datePublished">2008-04-28</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2007/09/19/wf-required-bindable-properties/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2007/09/19/wf-required-bindable-properties/">WF: Required bindable properties</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2007-09-19 00:00:00 &#43;0200 CEST" itemprop="datePublished">2007-09-19</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-        </div>
-    </section>
-    <nav id="page-nav">
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
 
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2017/10/29/having-fun-with-the-.net-core-generic-host/">
+    <h1 class="article-title" itemprop="name">
+        Having Fun with the .NET Core Generic Host
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-10-29 13:07:00 &#43;0200 &#43;0200" itemprop="datePublished">2017-10-29</time>
+            &middot;
+            1651
+            words
+            &middot;
+            8
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-core">.NET Core</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            
+
+<p>As ASP.NET developers we’re fairly used to hosting our code inside Internet Information Services (IIS). However, since ASP.NET Core is cross-platform, hosting inside IIS isn&rsquo;t always an option. For that reason, the hosting model for ASP.NET Core applications looks quite a bit different. Of course, we can still host our code in IIS, but we also have the option to use Kestrel and run as a standalone application.</p>
+
+<p>This new hosting model is visible in code through the <strong>WebHostBuilder</strong> API from <strong>Microsoft.AspNetCore.Hosting</strong>. For example, if we create a new ASP.NET Core application, we&rsquo;ll find the following code in the Program.cs file:</p>
+
+<pre><code class="language-csharp">public class Program
+{
+    public static void Main(string[] args)
+    {
+        BuildWebHost(args).Run();
+    }
+
+    public static IWebHost BuildWebHost(string[] args) =&gt;
+        WebHost.CreateDefaultBuilder(args)
+            .UseStartup&lt;Startup&gt;()
+            .Build();
+}
+</code></pre>
+
+<p>Although this is a fairly simple piece of code, quite a lot is happening behind the scenes. Much of that &ldquo;magic&rdquo; is in the <em>CreateDefaultBuilder()</em> method. Here is what it does behind the scenes:</p>
+
+<ul>
+<li>Setup Kestrel (the webserver)</li>
+<li>Set the content root to the current directory</li>
+<li>Setup configuration (AppSettings.json, etc.)</li>
+<li>Setup logging</li>
+<li>Enable IIS integration</li>
+<li>Setup the Dependency Injection container</li>
+<li>Configure services</li>
+</ul>
+
+<p>If we look at that list, there are a few things that are very specific to web applications, but there are also a number of things that are desirable for any type of application. In fact, the ASP.NET team has seen this as well and decided to further abstract the <strong>WebHostBuilder</strong> into a more generic <strong>HostBuilder</strong> API. You can read more about the reasoning behind it in <a href="https://github.com/aspnet/Hosting/issues/1163">this GitHub issue</a>. It is currently planned for the 2.1 release and although there is no preview available for that version, we can still try it out which is what I&rsquo;ve done lately and I&rsquo;ll go over it in this post.</p>
+
+<h2 id="creating-a-console-host">Creating a console host</h2>
+
+<p>A typical example of where the hosting API would be useful is in a console application that just needs to keep running until someone stops it. For example a background processing service that reads messages from a queue and processes them. So let&rsquo;s create a new console application:</p>
+
+<pre><code class="language-bash">dotnet new console -n MessageProcessor
+</code></pre>
+
+<p>Next we&rsquo;ll need to get access to the HostBuilder API.</p>
+
+<h2 id="getting-the-hostbuilder-api">Getting the HostBuilder API</h2>
+
+<p>Since the HostBuilder API isn&rsquo;t released yet, we&rsquo;ll need to use the ASP.NET CI Feed to get a preview version of it. We can access that feed by adding a <strong>NuGet.config</strong> to our project with the following content:</p>
+
+<pre><code class="language-xml">&lt;configuration&gt;
+    &lt;packageSources&gt;
+        &lt;add key=&quot;ASP.NET CI Feed&quot; value=&quot;https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json&quot; /&gt;
+    &lt;/packageSources&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>Next, we&rsquo;ll need to install the <strong>Microsoft.Extensions.Hosting</strong> package into our project. Note that this package isn&rsquo;t tied to ASP.NET Core specifically. It is a preview version though, so we&rsquo;ll need to pass the version number (2.1.0-preview1-27377 is the latest available as I&rsquo;m writing this):</p>
+
+<pre><code class="language-bash">dotnet add package Microsoft.Extensions.Hosting -v 2.1.0-preview1-27377
+</code></pre>
+
+<h2 id="using-the-hostbuilder-api">Using the HostBuilder API</h2>
+
+<p>Much like in ASP.NET Core applications we can use the HostBuilder API to start building our host and setting it up. In it&rsquo;s simplest form we can use the following code to get a console application that keeps running until it is stopped (for example using Control-C):</p>
+
+<pre><code class="language-csharp">using System;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
+
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var hostBuilder = new HostBuilder();
+        await hostBuilder.RunConsoleAsync();
+    }
+}
+</code></pre>
+
+<p>Note that in order to run this, we&rsquo;ll need to set the language version of our project to latest because an async Main function is a feature of C# 7.1:</p>
+
+<pre><code class="language-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
+  &lt;PropertyGroup&gt;
+    ...
+    &lt;LangVersion&gt;latest&lt;/LangVersion&gt;
+    ...
+  &lt;/PropertyGroup&gt;
+&lt;/Project&gt;
+</code></pre>
+
+<p>If we run our application now, we should see something like this:</p>
+
+<pre><code class="language-bash">dotnet run
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Production
+Content root path: /Users/jmezach/Projects/demos/MessageProcessor/bin/Debug/netcoreapp2.0/
+</code></pre>
+
+<p>Note that the output is very similar to what you get when you start an ASP.NET Core application. One might argue that the Content root path isn&rsquo;t very useful for a console application, but that is probably a result of the <strong>WebHostBuilder</strong> API being refactored into the <strong>HostBuilder</strong> API.</p>
+
+<h2 id="doing-something-useful">Doing something useful</h2>
+
+<p>Of course this isn&rsquo;t very useful right now. All we got is a console application that starts and keeps running until we stop it, but we don&rsquo;t actually do anything. To fix that, we can write what&rsquo;s known as a hosted service. A hosted service is basically a piece of code that is run by the host when the host itself is started and the same for when it is stopped. This is represented in the <strong>IHostedService</strong> interface:</p>
+
+<pre><code class="language-csharp">/// &lt;summary&gt;
+/// Defines methods for objects that are managed by the host.
+/// &lt;/summary&gt;
+public interface IHostedService
+{
+    /// &lt;summary&gt;
+    /// Triggered when the application host is ready to start the service.
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;cancellationToken&quot;&gt;Indicates that the start process has been aborted.&lt;/param&gt;
+    Task StartAsync(CancellationToken cancellationToken);
+    /// &lt;summary&gt;
+    /// Triggered when the application host is performing a graceful shutdown.
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;cancellationToken&quot;&gt;Indicates that the shutdown process should no longer be graceful.&lt;/param&gt;
+    Task StopAsync(CancellationToken cancellationToken);
+}
+</code></pre>
+
+<p>Since we are building a message processor we&rsquo;ll probably need something that listens to a queue. I&rsquo;ll use <a href="http://masstransit-project.com/">MassTransit</a> in this example, so let&rsquo;s write a <strong>MassTransitHostedService</strong>:</p>
+
+<pre><code class="language-csharp">public class MassTransitHostedService : Microsoft.Extensions.Hosting.IHostedService
+{
+    private readonly IBusControl busControl;
+
+    public MassTransitBusControlService(IBusControl busControl)
+    {
+        this.busControl = busControl;
+    }
+
+    public async Task StartAsync(CancellationToken cancellationToken)
+    {
+        await busControl.StartAsync(cancellationToken);
+    }
+
+    public async Task StopAsync(CancellationToken cancellationToken)
+    {
+        await busControl.StopAsync(cancellationToken);
+    }
+}
+</code></pre>
+
+<p>It&rsquo;s simple really. We get an <strong>IBusControl</strong> instance injected through dependency injection and run <strong>StartAsync</strong> on it when host is started. When the host is stopped we run <strong>StopAsync</strong> so that we can gracefully shut everything down. Of course, we&rsquo;ll need to configure that <strong>IBusControl</strong> instance somewhere, as well as this hosted service so let&rsquo;s go back to our Program.cs and make some changes:</p>
+
+<pre><code class="language-csharp">public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var hostBuilder = new HostBuilder()
+            .ConfigureServices((hostContext, services) =&gt;
+            {
+                services.AddSingleton&lt;IBusControl&gt;(serviceProvider =&gt;
+                {
+                    return MassTransit.Bus.Factory.CreateUsingRabbitMq(cfg =&gt;
+                    {
+                        var host = cfg.Host(new Uri(&quot;rabbitmq://localhost&quot;), h =&gt;
+                        {
+                            h.Username(&quot;guest&quot;);
+                            h.Password(&quot;guest&quot;);
+                        });
+                    });
+                });
+                services.AddScoped&lt;IHostedService, MassTransitHostedService&gt;();
+            });
+
+        await hostBuilder.RunConsoleAsync();
+    }
+}
+</code></pre>
+
+<p>Note that we&rsquo;re using the <strong>ConfigureServices()</strong> method on the <strong>HostBuilder</strong> to add additional services to the dependency injection container. In this case we&rsquo;re adding <strong>IBusControl</strong> as a singleton and use MassTransit&rsquo;s RabbitMq transport as the implementation. Next, we add our <strong>MassTransitHostedService</strong> as a scoped service to the DI container as well. By doing this, the generic host will automatically run <strong>StartAsync</strong> on our hosted service, which in turn will call <strong>StartAsync</strong> on the IBusControl instance, essentially opening the connection to RabbitMq and starts listening for messages.</p>
+
+<p>When we shut down the host with Control-C, the generic host will automatically call <strong>StopAsync</strong> on our hosted service, which again will call <strong>StopAsync</strong> on the IBusControl instance which will do some clean up.</p>
+
+<h2 id="host-and-app-configuration">Host and app configuration</h2>
+
+<p>So far we&rsquo;ve only used the dependency injection features of the generic host. But it can also setup configuration. To setup configuration we can use <strong>ConfigureHostConfiguration</strong> and <strong>ConfigureAppConfiguration</strong>. For example:</p>
+
+<pre><code class="language-csharp">var hostBuilder = new HostBuilder()
+    .ConfigureHostConfiguration((config) =&gt;
+    {
+        config.AddEnvironmentVariables();
+    })
+    .ConfigureAppConfiguration((hostContext, config) =&gt;
+    {
+        config.SetBasePath(Environment.CurrentDirectory);
+        config.AddJsonFile(&quot;appsettings.json&quot;, optional: false);
+        config.AddJsonFile($&quot;appsettings.{hostContext.HostingEnvironment.EnvironmentName}.json&quot;, optional: true);
+        config.AddEnvironmentVariables();
+    });
+</code></pre>
+
+<p>The difference between these two methods is that <strong>ConfigureHostConfiguration</strong> is used to influence the configuration of the host itself. For example, the host is aware of the environment it is running in. You can see this in the output when it starts. By default it uses a configuration setting called Environment and it recognizes a couple of standard values (Development, Staging and Production). We might want to change where that configuration setting is read from, for example from an environment variable or from a configuration file.</p>
+
+<p>With <strong>ConfigureAppConfiguration</strong> we setup the configuration for our application. In the example above I change the base path to the directory where my app is being run from, rather than where the output is. Then I add <strong>appsettings.json</strong> as a required configuration file, and <strong>appsettings.{environment}.json</strong> as an optional override. Finally I add environment variables as an input for configuration as well.</p>
+
+<p>After setting that up, we could use it to get the connection string to RabbitMq from the configuration file, rather than hardcoding it. To do that, we&rsquo;ll need to make a small change to our Program.cs:</p>
+
+<pre><code class="language-csharp">public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var hostBuilder = new HostBuilder()
+            .ConfigureHostConfiguration((config) =&gt;
+            {
+                config.AddEnvironmentVariables();
+            })
+            .ConfigureAppConfiguration((hostContext, config) =&gt;
+            {
+                config.SetBasePath(Environment.CurrentDirectory);
+                config.AddJsonFile(&quot;appsettings.json&quot;, optional: false);
+                config.AddJsonFile($&quot;appsettings.{hostContext.HostingEnvironment.EnvironmentName}.json&quot;, optional: true);
+                config.AddEnvironmentVariables();
+            });
+            .ConfigureServices((hostContext, services) =&gt;
+            {
+                services.AddSingleton&lt;IBusControl&gt;(serviceProvider =&gt;
+                {
+                    var configuration = serviceProvider.GetRequiredService&lt;IConfiguration&gt;();
+                    return MassTransit.Bus.Factory.CreateUsingRabbitMq(cfg =&gt;
+                    {
+                        var host = cfg.Host(new Uri(configuration.GetConnectionString(&quot;RabbitMq&quot;)), h =&gt;
+                        {
+                            h.Username(&quot;guest&quot;);
+                            h.Password(&quot;guest&quot;);
+                        });
+                    });
+                });
+                services.AddScoped&lt;IHostedService, MassTransitHostedService&gt;();
+            });
+
+        await hostBuilder.RunConsoleAsync();
+    }
+}
+</code></pre>
+
+<p>Now we can set the connection string to RabbitMq inside our appsettings.json, and possibly override its value for a particular environment by adding an appsettings.Development.json for example.</p>
+
+<h2 id="logging">Logging</h2>
+
+<p>Finally, there is one more cross-cutting concern for which we can use the generic host to do setup: logging. To setup logging there is another method we can use on the <strong>HostBuilder</strong>. Unsurprisingly it is called <strong>ConfigureLogging</strong>:</p>
+
+<pre><code class="language-csharp">var hostBuilder = new HostBuilder()
+    .ConfigureLogging((hostContext, config) =&gt;
+    {
+        config.AddSerilog();
+    });
+</code></pre>
+
+<p>In this example I&rsquo;m simply setting up <a href="https://serilog.net/">Serilog</a> as our logging framework. We can do a lot of other things, like configure where to log to, etc. but I&rsquo;ll leave that as an exercise to the reader.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Using the generic host makes building console applications that need to run until stopped an absolute breeze. What I like most about it though is the similarity with how things work in ASP.NET Core. If you&rsquo;re using ASP.NET Core for your frontend and need to do some background processing in a console app it makes sense to use the generic host for your console app.</p>
+
+<p>One thing that sticks out for me though is that in ASP.NET Core we have a Startup class which does all the application configuration, while the Program.cs only deals with configuration of the host itself. That pattern isn&rsquo;t yet available here and I&rsquo;m not sure it is coming. I did <a href="https://github.com/aspnet/Hosting/issues/1249">ask on GitHub</a> though.</p>
+
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2017/10/29/having-fun-with-the-.net-core-generic-host/" data-id="06a1a54976c25a1fa9e8c5f92896df4b" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2017/10/29/having-fun-with-the-.net-core-generic-host/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+
+    
+<nav id="article-nav">
+    
+    <a href="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">.NET Core and .NET Standard 2.0</div>
+    </a>
+    
+
+    
 </nav>
 
+
+</article>
+
+
+<section id="comments">
+    <div id="disqus_thread">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
     
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jmezach" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+</section>
+
 
     </section>
 

@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [PPOffice](http://github.com/ppoffice).</copyright>
-    <lastBuildDate>Sat, 13 May 2017 20:33:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 29 Oct 2017 13:07:00 +0200</lastBuildDate>
     
 	<atom:link href="https://jmezach.github.io/categories/.net/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Having Fun with the .NET Core Generic Host</title>
+      <link>https://jmezach.github.io/2017/10/29/having-fun-with-the-.net-core-generic-host/</link>
+      <pubDate>Sun, 29 Oct 2017 13:07:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2017/10/29/having-fun-with-the-.net-core-generic-host/</guid>
+      <description>As ASP.NET developers we’re fairly used to hosting our code inside Internet Information Services (IIS). However, since ASP.NET Core is cross-platform, hosting inside IIS isn&amp;rsquo;t always an option. For that reason, the hosting model for ASP.NET Core applications looks quite a bit different. Of course, we can still host our code in IIS, but we also have the option to use Kestrel and run as a standalone application.
+This new hosting model is visible in code through the WebHostBuilder API from Microsoft.</description>
+    </item>
     
     <item>
       <title>.NET Core and .NET Standard 2.0</title>
