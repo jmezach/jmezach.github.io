@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hackathon on Jonathan&#39;s Blog</title>
+    <link>https://jmezach.github.io/tags/hackathon/</link>
+    <description>Recent content in Hackathon on Jonathan&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Jun 2018 20:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://jmezach.github.io/tags/hackathon/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>.NET Core Hackathon 2018</title>
+      <link>https://jmezach.github.io/2018/06/14/.net-core-hackathon-2018/</link>
+      <pubDate>Thu, 14 Jun 2018 20:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2018/06/14/.net-core-hackathon-2018/</guid>
+      <description>It has been a while since I&amp;rsquo;ve posted something here on my blog. That&amp;rsquo;s not because I haven&amp;rsquo;t done anything, just that I&amp;rsquo;ve been really busy lately with all kinds of things. For example, I&amp;rsquo;ve been delving into the container world and delivered a hands-on workshop with Kubernetes on Azure as part of the Global Azure Bootcamp 2018 back in April. That was a lot of fun, since I didn&amp;rsquo;t know much about Kubernetes before I started working on that, so I learned a lot in a relatively short amount of time, but I digress.</description>
+    </item>
+    
+  </channel>
+</rss>
