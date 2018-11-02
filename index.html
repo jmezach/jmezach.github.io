@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head>
     <title>Jonathan&#39;s Blog</title>
-    <meta name="generator" content="Hugo 0.42.1" />
+    <meta name="generator" content="Hugo 0.49.2" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Jonathan Mezach">
@@ -27,19 +27,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://jmezach.github.io/" />
-
-
-
-<meta property="og:updated_time" content="2018-06-14T20:00:00&#43;02:00"/>
-
-
-
-
-
-
-
-
-
+<meta property="og:updated_time" content="2018-11-02T00:00:00&#43;02:00"/>
 
     
     
@@ -176,12 +164,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        29
+        30
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          30
+          32
         
         <span>
             Tags
@@ -263,6 +251,156 @@
     <section id="main">
     
     
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2018/11/02/infosecurity-conference/">
+    <h1 class="article-title" itemprop="name">
+        infosecurity conference
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2018-11-02 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2018-11-02</time>
+            &middot;
+            1147
+            words
+            &middot;
+            6
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/security">Security</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/conference">conference</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/security">security</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                In this post I would like to take a small break from my usual .NET Core related posts and talk about security. That&rsquo;s because this week was quite a security minded week for me. For example, on Tuesday I attended an internal security bootcamp at Info Support. Security is becoming increasingly important so its also important to increase the awareness of security with everyone involved in software development.
+But the bootcamp wasn&rsquo;t the only security related thing I did this week.
+            </p>
+            <p class="article-more-link">
+                <a href="https://jmezach.github.io/2018/11/02/infosecurity-conference/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2018/11/02/infosecurity-conference/" data-id="5e8a13538765461b666583333f864a0b" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2018/11/02/infosecurity-conference/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
 
 <article class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
@@ -1654,167 +1792,6 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
     </div>
 </article>
 
-<article class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        </a>
-
-        <header class="article-header">
-    <a href="https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/">
-    <h1 class="article-title" itemprop="name">
-        Creating a VSTS dashboard widget
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2016-04-18 00:00:00 &#43;0200 CEST" itemprop="datePublished">2016-04-18</time>
-            &middot;
-            1911
-            words
-            &middot;
-            9
-            minute read
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="https://jmezach.github.io/categories/continuous-delivery">Continuous Delivery</a>
-                &middot;
-                
-                
-                <a class="article-category-link" href="https://jmezach.github.io/categories/integration">Integration</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="https://jmezach.github.io/tags/vsts">VSTS</a>
-                &middot;
-                
-                
-                <a class="article-category-link" href="https://jmezach.github.io/tags/javascript">JavaScript</a>
-                &middot;
-                
-                
-                <a class="article-category-link" href="https://jmezach.github.io/tags/html">HTML</a>
-                &middot;
-                
-                
-                <a class="article-category-link" href="https://jmezach.github.io/tags/css">CSS</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-        <div class="article-entry" itemprop="articleBody">
-            <p>
-                On the 30th of October last year Microsoft deployed an update for Visual Studio Team Services (still named Visual Studio Online at the time) which introduced a new start page that could be completely customized. The feature was named dashboards and when I first saw it I realized its potential for putting all kinds of information relevant to a development team right at their fingertips. For those who haven’t seen it yet, this is what the out of the box dashboard looks like:
-            </p>
-            <p class="article-more-link">
-                <a href="https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/">
-                    Read more
-                </a>
-            </p>
-        </div>
-        <footer class="article-footer">
-    <a data-url="https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/" data-id="8a6a7ed52d003cf2fe964de336e31b5c" class="article-share-link">
-        <i class="fa fa-share"></i>
-        Share
-    </a>
-    
-    <a href="https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/#disqus_thread" class="article-comment-link">
-        Comments
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-    </div>
-</article>
-
 
 <nav id="page-nav">
 
@@ -1839,6 +1816,32 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2018/11/02/infosecurity-conference/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/security">
+                        Security
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2018/11/02/infosecurity-conference/" class="title">infosecurity conference</a></p>
+                    <p class="item-date">
+                        <time datetime="2018-11-02 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2018-11-02</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1944,32 +1947,6 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 </div>
             </li>
             
-            <li>
-                <div class="item-thumbnail">
-                    <a href="https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
-                        .NET
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/" class="title">Migrating existing .NET projects to SDK-based projects</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-02-07 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2017-02-07</time>
-                    </p>
-                </div>
-            </li>
-            
         </ul>
     </div>
 </div>
@@ -2011,6 +1988,14 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 
                 <a class="category-list-link" href="https://jmezach.github.io/categories/integration">
                     integration
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/categories/security">
+                    security
                 </a>
                 <span class="category-list-count">1</span>
             </li>
@@ -2106,6 +2091,14 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
             
             <li class="category-list-item">
                 
+                <a class="category-list-link" href="https://jmezach.github.io/tags/conference">
+                    conference
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
                 <a class="category-list-link" href="https://jmezach.github.io/tags/css">
                     css
                 </a>
@@ -2174,6 +2167,14 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                     rx
                 </a>
                 <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://jmezach.github.io/tags/security">
+                    security
+                </a>
+                <span class="category-list-count">1</span>
             </li>
             
             <li class="category-list-item">
@@ -2321,6 +2322,9 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
         <a href="https://jmezach.github.io/tags/c" style="font-size: 12px;">c#</a>
         
         
+        <a href="https://jmezach.github.io/tags/conference" style="font-size: 12px;">conference</a>
+        
+        
         <a href="https://jmezach.github.io/tags/css" style="font-size: 12px;">css</a>
         
         
@@ -2346,6 +2350,9 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
         
         
         <a href="https://jmezach.github.io/tags/rx" style="font-size: 12px;">rx</a>
+        
+        
+        <a href="https://jmezach.github.io/tags/security" style="font-size: 12px;">security</a>
         
         
         <a href="https://jmezach.github.io/tags/serialization" style="font-size: 12px;">serialization</a>
@@ -2410,7 +2417,7 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
 </footer>
 
 
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

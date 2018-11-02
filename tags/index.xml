@@ -76,10 +76,19 @@
     
     <item>
       <title>C#</title>
-      <link>https://jmezach.github.io/tags/c#/</link>
+      <link>https://jmezach.github.io/tags/c/</link>
       <pubDate>Mon, 16 May 2011 00:00:00 +0200</pubDate>
       
-      <guid>https://jmezach.github.io/tags/c#/</guid>
+      <guid>https://jmezach.github.io/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Conference</title>
+      <link>https://jmezach.github.io/tags/conference/</link>
+      <pubDate>Fri, 02 Nov 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/conference/</guid>
       <description></description>
     </item>
     
@@ -161,6 +170,15 @@
       <pubDate>Thu, 10 Mar 2011 00:00:00 +0200</pubDate>
       
       <guid>https://jmezach.github.io/tags/rx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>https://jmezach.github.io/tags/security/</link>
+      <pubDate>Fri, 02 Nov 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/security/</guid>
       <description></description>
     </item>
     

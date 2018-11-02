@@ -6,10 +6,20 @@
     <description>Recent content on Jonathan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Jun 2018 20:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 02 Nov 2018 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://jmezach.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>infosecurity conference</title>
+      <link>https://jmezach.github.io/2018/11/02/infosecurity-conference/</link>
+      <pubDate>Fri, 02 Nov 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2018/11/02/infosecurity-conference/</guid>
+      <description>In this post I would like to take a small break from my usual .NET Core related posts and talk about security. That&amp;rsquo;s because this week was quite a security minded week for me. For example, on Tuesday I attended an internal security bootcamp at Info Support. Security is becoming increasingly important so its also important to increase the awareness of security with everyone involved in software development.
+But the bootcamp wasn&amp;rsquo;t the only security related thing I did this week.</description>
+    </item>
     
     <item>
       <title>.NET Core Hackathon 2018</title>

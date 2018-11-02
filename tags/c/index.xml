@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C# on Jonathan&#39;s Blog</title>
+    <link>https://jmezach.github.io/tags/c/</link>
+    <description>Recent content in C# on Jonathan&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 16 May 2011 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://jmezach.github.io/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Extension methods and generic type constraints</title>
+      <link>https://jmezach.github.io/2011/05/16/extension-methods-and-generic-type-constraints/</link>
+      <pubDate>Mon, 16 May 2011 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2011/05/16/extension-methods-and-generic-type-constraints/</guid>
+      <description>I ran into an interesting problem the other day regarding extension methods and generic type constraints, so I though I’d write about it here. First, let me explain what I was trying to do. I wanted to define an extension method on any type that implements both INotifyCollectionChanged and ICollection. Now as far as I know there is only one type that actually implements both interfaces, ObservableCollection, but that’s not the point.</description>
+    </item>
+    
+    <item>
+      <title>Data binding in code using Reactive Extensions</title>
+      <link>https://jmezach.github.io/2011/03/10/data-binding-in-code-using-reactive-extensions/</link>
+      <pubDate>Thu, 10 Mar 2011 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2011/03/10/data-binding-in-code-using-reactive-extensions/</guid>
+      <description>First of all, it’s been a while since my last post here. I’ve busy working with SharePoint in the past few months and although there is plenty to write about SharePoint, a lot of it has already been written by other people, so I didn’t feel the need to write about it here. But lately I’ve found the time to experiment with Reactive Extensions again, which I’m quite fond of as you might remember from me previous post about the subject.</description>
+    </item>
+    
+    <item>
+      <title>Reactive Extensions</title>
+      <link>https://jmezach.github.io/2010/11/04/reactive-extensions/</link>
+      <pubDate>Thu, 04 Nov 2010 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/2010/11/04/reactive-extensions/</guid>
+      <description>For the past couple of weeks I’ve been looking into the Reactive Extensions framework. This resulted into a presentation for some of my colleagues about what Rx is, how it can be used and some of the cool stuff you can do with it. I delivered that presentation yesterday evening. Today I wanted to share the sources of the demo’s I’ve used during this presentation. You can download these from here: RxDemos.</description>
+    </item>
+    
+  </channel>
+</rss>
