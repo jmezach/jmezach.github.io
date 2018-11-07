@@ -6,10 +6,19 @@
     <description>Recent content in .Net Development on Jonathan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Jun 2018 20:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Nov 2018 21:45:50 +0100</lastBuildDate>
     
 	<atom:link href="https://jmezach.github.io/tags/.net-development/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Porting from ASP.NET to ASP.NET Core: Part 1 - Introduction</title>
+      <link>https://jmezach.github.io/2018/11/05/porting-from-asp.net-to-asp.net-core-part-1-introduction/</link>
+      <pubDate>Mon, 05 Nov 2018 21:45:50 +0100</pubDate>
+      
+      <guid>https://jmezach.github.io/2018/11/05/porting-from-asp.net-to-asp.net-core-part-1-introduction/</guid>
+      <description>Last week I took to Twitter and asked if anyone of my followers would be interested in a session about .NET Core for developers that are using .NET Framework today. I wasn&amp;rsquo;t really expecting all that much by sending that tweet, but with a little help from Immo Landwerth who&amp;rsquo;s on the .NET team, that tweet seemed to have sparked quite a bit of interest in such a session. Perhaps the announcements that ASP.</description>
+    </item>
     
     <item>
       <title>.NET Core Hackathon 2018</title>

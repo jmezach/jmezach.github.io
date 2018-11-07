@@ -40,10 +40,10 @@
     
     <item>
       <title>Message based correlation with WF/WCF in .NET 3.5</title>
-      <link>https://jmezach.github.io/2009/02/24/message-based-correlation-with-wf/wcf-in-.net-3.5/</link>
+      <link>https://jmezach.github.io/2009/02/24/message-based-correlation-with-wf-wcf-in-.net-3.5/</link>
       <pubDate>Tue, 24 Feb 2009 00:00:00 +0200</pubDate>
       
-      <guid>https://jmezach.github.io/2009/02/24/message-based-correlation-with-wf/wcf-in-.net-3.5/</guid>
+      <guid>https://jmezach.github.io/2009/02/24/message-based-correlation-with-wf-wcf-in-.net-3.5/</guid>
       <description>When .NET 3.0 was released we got Windows Communication Foundation (WCF) and Windows Workflow Foundation (WF). These were great technologies, but they would have been even greater if they were used together. Unfortunately, Microsoft decided not to include this for .NET 3.0. However, with the release of .NET 3.5 we got the WCF Send and Receive activities that you can use in your workflows in order to implement a WCF service contract by using a workflow.</description>
     </item>
     

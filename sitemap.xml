@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://jmezach.github.io/2018/11/05/porting-from-asp.net-to-asp.net-core-part-1-introduction/</loc>
+    <lastmod>2018-11-05T21:45:50+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jmezach.github.io/2018/11/02/infosecurity-conference/</loc>
     <lastmod>2018-11-02T00:00:00+02:00</lastmod>
   </url>
@@ -108,7 +113,7 @@
   </url>
   
   <url>
-    <loc>https://jmezach.github.io/2009/02/24/message-based-correlation-with-wf/wcf-in-.net-3.5/</loc>
+    <loc>https://jmezach.github.io/2009/02/24/message-based-correlation-with-wf-wcf-in-.net-3.5/</loc>
     <lastmod>2009-02-24T00:00:00+02:00</lastmod>
   </url>
   
@@ -159,25 +164,25 @@
   
   <url>
     <loc>https://jmezach.github.io/tags/.net/</loc>
-    <lastmod>2018-06-14T20:00:00+02:00</lastmod>
+    <lastmod>2018-11-05T21:45:50+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/categories/.net/</loc>
-    <lastmod>2018-06-14T20:00:00+02:00</lastmod>
+    <lastmod>2018-11-05T21:45:50+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/tags/.net-core/</loc>
-    <lastmod>2018-06-14T20:00:00+02:00</lastmod>
+    <lastmod>2018-11-05T21:45:50+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/tags/.net-development/</loc>
-    <lastmod>2018-06-14T20:00:00+02:00</lastmod>
+    <lastmod>2018-11-05T21:45:50+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -213,7 +218,7 @@
   
   <url>
     <loc>https://jmezach.github.io/categories/</loc>
-    <lastmod>2018-06-14T20:00:00+02:00</lastmod>
+    <lastmod>2018-11-05T21:45:50+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -267,7 +272,7 @@
   
   <url>
     <loc>https://jmezach.github.io/</loc>
-    <lastmod>2018-11-02T00:00:00+02:00</lastmod>
+    <lastmod>2018-11-05T21:45:50+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -285,7 +290,7 @@
   
   <url>
     <loc>https://jmezach.github.io/tags/open-source/</loc>
-    <lastmod>2018-06-14T20:00:00+02:00</lastmod>
+    <lastmod>2018-11-05T21:45:50+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -296,8 +301,14 @@
   </url>
   
   <url>
+    <loc>https://jmezach.github.io/tags/porting/</loc>
+    <lastmod>2018-11-05T21:45:50+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://jmezach.github.io/post/</loc>
-    <lastmod>2018-11-02T00:00:00+02:00</lastmod>
+    <lastmod>2018-11-05T21:45:50+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -326,6 +337,12 @@
   </url>
   
   <url>
+    <loc>https://jmezach.github.io/categories/series/</loc>
+    <lastmod>2018-11-05T21:45:50+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://jmezach.github.io/tags/silverlight/</loc>
     <lastmod>2007-09-06T00:00:00+02:00</lastmod>
     <priority>0</priority>
@@ -339,7 +356,7 @@
   
   <url>
     <loc>https://jmezach.github.io/tags/</loc>
-    <lastmod>2018-06-14T20:00:00+02:00</lastmod>
+    <lastmod>2018-11-05T21:45:50+01:00</lastmod>
     <priority>0</priority>
   </url>
   
