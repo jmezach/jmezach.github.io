@@ -27,7 +27,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://jmezach.github.io/" />
-<meta property="og:updated_time" content="2018-11-05T21:45:50&#43;01:00"/>
+<meta property="og:updated_time" content="2018-11-07T21:07:49&#43;01:00"/>
 
     
     
@@ -164,7 +164,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        31
+        32
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -251,6 +251,173 @@
     <section id="main">
     
     
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/">
+    <h1 class="article-title" itemprop="name">
+        Porting from ASP.NET to ASP.NET Core: Part 2 - Third party dependencies
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2018-11-07 21:07:49 &#43;0100 CET" itemprop="datePublished">2018-11-07</time>
+            &middot;
+            1312
+            words
+            &middot;
+            7
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/series">Series</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-core">.NET Core</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-development">.NET Development</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/porting">porting</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/open-source">open source</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                This post is part of a series:
+ Part 1: Introduction Part 2: Third party dependencies Part 3: Mechanics of porting Part 4: Deployment and packaging options  If you haven&rsquo;t read the first post yet I suggest reading that first since it introduces the app that I&rsquo;m porting and some of the reasons behind it.
+Are my dependencies available on .NET Core? Most software these days consists of not just the code we write, but a lot of third party dependencies as well.
+            </p>
+            <p class="article-more-link">
+                <a href="https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/" data-id="d546a88104f6681753f3231c8973da39" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
 
 <article class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
@@ -1646,160 +1813,6 @@ Of course, in the early days of MonoDroid and MonoTouch (before Xamarin was even
     </div>
 </article>
 
-<article class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        </a>
-
-        <header class="article-header">
-    <a href="https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/">
-    <h1 class="article-title" itemprop="name">
-        .NET Platform Standard and the magic of &#34;imports&#34;
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2016-05-24 00:00:00 &#43;0200 CEST" itemprop="datePublished">2016-05-24</time>
-            &middot;
-            1677
-            words
-            &middot;
-            8
-            minute read
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
-                &middot;
-                
-                
-                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-core">.NET Core</a>
-                &middot;
-                
-                
-                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-standard">.NET Standard</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-        <div class="article-entry" itemprop="articleBody">
-            <p>
-                In case you missed it, .NET Core RC2 has been released by Microsoft last week along with ASP.NET Core RC2 and a preview of the tooling. Lots of exciting new stuff that I highly encourage checking out.
-Now that RC2 is out there I guess a lot more people will be checking it out and playing with it and there’s one topic that seems to confuse a lot of people.
-            </p>
-            <p class="article-more-link">
-                <a href="https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/">
-                    Read more
-                </a>
-            </p>
-        </div>
-        <footer class="article-footer">
-    <a data-url="https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/" data-id="8b6e535a9510e82bec33c574eb8e11b6" class="article-share-link">
-        <i class="fa fa-share"></i>
-        Share
-    </a>
-    
-    <a href="https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/#disqus_thread" class="article-comment-link">
-        Comments
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-    </div>
-</article>
-
 
 <nav id="page-nav">
 
@@ -1824,6 +1837,32 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/" class="title">Porting from ASP.NET to ASP.NET Core: Part 2 - Third party dependencies</a></p>
+                    <p class="item-date">
+                        <time datetime="2018-11-07 21:07:49 &#43;0100 CET" itemprop="datePublished">2018-11-07</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1929,32 +1968,6 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 </div>
             </li>
             
-            <li>
-                <div class="item-thumbnail">
-                    <a href="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
-                        .NET
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/" class="title">.NET Core and .NET Standard 2.0</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-05-13 20:33:00 &#43;0200 CEST" itemprop="datePublished">2017-05-13</time>
-                    </p>
-                </div>
-            </li>
-            
         </ul>
     </div>
 </div>
@@ -1973,7 +1986,7 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 <a class="category-list-link" href="https://jmezach.github.io/categories/.net">
                     .net
                 </a>
-                <span class="category-list-count">28</span>
+                <span class="category-list-count">29</span>
             </li>
             
             <li class="category-list-item">
@@ -2013,7 +2026,7 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 <a class="category-list-link" href="https://jmezach.github.io/categories/series">
                     series
                 </a>
-                <span class="category-list-count">1</span>
+                <span class="category-list-count">2</span>
             </li>
             
             <li class="category-list-item">
@@ -2046,7 +2059,7 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 <a class="category-list-link" href="https://jmezach.github.io/tags/.net">
                     .net
                 </a>
-                <span class="category-list-count">23</span>
+                <span class="category-list-count">24</span>
             </li>
             
             <li class="category-list-item">
@@ -2054,7 +2067,7 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 <a class="category-list-link" href="https://jmezach.github.io/tags/.net-core">
                     .net-core
                 </a>
-                <span class="category-list-count">11</span>
+                <span class="category-list-count">12</span>
             </li>
             
             <li class="category-list-item">
@@ -2062,7 +2075,7 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 <a class="category-list-link" href="https://jmezach.github.io/tags/.net-development">
                     .net-development
                 </a>
-                <span class="category-list-count">4</span>
+                <span class="category-list-count">5</span>
             </li>
             
             <li class="category-list-item">
@@ -2166,7 +2179,7 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 <a class="category-list-link" href="https://jmezach.github.io/tags/open-source">
                     open-source
                 </a>
-                <span class="category-list-count">3</span>
+                <span class="category-list-count">4</span>
             </li>
             
             <li class="category-list-item">
@@ -2182,7 +2195,7 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 <a class="category-list-link" href="https://jmezach.github.io/tags/porting">
                     porting
                 </a>
-                <span class="category-list-count">1</span>
+                <span class="category-list-count">2</span>
             </li>
             
             <li class="category-list-item">
@@ -2466,7 +2479,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
 <script src="https://jmezach.github.io/fancybox/jquery.fancybox.pack.js"></script>
 <script src="https://jmezach.github.io/js/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>

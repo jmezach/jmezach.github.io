@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <title>Vsts &middot; Jonathan&#39;s Blog</title>
+    <title>Porting from ASP.NET to ASP.NET Core: Part 2 - Third party dependencies &middot; Jonathan&#39;s Blog</title>
     <meta name="generator" content="Hugo 0.50" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,10 +10,7 @@
       <meta name="description" content="">
     
     
-      <link href="https://jmezach.github.io/tags/vsts/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan&#39;s Blog" />
-      <link href="https://jmezach.github.io/tags/vsts/index.xml" rel="feed" type="application/rss+xml" title="Jonathan&#39;s Blog" />
-    
-    <link rel="canonical" href="https://jmezach.github.io/tags/vsts/"/>
+    <link rel="canonical" href="https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/"/>
     <link rel="icon" href="https://jmezach.github.io/favicon.ico">
     <link rel="apple-touch-icon" href="https://jmezach.github.io/apple-touch-icon.png"/>
     <link rel="stylesheet" href="https://jmezach.github.io/css/style.css">
@@ -23,21 +20,35 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Vsts" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://jmezach.github.io/tags/vsts/" />
-<meta property="og:updated_time" content="2016-04-18T00:00:00&#43;02:00"/>
+    <meta property="og:title" content="Porting from ASP.NET to ASP.NET Core: Part 2 - Third party dependencies" />
+<meta property="og:description" content="This post is part of a series:
+ Part 1: Introduction Part 2: Third party dependencies Part 3: Mechanics of porting Part 4: Deployment and packaging options  If you haven&rsquo;t read the first post yet I suggest reading that first since it introduces the app that I&rsquo;m porting and some of the reasons behind it.
+Are my dependencies available on .NET Core? Most software these days consists of not just the code we write, but a lot of third party dependencies as well." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/" /><meta property="article:published_time" content="2018-11-07T21:07:49&#43;01:00"/>
+<meta property="article:modified_time" content="2018-11-07T21:07:49&#43;01:00"/>
 
     
     
-<meta itemprop="name" content="Vsts">
-<meta itemprop="description" content="">
+<meta itemprop="name" content="Porting from ASP.NET to ASP.NET Core: Part 2 - Third party dependencies">
+<meta itemprop="description" content="This post is part of a series:
+ Part 1: Introduction Part 2: Third party dependencies Part 3: Mechanics of porting Part 4: Deployment and packaging options  If you haven&rsquo;t read the first post yet I suggest reading that first since it introduces the app that I&rsquo;m porting and some of the reasons behind it.
+Are my dependencies available on .NET Core? Most software these days consists of not just the code we write, but a lot of third party dependencies as well.">
 
+
+<meta itemprop="datePublished" content="2018-11-07T21:07:49&#43;01:00" />
+<meta itemprop="dateModified" content="2018-11-07T21:07:49&#43;01:00" />
+<meta itemprop="wordCount" content="1312">
+
+
+
+<meta itemprop="keywords" content=".NET,.NET Core,.NET Development,porting,open source," />
 
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Vsts"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Porting from ASP.NET to ASP.NET Core: Part 2 - Third party dependencies"/>
+<meta name="twitter:description" content="This post is part of a series:
+ Part 1: Introduction Part 2: Third party dependencies Part 3: Mechanics of porting Part 4: Deployment and packaging options  If you haven&rsquo;t read the first post yet I suggest reading that first since it introduces the app that I&rsquo;m porting and some of the reasons behind it.
+Are my dependencies available on .NET Core? Most software these days consists of not just the code we write, but a lot of third party dependencies as well."/>
 <meta name="twitter:site" content="@jmezach"/>
 
     
@@ -250,45 +261,269 @@
 
     <section id="main">
     
-    
-    
-    
-    <section class="archives-wrap">
-        <div class="archive-category-wrap">
-            <span class="archive-category">Vsts</span>
-        </div>
-        <div class="archives">
-            
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/">Creating a VSTS dashboard widget</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2016-04-18 00:00:00 &#43;0200 CEST" itemprop="datePublished">2016-04-18</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-        </div>
-    </section>
-    <nav id="page-nav">
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
 
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/">
+    <h1 class="article-title" itemprop="name">
+        Porting from ASP.NET to ASP.NET Core: Part 2 - Third party dependencies
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2018-11-07 21:07:49 &#43;0100 CET" itemprop="datePublished">2018-11-07</time>
+            &middot;
+            1312
+            words
+            &middot;
+            7
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/series">Series</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-core">.NET Core</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-development">.NET Development</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/porting">porting</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/open-source">open source</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            
+
+<p>This post is part of a series:</p>
+
+<ul>
+<li><a href="/2018/11/05/porting-from-asp.net-to-asp.net-core-part-1-introduction/">Part 1: Introduction</a></li>
+<li><a href="/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/">Part 2: Third party dependencies</a></li>
+<li>Part 3: Mechanics of porting</li>
+<li>Part 4: Deployment and packaging options</li>
+</ul>
+
+<p>If you haven&rsquo;t read the <a href="/2018/11/05/porting-from-asp.net-to-asp.net-core-part-1-introduction/">first post</a> yet I suggest reading that first since it introduces the app that I&rsquo;m porting and some of the reasons behind it.</p>
+
+<h2 id="are-my-dependencies-available-on-net-core">Are my dependencies available on .NET Core?</h2>
+
+<p>Most software these days consists of not just the code we write, but a lot of third party dependencies as well. And of course <em>Augurk</em> is no exception. So the first thing you&rsquo;ll want to do is to check if your third party dependencies are even available on .NET Core. Luckily for us there is a really simple way to check this: <a href="https://icanhasdot.net/">I Can Has .NET Core</a>. It works by scanning your packages.config or .csproj to figure out the packages you depend on. It then checks to see if those packages are available on .NET Core. Since <em>Augurk</em> is an open source project we can let it scan a GitHub repository directly and you can have a look at the results yourself <a href="https://icanhasdot.net/result?github=Augurk~2FAugurk">here</a> (or at least until our changes are in the master branch). If you don&rsquo;t have an open source project you can also just upload a packages.config or .csproj individually.</p>
+
+<p>The nice thing about this tool is that you get a graph of your dependencies, which are then color coded according to what is available, what is not available, known alternatives, etc. For example, here is the graph for <em>Augurk</em>:</p>
+
+<p><img src="/img/porting-to-aspnet-core/dependency-graph.png" alt="Dependency Graph" /></p>
+
+<p>And the associated legend:</p>
+
+<p><img src="/img/porting-to-aspnet-core/legend.png" alt="Legend" /></p>
+
+<p>As we can see in the graph there are only 4 packages that are unsupported on .NET Core: <em>Swagger-Net</em> (and the associated <em>FromHeaderAttribute</em> package), <em>MSTest.TestAdapter</em> and <em>RavenDB.Database</em>. As for Swagger-Net there are some good alternatives available as <a href="https://docs.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-2.1">documented here</a>. The <em>RavenDB.Database</em> package got deprecated as part of the 4.0 release, so that shouldn&rsquo;t be a problem for us. And why <em>MSTest.TestAdapter</em> is listed as unsupported I honstely don&rsquo;t know, because it works just fine on .NET Core.</p>
+
+<p>There&rsquo;s also a bunch of packages that have known replacements available, but all of them are packages that are part of ASP.NET. Since we&rsquo;re porting to ASP.NET Core we already know that these are going to be replaced, so no worries there. Additionally we are also using <a href="https://specflow.org/">SpecFlow</a>, which doesn&rsquo;t yet have an official release that&rsquo;s supported on .NET Core, but a pre-release version is available. At the moment we don&rsquo;t really use it though, so we&rsquo;re fine with using the pre-release version for now.</p>
+
+<h2 id="what-to-do-if-something-is-unsupported">What to do if something is unsupported?</h2>
+
+<p>Obviously depending on your project you might have a lot more packages that are unsupported on .NET Core. If that&rsquo;s the case than the first thing to check is to see if there is viable alternative available. Sometimes they can be hard to find, but maybe you get lucky. Replacing it with an alternative is of course going to add to the time required to port the application, but it might be worth it. You can even consider swapping out the dependency first, before porting to .NET Core, and make sure that it works correctly for your application.</p>
+
+<p>But if there is no alternative available then I suggest checking if the package is being developed as open source. Many packages on NuGet are in fact open source, so chances are there is a GitHub repository for it somewhere. Usually there&rsquo;s a link to the repository in the package metadata as well. If it is open source, it&rsquo;s always a good idea to file an issue in the repository asking for .NET Core support (but make sure to check if there isn&rsquo;t such an issue already). This lets the owners of the package know that there is a demand for that package to be available on .NET Core.</p>
+
+<p>And if you want to take things a step further you can also try to help out the owners of the library to port it to .NET Core. I&rsquo;m sure that a pull request would be much appreciated (although you should discuss it in an issue first). If you are using it there are probably others who could benefit from a port as well.</p>
+
+<h2 id="the-elephant-in-the-room">The elephant in the room</h2>
+
+<p>By now you might be wondering: isn&rsquo;t .NET itself a dependency as well? And you&rsquo;re absolutely right. While most of the API&rsquo;s that you&rsquo;re familiar with in .NET are also available on .NET Core there are a few that aren&rsquo;t. So how do we find out about these? Luckily there&rsquo;s another tool to help us out here, the <a href="https://docs.microsoft.com/en-us/dotnet/standard/analyzers/portability-analyzer">.NET Portability Analyzer</a>. This tool can be installed as a Visual Studio extension, or can be run from the commandline. Let&rsquo;s try the Visual Studio extension, which can be downloaded from the <a href="https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer">Marketplace</a>, on <em>Augurk</em>.</p>
+
+<p>After installing the extension, the first thing you&rsquo;ll want to do is open up the <strong>Options</strong> page to configure it. You can reach these options by going to <strong>Tools -&gt; Options</strong> and searching for Portability. Since the tool isn&rsquo;t constrained to just .NET Core, you can actually check if your code can be ported to a wide variety of .NET platforms:</p>
+
+<p><img src="/img/porting-to-aspnet-core/portability-analyzer-options.png" alt="Portability Analyzer Options" /></p>
+
+<p>There are a lot of options to choose here. Depending on your needs you can add or remove platforms that will be evaluated. Obviously for this porting effort I&rsquo;m mostly interested in the portability to .NET Core 2.1 and ASP.NET Core, so I chose those two options. I then ran the portability analysis by right clicking on the solution and choosing the <strong>Analyse Assembly Portability</strong>. You can choose different output formaats, but in my case I used the default Excel output. Here&rsquo;s a screenshot of the results:</p>
+
+<p><img src="/img/porting-to-aspnet-core/portability-analyzer-results.png" alt="Portability Analyzer Results" /></p>
+
+<p>This table gives a quick overview of how many API calls are being made from your code that aren&rsquo;t available on the target platform. It&rsquo;s presented in percentages, meaning that if it&rsquo;s 100% all API&rsquo;s are available. Anything lower means that there are API&rsquo;s being called that are not present on that target platform. Note that the tool doesn&rsquo;t care if that API is called once or 20 times in your code.</p>
+
+<p>Of course if something is less than 100%, you&rsquo;ll want to know what API&rsquo;s we&rsquo;re talking about. So we can switch to the Details tab to get an overview of all the API&rsquo;s we are currently using:</p>
+
+<p><img src="/img/porting-to-aspnet-core/portability-analyzer-details.png" alt="Portability Analyzer Details" /></p>
+
+<p>For some usages of API&rsquo;s there even a recommendation as to how you should handle those. For others you&rsquo;ll have to find a solution yourself. In this case we&rsquo;re seeing a few usages of <strong>System.Configuration.ConfigurationManager</strong>. This API is no longer available since the configuration subsystem has been completely revamped and is now based on JSON files, rather than XML files. Most of the usages for <em>Augurk</em> though seem to focus around the usage of the old MSTest V1 test framework, for which a replacement is available in MSTest V2.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>For any port to .NET Core is important to have your dependencies available there as well. Luckily for us this is the case with <em>Augurk</em>, although it took some time before <em>RavenDB</em> was ready to work on .NET Core. Your mileage may vary, but it might be a good idea to get start with a dependency scan as I&rsquo;ve shown here to get an idea of what and what isn&rsquo;t available on .NET Core.</p>
+
+<p>If it&rsquo;s looking like most of your dependencies are available, the next step is to see how your own code will translate to .NET Core by using the Portability Analyzer. Again, if you get very low percentages here you&rsquo;re going to have a hard time porting, but in my experience you&rsquo;ll usually easily get 90% or higher. And of course you&rsquo;ll have to measure something to know what you need to do, and this is a great way to do just that.</p>
+
+<p>In my next post I&rsquo;ll go over the steps to do the actual porting.</p>
+
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/" data-id="d546a88104f6681753f3231c8973da39" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+
+    
+<nav id="article-nav">
+    
+    <a href="https://jmezach.github.io/2018/11/05/porting-from-asp.net-to-asp.net-core-part-1-introduction/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Porting from ASP.NET to ASP.NET Core: Part 1 - Introduction</div>
+    </a>
+    
+
+    
 </nav>
 
+
+</article>
+
+
+<section id="comments">
+    <div id="disqus_thread">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jmezach" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+</section>
+
 
     </section>
 

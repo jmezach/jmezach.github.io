@@ -6,10 +6,21 @@
     <description>Recent content in .Net Development on Jonathan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 05 Nov 2018 21:45:50 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 07 Nov 2018 21:07:49 +0100</lastBuildDate>
     
 	<atom:link href="https://jmezach.github.io/tags/.net-development/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Porting from ASP.NET to ASP.NET Core: Part 2 - Third party dependencies</title>
+      <link>https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/</link>
+      <pubDate>Wed, 07 Nov 2018 21:07:49 +0100</pubDate>
+      
+      <guid>https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/</guid>
+      <description>This post is part of a series:
+ Part 1: Introduction Part 2: Third party dependencies Part 3: Mechanics of porting Part 4: Deployment and packaging options  If you haven&amp;rsquo;t read the first post yet I suggest reading that first since it introduces the app that I&amp;rsquo;m porting and some of the reasons behind it.
+Are my dependencies available on .NET Core? Most software these days consists of not just the code we write, but a lot of third party dependencies as well.</description>
+    </item>
     
     <item>
       <title>Porting from ASP.NET to ASP.NET Core: Part 1 - Introduction</title>
