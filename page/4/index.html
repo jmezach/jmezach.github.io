@@ -27,7 +27,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://jmezach.github.io/" />
-<meta property="og:updated_time" content="2007-08-31T00:00:00&#43;02:00"/>
+<meta property="og:updated_time" content="2007-09-06T00:00:00&#43;02:00"/>
 
     
     
@@ -164,7 +164,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        32
+        33
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -251,6 +251,155 @@
     <section id="main">
     
     
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2007/09/06/silverlight-1.0-rtm/">
+    <h1 class="article-title" itemprop="name">
+        Silverlight 1.0 RTM
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2007-09-06 00:00:00 &#43;0200 CEST" itemprop="datePublished">2007-09-06</time>
+            &middot;
+            273
+            words
+            &middot;
+            2
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/silverlight">Silverlight</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                As my colleague Willem mentioned, Microsoft has finally released Silverlight 1.0. I find it amazing how fast this technology has gone. A year ago nobody heard of Silverlight, and now there is a first release. Although I&rsquo;m quite impressed by the features of Silverlight 1.0, I think that Silverlight 1.1 has far more potential. Having the power of C# inside the browser, that must be awesome. It is going to open up a lot of possibilities for a richer end-user experience, while a lot of the advantages of web applications are still there.
+            </p>
+            <p class="article-more-link">
+                <a href="https://jmezach.github.io/2007/09/06/silverlight-1.0-rtm/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2007/09/06/silverlight-1.0-rtm/" data-id="d825847e34ed4c6fef9987c47d28593c" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2007/09/06/silverlight-1.0-rtm/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
 
 <article class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
@@ -579,6 +728,32 @@ There are 3 services in our project, one business service, one process service a
             
             <li>
                 <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2018/11/23/porting-from-asp.net-to-asp.net-core-part-3-mechanics-of-porting/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2018/11/23/porting-from-asp.net-to-asp.net-core-part-3-mechanics-of-porting/" class="title">Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting</a></p>
+                    <p class="item-date">
+                        <time datetime="2018-11-23 16:28:11 &#43;0100 CET" itemprop="datePublished">2018-11-23</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
                     <a href="https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/" class="thumbnail">
                     
                         <span class="thumbnail-image thumbnail-none"></span>
@@ -681,32 +856,6 @@ There are 3 services in our project, one business service, one process service a
                 </div>
             </li>
             
-            <li>
-                <div class="item-thumbnail">
-                    <a href="https://jmezach.github.io/2017/10/29/having-fun-with-the-.net-core-generic-host/" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
-                        .NET
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="https://jmezach.github.io/2017/10/29/having-fun-with-the-.net-core-generic-host/" class="title">Having Fun with the .NET Core Generic Host</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-10-29 13:07:00 &#43;0200 &#43;0200" itemprop="datePublished">2017-10-29</time>
-                    </p>
-                </div>
-            </li>
-            
         </ul>
     </div>
 </div>
@@ -725,7 +874,7 @@ There are 3 services in our project, one business service, one process service a
                 <a class="category-list-link" href="https://jmezach.github.io/categories/.net">
                     .net
                 </a>
-                <span class="category-list-count">29</span>
+                <span class="category-list-count">30</span>
             </li>
             
             <li class="category-list-item">
@@ -765,7 +914,7 @@ There are 3 services in our project, one business service, one process service a
                 <a class="category-list-link" href="https://jmezach.github.io/categories/series">
                     series
                 </a>
-                <span class="category-list-count">2</span>
+                <span class="category-list-count">3</span>
             </li>
             
             <li class="category-list-item">
@@ -798,7 +947,7 @@ There are 3 services in our project, one business service, one process service a
                 <a class="category-list-link" href="https://jmezach.github.io/tags/.net">
                     .net
                 </a>
-                <span class="category-list-count">24</span>
+                <span class="category-list-count">25</span>
             </li>
             
             <li class="category-list-item">
@@ -806,7 +955,7 @@ There are 3 services in our project, one business service, one process service a
                 <a class="category-list-link" href="https://jmezach.github.io/tags/.net-core">
                     .net-core
                 </a>
-                <span class="category-list-count">12</span>
+                <span class="category-list-count">13</span>
             </li>
             
             <li class="category-list-item">
@@ -814,7 +963,7 @@ There are 3 services in our project, one business service, one process service a
                 <a class="category-list-link" href="https://jmezach.github.io/tags/.net-development">
                     .net-development
                 </a>
-                <span class="category-list-count">5</span>
+                <span class="category-list-count">6</span>
             </li>
             
             <li class="category-list-item">
@@ -918,7 +1067,7 @@ There are 3 services in our project, one business service, one process service a
                 <a class="category-list-link" href="https://jmezach.github.io/tags/open-source">
                     open-source
                 </a>
-                <span class="category-list-count">4</span>
+                <span class="category-list-count">5</span>
             </li>
             
             <li class="category-list-item">
@@ -934,7 +1083,7 @@ There are 3 services in our project, one business service, one process service a
                 <a class="category-list-link" href="https://jmezach.github.io/tags/porting">
                     porting
                 </a>
-                <span class="category-list-count">2</span>
+                <span class="category-list-count">3</span>
             </li>
             
             <li class="category-list-item">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <title>Posts &middot; Jonathan&#39;s Blog</title>
+    <title>Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting &middot; Jonathan&#39;s Blog</title>
     <meta name="generator" content="Hugo 0.50" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,10 +10,7 @@
       <meta name="description" content="">
     
     
-      <link href="https://jmezach.github.io/post/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan&#39;s Blog" />
-      <link href="https://jmezach.github.io/post/index.xml" rel="feed" type="application/rss+xml" title="Jonathan&#39;s Blog" />
-    
-    <link rel="canonical" href="https://jmezach.github.io/post/"/>
+    <link rel="canonical" href="https://jmezach.github.io/2018/11/23/porting-from-asp.net-to-asp.net-core-part-3-mechanics-of-porting/"/>
     <link rel="icon" href="https://jmezach.github.io/favicon.ico">
     <link rel="apple-touch-icon" href="https://jmezach.github.io/apple-touch-icon.png"/>
     <link rel="stylesheet" href="https://jmezach.github.io/css/style.css">
@@ -23,21 +20,32 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Posts" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://jmezach.github.io/post/" />
-<meta property="og:updated_time" content="2010-01-25T00:00:00&#43;02:00"/>
+    <meta property="og:title" content="Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting" />
+<meta property="og:description" content="This post is part of a series:
+ Part 1: Introduction Part 2: Third party dependencies Part 3: Mechanics of porting Part 4: Deployment and packaging options  If you haven&rsquo;t read any of the previous posts I recommend you do this now to get some context that I&rsquo;ll be referring to in this post. If you have, continue on with the nitty gritty details of porting an app to ASP." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jmezach.github.io/2018/11/23/porting-from-asp.net-to-asp.net-core-part-3-mechanics-of-porting/" /><meta property="article:published_time" content="2018-11-23T16:28:11&#43;01:00"/>
+<meta property="article:modified_time" content="2018-11-23T16:28:11&#43;01:00"/>
 
     
     
-<meta itemprop="name" content="Posts">
-<meta itemprop="description" content="">
+<meta itemprop="name" content="Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting">
+<meta itemprop="description" content="This post is part of a series:
+ Part 1: Introduction Part 2: Third party dependencies Part 3: Mechanics of porting Part 4: Deployment and packaging options  If you haven&rsquo;t read any of the previous posts I recommend you do this now to get some context that I&rsquo;ll be referring to in this post. If you have, continue on with the nitty gritty details of porting an app to ASP.">
 
+
+<meta itemprop="datePublished" content="2018-11-23T16:28:11&#43;01:00" />
+<meta itemprop="dateModified" content="2018-11-23T16:28:11&#43;01:00" />
+<meta itemprop="wordCount" content="1893">
+
+
+
+<meta itemprop="keywords" content=".NET,.NET Core,.NET Development,porting,open source," />
 
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting"/>
+<meta name="twitter:description" content="This post is part of a series:
+ Part 1: Introduction Part 2: Third party dependencies Part 3: Mechanics of porting Part 4: Deployment and packaging options  If you haven&rsquo;t read any of the previous posts I recommend you do this now to get some context that I&rsquo;ll be referring to in this post. If you have, continue on with the nitty gritty details of porting an app to ASP."/>
 <meta name="twitter:site" content="@jmezach"/>
 
     
@@ -250,254 +258,321 @@
 
     <section id="main">
     
-    
-    
-    
-    <section class="archives-wrap">
-        <div class="archive-category-wrap">
-            <span class="archive-category">Posts</span>
-        </div>
-        <div class="archives">
-            
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2010/01/25/throttling-workflow-services/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2010/01/25/throttling-workflow-services/">Throttling workflow services</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2010-01-25 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2010-01-25</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2009/11/18/creating-a-workflow-image-from-a-workflow-service/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2009/11/18/creating-a-workflow-image-from-a-workflow-service/">Creating a workflow image from a workflow service</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2009-11-18 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2009-11-18</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2009/03/02/even-better-message-based-correlation/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2009/03/02/even-better-message-based-correlation/">Even better message based correlation</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2009-03-02 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2009-03-02</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2009/02/24/message-based-correlation-with-wf-wcf-in-.net-3.5/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2009/02/24/message-based-correlation-with-wf-wcf-in-.net-3.5/">Message based correlation with WF/WCF in .NET 3.5</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2009-02-24 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2009-02-24</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2008/06/19/workflows-mysteriously-being-aborted/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2008/06/19/workflows-mysteriously-being-aborted/">Workflows mysteriously being aborted</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2008-06-19 00:00:00 &#43;0200 CEST" itemprop="datePublished">2008-06-19</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2008/06/10/service-pack-1-for-.net-fixes-xml-serialization/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2008/06/10/service-pack-1-for-.net-fixes-xml-serialization/">Service Pack 1 for .NET fixes XML serialization?</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2008-06-10 00:00:00 &#43;0200 CEST" itemprop="datePublished">2008-06-10</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2008/05/23/cool-tools-netmassdownloader/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2008/05/23/cool-tools-netmassdownloader/">Cool tools: NetMassDownloader</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2008-05-23 00:00:00 &#43;0200 CEST" itemprop="datePublished">2008-05-23</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2008/04/30/issue-fixed/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2008/04/30/issue-fixed/">Issue fixed</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2008-04-30 00:00:00 &#43;0200 CEST" itemprop="datePublished">2008-04-30</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2008/04/28/state-machine-workflows/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2008/04/28/state-machine-workflows/">State machine workflows</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2008-04-28 00:00:00 &#43;0200 CEST" itemprop="datePublished">2008-04-28</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-                <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <div class="archive-article-thumbnail">
-            
-            <a href="https://jmezach.github.io/2007/09/19/wf-required-bindable-properties/" class="thumbnail">
-                <span class="thumbnail-image thumbnail-none"></span>
-            </a>
-            
-        </div>
-        <header class="archive-article-header">
-            <h1 itemprop="name">
-            <a class="archive-article-title" href="https://jmezach.github.io/2007/09/19/wf-required-bindable-properties/">WF: Required bindable properties</a>
-            </h1>
-            <div class="archive-article-date">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2007-09-19 00:00:00 &#43;0200 CEST" itemprop="datePublished">2007-09-19</time>
-            </div>
-        </header>
-    </div>
-</article>
- 
-            
-        </div>
-    </section>
-    <nav id="page-nav">
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
 
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2018/11/23/porting-from-asp.net-to-asp.net-core-part-3-mechanics-of-porting/">
+    <h1 class="article-title" itemprop="name">
+        Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2018-11-23 16:28:11 &#43;0100 CET" itemprop="datePublished">2018-11-23</time>
+            &middot;
+            1893
+            words
+            &middot;
+            9
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/series">Series</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-core">.NET Core</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-development">.NET Development</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/porting">porting</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/open-source">open source</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            
+
+<p>This post is part of a series:</p>
+
+<ul>
+<li><a href="/2018/11/05/porting-from-asp.net-to-asp.net-core-part-1-introduction/">Part 1: Introduction</a></li>
+<li><a href="/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/">Part 2: Third party dependencies</a></li>
+<li><a href="/2018/11/23/porting-from-asp.net-to-asp.net-core-part-3-mechanics-of-porting/">Part 3: Mechanics of porting</a></li>
+<li>Part 4: Deployment and packaging options</li>
+</ul>
+
+<p>If you haven&rsquo;t read any of the previous posts I recommend you do this now to get some context that I&rsquo;ll be referring to in this post. If you have, continue on with the nitty gritty details of porting an app to ASP.NET Core.</p>
+
+<h2 id="getting-our-house-in-order">Getting our house in order</h2>
+
+<p>So with our third party dependencies available on .NET Core it&rsquo;s time to start actually porting the code over. Before you do that though, make sure you&rsquo;re using a version control system (preferably Git) and create a branch before even starting porting. For many this may seem obvious, but I&rsquo;ve seen this go wrong too many times. In the case of <em>Augurk</em> I&rsquo;m working on the <a href="https://github.com/Augurk/Augurk/tree/feature/net-core-port">feature/net-core-port</a> branch.</p>
+
+<p>Before I started porting the <em>Augurk</em> solution consisted of 5 projects:</p>
+
+<ul>
+<li>Augurk, the ASP.NET host application containing the HTML/CSS/JavaScript for the frontend</li>
+<li>Augurk.Api, a class library containing the WebAPI controllers, etc.</li>
+<li>Augurk.Entities, a class library defining the shape of the objects being communicated through the API</li>
+<li>Augurk.Specifications, an MSTest project containing the <em>Gherkin</em> feature files describing the functionality of Augurk itself (but no automation 😟)</li>
+<li>Augurk.Test, an MSTest project containing a couple of unit tests</li>
+</ul>
+
+<p>My first step was to <a href="https://docs.microsoft.com/en-us/nuget/reference/migrate-packages-config-to-package-reference">migrate from packages.config to PackageReference</a> for all of those projects except the ASP.NET project. I did this because .NET Core project files use PackageReference exclusively anyway and it would make it easier to replace the entire project file later on. It&rsquo;s also a painless experience that requires just a few clicks. Unfortunately it does not currently work for ASP.NET projects because of <a href="https://github.com/NuGet/Home/issues/5877">various limitations</a> of that project system. Since that project would undergo quite a bit more changes I decided to just leave it as it was. After this change I made sure that everything still compiled and tests would still run successfully (which wasn&rsquo;t the case at first).</p>
+
+<p>Next step was to merge the Api project back into the main ASP.NET project. I decided to do this because I knew that I would eventually move all of the client side stuff (the AngularJS app) into the <strong>wwwroot</strong> folder so I would have a clean separation of the frontend and backend logic anyway. And it would mean I would have one less project file to deal with. One interesting thing I noticed while doing this is that if you move the files inside Visual Studio it will just make a copy and delete the original file. That means I would also lose the version control history of those files which I didn&rsquo;t want. So I used the good old git command line to move files from their original location to the new location (git mv). Once that was done I could just include the files into the Augurk project and remove the Augurk.Api project. Again I made sure that everything was still compiling and tests were green.</p>
+
+<h2 id="porting-the-code">Porting the code</h2>
+
+<p>Now it&rsquo;s time to actually move the code to .NET Core. To do this I basically removed all the project files and replaced them with new ones using dotnet new on the commandline:</p>
+
+<ul>
+<li>Augurk -&gt; dotnet new webapi</li>
+<li>Augurk.Entities -&gt; dotnet new classlib</li>
+<li>Augurk.Specifications -&gt; dotnet new mstest</li>
+<li>Augurk.Test -&gt; dotnet new mstest</li>
+</ul>
+
+<p>This step actually resulted in the removal of a lot of code as can be seen in <a href="https://github.com/Augurk/Augurk/commit/909a1f6e5fa8860369dd499fc184630e8b455f19">this commit</a>. The nice thing about the new project types is that they are a lot smaller by removing all kinds of boilerplate. We no longer have to list all the C# files that we want to include in the project, instead every C# file is included by default (although you can exclude files). Personally I think this combined with PackageReference can be a big reason for moving to .NET Core. Just think of the implications this has on developer productivity, especially with large teams working on the same codebase.</p>
+
+<p>Of course after doing this it didn&rsquo;t compile immediately (that would have been nice though). But after adding back the project references that got lost, as well as the NuGet packages things were looking a lot better already. There&rsquo;s a couple of things to point out though:</p>
+
+<h4 id="assemblyinfo-cs">AssemblyInfo.cs</h4>
+
+<p>.NET Framework projects have an <strong>AssemblyInfo.cs</strong> file that&rsquo;s included in the project. The information that&rsquo;s there can now be set in the project file (.csproj). However, if you&rsquo;ve kept the file around as would be the case in such a migration, you get a compile error stating that there are duplicate attributes. Simply removing the <strong>Properties</strong> folder (that contains the AssemblyInfo.cs file) should fix the build errors, but you might want to copy the information from there into your project file. Have a look at this <a href="https://github.com/dotnet/sdk/issues/2">GitHub issue</a> that contains a mapping between the two.</p>
+
+<h4 id="just-controllers">Just controllers</h4>
+
+<p>ASP.NET Core no longer has a distinction between an MVC and API controller class. Instead the base class for either one of them is simply called Controller so you&rsquo;ll need to change that in your code everywhere. Additionally you&rsquo;ll probably have a using of <strong>System.Web.Http</strong> which will need to be replaced with <strong>Microsoft.AspNetCore.Mvc</strong>.</p>
+
+<h4 id="error-handling">Error handling</h4>
+
+<p>We had used <strong>Request.CreateResponse()</strong> and <strong>Request.CreateErrorResponse()</strong> in our code, but those are no longer available. There is a <a href="https://docs.microsoft.com/en-us/aspnet/core/migration/webapi?view=aspnetcore-2.1#compatibility-shim">compatibility shim</a> available that should allow you to continue using these, but since they are <a href="https://github.com/aspnet/Announcements/issues/319">going away in ASP.NET Core 3.0</a> we might as well fix these now.</p>
+
+<p>It is recommended to use the methods on <strong>Controller</strong> such as <strong>BadRequest()</strong> or <strong>Created()</strong>. But these methods do not return an <strong>HttpResponseMessage</strong> but an <strong>ActionResult</strong> instead, so you&rsquo;ll also need to change the return type of those operations. The good thing is that these changes should make the API better documented through things such as Swagger.</p>
+
+<h4 id="routing">Routing</h4>
+
+<p>The <strong>RoutePrefix</strong> attribute is gone. Instead, just put a <strong>Route</strong> attribute on the controller and it basically acts as a <strong>RoutePrefix</strong>.</p>
+
+<h4 id="ravendb">RavenDB</h4>
+
+<p>I also had to make a couple of changes in how we used RavenDB since we went from version 3.0 to 4.1 which included a couple of breaking changes. Luckily there was <a href="https://ravendb.net/docs/article-page/4.1/csharp/migration/client-api/introduction">documentation available</a> about how to make these changes, but there are a couple of loose ends that we&rsquo;ll need to look into to see what the appropriate replacement is.</p>
+
+<h2 id="booting-up-the-frontend">Booting up the frontend</h2>
+
+<p>Once I managed to compile the application and make it run I had to make a couple of adjustments in order for our AngularJS frontend to work. First of all I needed a way to let our ASP.NET Core app serve up the static files. Its perfectly capable of doing this, but there are a couple of different ways to do this. For example, you can add this to the <strong>Configure</strong> function inside your <strong>Startup</strong> class:</p>
+
+<pre><code class="language-csharp">app.UseStaticFiles()
+</code></pre>
+
+<p>It seemed like that was all I needed, but when I did this I still got a 404 Not Found error when navigating to the application. That&rsquo;s weird, because I did have an index.html inside my wwwroot folder. After searching for it, it turned out I had to use something else:</p>
+
+<pre><code class="language-csharp">app.UseFileServer()
+</code></pre>
+
+<p>Internally this also calls <strong>UseStaticFiles()</strong> but it also sets up defaults so that going to the root will return the content of index.html (if there is such a file). There&rsquo;s a lot of middleware available that can do all kinds of things, but it isn&rsquo;t always immediately obvious which one you should use in which situation.</p>
+
+<h2 id="making-it-run">Making it run</h2>
+
+<p>With these changes in place I was able to compile and run <em>Augurk</em> on Windows and everything seemed to work. I didn&rsquo;t have any data in it yet though, so I used our existing command line tool to upload the documentation (written in <em>Gherkin</em> feature files obviously) into the new version to see if it really worked. Interestingly that didn&rsquo;t quite as I expected. I got <strong>NullReferenceException</strong>&rsquo;s while doing the upload. Initially that didn&rsquo;t make much sense to me, so I started debugging. The controller operation that handles the upload of the feature files looks like this:</p>
+
+<pre><code class="language-csharp">[Route(&quot;api/v2/products/{productName}/groups/{groupName}/features&quot;)]
+public class FeatureV2Controller
+{
+    ...
+    [Route(&quot;{title}/versions/{version}&quot;)]
+    [HttpPost]
+    public async Task&lt;ActionResult&lt;Feature&gt;&gt; PostAsync(Feature feature, string productName, string groupName, string title, string version)
+    {
+        if (!feature.Title.Equals(title, StringComparison.OrdinalIgnoreCase))
+        ...
+    }
+    ...
+}
+</code></pre>
+
+<p>While debugging I noticed that the <em>feature</em> parameter was <em>null</em> here. How could that be, since it worked fine before and I was sure that I didn&rsquo;t change anything in the commandline tool. Turns out that there was a change in how ASP.NET Core WebAPI handles these situations. As you can see the controller operation has quite a few parameters, one complex type and a couple of string parameters. In previous version of WebAPI it just assumed that since all the other parameters are coming from the route template (the combination of the <strong>RoutePrefix</strong> and <strong>Route</strong> attributes, although that distinction is gone in ASP.NET Core) it must be the <em>feature</em> parameter that is in the body. With <strong>ASP.NET Core</strong> this is no longer assumed, so we must be explicit about the fact that we want the feature to come from the body, which you do by adding the <em>FromBody</em> attribute to the parameter. There is an entire <a href="https://andrewlock.net/model-binding-json-posts-in-asp-net-core/">blogpost</a> by Andrew Lock on this subject, so refer to that if you want to have the details.</p>
+
+<p>After adding in the missing attribute, everything worked again. We had a couple of other controller operations that relied on the same assumption, so I reviewed them and made the necessary changes accordingly. Definitely something to watch out for, since it wasn&rsquo;t immediately obvious what was happening.</p>
+
+<h2 id="cross-platform">Cross-platform</h2>
+
+<p>Of course, one of the reasons for doing this porting effort in the first place was to make <em>Augurk</em> available cross-platform. So once I had everything working on <em>Windows</em> I committed the changes (actually I used several commits in the process) and cloned the repository on my Mac (I was running in Parallels before). I ran <strong>dotnet run</strong> and just like that everything was working just fine, natively on my Mac. That&rsquo;s pretty awesome.</p>
+
+<p>I also noticed that now that <em>Augurk</em> is running on .NET Core it&rsquo;s also significantly faster than it was on .NET Framework. Obviously this also stems from the fact that I&rsquo;m now running it natively on my Mac rather than virtualized on Windows, but even on Windows it&rsquo;s faster now. Changes made in RavenDB also help out with this as well.</p>
+
+<h2 id="looking-forward">Looking forward</h2>
+
+<p>Now that the hard part is done and it&rsquo;s running on .NET Core we can look at some further enhancements that we can make. First of all I&rsquo;ve already looking into using dependency injection. We were using what I&rsquo;d like to call poor-mans dependency injection where we&rsquo;d have a public constructor for each class that calls into an internal constructor with the concrete dependencies that should be used at runtime. During tests we could use the internal constructor to replace dependencies thanks to the <strong>InternalsVisileTo</strong> attribute. While that worked, it makes sense to use a proper dependency injection mechanism now that <strong>ASP.NET Core</strong> has one built-in. I&rsquo;ve already started the work on that in a separate branch.</p>
+
+<p>We&rsquo;ve also looked into further changes we want to make as part of the <em>Augurk 3.0</em> release which will be the first version that will run cross-platform. One of the important things there is to have a look at the deployment options which I&rsquo;ll cover in my next post.</p>
+
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2018/11/23/porting-from-asp.net-to-asp.net-core-part-3-mechanics-of-porting/" data-id="eaca79dea4348f39e54e9b1c6035ab61" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
     
-        <a class="extend prev" rel="prev" href="https://jmezach.github.io/post/page/2/">
-            « Prev
-        </a>
-    
-    
-        <a class="extend next" rel="next" href="https://jmezach.github.io/post/page/4/">
-            Next »
-        </a>
+    <a href="https://jmezach.github.io/2018/11/23/porting-from-asp.net-to-asp.net-core-part-3-mechanics-of-porting/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
     
 
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+
+    
+<nav id="article-nav">
+    
+    <a href="https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Porting from ASP.NET to ASP.NET Core: Part 2 - Third party dependencies</div>
+    </a>
+    
+
+    
 </nav>
 
+
+</article>
+
+
+<section id="comments">
+    <div id="disqus_thread">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jmezach" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+</section>
+
 
     </section>
 

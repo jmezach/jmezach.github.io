@@ -6,10 +6,20 @@
     <description>Recent content in Porting on Jonathan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Nov 2018 21:07:49 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 23 Nov 2018 16:28:11 +0100</lastBuildDate>
     
 	<atom:link href="https://jmezach.github.io/tags/porting/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting</title>
+      <link>https://jmezach.github.io/2018/11/23/porting-from-asp.net-to-asp.net-core-part-3-mechanics-of-porting/</link>
+      <pubDate>Fri, 23 Nov 2018 16:28:11 +0100</pubDate>
+      
+      <guid>https://jmezach.github.io/2018/11/23/porting-from-asp.net-to-asp.net-core-part-3-mechanics-of-porting/</guid>
+      <description>This post is part of a series:
+ Part 1: Introduction Part 2: Third party dependencies Part 3: Mechanics of porting Part 4: Deployment and packaging options  If you haven&amp;rsquo;t read any of the previous posts I recommend you do this now to get some context that I&amp;rsquo;ll be referring to in this post. If you have, continue on with the nitty gritty details of porting an app to ASP.</description>
+    </item>
     
     <item>
       <title>Porting from ASP.NET to ASP.NET Core: Part 2 - Third party dependencies</title>

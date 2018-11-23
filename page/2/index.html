@@ -27,7 +27,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://jmezach.github.io/" />
-<meta property="og:updated_time" content="2016-05-24T00:00:00&#43;02:00"/>
+<meta property="og:updated_time" content="2016-11-18T00:00:00&#43;02:00"/>
 
     
     
@@ -164,7 +164,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        32
+        33
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -251,6 +251,160 @@
     <section id="main">
     
     
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/">
+    <h1 class="article-title" itemprop="name">
+        .NET Core versioning
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2016-11-18 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2016-11-18</time>
+            &middot;
+            1706
+            words
+            &middot;
+            9
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-core">.NET Core</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://jmezach.github.io/tags/.net-development">.NET Development</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                Unless you have been living underneath a rock you’ve probably noticed that yesterday, during Microsoft’s Connect() virtual event, .NET Core 1.1 was released. In addition ASP.NET Core 1.1 and Entity Framework 1.1 have been released. You can read up on the announcements in the following posts:
+ .NET Core 1.1 - https://blogs.msdn.microsoft.com/dotnet/2016/11/16/announcing-net-core-1-1/ ASP.NET Core 1.1 - https://blogs.msdn.microsoft.com/dotnet/2016/11/16/announcing-net-core-1-1/ EF Core 1.1 - https://blogs.msdn.microsoft.com/dotnet/2016/11/16/announcing-entity-framework-core-1-1/  At first sight this doesn&rsquo;t seem like much of a deal.
+            </p>
+            <p class="article-more-link">
+                <a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://jmezach.github.io/2016/11/18/.net-core-versioning/" data-id="23368df0f920a5fa3a9733a0ab2f3458" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://jmezach.github.io/2016/11/18/.net-core-versioning/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
 
 <article class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
@@ -1652,159 +1806,6 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
     </div>
 </article>
 
-<article class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        </a>
-
-        <header class="article-header">
-    <a href="https://jmezach.github.io/2010/01/25/throttling-workflow-services/">
-    <h1 class="article-title" itemprop="name">
-        Throttling workflow services
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2010-01-25 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2010-01-25</time>
-            &middot;
-            998
-            words
-            &middot;
-            5
-            minute read
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="https://jmezach.github.io/categories/.net">.NET</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="https://jmezach.github.io/tags/wcf">wcf</a>
-                &middot;
-                
-                
-                <a class="article-category-link" href="https://jmezach.github.io/tags/wf">wf</a>
-                &middot;
-                
-                
-                <a class="article-category-link" href="https://jmezach.github.io/tags/.net">.NET</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-        <div class="article-entry" itemprop="articleBody">
-            <p>
-                For the project I’m currently working on I did some research into the throttling of workflow services using WCF and WF with .NET 3.5. We didn’t have much experience with throttling of services, let alone workflow services so we decided to some simple tests to determine the possibilities and effects of throttling. Before diving into the technical details of how to do throttling I want to look at the scenario we had.
-            </p>
-            <p class="article-more-link">
-                <a href="https://jmezach.github.io/2010/01/25/throttling-workflow-services/">
-                    Read more
-                </a>
-            </p>
-        </div>
-        <footer class="article-footer">
-    <a data-url="https://jmezach.github.io/2010/01/25/throttling-workflow-services/" data-id="95b1e3275d2a02d7a2c259d4b5d64f82" class="article-share-link">
-        <i class="fa fa-share"></i>
-        Share
-    </a>
-    
-    <a href="https://jmezach.github.io/2010/01/25/throttling-workflow-services/#disqus_thread" class="article-comment-link">
-        Comments
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-    </div>
-</article>
-
 
 <nav id="page-nav">
 
@@ -1833,6 +1834,32 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://jmezach.github.io/2018/11/23/porting-from-asp.net-to-asp.net-core-part-3-mechanics-of-porting/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
+                        .NET
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://jmezach.github.io/2018/11/23/porting-from-asp.net-to-asp.net-core-part-3-mechanics-of-porting/" class="title">Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting</a></p>
+                    <p class="item-date">
+                        <time datetime="2018-11-23 16:28:11 &#43;0100 CET" itemprop="datePublished">2018-11-23</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1938,32 +1965,6 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 </div>
             </li>
             
-            <li>
-                <div class="item-thumbnail">
-                    <a href="https://jmezach.github.io/2017/10/29/having-fun-with-the-.net-core-generic-host/" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="https://jmezach.github.io/categories/.net">
-                        .NET
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="https://jmezach.github.io/2017/10/29/having-fun-with-the-.net-core-generic-host/" class="title">Having Fun with the .NET Core Generic Host</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-10-29 13:07:00 &#43;0200 &#43;0200" itemprop="datePublished">2017-10-29</time>
-                    </p>
-                </div>
-            </li>
-            
         </ul>
     </div>
 </div>
@@ -1982,7 +1983,7 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 <a class="category-list-link" href="https://jmezach.github.io/categories/.net">
                     .net
                 </a>
-                <span class="category-list-count">29</span>
+                <span class="category-list-count">30</span>
             </li>
             
             <li class="category-list-item">
@@ -2022,7 +2023,7 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 <a class="category-list-link" href="https://jmezach.github.io/categories/series">
                     series
                 </a>
-                <span class="category-list-count">2</span>
+                <span class="category-list-count">3</span>
             </li>
             
             <li class="category-list-item">
@@ -2055,7 +2056,7 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 <a class="category-list-link" href="https://jmezach.github.io/tags/.net">
                     .net
                 </a>
-                <span class="category-list-count">24</span>
+                <span class="category-list-count">25</span>
             </li>
             
             <li class="category-list-item">
@@ -2063,7 +2064,7 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 <a class="category-list-link" href="https://jmezach.github.io/tags/.net-core">
                     .net-core
                 </a>
-                <span class="category-list-count">12</span>
+                <span class="category-list-count">13</span>
             </li>
             
             <li class="category-list-item">
@@ -2071,7 +2072,7 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 <a class="category-list-link" href="https://jmezach.github.io/tags/.net-development">
                     .net-development
                 </a>
-                <span class="category-list-count">5</span>
+                <span class="category-list-count">6</span>
             </li>
             
             <li class="category-list-item">
@@ -2175,7 +2176,7 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 <a class="category-list-link" href="https://jmezach.github.io/tags/open-source">
                     open-source
                 </a>
-                <span class="category-list-count">4</span>
+                <span class="category-list-count">5</span>
             </li>
             
             <li class="category-list-item">
@@ -2191,7 +2192,7 @@ Now that RC2 is out there I guess a lot more people will be checking it out and 
                 <a class="category-list-link" href="https://jmezach.github.io/tags/porting">
                     porting
                 </a>
-                <span class="category-list-count">2</span>
+                <span class="category-list-count">3</span>
             </li>
             
             <li class="category-list-item">
