@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>.Net Standard on Jonathan&#39;s Blog</title>
+    <title>.NET Standard on Jonathan&#39;s Blog</title>
     <link>https://jmezach.github.io/tags/.net-standard/</link>
-    <description>Recent content in .Net Standard on Jonathan&#39;s Blog</description>
+    <description>Recent content in .NET Standard on Jonathan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 24 May 2016 00:00:00 +0200</lastBuildDate>
@@ -13,12 +13,12 @@
     
     <item>
       <title>.NET Platform Standard and the magic of &#34;imports&#34;</title>
-      <link>https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/</link>
+      <link>https://jmezach.github.io/post/dotnet-platform-standard-and-the-magic-of-imports/</link>
       <pubDate>Tue, 24 May 2016 00:00:00 +0200</pubDate>
       
-      <guid>https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/</guid>
+      <guid>https://jmezach.github.io/post/dotnet-platform-standard-and-the-magic-of-imports/</guid>
       <description>In case you missed it, .NET Core RC2 has been released by Microsoft last week along with ASP.NET Core RC2 and a preview of the tooling. Lots of exciting new stuff that I highly encourage checking out.
-Now that RC2 is out there I guess a lot more people will be checking it out and playing with it and there’s one topic that seems to confuse a lot of people.</description>
+Now that RC2 is out there I guess a lot more people will be checking it out and playing with it and there’s one topic that seems to confuse a lot of people. So I thought I’d write a blog about it to clear things up a bit.</description>
     </item>
     
   </channel>

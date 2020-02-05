@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Jonathan&#39;s Blog</title>
@@ -6,13 +6,22 @@
     <description>Recent content in Categories on Jonathan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 23 Nov 2018 16:28:11 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 05 Feb 2020 13:49:34 +0100</lastBuildDate>
     
 	<atom:link href="https://jmezach.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>.Net</title>
+      <title>Azure</title>
+      <link>https://jmezach.github.io/categories/azure/</link>
+      <pubDate>Wed, 05 Feb 2020 13:49:34 +0100</pubDate>
+      
+      <guid>https://jmezach.github.io/categories/azure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>.NET</title>
       <link>https://jmezach.github.io/categories/.net/</link>
       <pubDate>Fri, 23 Nov 2018 16:28:11 +0100</pubDate>
       
@@ -21,11 +30,20 @@
     </item>
     
     <item>
-      <title>Cloud</title>
-      <link>https://jmezach.github.io/categories/cloud/</link>
-      <pubDate>Sat, 30 Jun 2012 00:00:00 +0200</pubDate>
+      <title>Series</title>
+      <link>https://jmezach.github.io/categories/series/</link>
+      <pubDate>Fri, 23 Nov 2018 16:28:11 +0100</pubDate>
       
-      <guid>https://jmezach.github.io/categories/cloud/</guid>
+      <guid>https://jmezach.github.io/categories/series/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>https://jmezach.github.io/categories/security/</link>
+      <pubDate>Fri, 02 Nov 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://jmezach.github.io/categories/security/</guid>
       <description></description>
     </item>
     
@@ -48,20 +66,11 @@
     </item>
     
     <item>
-      <title>Security</title>
-      <link>https://jmezach.github.io/categories/security/</link>
-      <pubDate>Fri, 02 Nov 2018 00:00:00 +0200</pubDate>
+      <title>Cloud</title>
+      <link>https://jmezach.github.io/categories/cloud/</link>
+      <pubDate>Sat, 30 Jun 2012 00:00:00 +0200</pubDate>
       
-      <guid>https://jmezach.github.io/categories/security/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Series</title>
-      <link>https://jmezach.github.io/categories/series/</link>
-      <pubDate>Fri, 23 Nov 2018 16:28:11 +0100</pubDate>
-      
-      <guid>https://jmezach.github.io/categories/series/</guid>
+      <guid>https://jmezach.github.io/categories/cloud/</guid>
       <description></description>
     </item>
     

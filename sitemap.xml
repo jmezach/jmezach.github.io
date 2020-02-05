@@ -1,439 +1,579 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://jmezach.github.io/2018/11/23/porting-from-asp.net-to-asp.net-core-part-3-mechanics-of-porting/</loc>
-    <lastmod>2018-11-23T16:28:11+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/</loc>
-    <lastmod>2018-11-07T21:07:49+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2018/11/05/porting-from-asp.net-to-asp.net-core-part-1-introduction/</loc>
-    <lastmod>2018-11-05T21:45:50+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2018/11/02/infosecurity-conference/</loc>
-    <lastmod>2018-11-02T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2018/06/14/.net-core-hackathon-2018/</loc>
-    <lastmod>2018-06-14T20:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2017/10/29/having-fun-with-the-.net-core-generic-host/</loc>
-    <lastmod>2017-10-29T13:07:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/about/</loc>
-    <lastmod>2017-05-19T21:49:20+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2017/05/13/.net-core-and-.net-standard-2.0/</loc>
-    <lastmod>2017-05-13T20:33:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/</loc>
-    <lastmod>2017-04-15T15:36:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2017/02/07/migrating-existing-.net-projects-to-sdk-based-projects/</loc>
-    <lastmod>2017-02-07T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2016/12/05/sharing-code-across-.net-platforms-with-.net-standard/</loc>
-    <lastmod>2016-12-05T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2016/11/18/.net-core-versioning/</loc>
-    <lastmod>2016-11-18T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2016/05/24/.net-platform-standard-and-the-magic-of-imports/</loc>
-    <lastmod>2016-05-24T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2016/04/22/developing-for-.net-core/</loc>
-    <lastmod>2016-04-22T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2016/04/18/creating-a-vsts-dashboard-widget/</loc>
-    <lastmod>2016-04-18T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2016/04/02/.net-core-at-build-2016/</loc>
-    <lastmod>2016-04-02T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2015/07/03/using-invoke-sqlcmd-in-tfs-build-2015/</loc>
-    <lastmod>2015-07-03T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2012/06/30/some-thoughts-on-ms-teched-europe-2012/</loc>
-    <lastmod>2012-06-30T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2011/05/16/extension-methods-and-generic-type-constraints/</loc>
-    <lastmod>2011-05-16T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2011/03/10/data-binding-in-code-using-reactive-extensions/</loc>
-    <lastmod>2011-03-10T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2010/11/04/reactive-extensions/</loc>
-    <lastmod>2010-11-04T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2010/01/25/throttling-workflow-services/</loc>
-    <lastmod>2010-01-25T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2009/11/18/creating-a-workflow-image-from-a-workflow-service/</loc>
-    <lastmod>2009-11-18T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2009/03/02/even-better-message-based-correlation/</loc>
-    <lastmod>2009-03-02T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2009/02/24/message-based-correlation-with-wf-wcf-in-.net-3.5/</loc>
-    <lastmod>2009-02-24T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2008/06/19/workflows-mysteriously-being-aborted/</loc>
-    <lastmod>2008-06-19T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2008/06/10/service-pack-1-for-.net-fixes-xml-serialization/</loc>
-    <lastmod>2008-06-10T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2008/05/23/cool-tools-netmassdownloader/</loc>
-    <lastmod>2008-05-23T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2008/04/30/issue-fixed/</loc>
-    <lastmod>2008-04-30T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2008/04/28/state-machine-workflows/</loc>
-    <lastmod>2008-04-28T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2007/09/19/wf-required-bindable-properties/</loc>
-    <lastmod>2007-09-19T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2007/09/06/silverlight-1.0-rtm/</loc>
-    <lastmod>2007-09-06T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2007/08/31/more-on-this-wcf-issue/</loc>
-    <lastmod>2007-08-31T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/2007/08/15/possible-wcf-serialization-issue/</loc>
-    <lastmod>2007-08-15T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jmezach.github.io/tags/.net/</loc>
-    <lastmod>2018-11-23T16:28:11+01:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2020-02-05T13:49:34+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/categories/azure/</loc>
+    <lastmod>2020-02-05T13:49:34+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/azure-functions/</loc>
+    <lastmod>2020-02-05T13:49:34+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/building-a-pull-request-bot-part1/</loc>
+    <lastmod>2020-02-05T13:49:34+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/categories/</loc>
+    <lastmod>2020-02-05T13:49:34+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/devops/</loc>
+    <lastmod>2020-02-05T13:49:34+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/</loc>
+    <lastmod>2020-02-05T13:49:34+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/</loc>
+    <lastmod>2020-02-05T13:49:34+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/</loc>
+    <lastmod>2020-02-05T13:49:34+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/categories/.net/</loc>
     <lastmod>2018-11-23T16:28:11+01:00</lastmod>
-    <priority>0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/tags/.net-core/</loc>
     <lastmod>2018-11-23T16:28:11+01:00</lastmod>
-    <priority>0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/tags/.net-development/</loc>
     <lastmod>2018-11-23T16:28:11+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/.net-framework/</loc>
-    <lastmod>2011-05-16T00:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/.net-standard/</loc>
-    <lastmod>2016-05-24T00:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/async/</loc>
-    <lastmod>2010-11-04T00:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/azure/</loc>
-    <lastmod>2012-06-30T00:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/c/</loc>
-    <lastmod>2011-05-16T00:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/categories/</loc>
-    <lastmod>2018-11-23T16:28:11+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/categories/cloud/</loc>
-    <lastmod>2012-06-30T00:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/conference/</loc>
-    <lastmod>2018-11-02T00:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/categories/continuous-delivery/</loc>
-    <lastmod>2016-04-18T00:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/css/</loc>
-    <lastmod>2016-04-18T00:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/hackathon/</loc>
-    <lastmod>2018-06-14T20:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/html/</loc>
-    <lastmod>2016-04-18T00:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/categories/integration/</loc>
-    <lastmod>2016-04-18T00:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/javascript/</loc>
-    <lastmod>2016-04-18T00:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/</loc>
-    <lastmod>2018-11-23T16:28:11+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/linux/</loc>
-    <lastmod>2016-04-22T00:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/microsoft/</loc>
-    <lastmod>2012-06-30T00:00:00+02:00</lastmod>
-    <priority>0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/tags/open-source/</loc>
     <lastmod>2018-11-23T16:28:11+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/osx/</loc>
-    <lastmod>2016-04-22T00:00:00+02:00</lastmod>
-    <priority>0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/tags/porting/</loc>
     <lastmod>2018-11-23T16:28:11+01:00</lastmod>
-    <priority>0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://jmezach.github.io/post/</loc>
+    <loc>https://jmezach.github.io/post/porting-to-aspnet-core-part-three/</loc>
     <lastmod>2018-11-23T16:28:11+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/rx/</loc>
-    <lastmod>2011-03-10T00:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/security/</loc>
-    <lastmod>2018-11-02T00:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/categories/security/</loc>
-    <lastmod>2018-11-02T00:00:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/serialization/</loc>
-    <lastmod>2008-06-10T00:00:00+02:00</lastmod>
-    <priority>0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/categories/series/</loc>
     <lastmod>2018-11-23T16:28:11+01:00</lastmod>
-    <priority>0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://jmezach.github.io/tags/silverlight/</loc>
-    <lastmod>2007-09-06T00:00:00+02:00</lastmod>
-    <priority>0</priority>
+    <loc>https://jmezach.github.io/post/porting-to-aspnet-core-part-two/</loc>
+    <lastmod>2018-11-07T21:07:49+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://jmezach.github.io/categories/software-architecture/</loc>
-    <lastmod>2012-06-30T00:00:00+02:00</lastmod>
-    <priority>0</priority>
+    <loc>https://jmezach.github.io/post/porting-to-aspnet-core-part-one/</loc>
+    <lastmod>2018-11-05T21:45:50+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://jmezach.github.io/tags/</loc>
-    <lastmod>2018-11-23T16:28:11+01:00</lastmod>
-    <priority>0</priority>
+    <loc>https://jmezach.github.io/tags/conference/</loc>
+    <lastmod>2018-11-02T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://jmezach.github.io/tags/team-build/</loc>
-    <lastmod>2015-07-03T00:00:00+02:00</lastmod>
-    <priority>0</priority>
+    <loc>https://jmezach.github.io/post/infosecurity-conference/</loc>
+    <lastmod>2018-11-02T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://jmezach.github.io/tags/teched/</loc>
-    <lastmod>2012-06-30T00:00:00+02:00</lastmod>
-    <priority>0</priority>
+    <loc>https://jmezach.github.io/categories/security/</loc>
+    <lastmod>2018-11-02T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://jmezach.github.io/tags/tfs/</loc>
-    <lastmod>2015-07-03T00:00:00+02:00</lastmod>
-    <priority>0</priority>
+    <loc>https://jmezach.github.io/tags/security/</loc>
+    <lastmod>2018-11-02T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://jmezach.github.io/tags/tfs-2015/</loc>
-    <lastmod>2015-07-03T00:00:00+02:00</lastmod>
-    <priority>0</priority>
+    <loc>https://jmezach.github.io/post/net-core-hackathon-2018/</loc>
+    <lastmod>2018-06-14T20:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://jmezach.github.io/tags/tools/</loc>
-    <lastmod>2008-05-23T00:00:00+02:00</lastmod>
-    <priority>0</priority>
+    <loc>https://jmezach.github.io/tags/hackathon/</loc>
+    <lastmod>2018-06-14T20:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/having-fun-with-the-dotnet-core-generic-host/</loc>
+    <lastmod>2017-10-29T13:07:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/about/</loc>
+    <lastmod>2017-05-19T21:49:20+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/dotnetcore-and-dotnetstandard-2.0/</loc>
+    <lastmod>2017-05-13T20:33:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/my-experience-with-my-first-dotnet-core-contribution/</loc>
+    <lastmod>2017-04-15T15:36:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/migrating-existing-dotnet-projects-to-sdk-based-projects/</loc>
+    <lastmod>2017-02-07T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/tags/visual-studio/</loc>
     <lastmod>2017-02-07T00:00:00+02:00</lastmod>
-    <priority>0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://jmezach.github.io/tags/vsts/</loc>
-    <lastmod>2016-04-18T00:00:00+02:00</lastmod>
-    <priority>0</priority>
+    <loc>https://jmezach.github.io/post/sharing-code-across-dotnet-platforms-with-dotnet-standard/</loc>
+    <lastmod>2016-12-05T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://jmezach.github.io/tags/wcf/</loc>
-    <lastmod>2010-01-25T00:00:00+02:00</lastmod>
-    <priority>0</priority>
+    <loc>https://jmezach.github.io/post/dotnetcore-versioning/</loc>
+    <lastmod>2016-11-18T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://jmezach.github.io/tags/wf/</loc>
-    <lastmod>2010-01-25T00:00:00+02:00</lastmod>
-    <priority>0</priority>
+    <loc>https://jmezach.github.io/post/dotnet-platform-standard-and-the-magic-of-imports/</loc>
+    <lastmod>2016-05-24T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/.net-standard/</loc>
+    <lastmod>2016-05-24T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/developing-for-dotnet-core/</loc>
+    <lastmod>2016-04-22T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/linux/</loc>
+    <lastmod>2016-04-22T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/osx/</loc>
+    <lastmod>2016-04-22T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/tags/windows/</loc>
     <lastmod>2016-04-22T00:00:00+02:00</lastmod>
-    <priority>0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/categories/continuous-delivery/</loc>
+    <lastmod>2016-04-18T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/creating-a-vsts-dashboard-widget/</loc>
+    <lastmod>2016-04-18T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/css/</loc>
+    <lastmod>2016-04-18T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/html/</loc>
+    <lastmod>2016-04-18T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/categories/integration/</loc>
+    <lastmod>2016-04-18T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/javascript/</loc>
+    <lastmod>2016-04-18T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/vsts/</loc>
+    <lastmod>2016-04-18T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/dotnet-core-at-build-2016/</loc>
+    <lastmod>2016-04-02T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/team-build/</loc>
+    <lastmod>2015-07-03T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/tfs/</loc>
+    <lastmod>2015-07-03T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/tfs-2015/</loc>
+    <lastmod>2015-07-03T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/using-invoke-sqlcmd-in-tfs-build-2015/</loc>
+    <lastmod>2015-07-03T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/azure/</loc>
+    <lastmod>2012-06-30T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/categories/cloud/</loc>
+    <lastmod>2012-06-30T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/microsoft/</loc>
+    <lastmod>2012-06-30T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/categories/software-architecture/</loc>
+    <lastmod>2012-06-30T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/some-thoughts-on-ms-teched-europe-2012/</loc>
+    <lastmod>2012-06-30T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/teched/</loc>
+    <lastmod>2012-06-30T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/tags/windows-server-2012/</loc>
     <lastmod>2012-06-30T00:00:00+02:00</lastmod>
-    <priority>0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/.net-framework/</loc>
+    <lastmod>2011-05-16T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/c#/</loc>
+    <lastmod>2011-05-16T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/extension-methods-and-generic-type-constraints/</loc>
+    <lastmod>2011-05-16T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/data-binding-in-code-using-reactive-extensions/</loc>
+    <lastmod>2011-03-10T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/rx/</loc>
+    <lastmod>2011-03-10T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/async/</loc>
+    <lastmod>2010-11-04T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/reactive-extensions/</loc>
+    <lastmod>2010-11-04T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/throttling-workflow-services/</loc>
+    <lastmod>2010-01-25T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/wcf/</loc>
+    <lastmod>2010-01-25T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/wf/</loc>
+    <lastmod>2010-01-25T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/creating-a-workflow-image-from-a-workflow-service/</loc>
+    <lastmod>2009-11-18T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/even-better-messsage-based-correlation/</loc>
+    <lastmod>2009-03-02T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/message-based-correlation-with-wf-wcf-in-dotnet-35/</loc>
+    <lastmod>2009-02-24T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/workflows-mysteriously-being-aborted/</loc>
+    <lastmod>2008-06-19T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/serialization/</loc>
+    <lastmod>2008-06-10T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/service-pack-1-for-dotnet-fixes-serialization/</loc>
+    <lastmod>2008-06-10T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/cool-tools-netmassdownloader/</loc>
+    <lastmod>2008-05-23T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/tools/</loc>
+    <lastmod>2008-05-23T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/issue-fixed/</loc>
+    <lastmod>2008-04-30T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/state-machine-workflows/</loc>
+    <lastmod>2008-04-28T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/wf-required-bindable-properties/</loc>
+    <lastmod>2007-09-19T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/silverlight/</loc>
+    <lastmod>2007-09-06T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/silveright-10-rtm/</loc>
+    <lastmod>2007-09-06T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/more-on-this-wcf-issue/</loc>
+    <lastmod>2007-08-31T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/possible-wcf-serialization-issue/</loc>
+    <lastmod>2007-08-15T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
 </urlset>

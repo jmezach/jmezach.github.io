@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Jonathan&#39;s Blog  | Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.64.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.1cb140d8ba31d5b2f1114537dd04802a.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+    
+    <meta property="og:title" content="Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting" />
+<meta property="og:description" content="This post is part of a series:
+ Part 1: Introduction Part 2: Third party dependencies Part 3: Mechanics of porting Part 4: Deployment and packaging options  If you haven&rsquo;t read any of the previous posts I recommend you do this now to get some context that I&rsquo;ll be referring to in this post. If you have, continue on with the nitty gritty details of porting an app to ASP." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jmezach.github.io/post/porting-to-aspnet-core-part-three/" />
+<meta property="article:published_time" content="2018-11-23T16:28:11+01:00" />
+<meta property="article:modified_time" content="2018-11-23T16:28:11+01:00" />
+<meta itemprop="name" content="Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting">
+<meta itemprop="description" content="This post is part of a series:
+ Part 1: Introduction Part 2: Third party dependencies Part 3: Mechanics of porting Part 4: Deployment and packaging options  If you haven&rsquo;t read any of the previous posts I recommend you do this now to get some context that I&rsquo;ll be referring to in this post. If you have, continue on with the nitty gritty details of porting an app to ASP.">
+<meta itemprop="datePublished" content="2018-11-23T16:28:11&#43;01:00" />
+<meta itemprop="dateModified" content="2018-11-23T16:28:11&#43;01:00" />
+<meta itemprop="wordCount" content="1893">
+
+
+
+<meta itemprop="keywords" content=".NET,.NET Core,.NET Development,porting,open source," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting"/>
+<meta name="twitter:description" content="This post is part of a series:
+ Part 1: Introduction Part 2: Third party dependencies Part 3: Mechanics of porting Part 4: Deployment and packaging options  If you haven&rsquo;t read any of the previous posts I recommend you do this now to get some context that I&rsquo;ll be referring to in this post. If you have, continue on with the nitty gritty details of porting an app to ASP."/>
+
+  </head>
+
+  <body class="ma0 helvetica bg-light-gray">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-mid-gray">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="https://jmezach.github.io" class="f3 fw2 hover-white no-underline white-90 dib">
+      Jonathan&#39;s Blog
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Posts page">
+              Posts
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+<a href="https://twitter.com/jmezach" target="_blank" class="link-transition twitter link dib z-999 pt3 pt0-l mr1" title="Twitter link" rel="noopener" aria-label="follow on Twitter——Opens in a new window">
+  <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://www.instagram.com/jonathanmezach/" target="_blank" class="link-transition instagram link dib z-999 pt3 pt0-l mr1" title="Instagram link" rel="noopener" aria-label="follow on Instagram——Opens in a new window">
+  <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M42.271,26.578v-0.006c0.502,0,1.005,0.01,1.508-0.002  c0.646-0.017,1.172-0.57,1.172-1.217c0-0.963,0-1.927,0-2.89c0-0.691-0.547-1.24-1.236-1.241c-0.961,0-1.922-0.001-2.883,0  c-0.688,0.001-1.236,0.552-1.236,1.243c-0.001,0.955-0.004,1.91,0.003,2.865c0.001,0.143,0.028,0.291,0.073,0.426  c0.173,0.508,0.639,0.82,1.209,0.823C41.344,26.579,41.808,26.578,42.271,26.578z M33,27.817c-3.384-0.002-6.135,2.721-6.182,6.089  c-0.049,3.46,2.72,6.201,6.04,6.272c3.454,0.074,6.248-2.686,6.321-6.043C39.254,30.675,36.462,27.815,33,27.817z M21.046,31.116  v0.082c0,4.515-0.001,9.03,0,13.545c0,0.649,0.562,1.208,1.212,1.208c7.16,0.001,14.319,0.001,21.479,0  c0.656,0,1.215-0.557,1.215-1.212c0.001-4.509,0-9.02,0-13.528v-0.094h-2.912c0.411,1.313,0.537,2.651,0.376,4.014  c-0.161,1.363-0.601,2.631-1.316,3.803s-1.644,2.145-2.779,2.918c-2.944,2.006-6.821,2.182-9.946,0.428  c-1.579-0.885-2.819-2.12-3.685-3.713c-1.289-2.373-1.495-4.865-0.739-7.451C22.983,31.116,22.021,31.116,21.046,31.116z   M45.205,49.255c0.159-0.026,0.318-0.049,0.475-0.083c1.246-0.265,2.264-1.304,2.508-2.557c0.025-0.137,0.045-0.273,0.067-0.409  V21.794c-0.021-0.133-0.04-0.268-0.065-0.401c-0.268-1.367-1.396-2.428-2.78-2.618c-0.058-0.007-0.113-0.02-0.17-0.03H20.761  c-0.147,0.027-0.296,0.047-0.441,0.08c-1.352,0.308-2.352,1.396-2.545,2.766c-0.008,0.057-0.02,0.114-0.029,0.171V46.24  c0.028,0.154,0.05,0.311,0.085,0.465c0.299,1.322,1.427,2.347,2.77,2.52c0.064,0.008,0.13,0.021,0.195,0.03H45.205z M33,64  C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://www.youtube.com/channel/UCA4OPwB_HlIhSW6EaXOGcJQ" target="_blank" class="link-transition youtube link dib z-999 pt3 pt0-l mr1" title="Youtube link" rel="noopener" aria-label="follow on Youtube——Opens in a new window">
+  <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M42.527,41.34c-0.278,0-0.478,0.078-0.6,0.244  c-0.121,0.156-0.18,0.424-0.18,0.796v0.896h1.543V42.38c0-0.372-0.062-0.64-0.185-0.796C42.989,41.418,42.792,41.34,42.527,41.34z   M36.509,41.309c0.234,0,0.417,0.076,0.544,0.23c0.123,0.155,0.185,0.383,0.185,0.682v4.584c0,0.286-0.053,0.487-0.153,0.611  c-0.1,0.127-0.256,0.189-0.47,0.189c-0.148,0-0.287-0.033-0.421-0.096c-0.135-0.062-0.274-0.171-0.415-0.313v-5.531  c0.119-0.122,0.239-0.213,0.36-0.271C36.26,41.335,36.383,41.309,36.509,41.309z M41.748,44.658v1.672  c0,0.468,0.057,0.792,0.17,0.974c0.118,0.181,0.313,0.269,0.592,0.269c0.289,0,0.491-0.076,0.606-0.229  c0.114-0.153,0.175-0.489,0.175-1.013v-0.405h1.795v0.456c0,0.911-0.217,1.596-0.657,2.059c-0.435,0.459-1.089,0.687-1.958,0.687  c-0.781,0-1.398-0.242-1.847-0.731c-0.448-0.486-0.676-1.157-0.676-2.014v-3.986c0-0.768,0.249-1.398,0.742-1.882  c0.493-0.484,1.128-0.727,1.911-0.727c0.799,0,1.413,0.225,1.843,0.674c0.429,0.448,0.642,1.093,0.642,1.935v2.264H41.748z   M38.623,48.495c-0.271,0.336-0.669,0.501-1.187,0.501c-0.343,0-0.646-0.062-0.912-0.192c-0.267-0.129-0.519-0.327-0.746-0.601  v0.681h-1.764V36.852h1.764v3.875c0.237-0.27,0.485-0.478,0.748-0.616c0.267-0.143,0.534-0.212,0.805-0.212  c0.554,0,0.975,0.189,1.265,0.565c0.294,0.379,0.438,0.933,0.438,1.66v4.926C39.034,47.678,38.897,48.159,38.623,48.495z   M30.958,48.884v-0.976c-0.325,0.361-0.658,0.636-1.009,0.822c-0.349,0.191-0.686,0.282-1.014,0.282  c-0.405,0-0.705-0.129-0.913-0.396c-0.201-0.266-0.305-0.658-0.305-1.189v-7.422h1.744v6.809c0,0.211,0.037,0.362,0.107,0.457  c0.077,0.095,0.196,0.141,0.358,0.141c0.128,0,0.292-0.062,0.488-0.188c0.197-0.125,0.375-0.283,0.542-0.475v-6.744h1.744v8.878  H30.958z M24.916,38.6v10.284h-1.968V38.6h-2.034v-1.748h6.036V38.6H24.916z M32.994,32.978c0-0.001,12.08,0.018,13.514,1.45  c1.439,1.435,1.455,8.514,1.455,8.555c0,0-0.012,7.117-1.455,8.556C45.074,52.969,32.994,53,32.994,53s-12.079-0.031-13.516-1.462  c-1.438-1.435-1.441-8.502-1.441-8.556c0-0.041,0.004-7.12,1.441-8.555C20.916,32.996,32.994,32.977,32.994,32.978z M42.52,29.255  h-1.966v-1.08c-0.358,0.397-0.736,0.703-1.13,0.909c-0.392,0.208-0.771,0.312-1.14,0.312c-0.458,0-0.797-0.146-1.027-0.437  c-0.229-0.291-0.345-0.727-0.345-1.311v-8.172h1.962v7.497c0,0.231,0.045,0.399,0.127,0.502c0.08,0.104,0.216,0.156,0.399,0.156  c0.143,0,0.327-0.069,0.548-0.206c0.22-0.137,0.423-0.312,0.605-0.527v-7.422h1.966V29.255z M31.847,27.588  c0.139,0.147,0.339,0.219,0.6,0.219c0.266,0,0.476-0.075,0.634-0.223c0.157-0.152,0.235-0.358,0.235-0.618v-5.327  c0-0.214-0.08-0.387-0.241-0.519c-0.16-0.131-0.37-0.196-0.628-0.196c-0.241,0-0.435,0.065-0.586,0.196  c-0.148,0.132-0.225,0.305-0.225,0.519v5.327C31.636,27.233,31.708,27.439,31.847,27.588z M30.408,19.903  c0.528-0.449,1.241-0.674,2.132-0.674c0.812,0,1.48,0.237,2.001,0.711c0.517,0.473,0.777,1.083,0.777,1.828v5.051  c0,0.836-0.255,1.491-0.762,1.968c-0.513,0.476-1.212,0.714-2.106,0.714c-0.858,0-1.547-0.246-2.064-0.736  c-0.513-0.492-0.772-1.152-0.772-1.983v-5.068C29.613,20.954,29.877,20.351,30.408,19.903z M24.262,16h-2.229l2.634,8.003v5.252  h2.213v-5.5L29.454,16h-2.25l-1.366,5.298h-0.139L24.262,16z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30  S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://www.linkedin.com/in/jmezach/" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/jmezach" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw9 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      <h1 class="f1 athelas mb1">Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2018-11-23T16:28:11&#43;01:00">November 23, 2018</time>
+      
+      
+        <span class="f6 mv4 dib tracked"> - 9 minutes read</span>
+        <span class="f6 mv4 dib tracked"> - 1893 words</span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>This post is part of a series:</p>
+<ul>
+<li><a href="/post/porting-to-aspnet-core-part-one/">Part 1: Introduction</a></li>
+<li><a href="/post/porting-to-aspnet-core-part-two/">Part 2: Third party dependencies</a></li>
+<li><a href="/post/porting-to-aspnet-core-part-three/">Part 3: Mechanics of porting</a></li>
+<li>Part 4: Deployment and packaging options</li>
+</ul>
+<p>If you haven&rsquo;t read any of the previous posts I recommend you do this now to get some context that I&rsquo;ll be referring to in this post. If you have, continue on with the nitty gritty details of porting an app to ASP.NET Core.</p>
+<h2 id="getting-our-house-in-order">Getting our house in order</h2>
+<p>So with our third party dependencies available on .NET Core it&rsquo;s time to start actually porting the code over. Before you do that though, make sure you&rsquo;re using a version control system (preferably Git) and create a branch before even starting porting. For many this may seem obvious, but I&rsquo;ve seen this go wrong too many times. In the case of <em>Augurk</em> I&rsquo;m working on the <a href="https://github.com/Augurk/Augurk/tree/feature/net-core-port">feature/net-core-port</a> branch.</p>
+<p>Before I started porting the <em>Augurk</em> solution consisted of 5 projects:</p>
+<ul>
+<li>Augurk, the ASP.NET host application containing the HTML/CSS/JavaScript for the frontend</li>
+<li>Augurk.Api, a class library containing the WebAPI controllers, etc.</li>
+<li>Augurk.Entities, a class library defining the shape of the objects being communicated through the API</li>
+<li>Augurk.Specifications, an MSTest project containing the <em>Gherkin</em> feature files describing the functionality of Augurk itself (but no automation 😟)</li>
+<li>Augurk.Test, an MSTest project containing a couple of unit tests</li>
+</ul>
+<p>My first step was to <a href="https://docs.microsoft.com/en-us/nuget/reference/migrate-packages-config-to-package-reference">migrate from packages.config to PackageReference</a> for all of those projects except the ASP.NET project. I did this because .NET Core project files use PackageReference exclusively anyway and it would make it easier to replace the entire project file later on. It&rsquo;s also a painless experience that requires just a few clicks. Unfortunately it does not currently work for ASP.NET projects because of <a href="https://github.com/NuGet/Home/issues/5877">various limitations</a> of that project system. Since that project would undergo quite a bit more changes I decided to just leave it as it was. After this change I made sure that everything still compiled and tests would still run successfully (which wasn&rsquo;t the case at first).</p>
+<p>Next step was to merge the Api project back into the main ASP.NET project. I decided to do this because I knew that I would eventually move all of the client side stuff (the AngularJS app) into the <strong>wwwroot</strong> folder so I would have a clean separation of the frontend and backend logic anyway. And it would mean I would have one less project file to deal with. One interesting thing I noticed while doing this is that if you move the files inside Visual Studio it will just make a copy and delete the original file. That means I would also lose the version control history of those files which I didn&rsquo;t want. So I used the good old git command line to move files from their original location to the new location (git mv). Once that was done I could just include the files into the Augurk project and remove the Augurk.Api project. Again I made sure that everything was still compiling and tests were green.</p>
+<h2 id="porting-the-code">Porting the code</h2>
+<p>Now it&rsquo;s time to actually move the code to .NET Core. To do this I basically removed all the project files and replaced them with new ones using dotnet new on the commandline:</p>
+<ul>
+<li>Augurk -&gt; dotnet new webapi</li>
+<li>Augurk.Entities -&gt; dotnet new classlib</li>
+<li>Augurk.Specifications -&gt; dotnet new mstest</li>
+<li>Augurk.Test -&gt; dotnet new mstest</li>
+</ul>
+<p>This step actually resulted in the removal of a lot of code as can be seen in <a href="https://github.com/Augurk/Augurk/commit/909a1f6e5fa8860369dd499fc184630e8b455f19">this commit</a>. The nice thing about the new project types is that they are a lot smaller by removing all kinds of boilerplate. We no longer have to list all the C# files that we want to include in the project, instead every C# file is included by default (although you can exclude files). Personally I think this combined with PackageReference can be a big reason for moving to .NET Core. Just think of the implications this has on developer productivity, especially with large teams working on the same codebase.</p>
+<p>Of course after doing this it didn&rsquo;t compile immediately (that would have been nice though). But after adding back the project references that got lost, as well as the NuGet packages things were looking a lot better already. There&rsquo;s a couple of things to point out though:</p>
+<h4 id="assemblyinfocs">AssemblyInfo.cs</h4>
+<p>.NET Framework projects have an <strong>AssemblyInfo.cs</strong> file that&rsquo;s included in the project. The information that&rsquo;s there can now be set in the project file (.csproj). However, if you&rsquo;ve kept the file around as would be the case in such a migration, you get a compile error stating that there are duplicate attributes. Simply removing the <strong>Properties</strong> folder (that contains the AssemblyInfo.cs file) should fix the build errors, but you might want to copy the information from there into your project file. Have a look at this <a href="https://github.com/dotnet/sdk/issues/2">GitHub issue</a> that contains a mapping between the two.</p>
+<h4 id="just-controllers">Just controllers</h4>
+<p>ASP.NET Core no longer has a distinction between an MVC and API controller class. Instead the base class for either one of them is simply called Controller so you&rsquo;ll need to change that in your code everywhere. Additionally you&rsquo;ll probably have a using of <strong>System.Web.Http</strong> which will need to be replaced with <strong>Microsoft.AspNetCore.Mvc</strong>.</p>
+<h4 id="error-handling">Error handling</h4>
+<p>We had used <strong>Request.CreateResponse()</strong> and <strong>Request.CreateErrorResponse()</strong> in our code, but those are no longer available. There is a <a href="https://docs.microsoft.com/en-us/aspnet/core/migration/webapi?view=aspnetcore-2.1#compatibility-shim">compatibility shim</a> available that should allow you to continue using these, but since they are <a href="https://github.com/aspnet/Announcements/issues/319">going away in ASP.NET Core 3.0</a> we might as well fix these now.</p>
+<p>It is recommended to use the methods on <strong>Controller</strong> such as <strong>BadRequest()</strong> or <strong>Created()</strong>. But these methods do not return an <strong>HttpResponseMessage</strong> but an <strong>ActionResult</strong> instead, so you&rsquo;ll also need to change the return type of those operations. The good thing is that these changes should make the API better documented through things such as Swagger.</p>
+<h4 id="routing">Routing</h4>
+<p>The <strong>RoutePrefix</strong> attribute is gone. Instead, just put a <strong>Route</strong> attribute on the controller and it basically acts as a <strong>RoutePrefix</strong>.</p>
+<h4 id="ravendb">RavenDB</h4>
+<p>I also had to make a couple of changes in how we used RavenDB since we went from version 3.0 to 4.1 which included a couple of breaking changes. Luckily there was <a href="https://ravendb.net/docs/article-page/4.1/csharp/migration/client-api/introduction">documentation available</a> about how to make these changes, but there are a couple of loose ends that we&rsquo;ll need to look into to see what the appropriate replacement is.</p>
+<h2 id="booting-up-the-frontend">Booting up the frontend</h2>
+<p>Once I managed to compile the application and make it run I had to make a couple of adjustments in order for our AngularJS frontend to work. First of all I needed a way to let our ASP.NET Core app serve up the static files. Its perfectly capable of doing this, but there are a couple of different ways to do this. For example, you can add this to the <strong>Configure</strong> function inside your <strong>Startup</strong> class:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">app.UseStaticFiles()
+</code></pre></div><p>It seemed like that was all I needed, but when I did this I still got a 404 Not Found error when navigating to the application. That&rsquo;s weird, because I did have an index.html inside my wwwroot folder. After searching for it, it turned out I had to use something else:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">app.UseFileServer()
+</code></pre></div><p>Internally this also calls <strong>UseStaticFiles()</strong> but it also sets up defaults so that going to the root will return the content of index.html (if there is such a file). There&rsquo;s a lot of middleware available that can do all kinds of things, but it isn&rsquo;t always immediately obvious which one you should use in which situation.</p>
+<h2 id="making-it-run">Making it run</h2>
+<p>With these changes in place I was able to compile and run <em>Augurk</em> on Windows and everything seemed to work. I didn&rsquo;t have any data in it yet though, so I used our existing command line tool to upload the documentation (written in <em>Gherkin</em> feature files obviously) into the new version to see if it really worked. Interestingly that didn&rsquo;t quite as I expected. I got <strong>NullReferenceException</strong>&lsquo;s while doing the upload. Initially that didn&rsquo;t make much sense to me, so I started debugging. The controller operation that handles the upload of the feature files looks like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">[Route(&#34;api/v2/products/{productName}/groups/{groupName}/features&#34;)]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FeatureV2Controller</span>
+{
+    ...
+<span style="color:#a6e22e">    [Route(&#34;{title}/versions/{version}&#34;)]</span>
+<span style="color:#a6e22e">    [HttpPost]</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task&lt;ActionResult&lt;Feature&gt;&gt; PostAsync(Feature feature, <span style="color:#66d9ef">string</span> productName, <span style="color:#66d9ef">string</span> groupName, <span style="color:#66d9ef">string</span> title, <span style="color:#66d9ef">string</span> version)
+    {
+        <span style="color:#66d9ef">if</span> (!feature.Title.Equals(title, StringComparison.OrdinalIgnoreCase))
+        ...
+    }
+    ...
+}
+</code></pre></div><p>While debugging I noticed that the <em>feature</em> parameter was <em>null</em> here. How could that be, since it worked fine before and I was sure that I didn&rsquo;t change anything in the commandline tool. Turns out that there was a change in how ASP.NET Core WebAPI handles these situations. As you can see the controller operation has quite a few parameters, one complex type and a couple of string parameters. In previous version of WebAPI it just assumed that since all the other parameters are coming from the route template (the combination of the <strong>RoutePrefix</strong> and <strong>Route</strong> attributes, although that distinction is gone in ASP.NET Core) it must be the <em>feature</em> parameter that is in the body. With <strong>ASP.NET Core</strong> this is no longer assumed, so we must be explicit about the fact that we want the feature to come from the body, which you do by adding the <em>FromBody</em> attribute to the parameter. There is an entire <a href="https://andrewlock.net/model-binding-json-posts-in-asp-net-core/">blogpost</a> by Andrew Lock on this subject, so refer to that if you want to have the details.</p>
+<p>After adding in the missing attribute, everything worked again. We had a couple of other controller operations that relied on the same assumption, so I reviewed them and made the necessary changes accordingly. Definitely something to watch out for, since it wasn&rsquo;t immediately obvious what was happening.</p>
+<h2 id="cross-platform">Cross-platform</h2>
+<p>Of course, one of the reasons for doing this porting effort in the first place was to make <em>Augurk</em> available cross-platform. So once I had everything working on <em>Windows</em> I committed the changes (actually I used several commits in the process) and cloned the repository on my Mac (I was running in Parallels before). I ran <strong>dotnet run</strong> and just like that everything was working just fine, natively on my Mac. That&rsquo;s pretty awesome.</p>
+<p>I also noticed that now that <em>Augurk</em> is running on .NET Core it&rsquo;s also significantly faster than it was on .NET Framework. Obviously this also stems from the fact that I&rsquo;m now running it natively on my Mac rather than virtualized on Windows, but even on Windows it&rsquo;s faster now. Changes made in RavenDB also help out with this as well.</p>
+<h2 id="looking-forward">Looking forward</h2>
+<p>Now that the hard part is done and it&rsquo;s running on .NET Core we can look at some further enhancements that we can make. First of all I&rsquo;ve already looking into using dependency injection. We were using what I&rsquo;d like to call poor-mans dependency injection where we&rsquo;d have a public constructor for each class that calls into an internal constructor with the concrete dependencies that should be used at runtime. During tests we could use the internal constructor to replace dependencies thanks to the <strong>InternalsVisileTo</strong> attribute. While that worked, it makes sense to use a proper dependency injection mechanism now that <strong>ASP.NET Core</strong> has one built-in. I&rsquo;ve already started the work on that in a separate branch.</p>
+<p>We&rsquo;ve also looked into further changes we want to make as part of the <em>Augurk 3.0</em> release which will be the first version that will run cross-platform. One of the important things there is to have a look at the deployment options which I&rsquo;ll cover in my next post.</p>
+<ul class="pa0">
+  
+   <li class="list">
+     <a href="/tags/.net" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/.net-core" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET Core</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/.net-development" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET Development</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/porting" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">porting</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/open-source" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">open source</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jmezach" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/porting-to-aspnet-core-part-two/">Porting from ASP.NET to ASP.NET Core: Part 2 - Third party dependencies</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/porting-to-aspnet-core-part-one/">Porting from ASP.NET to ASP.NET Core: Part 1 - Introduction</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/net-core-hackathon-2018/">.NET Core Hackathon 2018</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/sharing-code-across-dotnet-platforms-with-dotnet-standard/">Sharing code across .NET platforms with .NET Standard</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dotnetcore-versioning/">.NET Core versioning</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/having-fun-with-the-dotnet-core-generic-host/">Having Fun with the .NET Core Generic Host</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dotnetcore-and-dotnetstandard-2.0/">.NET Core and .NET Standard 2.0</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/my-experience-with-my-first-dotnet-core-contribution/">My experience with my first .NET Core contribution</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/migrating-existing-dotnet-projects-to-sdk-based-projects/">Migrating existing .NET projects to SDK-based projects</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dotnet-platform-standard-and-the-magic-of-imports/">.NET Platform Standard and the magic of &#34;imports&#34;</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dotnet-core-at-build-2016/">.NET Core at Build 2016</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/developing-for-dotnet-core/">Developing for .NET Core</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/throttling-workflow-services/">Throttling workflow services</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/creating-a-workflow-image-from-a-workflow-service/">Creating a workflow image from a workflow service</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/even-better-messsage-based-correlation/">Even better message based correlation</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-mid-gray bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://jmezach.github.io" >
+    &copy;  Jonathan's Blog 2020 
+  </a>
+    <div>
+
+
+
+
+<a href="https://twitter.com/jmezach" target="_blank" class="link-transition twitter link dib z-999 pt3 pt0-l mr1" title="Twitter link" rel="noopener" aria-label="follow on Twitter——Opens in a new window">
+  <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://www.instagram.com/jonathanmezach/" target="_blank" class="link-transition instagram link dib z-999 pt3 pt0-l mr1" title="Instagram link" rel="noopener" aria-label="follow on Instagram——Opens in a new window">
+  <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M42.271,26.578v-0.006c0.502,0,1.005,0.01,1.508-0.002  c0.646-0.017,1.172-0.57,1.172-1.217c0-0.963,0-1.927,0-2.89c0-0.691-0.547-1.24-1.236-1.241c-0.961,0-1.922-0.001-2.883,0  c-0.688,0.001-1.236,0.552-1.236,1.243c-0.001,0.955-0.004,1.91,0.003,2.865c0.001,0.143,0.028,0.291,0.073,0.426  c0.173,0.508,0.639,0.82,1.209,0.823C41.344,26.579,41.808,26.578,42.271,26.578z M33,27.817c-3.384-0.002-6.135,2.721-6.182,6.089  c-0.049,3.46,2.72,6.201,6.04,6.272c3.454,0.074,6.248-2.686,6.321-6.043C39.254,30.675,36.462,27.815,33,27.817z M21.046,31.116  v0.082c0,4.515-0.001,9.03,0,13.545c0,0.649,0.562,1.208,1.212,1.208c7.16,0.001,14.319,0.001,21.479,0  c0.656,0,1.215-0.557,1.215-1.212c0.001-4.509,0-9.02,0-13.528v-0.094h-2.912c0.411,1.313,0.537,2.651,0.376,4.014  c-0.161,1.363-0.601,2.631-1.316,3.803s-1.644,2.145-2.779,2.918c-2.944,2.006-6.821,2.182-9.946,0.428  c-1.579-0.885-2.819-2.12-3.685-3.713c-1.289-2.373-1.495-4.865-0.739-7.451C22.983,31.116,22.021,31.116,21.046,31.116z   M45.205,49.255c0.159-0.026,0.318-0.049,0.475-0.083c1.246-0.265,2.264-1.304,2.508-2.557c0.025-0.137,0.045-0.273,0.067-0.409  V21.794c-0.021-0.133-0.04-0.268-0.065-0.401c-0.268-1.367-1.396-2.428-2.78-2.618c-0.058-0.007-0.113-0.02-0.17-0.03H20.761  c-0.147,0.027-0.296,0.047-0.441,0.08c-1.352,0.308-2.352,1.396-2.545,2.766c-0.008,0.057-0.02,0.114-0.029,0.171V46.24  c0.028,0.154,0.05,0.311,0.085,0.465c0.299,1.322,1.427,2.347,2.77,2.52c0.064,0.008,0.13,0.021,0.195,0.03H45.205z M33,64  C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://www.youtube.com/channel/UCA4OPwB_HlIhSW6EaXOGcJQ" target="_blank" class="link-transition youtube link dib z-999 pt3 pt0-l mr1" title="Youtube link" rel="noopener" aria-label="follow on Youtube——Opens in a new window">
+  <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M42.527,41.34c-0.278,0-0.478,0.078-0.6,0.244  c-0.121,0.156-0.18,0.424-0.18,0.796v0.896h1.543V42.38c0-0.372-0.062-0.64-0.185-0.796C42.989,41.418,42.792,41.34,42.527,41.34z   M36.509,41.309c0.234,0,0.417,0.076,0.544,0.23c0.123,0.155,0.185,0.383,0.185,0.682v4.584c0,0.286-0.053,0.487-0.153,0.611  c-0.1,0.127-0.256,0.189-0.47,0.189c-0.148,0-0.287-0.033-0.421-0.096c-0.135-0.062-0.274-0.171-0.415-0.313v-5.531  c0.119-0.122,0.239-0.213,0.36-0.271C36.26,41.335,36.383,41.309,36.509,41.309z M41.748,44.658v1.672  c0,0.468,0.057,0.792,0.17,0.974c0.118,0.181,0.313,0.269,0.592,0.269c0.289,0,0.491-0.076,0.606-0.229  c0.114-0.153,0.175-0.489,0.175-1.013v-0.405h1.795v0.456c0,0.911-0.217,1.596-0.657,2.059c-0.435,0.459-1.089,0.687-1.958,0.687  c-0.781,0-1.398-0.242-1.847-0.731c-0.448-0.486-0.676-1.157-0.676-2.014v-3.986c0-0.768,0.249-1.398,0.742-1.882  c0.493-0.484,1.128-0.727,1.911-0.727c0.799,0,1.413,0.225,1.843,0.674c0.429,0.448,0.642,1.093,0.642,1.935v2.264H41.748z   M38.623,48.495c-0.271,0.336-0.669,0.501-1.187,0.501c-0.343,0-0.646-0.062-0.912-0.192c-0.267-0.129-0.519-0.327-0.746-0.601  v0.681h-1.764V36.852h1.764v3.875c0.237-0.27,0.485-0.478,0.748-0.616c0.267-0.143,0.534-0.212,0.805-0.212  c0.554,0,0.975,0.189,1.265,0.565c0.294,0.379,0.438,0.933,0.438,1.66v4.926C39.034,47.678,38.897,48.159,38.623,48.495z   M30.958,48.884v-0.976c-0.325,0.361-0.658,0.636-1.009,0.822c-0.349,0.191-0.686,0.282-1.014,0.282  c-0.405,0-0.705-0.129-0.913-0.396c-0.201-0.266-0.305-0.658-0.305-1.189v-7.422h1.744v6.809c0,0.211,0.037,0.362,0.107,0.457  c0.077,0.095,0.196,0.141,0.358,0.141c0.128,0,0.292-0.062,0.488-0.188c0.197-0.125,0.375-0.283,0.542-0.475v-6.744h1.744v8.878  H30.958z M24.916,38.6v10.284h-1.968V38.6h-2.034v-1.748h6.036V38.6H24.916z M32.994,32.978c0-0.001,12.08,0.018,13.514,1.45  c1.439,1.435,1.455,8.514,1.455,8.555c0,0-0.012,7.117-1.455,8.556C45.074,52.969,32.994,53,32.994,53s-12.079-0.031-13.516-1.462  c-1.438-1.435-1.441-8.502-1.441-8.556c0-0.041,0.004-7.12,1.441-8.555C20.916,32.996,32.994,32.977,32.994,32.978z M42.52,29.255  h-1.966v-1.08c-0.358,0.397-0.736,0.703-1.13,0.909c-0.392,0.208-0.771,0.312-1.14,0.312c-0.458,0-0.797-0.146-1.027-0.437  c-0.229-0.291-0.345-0.727-0.345-1.311v-8.172h1.962v7.497c0,0.231,0.045,0.399,0.127,0.502c0.08,0.104,0.216,0.156,0.399,0.156  c0.143,0,0.327-0.069,0.548-0.206c0.22-0.137,0.423-0.312,0.605-0.527v-7.422h1.966V29.255z M31.847,27.588  c0.139,0.147,0.339,0.219,0.6,0.219c0.266,0,0.476-0.075,0.634-0.223c0.157-0.152,0.235-0.358,0.235-0.618v-5.327  c0-0.214-0.08-0.387-0.241-0.519c-0.16-0.131-0.37-0.196-0.628-0.196c-0.241,0-0.435,0.065-0.586,0.196  c-0.148,0.132-0.225,0.305-0.225,0.519v5.327C31.636,27.233,31.708,27.439,31.847,27.588z M30.408,19.903  c0.528-0.449,1.241-0.674,2.132-0.674c0.812,0,1.48,0.237,2.001,0.711c0.517,0.473,0.777,1.083,0.777,1.828v5.051  c0,0.836-0.255,1.491-0.762,1.968c-0.513,0.476-1.212,0.714-2.106,0.714c-0.858,0-1.547-0.246-2.064-0.736  c-0.513-0.492-0.772-1.152-0.772-1.983v-5.068C29.613,20.954,29.877,20.351,30.408,19.903z M24.262,16h-2.229l2.634,8.003v5.252  h2.213v-5.5L29.454,16h-2.25l-1.366,5.298h-0.139L24.262,16z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30  S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://www.linkedin.com/in/jmezach/" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/jmezach" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

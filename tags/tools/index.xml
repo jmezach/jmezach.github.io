@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tools on Jonathan&#39;s Blog</title>
@@ -13,10 +13,10 @@
     
     <item>
       <title>Cool tools: NetMassDownloader</title>
-      <link>https://jmezach.github.io/2008/05/23/cool-tools-netmassdownloader/</link>
+      <link>https://jmezach.github.io/post/cool-tools-netmassdownloader/</link>
       <pubDate>Fri, 23 May 2008 00:00:00 +0200</pubDate>
       
-      <guid>https://jmezach.github.io/2008/05/23/cool-tools-netmassdownloader/</guid>
+      <guid>https://jmezach.github.io/post/cool-tools-netmassdownloader/</guid>
       <description>Today I was working on an issue in our application that was brought to our attention by one of the users. So I started investigating this issue and soon found out that the problem was situated in our ASP.Net front end. While I was debugging and analyzing the call stack I found out that something went wrong between the page that is being posted and the Mediator, which is responsible for actually saving the data to our back end services.</description>
     </item>
     

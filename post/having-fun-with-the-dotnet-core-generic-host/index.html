@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Jonathan&#39;s Blog  | Having Fun with the .NET Core Generic Host</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.64.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.1cb140d8ba31d5b2f1114537dd04802a.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+    
+    <meta property="og:title" content="Having Fun with the .NET Core Generic Host" />
+<meta property="og:description" content="As ASP.NET developers we’re fairly used to hosting our code inside Internet Information Services (IIS). However, since ASP.NET Core is cross-platform, hosting inside IIS isn&rsquo;t always an option. For that reason, the hosting model for ASP.NET Core applications looks quite a bit different. Of course, we can still host our code in IIS, but we also have the option to use Kestrel and run as a standalone application.
+This new hosting model is visible in code through the WebHostBuilder API from Microsoft." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jmezach.github.io/post/having-fun-with-the-dotnet-core-generic-host/" />
+<meta property="article:published_time" content="2017-10-29T13:07:00+02:00" />
+<meta property="article:modified_time" content="2017-10-29T13:07:00+02:00" />
+<meta itemprop="name" content="Having Fun with the .NET Core Generic Host">
+<meta itemprop="description" content="As ASP.NET developers we’re fairly used to hosting our code inside Internet Information Services (IIS). However, since ASP.NET Core is cross-platform, hosting inside IIS isn&rsquo;t always an option. For that reason, the hosting model for ASP.NET Core applications looks quite a bit different. Of course, we can still host our code in IIS, but we also have the option to use Kestrel and run as a standalone application.
+This new hosting model is visible in code through the WebHostBuilder API from Microsoft.">
+<meta itemprop="datePublished" content="2017-10-29T13:07:00&#43;02:00" />
+<meta itemprop="dateModified" content="2017-10-29T13:07:00&#43;02:00" />
+<meta itemprop="wordCount" content="1651">
+
+
+
+<meta itemprop="keywords" content=".NET,.NET Core," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Having Fun with the .NET Core Generic Host"/>
+<meta name="twitter:description" content="As ASP.NET developers we’re fairly used to hosting our code inside Internet Information Services (IIS). However, since ASP.NET Core is cross-platform, hosting inside IIS isn&rsquo;t always an option. For that reason, the hosting model for ASP.NET Core applications looks quite a bit different. Of course, we can still host our code in IIS, but we also have the option to use Kestrel and run as a standalone application.
+This new hosting model is visible in code through the WebHostBuilder API from Microsoft."/>
+
+  </head>
+
+  <body class="ma0 helvetica bg-light-gray">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-mid-gray">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="https://jmezach.github.io" class="f3 fw2 hover-white no-underline white-90 dib">
+      Jonathan&#39;s Blog
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Posts page">
+              Posts
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+<a href="https://twitter.com/jmezach" target="_blank" class="link-transition twitter link dib z-999 pt3 pt0-l mr1" title="Twitter link" rel="noopener" aria-label="follow on Twitter——Opens in a new window">
+  <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://www.instagram.com/jonathanmezach/" target="_blank" class="link-transition instagram link dib z-999 pt3 pt0-l mr1" title="Instagram link" rel="noopener" aria-label="follow on Instagram——Opens in a new window">
+  <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M42.271,26.578v-0.006c0.502,0,1.005,0.01,1.508-0.002  c0.646-0.017,1.172-0.57,1.172-1.217c0-0.963,0-1.927,0-2.89c0-0.691-0.547-1.24-1.236-1.241c-0.961,0-1.922-0.001-2.883,0  c-0.688,0.001-1.236,0.552-1.236,1.243c-0.001,0.955-0.004,1.91,0.003,2.865c0.001,0.143,0.028,0.291,0.073,0.426  c0.173,0.508,0.639,0.82,1.209,0.823C41.344,26.579,41.808,26.578,42.271,26.578z M33,27.817c-3.384-0.002-6.135,2.721-6.182,6.089  c-0.049,3.46,2.72,6.201,6.04,6.272c3.454,0.074,6.248-2.686,6.321-6.043C39.254,30.675,36.462,27.815,33,27.817z M21.046,31.116  v0.082c0,4.515-0.001,9.03,0,13.545c0,0.649,0.562,1.208,1.212,1.208c7.16,0.001,14.319,0.001,21.479,0  c0.656,0,1.215-0.557,1.215-1.212c0.001-4.509,0-9.02,0-13.528v-0.094h-2.912c0.411,1.313,0.537,2.651,0.376,4.014  c-0.161,1.363-0.601,2.631-1.316,3.803s-1.644,2.145-2.779,2.918c-2.944,2.006-6.821,2.182-9.946,0.428  c-1.579-0.885-2.819-2.12-3.685-3.713c-1.289-2.373-1.495-4.865-0.739-7.451C22.983,31.116,22.021,31.116,21.046,31.116z   M45.205,49.255c0.159-0.026,0.318-0.049,0.475-0.083c1.246-0.265,2.264-1.304,2.508-2.557c0.025-0.137,0.045-0.273,0.067-0.409  V21.794c-0.021-0.133-0.04-0.268-0.065-0.401c-0.268-1.367-1.396-2.428-2.78-2.618c-0.058-0.007-0.113-0.02-0.17-0.03H20.761  c-0.147,0.027-0.296,0.047-0.441,0.08c-1.352,0.308-2.352,1.396-2.545,2.766c-0.008,0.057-0.02,0.114-0.029,0.171V46.24  c0.028,0.154,0.05,0.311,0.085,0.465c0.299,1.322,1.427,2.347,2.77,2.52c0.064,0.008,0.13,0.021,0.195,0.03H45.205z M33,64  C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://www.youtube.com/channel/UCA4OPwB_HlIhSW6EaXOGcJQ" target="_blank" class="link-transition youtube link dib z-999 pt3 pt0-l mr1" title="Youtube link" rel="noopener" aria-label="follow on Youtube——Opens in a new window">
+  <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M42.527,41.34c-0.278,0-0.478,0.078-0.6,0.244  c-0.121,0.156-0.18,0.424-0.18,0.796v0.896h1.543V42.38c0-0.372-0.062-0.64-0.185-0.796C42.989,41.418,42.792,41.34,42.527,41.34z   M36.509,41.309c0.234,0,0.417,0.076,0.544,0.23c0.123,0.155,0.185,0.383,0.185,0.682v4.584c0,0.286-0.053,0.487-0.153,0.611  c-0.1,0.127-0.256,0.189-0.47,0.189c-0.148,0-0.287-0.033-0.421-0.096c-0.135-0.062-0.274-0.171-0.415-0.313v-5.531  c0.119-0.122,0.239-0.213,0.36-0.271C36.26,41.335,36.383,41.309,36.509,41.309z M41.748,44.658v1.672  c0,0.468,0.057,0.792,0.17,0.974c0.118,0.181,0.313,0.269,0.592,0.269c0.289,0,0.491-0.076,0.606-0.229  c0.114-0.153,0.175-0.489,0.175-1.013v-0.405h1.795v0.456c0,0.911-0.217,1.596-0.657,2.059c-0.435,0.459-1.089,0.687-1.958,0.687  c-0.781,0-1.398-0.242-1.847-0.731c-0.448-0.486-0.676-1.157-0.676-2.014v-3.986c0-0.768,0.249-1.398,0.742-1.882  c0.493-0.484,1.128-0.727,1.911-0.727c0.799,0,1.413,0.225,1.843,0.674c0.429,0.448,0.642,1.093,0.642,1.935v2.264H41.748z   M38.623,48.495c-0.271,0.336-0.669,0.501-1.187,0.501c-0.343,0-0.646-0.062-0.912-0.192c-0.267-0.129-0.519-0.327-0.746-0.601  v0.681h-1.764V36.852h1.764v3.875c0.237-0.27,0.485-0.478,0.748-0.616c0.267-0.143,0.534-0.212,0.805-0.212  c0.554,0,0.975,0.189,1.265,0.565c0.294,0.379,0.438,0.933,0.438,1.66v4.926C39.034,47.678,38.897,48.159,38.623,48.495z   M30.958,48.884v-0.976c-0.325,0.361-0.658,0.636-1.009,0.822c-0.349,0.191-0.686,0.282-1.014,0.282  c-0.405,0-0.705-0.129-0.913-0.396c-0.201-0.266-0.305-0.658-0.305-1.189v-7.422h1.744v6.809c0,0.211,0.037,0.362,0.107,0.457  c0.077,0.095,0.196,0.141,0.358,0.141c0.128,0,0.292-0.062,0.488-0.188c0.197-0.125,0.375-0.283,0.542-0.475v-6.744h1.744v8.878  H30.958z M24.916,38.6v10.284h-1.968V38.6h-2.034v-1.748h6.036V38.6H24.916z M32.994,32.978c0-0.001,12.08,0.018,13.514,1.45  c1.439,1.435,1.455,8.514,1.455,8.555c0,0-0.012,7.117-1.455,8.556C45.074,52.969,32.994,53,32.994,53s-12.079-0.031-13.516-1.462  c-1.438-1.435-1.441-8.502-1.441-8.556c0-0.041,0.004-7.12,1.441-8.555C20.916,32.996,32.994,32.977,32.994,32.978z M42.52,29.255  h-1.966v-1.08c-0.358,0.397-0.736,0.703-1.13,0.909c-0.392,0.208-0.771,0.312-1.14,0.312c-0.458,0-0.797-0.146-1.027-0.437  c-0.229-0.291-0.345-0.727-0.345-1.311v-8.172h1.962v7.497c0,0.231,0.045,0.399,0.127,0.502c0.08,0.104,0.216,0.156,0.399,0.156  c0.143,0,0.327-0.069,0.548-0.206c0.22-0.137,0.423-0.312,0.605-0.527v-7.422h1.966V29.255z M31.847,27.588  c0.139,0.147,0.339,0.219,0.6,0.219c0.266,0,0.476-0.075,0.634-0.223c0.157-0.152,0.235-0.358,0.235-0.618v-5.327  c0-0.214-0.08-0.387-0.241-0.519c-0.16-0.131-0.37-0.196-0.628-0.196c-0.241,0-0.435,0.065-0.586,0.196  c-0.148,0.132-0.225,0.305-0.225,0.519v5.327C31.636,27.233,31.708,27.439,31.847,27.588z M30.408,19.903  c0.528-0.449,1.241-0.674,2.132-0.674c0.812,0,1.48,0.237,2.001,0.711c0.517,0.473,0.777,1.083,0.777,1.828v5.051  c0,0.836-0.255,1.491-0.762,1.968c-0.513,0.476-1.212,0.714-2.106,0.714c-0.858,0-1.547-0.246-2.064-0.736  c-0.513-0.492-0.772-1.152-0.772-1.983v-5.068C29.613,20.954,29.877,20.351,30.408,19.903z M24.262,16h-2.229l2.634,8.003v5.252  h2.213v-5.5L29.454,16h-2.25l-1.366,5.298h-0.139L24.262,16z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30  S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://www.linkedin.com/in/jmezach/" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/jmezach" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw9 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      <h1 class="f1 athelas mb1">Having Fun with the .NET Core Generic Host</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2017-10-29T13:07:00&#43;02:00">October 29, 2017</time>
+      
+      
+        <span class="f6 mv4 dib tracked"> - 8 minutes read</span>
+        <span class="f6 mv4 dib tracked"> - 1651 words</span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>As ASP.NET developers we’re fairly used to hosting our code inside Internet Information Services (IIS). However, since ASP.NET Core is cross-platform, hosting inside IIS isn&rsquo;t always an option. For that reason, the hosting model for ASP.NET Core applications looks quite a bit different. Of course, we can still host our code in IIS, but we also have the option to use Kestrel and run as a standalone application.</p>
+<p>This new hosting model is visible in code through the <strong>WebHostBuilder</strong> API from <strong>Microsoft.AspNetCore.Hosting</strong>. For example, if we create a new ASP.NET Core application, we&rsquo;ll find the following code in the Program.cs file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
+{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+    {
+        BuildWebHost(args).Run();
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IWebHost BuildWebHost(<span style="color:#66d9ef">string</span>[] args) =&gt;
+        WebHost.CreateDefaultBuilder(args)
+            .UseStartup&lt;Startup&gt;()
+            .Build();
+}
+</code></pre></div><p>Although this is a fairly simple piece of code, quite a lot is happening behind the scenes. Much of that &ldquo;magic&rdquo; is in the <em>CreateDefaultBuilder()</em> method. Here is what it does behind the scenes:</p>
+<ul>
+<li>Setup Kestrel (the webserver)</li>
+<li>Set the content root to the current directory</li>
+<li>Setup configuration (AppSettings.json, etc.)</li>
+<li>Setup logging</li>
+<li>Enable IIS integration</li>
+<li>Setup the Dependency Injection container</li>
+<li>Configure services</li>
+</ul>
+<p>If we look at that list, there are a few things that are very specific to web applications, but there are also a number of things that are desirable for any type of application. In fact, the ASP.NET team has seen this as well and decided to further abstract the <strong>WebHostBuilder</strong> into a more generic <strong>HostBuilder</strong> API. You can read more about the reasoning behind it in <a href="https://github.com/aspnet/Hosting/issues/1163">this GitHub issue</a>. It is currently planned for the 2.1 release and although there is no preview available for that version, we can still try it out which is what I&rsquo;ve done lately and I&rsquo;ll go over it in this post.</p>
+<h2 id="creating-a-console-host">Creating a console host</h2>
+<p>A typical example of where the hosting API would be useful is in a console application that just needs to keep running until someone stops it. For example a background processing service that reads messages from a queue and processes them. So let&rsquo;s create a new console application:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dotnet new console -n MessageProcessor
+</code></pre></div><p>Next we&rsquo;ll need to get access to the HostBuilder API.</p>
+<h2 id="getting-the-hostbuilder-api">Getting the HostBuilder API</h2>
+<p>Since the HostBuilder API isn&rsquo;t released yet, we&rsquo;ll need to use the ASP.NET CI Feed to get a preview version of it. We can access that feed by adding a <strong>NuGet.config</strong> to our project with the following content:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;configuration</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;packageSources</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;ASP.NET CI Feed&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json&#34;</span> <span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/packageSources&gt;</span>
+<span style="color:#f92672">&lt;/configuration&gt;</span>
+</code></pre></div><p>Next, we&rsquo;ll need to install the <strong>Microsoft.Extensions.Hosting</strong> package into our project. Note that this package isn&rsquo;t tied to ASP.NET Core specifically. It is a preview version though, so we&rsquo;ll need to pass the version number (2.1.0-preview1-27377 is the latest available as I&rsquo;m writing this):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dotnet add package Microsoft.Extensions.Hosting -v 2.1.0-preview1-27377
+</code></pre></div><h2 id="using-the-hostbuilder-api">Using the HostBuilder API</h2>
+<p>Much like in ASP.NET Core applications we can use the HostBuilder API to start building our host and setting it up. In it&rsquo;s simplest form we can use the following code to get a console application that keeps running until it is stopped (for example using Control-C):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">using</span> System;
+<span style="color:#66d9ef">using</span> System.Threading.Tasks;
+<span style="color:#66d9ef">using</span> Microsoft.Extensions.Hosting;
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
+{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">async</span> Task Main(<span style="color:#66d9ef">string</span>[] args)
+    {
+        <span style="color:#66d9ef">var</span> hostBuilder = <span style="color:#66d9ef">new</span> HostBuilder();
+        <span style="color:#66d9ef">await</span> hostBuilder.RunConsoleAsync();
+    }
+}
+</code></pre></div><p>Note that in order to run this, we&rsquo;ll need to set the language version of our project to latest because an async Main function is a feature of C# 7.1:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Project</span> <span style="color:#a6e22e">Sdk=</span><span style="color:#e6db74">&#34;Microsoft.NET.Sdk&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;PropertyGroup</span><span style="color:#f92672">&gt;</span>
+    ...
+    <span style="color:#f92672">&lt;LangVersion</span><span style="color:#f92672">&gt;</span>latest<span style="color:#f92672">&lt;/LangVersion&gt;</span>
+    ...
+  <span style="color:#f92672">&lt;/PropertyGroup&gt;</span>
+<span style="color:#f92672">&lt;/Project&gt;</span>
+</code></pre></div><p>If we run our application now, we should see something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dotnet run
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Production
+Content root path: /Users/jmezach/Projects/demos/MessageProcessor/bin/Debug/netcoreapp2.0/
+</code></pre></div><p>Note that the output is very similar to what you get when you start an ASP.NET Core application. One might argue that the Content root path isn&rsquo;t very useful for a console application, but that is probably a result of the <strong>WebHostBuilder</strong> API being refactored into the <strong>HostBuilder</strong> API.</p>
+<h2 id="doing-something-useful">Doing something useful</h2>
+<p>Of course this isn&rsquo;t very useful right now. All we got is a console application that starts and keeps running until we stop it, but we don&rsquo;t actually do anything. To fix that, we can write what&rsquo;s known as a hosted service. A hosted service is basically a piece of code that is run by the host when the host itself is started and the same for when it is stopped. This is represented in the <strong>IHostedService</strong> interface:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span><span style="color:#75715e">/// Defines methods for objects that are managed by the host.
+</span><span style="color:#75715e"></span><span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IHostedService
+{
+    <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// Triggered when the application host is ready to start the service.
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// &lt;param name=&#34;cancellationToken&#34;&gt;Indicates that the start process has been aborted.&lt;/param&gt;
+</span><span style="color:#75715e"></span>    Task StartAsync(CancellationToken cancellationToken);
+    <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// Triggered when the application host is performing a graceful shutdown.
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// &lt;param name=&#34;cancellationToken&#34;&gt;Indicates that the shutdown process should no longer be graceful.&lt;/param&gt;
+</span><span style="color:#75715e"></span>    Task StopAsync(CancellationToken cancellationToken);
+}
+</code></pre></div><p>Since we are building a message processor we&rsquo;ll probably need something that listens to a queue. I&rsquo;ll use <a href="http://masstransit-project.com/">MassTransit</a> in this example, so let&rsquo;s write a <strong>MassTransitHostedService</strong>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MassTransitHostedService</span> : Microsoft.Extensions.Hosting.IHostedService
+{
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> IBusControl busControl;
+
+    <span style="color:#66d9ef">public</span> MassTransitBusControlService(IBusControl busControl)
+    {
+        <span style="color:#66d9ef">this</span>.busControl = busControl;
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task StartAsync(CancellationToken cancellationToken)
+    {
+        <span style="color:#66d9ef">await</span> busControl.StartAsync(cancellationToken);
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task StopAsync(CancellationToken cancellationToken)
+    {
+        <span style="color:#66d9ef">await</span> busControl.StopAsync(cancellationToken);
+    }
+}
+</code></pre></div><p>It&rsquo;s simple really. We get an <strong>IBusControl</strong> instance injected through dependency injection and run <strong>StartAsync</strong> on it when host is started. When the host is stopped we run <strong>StopAsync</strong> so that we can gracefully shut everything down. Of course, we&rsquo;ll need to configure that <strong>IBusControl</strong> instance somewhere, as well as this hosted service so let&rsquo;s go back to our Program.cs and make some changes:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
+{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">async</span> Task Main(<span style="color:#66d9ef">string</span>[] args)
+    {
+        <span style="color:#66d9ef">var</span> hostBuilder = <span style="color:#66d9ef">new</span> HostBuilder()
+            .ConfigureServices((hostContext, services) =&gt;
+            {
+                services.AddSingleton&lt;IBusControl&gt;(serviceProvider =&gt;
+                {
+                    <span style="color:#66d9ef">return</span> MassTransit.Bus.Factory.CreateUsingRabbitMq(cfg =&gt;
+                    {
+                        <span style="color:#66d9ef">var</span> host = cfg.Host(<span style="color:#66d9ef">new</span> Uri(<span style="color:#e6db74">&#34;rabbitmq://localhost&#34;</span>), h =&gt;
+                        {
+                            h.Username(<span style="color:#e6db74">&#34;guest&#34;</span>);
+                            h.Password(<span style="color:#e6db74">&#34;guest&#34;</span>);
+                        });
+                    });
+                });
+                services.AddScoped&lt;IHostedService, MassTransitHostedService&gt;();
+            });
+
+        <span style="color:#66d9ef">await</span> hostBuilder.RunConsoleAsync();
+    }
+}
+</code></pre></div><p>Note that we&rsquo;re using the <strong>ConfigureServices()</strong> method on the <strong>HostBuilder</strong> to add additional services to the dependency injection container. In this case we&rsquo;re adding <strong>IBusControl</strong> as a singleton and use MassTransit&rsquo;s RabbitMq transport as the implementation. Next, we add our <strong>MassTransitHostedService</strong> as a scoped service to the DI container as well. By doing this, the generic host will automatically run <strong>StartAsync</strong> on our hosted service, which in turn will call <strong>StartAsync</strong> on the IBusControl instance, essentially opening the connection to RabbitMq and starts listening for messages.</p>
+<p>When we shut down the host with Control-C, the generic host will automatically call <strong>StopAsync</strong> on our hosted service, which again will call <strong>StopAsync</strong> on the IBusControl instance which will do some clean up.</p>
+<h2 id="host-and-app-configuration">Host and app configuration</h2>
+<p>So far we&rsquo;ve only used the dependency injection features of the generic host. But it can also setup configuration. To setup configuration we can use <strong>ConfigureHostConfiguration</strong> and <strong>ConfigureAppConfiguration</strong>. For example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">var</span> hostBuilder = <span style="color:#66d9ef">new</span> HostBuilder()
+    .ConfigureHostConfiguration((config) =&gt;
+    {
+        config.AddEnvironmentVariables();
+    })
+    .ConfigureAppConfiguration((hostContext, config) =&gt;
+    {
+        config.SetBasePath(Environment.CurrentDirectory);
+        config.AddJsonFile(<span style="color:#e6db74">&#34;appsettings.json&#34;</span>, optional: <span style="color:#66d9ef">false</span>);
+        config.AddJsonFile(<span style="color:#e6db74">$&#34;appsettings.{hostContext.HostingEnvironment.EnvironmentName}.json&#34;</span>, optional: <span style="color:#66d9ef">true</span>);
+        config.AddEnvironmentVariables();
+    });
+</code></pre></div><p>The difference between these two methods is that <strong>ConfigureHostConfiguration</strong> is used to influence the configuration of the host itself. For example, the host is aware of the environment it is running in. You can see this in the output when it starts. By default it uses a configuration setting called Environment and it recognizes a couple of standard values (Development, Staging and Production). We might want to change where that configuration setting is read from, for example from an environment variable or from a configuration file.</p>
+<p>With <strong>ConfigureAppConfiguration</strong> we setup the configuration for our application. In the example above I change the base path to the directory where my app is being run from, rather than where the output is. Then I add <strong>appsettings.json</strong> as a required configuration file, and <strong>appsettings.{environment}.json</strong> as an optional override. Finally I add environment variables as an input for configuration as well.</p>
+<p>After setting that up, we could use it to get the connection string to RabbitMq from the configuration file, rather than hardcoding it. To do that, we&rsquo;ll need to make a small change to our Program.cs:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
+{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">async</span> Task Main(<span style="color:#66d9ef">string</span>[] args)
+    {
+        <span style="color:#66d9ef">var</span> hostBuilder = <span style="color:#66d9ef">new</span> HostBuilder()
+            .ConfigureHostConfiguration((config) =&gt;
+            {
+                config.AddEnvironmentVariables();
+            })
+            .ConfigureAppConfiguration((hostContext, config) =&gt;
+            {
+                config.SetBasePath(Environment.CurrentDirectory);
+                config.AddJsonFile(<span style="color:#e6db74">&#34;appsettings.json&#34;</span>, optional: <span style="color:#66d9ef">false</span>);
+                config.AddJsonFile(<span style="color:#e6db74">$&#34;appsettings.{hostContext.HostingEnvironment.EnvironmentName}.json&#34;</span>, optional: <span style="color:#66d9ef">true</span>);
+                config.AddEnvironmentVariables();
+            });
+            .ConfigureServices((hostContext, services) =&gt;
+            {
+                services.AddSingleton&lt;IBusControl&gt;(serviceProvider =&gt;
+                {
+                    <span style="color:#66d9ef">var</span> configuration = serviceProvider.GetRequiredService&lt;IConfiguration&gt;();
+                    <span style="color:#66d9ef">return</span> MassTransit.Bus.Factory.CreateUsingRabbitMq(cfg =&gt;
+                    {
+                        <span style="color:#66d9ef">var</span> host = cfg.Host(<span style="color:#66d9ef">new</span> Uri(configuration.GetConnectionString(<span style="color:#e6db74">&#34;RabbitMq&#34;</span>)), h =&gt;
+                        {
+                            h.Username(<span style="color:#e6db74">&#34;guest&#34;</span>);
+                            h.Password(<span style="color:#e6db74">&#34;guest&#34;</span>);
+                        });
+                    });
+                });
+                services.AddScoped&lt;IHostedService, MassTransitHostedService&gt;();
+            });
+
+        <span style="color:#66d9ef">await</span> hostBuilder.RunConsoleAsync();
+    }
+}
+</code></pre></div><p>Now we can set the connection string to RabbitMq inside our appsettings.json, and possibly override its value for a particular environment by adding an appsettings.Development.json for example.</p>
+<h2 id="logging">Logging</h2>
+<p>Finally, there is one more cross-cutting concern for which we can use the generic host to do setup: logging. To setup logging there is another method we can use on the <strong>HostBuilder</strong>. Unsurprisingly it is called <strong>ConfigureLogging</strong>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">var</span> hostBuilder = <span style="color:#66d9ef">new</span> HostBuilder()
+    .ConfigureLogging((hostContext, config) =&gt;
+    {
+        config.AddSerilog();
+    });
+</code></pre></div><p>In this example I&rsquo;m simply setting up <a href="https://serilog.net/">Serilog</a> as our logging framework. We can do a lot of other things, like configure where to log to, etc. but I&rsquo;ll leave that as an exercise to the reader.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Using the generic host makes building console applications that need to run until stopped an absolute breeze. What I like most about it though is the similarity with how things work in ASP.NET Core. If you&rsquo;re using ASP.NET Core for your frontend and need to do some background processing in a console app it makes sense to use the generic host for your console app.</p>
+<p>One thing that sticks out for me though is that in ASP.NET Core we have a Startup class which does all the application configuration, while the Program.cs only deals with configuration of the host itself. That pattern isn&rsquo;t yet available here and I&rsquo;m not sure it is coming. I did <a href="https://github.com/aspnet/Hosting/issues/1249">ask on GitHub</a> though.</p>
+<ul class="pa0">
+  
+   <li class="list">
+     <a href="/tags/.net" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/.net-core" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET Core</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jmezach" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/dotnetcore-and-dotnetstandard-2.0/">.NET Core and .NET Standard 2.0</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/my-experience-with-my-first-dotnet-core-contribution/">My experience with my first .NET Core contribution</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/migrating-existing-dotnet-projects-to-sdk-based-projects/">Migrating existing .NET projects to SDK-based projects</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/sharing-code-across-dotnet-platforms-with-dotnet-standard/">Sharing code across .NET platforms with .NET Standard</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dotnetcore-versioning/">.NET Core versioning</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dotnet-platform-standard-and-the-magic-of-imports/">.NET Platform Standard and the magic of &#34;imports&#34;</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dotnet-core-at-build-2016/">.NET Core at Build 2016</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/developing-for-dotnet-core/">Developing for .NET Core</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/throttling-workflow-services/">Throttling workflow services</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/creating-a-workflow-image-from-a-workflow-service/">Creating a workflow image from a workflow service</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/even-better-messsage-based-correlation/">Even better message based correlation</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/message-based-correlation-with-wf-wcf-in-dotnet-35/">Message based correlation with WF/WCF in .NET 3.5</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/workflows-mysteriously-being-aborted/">Workflows mysteriously being aborted</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/service-pack-1-for-dotnet-fixes-serialization/">Service Pack 1 for .NET fixes XML serialization?</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/cool-tools-netmassdownloader/">Cool tools: NetMassDownloader</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-mid-gray bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://jmezach.github.io" >
+    &copy;  Jonathan's Blog 2020 
+  </a>
+    <div>
+
+
+
+
+<a href="https://twitter.com/jmezach" target="_blank" class="link-transition twitter link dib z-999 pt3 pt0-l mr1" title="Twitter link" rel="noopener" aria-label="follow on Twitter——Opens in a new window">
+  <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://www.instagram.com/jonathanmezach/" target="_blank" class="link-transition instagram link dib z-999 pt3 pt0-l mr1" title="Instagram link" rel="noopener" aria-label="follow on Instagram——Opens in a new window">
+  <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M42.271,26.578v-0.006c0.502,0,1.005,0.01,1.508-0.002  c0.646-0.017,1.172-0.57,1.172-1.217c0-0.963,0-1.927,0-2.89c0-0.691-0.547-1.24-1.236-1.241c-0.961,0-1.922-0.001-2.883,0  c-0.688,0.001-1.236,0.552-1.236,1.243c-0.001,0.955-0.004,1.91,0.003,2.865c0.001,0.143,0.028,0.291,0.073,0.426  c0.173,0.508,0.639,0.82,1.209,0.823C41.344,26.579,41.808,26.578,42.271,26.578z M33,27.817c-3.384-0.002-6.135,2.721-6.182,6.089  c-0.049,3.46,2.72,6.201,6.04,6.272c3.454,0.074,6.248-2.686,6.321-6.043C39.254,30.675,36.462,27.815,33,27.817z M21.046,31.116  v0.082c0,4.515-0.001,9.03,0,13.545c0,0.649,0.562,1.208,1.212,1.208c7.16,0.001,14.319,0.001,21.479,0  c0.656,0,1.215-0.557,1.215-1.212c0.001-4.509,0-9.02,0-13.528v-0.094h-2.912c0.411,1.313,0.537,2.651,0.376,4.014  c-0.161,1.363-0.601,2.631-1.316,3.803s-1.644,2.145-2.779,2.918c-2.944,2.006-6.821,2.182-9.946,0.428  c-1.579-0.885-2.819-2.12-3.685-3.713c-1.289-2.373-1.495-4.865-0.739-7.451C22.983,31.116,22.021,31.116,21.046,31.116z   M45.205,49.255c0.159-0.026,0.318-0.049,0.475-0.083c1.246-0.265,2.264-1.304,2.508-2.557c0.025-0.137,0.045-0.273,0.067-0.409  V21.794c-0.021-0.133-0.04-0.268-0.065-0.401c-0.268-1.367-1.396-2.428-2.78-2.618c-0.058-0.007-0.113-0.02-0.17-0.03H20.761  c-0.147,0.027-0.296,0.047-0.441,0.08c-1.352,0.308-2.352,1.396-2.545,2.766c-0.008,0.057-0.02,0.114-0.029,0.171V46.24  c0.028,0.154,0.05,0.311,0.085,0.465c0.299,1.322,1.427,2.347,2.77,2.52c0.064,0.008,0.13,0.021,0.195,0.03H45.205z M33,64  C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://www.youtube.com/channel/UCA4OPwB_HlIhSW6EaXOGcJQ" target="_blank" class="link-transition youtube link dib z-999 pt3 pt0-l mr1" title="Youtube link" rel="noopener" aria-label="follow on Youtube——Opens in a new window">
+  <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M42.527,41.34c-0.278,0-0.478,0.078-0.6,0.244  c-0.121,0.156-0.18,0.424-0.18,0.796v0.896h1.543V42.38c0-0.372-0.062-0.64-0.185-0.796C42.989,41.418,42.792,41.34,42.527,41.34z   M36.509,41.309c0.234,0,0.417,0.076,0.544,0.23c0.123,0.155,0.185,0.383,0.185,0.682v4.584c0,0.286-0.053,0.487-0.153,0.611  c-0.1,0.127-0.256,0.189-0.47,0.189c-0.148,0-0.287-0.033-0.421-0.096c-0.135-0.062-0.274-0.171-0.415-0.313v-5.531  c0.119-0.122,0.239-0.213,0.36-0.271C36.26,41.335,36.383,41.309,36.509,41.309z M41.748,44.658v1.672  c0,0.468,0.057,0.792,0.17,0.974c0.118,0.181,0.313,0.269,0.592,0.269c0.289,0,0.491-0.076,0.606-0.229  c0.114-0.153,0.175-0.489,0.175-1.013v-0.405h1.795v0.456c0,0.911-0.217,1.596-0.657,2.059c-0.435,0.459-1.089,0.687-1.958,0.687  c-0.781,0-1.398-0.242-1.847-0.731c-0.448-0.486-0.676-1.157-0.676-2.014v-3.986c0-0.768,0.249-1.398,0.742-1.882  c0.493-0.484,1.128-0.727,1.911-0.727c0.799,0,1.413,0.225,1.843,0.674c0.429,0.448,0.642,1.093,0.642,1.935v2.264H41.748z   M38.623,48.495c-0.271,0.336-0.669,0.501-1.187,0.501c-0.343,0-0.646-0.062-0.912-0.192c-0.267-0.129-0.519-0.327-0.746-0.601  v0.681h-1.764V36.852h1.764v3.875c0.237-0.27,0.485-0.478,0.748-0.616c0.267-0.143,0.534-0.212,0.805-0.212  c0.554,0,0.975,0.189,1.265,0.565c0.294,0.379,0.438,0.933,0.438,1.66v4.926C39.034,47.678,38.897,48.159,38.623,48.495z   M30.958,48.884v-0.976c-0.325,0.361-0.658,0.636-1.009,0.822c-0.349,0.191-0.686,0.282-1.014,0.282  c-0.405,0-0.705-0.129-0.913-0.396c-0.201-0.266-0.305-0.658-0.305-1.189v-7.422h1.744v6.809c0,0.211,0.037,0.362,0.107,0.457  c0.077,0.095,0.196,0.141,0.358,0.141c0.128,0,0.292-0.062,0.488-0.188c0.197-0.125,0.375-0.283,0.542-0.475v-6.744h1.744v8.878  H30.958z M24.916,38.6v10.284h-1.968V38.6h-2.034v-1.748h6.036V38.6H24.916z M32.994,32.978c0-0.001,12.08,0.018,13.514,1.45  c1.439,1.435,1.455,8.514,1.455,8.555c0,0-0.012,7.117-1.455,8.556C45.074,52.969,32.994,53,32.994,53s-12.079-0.031-13.516-1.462  c-1.438-1.435-1.441-8.502-1.441-8.556c0-0.041,0.004-7.12,1.441-8.555C20.916,32.996,32.994,32.977,32.994,32.978z M42.52,29.255  h-1.966v-1.08c-0.358,0.397-0.736,0.703-1.13,0.909c-0.392,0.208-0.771,0.312-1.14,0.312c-0.458,0-0.797-0.146-1.027-0.437  c-0.229-0.291-0.345-0.727-0.345-1.311v-8.172h1.962v7.497c0,0.231,0.045,0.399,0.127,0.502c0.08,0.104,0.216,0.156,0.399,0.156  c0.143,0,0.327-0.069,0.548-0.206c0.22-0.137,0.423-0.312,0.605-0.527v-7.422h1.966V29.255z M31.847,27.588  c0.139,0.147,0.339,0.219,0.6,0.219c0.266,0,0.476-0.075,0.634-0.223c0.157-0.152,0.235-0.358,0.235-0.618v-5.327  c0-0.214-0.08-0.387-0.241-0.519c-0.16-0.131-0.37-0.196-0.628-0.196c-0.241,0-0.435,0.065-0.586,0.196  c-0.148,0.132-0.225,0.305-0.225,0.519v5.327C31.636,27.233,31.708,27.439,31.847,27.588z M30.408,19.903  c0.528-0.449,1.241-0.674,2.132-0.674c0.812,0,1.48,0.237,2.001,0.711c0.517,0.473,0.777,1.083,0.777,1.828v5.051  c0,0.836-0.255,1.491-0.762,1.968c-0.513,0.476-1.212,0.714-2.106,0.714c-0.858,0-1.547-0.246-2.064-0.736  c-0.513-0.492-0.772-1.152-0.772-1.983v-5.068C29.613,20.954,29.877,20.351,30.408,19.903z M24.262,16h-2.229l2.634,8.003v5.252  h2.213v-5.5L29.454,16h-2.25l-1.366,5.298h-0.139L24.262,16z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30  S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://www.linkedin.com/in/jmezach/" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/jmezach" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

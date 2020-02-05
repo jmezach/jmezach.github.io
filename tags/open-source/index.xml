@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Open Source on Jonathan&#39;s Blog</title>
+    <title>open source on Jonathan&#39;s Blog</title>
     <link>https://jmezach.github.io/tags/open-source/</link>
-    <description>Recent content in Open Source on Jonathan&#39;s Blog</description>
+    <description>Recent content in open source on Jonathan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 23 Nov 2018 16:28:11 +0100</lastBuildDate>
@@ -13,20 +13,20 @@
     
     <item>
       <title>Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting</title>
-      <link>https://jmezach.github.io/2018/11/23/porting-from-asp.net-to-asp.net-core-part-3-mechanics-of-porting/</link>
+      <link>https://jmezach.github.io/post/porting-to-aspnet-core-part-three/</link>
       <pubDate>Fri, 23 Nov 2018 16:28:11 +0100</pubDate>
       
-      <guid>https://jmezach.github.io/2018/11/23/porting-from-asp.net-to-asp.net-core-part-3-mechanics-of-porting/</guid>
+      <guid>https://jmezach.github.io/post/porting-to-aspnet-core-part-three/</guid>
       <description>This post is part of a series:
  Part 1: Introduction Part 2: Third party dependencies Part 3: Mechanics of porting Part 4: Deployment and packaging options  If you haven&amp;rsquo;t read any of the previous posts I recommend you do this now to get some context that I&amp;rsquo;ll be referring to in this post. If you have, continue on with the nitty gritty details of porting an app to ASP.</description>
     </item>
     
     <item>
       <title>Porting from ASP.NET to ASP.NET Core: Part 2 - Third party dependencies</title>
-      <link>https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/</link>
+      <link>https://jmezach.github.io/post/porting-to-aspnet-core-part-two/</link>
       <pubDate>Wed, 07 Nov 2018 21:07:49 +0100</pubDate>
       
-      <guid>https://jmezach.github.io/2018/11/07/porting-from-asp.net-to-asp.net-core-part-2-third-party-dependencies/</guid>
+      <guid>https://jmezach.github.io/post/porting-to-aspnet-core-part-two/</guid>
       <description>This post is part of a series:
  Part 1: Introduction Part 2: Third party dependencies Part 3: Mechanics of porting Part 4: Deployment and packaging options  If you haven&amp;rsquo;t read the first post yet I suggest reading that first since it introduces the app that I&amp;rsquo;m porting and some of the reasons behind it.
 Are my dependencies available on .NET Core? Most software these days consists of not just the code we write, but a lot of third party dependencies as well.</description>
@@ -34,28 +34,28 @@ Are my dependencies available on .NET Core? Most software these days consists of
     
     <item>
       <title>Porting from ASP.NET to ASP.NET Core: Part 1 - Introduction</title>
-      <link>https://jmezach.github.io/2018/11/05/porting-from-asp.net-to-asp.net-core-part-1-introduction/</link>
+      <link>https://jmezach.github.io/post/porting-to-aspnet-core-part-one/</link>
       <pubDate>Mon, 05 Nov 2018 21:45:50 +0100</pubDate>
       
-      <guid>https://jmezach.github.io/2018/11/05/porting-from-asp.net-to-asp.net-core-part-1-introduction/</guid>
+      <guid>https://jmezach.github.io/post/porting-to-aspnet-core-part-one/</guid>
       <description>Last week I took to Twitter and asked if anyone of my followers would be interested in a session about .NET Core for developers that are using .NET Framework today. I wasn&amp;rsquo;t really expecting all that much by sending that tweet, but with a little help from Immo Landwerth who&amp;rsquo;s on the .NET team, that tweet seemed to have sparked quite a bit of interest in such a session. Perhaps the announcements that ASP.</description>
     </item>
     
     <item>
       <title>.NET Core Hackathon 2018</title>
-      <link>https://jmezach.github.io/2018/06/14/.net-core-hackathon-2018/</link>
+      <link>https://jmezach.github.io/post/net-core-hackathon-2018/</link>
       <pubDate>Thu, 14 Jun 2018 20:00:00 +0200</pubDate>
       
-      <guid>https://jmezach.github.io/2018/06/14/.net-core-hackathon-2018/</guid>
+      <guid>https://jmezach.github.io/post/net-core-hackathon-2018/</guid>
       <description>It has been a while since I&amp;rsquo;ve posted something here on my blog. That&amp;rsquo;s not because I haven&amp;rsquo;t done anything, just that I&amp;rsquo;ve been really busy lately with all kinds of things. For example, I&amp;rsquo;ve been delving into the container world and delivered a hands-on workshop with Kubernetes on Azure as part of the Global Azure Bootcamp 2018 back in April. That was a lot of fun, since I didn&amp;rsquo;t know much about Kubernetes before I started working on that, so I learned a lot in a relatively short amount of time, but I digress.</description>
     </item>
     
     <item>
       <title>My experience with my first .NET Core contribution</title>
-      <link>https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/</link>
+      <link>https://jmezach.github.io/post/my-experience-with-my-first-dotnet-core-contribution/</link>
       <pubDate>Sat, 15 Apr 2017 15:36:00 +0200</pubDate>
       
-      <guid>https://jmezach.github.io/2017/04/15/my-experience-with-my-first-.net-core-contribution/</guid>
+      <guid>https://jmezach.github.io/post/my-experience-with-my-first-dotnet-core-contribution/</guid>
       <description>I’ve written quite a few blogs here on how you can use .NET Core in your applications and what to expect when developing for this new platform. But with .NET Core being open source there’s also another story to be told, namely that of extending and improving the platform itself through open source contributions. So when Karel Zikmund from the .NET Core team reached out on Twitter asking the community to help them fix bugs before the .</description>
     </item>
     
