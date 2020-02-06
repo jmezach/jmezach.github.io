@@ -9,7 +9,7 @@
     <meta name="generator" content="Hugo 0.64.0" />
     
     
-      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+      <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
     
 
     
@@ -43,9 +43,32 @@
 <meta name="twitter:title" content="Issue fixed"/>
 <meta name="twitter:description" content="I thought I&rsquo;d write a little follow up on my previous post. We found out yesterday that the bug we found in Windows Workflow Foundation which caused us to make a work around, has been fixed in the recently released .NET Framework 2.0 and 3.0 SP1. We haven&rsquo;t been able to find a mention of this bug in the release notes, but we had a small application that showed the bug was there, so we tested it on our development machine which were using the service packs and then on a test server which didn&rsquo;t have the service pack installed and it showed that it was working find on our development machines, but it didn&rsquo;t work on our test servers."/>
 
+      
+<script type="application/javascript">
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	if (window.sessionStorage) {
+		var GA_SESSION_STORAGE_KEY = 'ga:clientId';
+		ga('create', 'UA-108599285-1', {
+	    'storage': 'none',
+	    'clientId': sessionStorage.getItem(GA_SESSION_STORAGE_KEY)
+	   });
+	   ga(function(tracker) {
+	    sessionStorage.setItem(GA_SESSION_STORAGE_KEY, tracker.get('clientId'));
+	   });
+   }
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
   </head>
 
-  <body class="ma0 helvetica bg-light-gray">
+  <body class="ma0 helvetica bg-light-gray production">
 
     
    

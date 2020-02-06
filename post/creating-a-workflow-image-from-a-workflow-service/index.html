@@ -9,7 +9,7 @@
     <meta name="generator" content="Hugo 0.64.0" />
     
     
-      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+      <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
     
 
     
@@ -43,9 +43,32 @@
 <meta name="twitter:title" content="Creating a workflow image from a workflow service"/>
 <meta name="twitter:description" content="Introduction For the project I’m currently working on we wanted to be able to display an image of a running workflow instance for diagnostic purposes. There are numerous examples of this floating around the internet, but most of them focused on a client side application that would generate the image. This is fine if your client application has access to all the necessary assemblies, but if does not you’re going to run into some problems."/>
 
+      
+<script type="application/javascript">
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	if (window.sessionStorage) {
+		var GA_SESSION_STORAGE_KEY = 'ga:clientId';
+		ga('create', 'UA-108599285-1', {
+	    'storage': 'none',
+	    'clientId': sessionStorage.getItem(GA_SESSION_STORAGE_KEY)
+	   });
+	   ga(function(tracker) {
+	    sessionStorage.setItem(GA_SESSION_STORAGE_KEY, tracker.get('clientId'));
+	   });
+   }
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
   </head>
 
-  <body class="ma0 helvetica bg-light-gray">
+  <body class="ma0 helvetica bg-light-gray production">
 
     
    
