@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Jonathan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 05 Feb 2020 13:49:34 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 10 Feb 2020 09:14:51 +0100</lastBuildDate>
     
 	<atom:link href="https://jmezach.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Building a Pull Request bot with Azure Functions - Part 2 - How it works</title>
+      <link>https://jmezach.github.io/post/building-a-pull-request-bot-part2/</link>
+      <pubDate>Mon, 10 Feb 2020 09:14:51 +0100</pubDate>
+      
+      <guid>https://jmezach.github.io/post/building-a-pull-request-bot-part2/</guid>
+      <description>This is the second post in my series on building a pull request bot using Azure Functions. If you haven&amp;rsquo;t read my first post I strongly recommend doing so before diving into this post.
+ Part 1: Introduction Part 2: How it works Part 3: Operating it  In this post I&amp;rsquo;ll dive into the details of how the bot actually works, from receiving notifications from Azure DevOps to managing state and posting comments back to the pull request.</description>
+    </item>
     
     <item>
       <title>Building a Pull Request bot with Azure Functions - Part 1 - Introduction</title>

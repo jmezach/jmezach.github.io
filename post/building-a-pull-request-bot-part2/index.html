@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Jonathan&#39;s Blog  | Building a Pull Request bot with Azure Functions - Part 1 - Introduction</title>
+    <title>Jonathan&#39;s Blog  | Building a Pull Request bot with Azure Functions - Part 2 - How it works</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="generator" content="Hugo 0.64.1" />
     
@@ -25,23 +25,26 @@
 
     
     
-    <meta property="og:title" content="Building a Pull Request bot with Azure Functions - Part 1 - Introduction" />
-<meta property="og:description" content="About 2,5 years ago I was talking to my fellow team members about some of their challenges. At the time we had recently switched from TFS Version Control (TFVC) to Git, which obviously introduced quite a few changes in the way we worked. For example, we introduced pull requests as a mandatory step in the development flow in order to increase awareness and code quality. However, we found that some things that would need to happen for every pull request weren&rsquo;t being done (or not done properly) which weren&rsquo;t always caught by reviewers either." />
+    <meta property="og:title" content="Building a Pull Request bot with Azure Functions - Part 2 - How it works" />
+<meta property="og:description" content="This is the second post in my series on building a pull request bot using Azure Functions. If you haven&rsquo;t read my first post I strongly recommend doing so before diving into this post.
+ Part 1: Introduction Part 2: How it works Part 3: Operating it  In this post I&rsquo;ll dive into the details of how the bot actually works, from receiving notifications from Azure DevOps to managing state and posting comments back to the pull request." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jmezach.github.io/post/building-a-pull-request-bot-part1/" />
-<meta property="article:published_time" content="2020-02-05T13:49:34+01:00" />
-<meta property="article:modified_time" content="2020-02-05T13:49:34+01:00" />
-<meta itemprop="name" content="Building a Pull Request bot with Azure Functions - Part 1 - Introduction">
-<meta itemprop="description" content="About 2,5 years ago I was talking to my fellow team members about some of their challenges. At the time we had recently switched from TFS Version Control (TFVC) to Git, which obviously introduced quite a few changes in the way we worked. For example, we introduced pull requests as a mandatory step in the development flow in order to increase awareness and code quality. However, we found that some things that would need to happen for every pull request weren&rsquo;t being done (or not done properly) which weren&rsquo;t always caught by reviewers either.">
-<meta itemprop="datePublished" content="2020-02-05T13:49:34&#43;01:00" />
-<meta itemprop="dateModified" content="2020-02-05T13:49:34&#43;01:00" />
-<meta itemprop="wordCount" content="1119">
+<meta property="og:url" content="https://jmezach.github.io/post/building-a-pull-request-bot-part2/" />
+<meta property="article:published_time" content="2020-02-10T09:14:51+01:00" />
+<meta property="article:modified_time" content="2020-02-10T09:14:51+01:00" />
+<meta itemprop="name" content="Building a Pull Request bot with Azure Functions - Part 2 - How it works">
+<meta itemprop="description" content="This is the second post in my series on building a pull request bot using Azure Functions. If you haven&rsquo;t read my first post I strongly recommend doing so before diving into this post.
+ Part 1: Introduction Part 2: How it works Part 3: Operating it  In this post I&rsquo;ll dive into the details of how the bot actually works, from receiving notifications from Azure DevOps to managing state and posting comments back to the pull request.">
+<meta itemprop="datePublished" content="2020-02-10T09:14:51&#43;01:00" />
+<meta itemprop="dateModified" content="2020-02-10T09:14:51&#43;01:00" />
+<meta itemprop="wordCount" content="2650">
 
 
 
 <meta itemprop="keywords" content=".NET,Azure Functions,DevOps," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Building a Pull Request bot with Azure Functions - Part 1 - Introduction"/>
-<meta name="twitter:description" content="About 2,5 years ago I was talking to my fellow team members about some of their challenges. At the time we had recently switched from TFS Version Control (TFVC) to Git, which obviously introduced quite a few changes in the way we worked. For example, we introduced pull requests as a mandatory step in the development flow in order to increase awareness and code quality. However, we found that some things that would need to happen for every pull request weren&rsquo;t being done (or not done properly) which weren&rsquo;t always caught by reviewers either."/>
+<meta name="twitter:title" content="Building a Pull Request bot with Azure Functions - Part 2 - How it works"/>
+<meta name="twitter:description" content="This is the second post in my series on building a pull request bot using Azure Functions. If you haven&rsquo;t read my first post I strongly recommend doing so before diving into this post.
+ Part 1: Introduction Part 2: How it works Part 3: Operating it  In this post I&rsquo;ll dive into the details of how the bot actually works, from receiving notifications from Azure DevOps to managing state and posting comments back to the pull request."/>
 
       
 <script type="application/javascript">
@@ -186,20 +189,20 @@ if (!doNotTrack) {
   <div id="sharing" class="mt3">
 
     
-    <a href="https://www.facebook.com/sharer.php?u=https://jmezach.github.io/post/building-a-pull-request-bot-part1/" class="facebook no-underline" aria-label="share on Facebook">
+    <a href="https://www.facebook.com/sharer.php?u=https://jmezach.github.io/post/building-a-pull-request-bot-part2/" class="facebook no-underline" aria-label="share on Facebook">
       <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
 
     </a>
 
     
     
-    <a href="https://twitter.com/share?url=https://jmezach.github.io/post/building-a-pull-request-bot-part1/&amp;text=Building%20a%20Pull%20Request%20bot%20with%20Azure%20Functions%20-%20Part%201%20-%20Introduction" class="twitter no-underline" aria-label="share on Twitter">
+    <a href="https://twitter.com/share?url=https://jmezach.github.io/post/building-a-pull-request-bot-part2/&amp;text=Building%20a%20Pull%20Request%20bot%20with%20Azure%20Functions%20-%20Part%202%20-%20How%20it%20works" class="twitter no-underline" aria-label="share on Twitter">
       <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
 
     </a>
 
     
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://jmezach.github.io/post/building-a-pull-request-bot-part1/&amp;title=Building%20a%20Pull%20Request%20bot%20with%20Azure%20Functions%20-%20Part%201%20-%20Introduction" class="linkedin no-underline" aria-label="share on LinkedIn">
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://jmezach.github.io/post/building-a-pull-request-bot-part2/&amp;title=Building%20a%20Pull%20Request%20bot%20with%20Azure%20Functions%20-%20Part%202%20-%20How%20it%20works" class="linkedin no-underline" aria-label="share on LinkedIn">
       <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
 </svg>
@@ -207,55 +210,219 @@ if (!doNotTrack) {
     </a>
   </div>
 
-      <h1 class="f1 athelas mt3 mb1">Building a Pull Request bot with Azure Functions - Part 1 - Introduction</h1>
+      <h1 class="f1 athelas mt3 mb1">Building a Pull Request bot with Azure Functions - Part 2 - How it works</h1>
       
       
-      <time class="f6 mv4 dib tracked" datetime="2020-02-05T13:49:34&#43;01:00">February 5, 2020</time>
+      <time class="f6 mv4 dib tracked" datetime="2020-02-10T09:14:51&#43;01:00">February 10, 2020</time>
 
       
       
-        <span class="f6 mv4 dib tracked"> - 6 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 1119 words</span>
+        <span class="f6 mv4 dib tracked"> - 13 minutes read</span>
+        <span class="f6 mv4 dib tracked"> - 2650 words</span>
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>About 2,5 years ago I was talking to my fellow team members about some of their challenges. At the time we had recently switched from TFS Version Control (TFVC) to Git, which obviously introduced quite a few changes in the way we worked. For example, we introduced pull requests as a mandatory step in the development flow in order to increase awareness and code quality. However, we found that some things that would need to happen for every pull request weren&rsquo;t being done (or not done properly) which weren&rsquo;t always caught by reviewers either. This usually caused delays and rework later on in the development process.</p>
-<p>So I suggested to do some automation around these things, since they were laborious and dull which made them an ideal candidate for automation. And there the idea of a pull request bot was born. I wanted to develop something that could be easily extended to perform whatever automated checks we could think of and then post comments in the pull request to trigger developers. So I set out to build just that.</p>
-<p>This is the first post in a series:</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>This is the second post in my series on building a pull request bot using Azure Functions. If you haven&rsquo;t read my <a href="/post/building-a-pull-request-bot-part1/">first post</a> I strongly recommend doing so before diving into this post.</p>
 <ul>
 <li><a href="/post/building-a-pull-request-bot-part1/">Part 1: Introduction</a></li>
 <li><a href="/post/building-a-pull-request-bot-part2/">Part 2: How it works</a></li>
 <li>Part 3: Operating it</li>
 </ul>
-<h2 id="a-first-try">A first try</h2>
-<p>For my first try I had a couple of constraints and challenges that I needed to tackle:</p>
-<ul>
-<li>Cloud was a bit of a no-go for us at the time, so it had to run on-premises</li>
-<li>I didn&rsquo;t want to flood the developers with a sea of comments, so I needed to keep some state as to what comments had already been posted</li>
-</ul>
-<p>I initially approached this as a hobby project of sorts, so I figured it was a good time to try out some new technology for this project. <a href="https://www.dot.net">.NET Core</a> 2.0 just came out back then and <a href="https://www.docker.com">Docker</a> was all the rage, so I went with that. To avoid locking up our TFS server I figured it might be good to introduce some queuing, so I picked <a href="https://masstransit-project.com/">MassTransit</a> and <a href="https://www.rabbitmq.com/">RabbitMQ</a> to solve that bit. For keeping the state of what comments had already been posted I ended up using <a href="https://martendb.io/">Marten</a> to turn <a href="https://www.postgresql.org/">PostgreSQL</a> into a document database. And of course I needed to do some logging as well, so I used <a href="https://serilog.net/">Serilog</a> to write semantic logs to <a href="https://www.elastic.co/elastic-stack">Elastic Stack</a>.</p>
+<p>In this post I&rsquo;ll dive into the details of how the bot actually works, from receiving notifications from Azure DevOps to managing state and posting comments back to the pull request.</p>
+<h2 id="receiving-notifications">Receiving notifications</h2>
+<p>The first thing we&rsquo;ll need for a pull request bot to work is to receive notifications when pull requests are created. Since we were using Azure DevOps (Server) we could use its Service Hooks feature to receive these notifications. Of course this could work with other systems as well, such as GitHub which has a similar feature. All these features are generally referred to as <em>web hooks</em>. Both Azure DevOps and GitHub will essentially do an HTTP POST request to an endpoint and will send along a payload containing the details of an event that has occurred. HTTP triggered Azure Functions are ideal for this. For example, this is the definition of the Azure Function that receives the pull request created event from Azure DevOps:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">[FunctionName(nameof(PullRequestCreated))]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task&lt;IActionResult&gt; PullRequestCreated(
+<span style="color:#a6e22e">    [HttpTrigger(AuthorizationLevel.Anonymous, &#34;post&#34;, Route = &#34;pullrequests/created&#34;)]</span> HttpRequest req,
+<span style="color:#a6e22e">    [OrchestrationClient]</span> DurableOrchestrationClientBase orchestrator,
+    ILogger log)
+{
+}
+</code></pre></div><p>There are a couple of things to note here. First of all, you might notice that this isn&rsquo;t a static method while most examples for Azure Functions use static methods. This is because we&rsquo;re using dependency injection which requires an instance of class to be created in order for the dependencies to be injected.</p>
+<p>The other thing you might notice is that we&rsquo;re using <code>AuthorizationLevel.Anonymous</code>, which means that anybody can execute this function. That doesn&rsquo;t mean that we don&rsquo;t do any authentication, but we&rsquo;ve implemented it as part of the function itself. The request body contains a subscription identifier which is the identifier of the service hook in Azure DevOps. We&rsquo;ve configured the bot with a set of subscription identifiers that are allowed, and deny requests that either do not have a subscription identifier or if the identifier is not in the list of authorized identifiers. In hindsight we could have used <code>AuthorizationLevel.Function</code> instead, which uses a key that we could have configured on the Azure DevOps side, which made the overall configuration a little bit easier. Never too late to change it I guess.</p>
+<p>Next step was to actually do something with the payload. As it turns out, Microsoft has a <a href="https://www.nuget.org/packages/Microsoft.AspNet.WebHooks.Receivers.VSTS/">web hooks library</a> with the definitions of all the payloads that Azure DevOps posts to your endpoint. That makes it a lot easier to deserialize the request body into something we can use. It contains among other things the pull request that has been created, who created it, the subscription identifier that triggered the event being posted, etc.</p>
+<p>Of course we also want to run our validations again when the pull request has been updated so we added an additional HTTP triggered function which is almost the same:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">[FunctionName(nameof(PullRequestUpdated))]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task&lt;IActionResult&gt; PullRequestUpdated(
+<span style="color:#a6e22e">    [HttpTrigger(AuthorizationLevel.Anonymous, &#34;post&#34;, Route = &#34;pullrequests/updated&#34;)]</span> HttpRequest req,
+<span style="color:#a6e22e">    [OrchestrationClient]</span> DurableOrchestrationClientBase orchestrator,
+    ILogger log)
+{
+}
+</code></pre></div><p>Finally we figured that while we were at it it makes sense to also run our validations whenever a build completes that was triggered as part of a pull request so that we can do additional checks on those builds as well. So we added yet another HTTP triggered function to do just that:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">[FunctionName(nameof(BuildCompleted))]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task&lt;IActionResult&gt; BuildCompleted(
+<span style="color:#a6e22e">    [HttpTrigger(AuthorizationLevel.Anonymous, &#34;post&#34;, Route = &#34;builds/completed&#34;)]</span> HttpRequest req,
+<span style="color:#a6e22e">    [OrchestrationClient]</span> DurableOrchestrationClientBase orchestrator,
+    ILogger log)
+{
+}
+</code></pre></div><p>As you can probably guess by now all these functions have a similar implementation which revolves around the <code>OrchestrationClient</code> that is injected into each of those functions, which is the entry point for Durable Functions. Let&rsquo;s dive in to see what happens there.</p>
+<h2 id="orchestration">Orchestration</h2>
+<p>The orchestration is what maintains the state of the validations that have run for a pull request. When the pull request created function from above runs, it starts a new instance of the orchestration:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#75715e">// Build the analysis context
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> instanceId = payload.Resource.PullRequestId.ToString();
+<span style="color:#66d9ef">var</span> pullRequest = <span style="color:#66d9ef">new</span> PullRequest
+(
+    currentState: payload.Resource.Status,
+    pullRequestId: payload.Resource.PullRequestId.ToString(),
+    projectId: payload.Resource.Repository.Project.Id,
+    repositoryId: payload.Resource.Repository.Id,
+    repositoryName: payload.Resource.Repository.Name,
+    sourceRefName: payload.Resource.SourceRefName,
+    targetRefName: payload.Resource.TargetRefName,
+    created: payload.Resource.CreationDate
+);
+
+<span style="color:#66d9ef">var</span> context = <span style="color:#66d9ef">new</span> AnalysisContext(pullRequest);
+
+<span style="color:#75715e">// Initialize a new orchestration
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">await</span> orchestrator.StartNewAsync(nameof(PullRequestFlow), instanceId, context);
+</code></pre></div><p>As you can see in the code sample above we first create an object to represent the pull request, with some basic information that we get from the payload such as its state, the repository it has been created in, the source and target branches, etc. We then wrap that into an <code>AnalysisContext</code> (more on that later) and start a new instance of the <code>PullRequestFlow</code> orchestration with the context and give it an identifier that matches the identifier of the pull request. This is what the durable orchestration function definition looks like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">[FunctionName(nameof(PullRequestFlow))]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task Run([OrchestrationTrigger] DurableOrchestrationContextBase context, ILogger logger)
+{
+    <span style="color:#75715e">// Get the AnalysisContext that is passed as input to this function
+</span><span style="color:#75715e"></span>    AnalysisContext analysisContext = context.GetInput&lt;AnalysisContext&gt;();
+}
+</code></pre></div><p>The pull request flow is a durable orchestration that will keep running until the associated pull request is completed. It doesn&rsquo;t do much in and of itself, but delegates actual work to other functions and coordinates those. To give an overview of how this flow works we&rsquo;ve drawn a diagram that shows each of the steps in the process:</p>
 <figure>
-    <img src="/img/building-a-pullrequest-bot/initial-architecture.png"/> <figcaption>
-            <h4>Initial architecture</h4>
-        </figcaption>
+    <img src="/img/building-a-pullrequest-bot/pull-request-flow.png"
+         alt="Pull Request Flow"/> 
 </figure>
 
-<p>If you&rsquo;re reading this and thinking &ldquo;Wow, that is quite complex&rdquo;, you are absolutely right. In fact, that was exactly the feedback I got from some of my co-workers when I presented the slide shown above at an internal talk. Most of my co-workers were used to developing .NET Framework applications running on IIS on Windows Server, so this was quite a departure from that.</p>
-<p>But the good news was that it was working and it was working well. From a usage perspective it did much of what I had initially hoped to deliver so I was quite happy with it. Maintaining it was mostly down to me though and due to the complexity it wasn&rsquo;t easy for my co-workers to help me with that. Fortunately things were about to change.</p>
-<h2 id="looking-at-the-cloud">Looking at the cloud</h2>
-<p>About a year later we made the decision to migrate our on-premises TFS onto Azure DevOps hosted in the cloud. This also meant that the pull request bot had to move along with it to the cloud, so this was an ideal opportunity to rethink its design. Even for my initial design I considered using <a href="https://azure.microsoft.com/en-us/services/functions/">Azure Functions</a> to build it but decided against it due to the constraint of needing to run on-premises. Now that I didn&rsquo;t have that constraint anymore I figured it could very well be a great solution, while simultaneously simplifying the whole thing.</p>
-<p>So I set out to basically re-implement the pull request bot using Azure Functions, but I had one challenge: how am I going to handle state. Azure Functions are stateless by design and for a good reason, but I still didn&rsquo;t want to flood our developers with comments. Fortunately the Azure Functions team thought about that so they introduced <a href="https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=csharp">Azure Durable Functions</a>. This is essentially an extension to Azure Functions that allows you to build sort of a workflow composed out of regular Azure Functions that do the actual work. What&rsquo;s nice here is that it stores state in between those calls. After attending a talk by <a href="https://www.linkedin.com/in/keesschollaart/">Kees Schollaart</a> on Durable Functions I was convinced it would be a good solution to my state problem.</p>
-<h2 id="migrating-to-the-cloud">Migrating to the cloud</h2>
-<p>Of course, our migration from TFS to Azure DevOps wasn&rsquo;t going to be done in a day. Unfortunately that also meant we couldn&rsquo;t move our pull request bot to the cloud just yet since it was receiving web hooks from our on-premises TFS server and then calling back into that TFS server as well, which just wouldn&rsquo;t work from a networking perspective. But I also didn&rsquo;t want to postpone building the new pull request bot based on Azure Functions until we had actually migrated to Azure DevOps.</p>
-<p>Luckily for me the Azure Functions runtime also comes packaged as a Docker container. This allows you to run Azure Functions on your own infrastructure. Of course that doesn&rsquo;t give you the ability to scale up and down on demand as needed like in Azure, but at least it gave me the possibility to do the migration and properly test it before moving it to Azure. Since this wasn&rsquo;t super critical I wasn&rsquo;t worried about the scaling either. If the analysis done by the bot would take a little bit longer I could live with that.</p>
-<p>State still needed to be persisted though and Durable Functions uses an Azure Storage Account for that. But I had no problem with the storage being up in Azure already, while the logic ran on-premises. In fact, this made it even easier to move the logic to Azure later on without having to migrate the storage. I had also replaced the logging based on Elastic Stack with Azure Application Insights, so I also created that up in Azure and connected the Docker container to it. And before I knew it it was all working and running</p>
+<p>Since most of the validations that we imagined early on that we wanted to do would revolve around the files changed in the pull request, we&rsquo;ll first need to compile that list. To do that though, we need to ensure that the pull request is currently in a mergeable state. We&rsquo;ll do this by calling out into an activity function (an Azure Function that does the actual work) like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">var</span> mergable = <span style="color:#66d9ef">await</span> context.CallActivityWithRetryAsync&lt;<span style="color:#66d9ef">bool</span>&gt;(nameof(EnsurePullRequestIsMergeable), _retryOptions, analysisContext);
+</code></pre></div><p>We&rsquo;re passing along the <code>AnalysisContext</code> to this function which includes the details of the pull request so we can use that to do a call into Azure DevOps to determine if the pull request is mergeable:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">[FunctionName(nameof(EnsurePullRequestIsMergeable))]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task&lt;<span style="color:#66d9ef">bool</span>&gt; EnsurePullRequestIsMergeable([ActivityTrigger] DurableActivityContextBase context)
+{
+    <span style="color:#75715e">// Get the pull request in question
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> analysisContext = context.GetInput&lt;AnalysisContext&gt;();
+    <span style="color:#66d9ef">var</span> pullRequest = analysisContext.PullRequest;
+
+    <span style="color:#75715e">// Check if the pull request is mergable
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> result = <span style="color:#66d9ef">await</span> _gitClientService.IsPullRequestMergable(pullRequest.ProjectId, pullRequest.RepositoryId, pullRequest.PullRequestId);
+    <span style="color:#66d9ef">return</span> result.GetValueOrDefault();
+}
+</code></pre></div><p>Note that the call to the Azure DevOps API has been put behind an interface so that we could potentially swap that out for a different implementation that targets a different source control platform. We try very hard to keep the interface as platform agnostic as we possible can. So let&rsquo;s go one level deeper and have a look at what&rsquo;s happening behind that call in our Azure DevOps specific implementation:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task&lt;<span style="color:#66d9ef">bool?</span>&gt; IsPullRequestMergable(<span style="color:#66d9ef">string</span> projectId, <span style="color:#66d9ef">string</span> repositoryId, <span style="color:#66d9ef">string</span> pullRequestId)
+{
+    <span style="color:#66d9ef">var</span> client = <span style="color:#66d9ef">await</span> connection.GetClientAsync&lt;GitHttpClient&gt;();
+    GitPullRequest pullRequest = <span style="color:#66d9ef">await</span> client.GetPullRequestAsync(projectId, repositoryId, <span style="color:#66d9ef">int</span>.Parse(pullRequestId));
+    <span style="color:#66d9ef">if</span> (pullRequest.MergeStatus == PullRequestAsyncStatus.Queued)
+    {
+        <span style="color:#75715e">// If merge status is queued we&#39;ll have to wait a bit for the merge status to be available, so we don&#39;t know yet
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+    }
+
+    <span style="color:#66d9ef">return</span> pullRequest.MergeStatus == PullRequestAsyncStatus.Succeeded;
+}
+</code></pre></div><p>A fairly simple piece of code that makes use of the <a href="https://docs.microsoft.com/en-us/azure/devops/integrate/concepts/dotnet-client-libraries?view=azure-devops">.NET Client library for Azure DevOps</a>. To establish a connection to Azure DevOps we use a <a href="https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&amp;tabs=preview-page">personal access token</a> of an automation account that we&rsquo;ve created specifically for this purpose.</p>
+<p>Provided that the pull request is in a mergeable state, the next step is to determine the list of files that have been modified as part of the pull request. This is a separate activity function again which gets the <code>AnalysisContext</code> as input and uses the same abstraction as our previous function to call into Azure DevOps to get that list of files. This requires two steps, first we need to get the details of the pull request itself, get the last merge commit identifier from there and then get the details of that merge commit:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task&lt;List&lt;<span style="color:#66d9ef">string</span>&gt;?&gt; GetChangedFilesInPullRequest(<span style="color:#66d9ef">string</span> repositoryId, <span style="color:#66d9ef">string</span> pullRequestId)
+{
+    <span style="color:#66d9ef">var</span> client = <span style="color:#66d9ef">await</span> connection.GetClientAsync&lt;GitHttpClient&gt;();
+
+    <span style="color:#75715e">// Get the full pull request details
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> pullRequest = <span style="color:#66d9ef">await</span> client.GetPullRequestAsync(repositoryId, <span style="color:#66d9ef">int</span>.Parse(pullRequestId));
+    <span style="color:#66d9ef">if</span> (pullRequest.Status == PullRequestStatus.Completed)
+    {
+        <span style="color:#75715e">// Pull request has already been completed in the mean time, nothing more we can do here
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+    }
+
+    <span style="color:#66d9ef">var</span> mergeCommit = <span style="color:#66d9ef">await</span> client.GetCommitAsync(pullRequest.LastMergeCommit.CommitId, pullRequest.Repository.Id, <span style="color:#ae81ff">1</span>);
+
+    <span style="color:#66d9ef">var</span> totalChangeCount = mergeCommit.ChangeCounts.Sum(changeCount =&gt; changeCount.Value);
+    <span style="color:#66d9ef">if</span> (totalChangeCount &gt; <span style="color:#ae81ff">0</span>)
+    {
+        <span style="color:#66d9ef">var</span> allChanges = <span style="color:#66d9ef">await</span> client.GetCommitAsync(pullRequest.LastMergeCommit.CommitId, pullRequest.Repository.Id, totalChangeCount);
+        <span style="color:#66d9ef">return</span> allChanges.Changes.Where(item =&gt; !item.Item.IsFolder).Select(item =&gt; item.Item.Path).ToList();
+    }
+    <span style="color:#66d9ef">else</span>
+    {
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">string</span>&gt;();
+    }
+}
+</code></pre></div><p>We then put this list of files on the <code>AnalysisContext</code> so that our validations can use that list to do their thing (more on that later). Because we wanted to also include builds into our validations we then collect a list of configured build definitions. This is configured in Azure DevOps by using branch policies, so we need to do some calls into the Azure DevOps API to get the information we need:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task&lt;<span style="color:#66d9ef">int</span>[]&gt; GetConfiguredBuildsForPullRequest(<span style="color:#66d9ef">string</span> projectId, <span style="color:#66d9ef">string</span> repositoryId, <span style="color:#66d9ef">string</span> pullRequestId, <span style="color:#66d9ef">string</span> targetBranch)
+{
+    <span style="color:#75715e">// Get all policy configurations of type Build
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> client = <span style="color:#66d9ef">await</span> connection.GetClientAsync&lt;PolicyHttpClient&gt;();
+    <span style="color:#66d9ef">var</span> policyConfigurations = <span style="color:#66d9ef">await</span> client.GetPolicyConfigurationsAsync(projectId, <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">new</span> Guid(<span style="color:#e6db74">&#34;0609b952-1397-4640-95ec-e00a01b2c241&#34;</span>));
+
+    <span style="color:#75715e">// Find policies that apply to the provided repository and target branch
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> policies = policyConfigurations.Where(p =&gt; p.Settings[<span style="color:#e6db74">&#34;scope&#34;</span>].Any(s =&gt;
+        s[<span style="color:#e6db74">&#34;repositoryId&#34;</span>].ToString() == repositoryId &amp;&amp;
+        s[<span style="color:#e6db74">&#34;refName&#34;</span>].ToString() == targetBranch));
+
+    <span style="color:#75715e">// Select the configured build definition identifiers of those policies
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> policies.Select(p =&gt; p.Settings[<span style="color:#e6db74">&#34;buildDefinitionId&#34;</span>].Value&lt;<span style="color:#66d9ef">int</span>&gt;()).ToArray();
+}
+</code></pre></div><p>What&rsquo;s happening here? We first have to get all the configured policies in the entire team project of a particular type, in our case build policies (represented by that GUID). We can then filter that set of policies down to the repository in which our pull request was created and the branch to which the policy applies which should be the target branch of our pull request. Once we have that policy we can get the associated build definition identifiers. Note that this can be more than one depending on how the policy is configured.</p>
+<h2 id="running-the-validations">Running the validations</h2>
+<p>Now that we have all the information about the pull request that we need it is time to do our actual validations. We choose to do a pluggable approach here so that we could easily add and remove analyzers as we went along. We also choose to do a <a href="https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-cloud-backup">fan-out</a> and implement each analyzer in its own activity function. This is also nice from a monitoring perspective, but more on that in a later post. Let&rsquo;s have a look at how we handle the fan-out in our orchestration:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"> <span style="color:#75715e">// Fan out and run each analyzer
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> analyzerTasks = <span style="color:#66d9ef">new</span> Task&lt;<span style="color:#66d9ef">object</span>&gt;[PullRequestAnalyzers.Analyzers.Length];
+<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt; PullRequestAnalyzers.Analyzers.Length; i++)
+{
+    <span style="color:#75715e">// Queue up the analyzer function
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> analyzerName = PullRequestAnalyzers.Analyzers[i];
+    analyzerTasks[i] = context.CallActivityWithRetryAsync&lt;<span style="color:#66d9ef">object</span>&gt;(analyzerName, _retryOptions, analysisContext);
+}
+
+<span style="color:#66d9ef">var</span> results = <span style="color:#66d9ef">await</span> Task.WhenAll(analyzerTasks);
+</code></pre></div><p>This is a typical fan-out pattern with Azure Durable Functions, we simply start each activity function and put the <code>Task</code> representing that function into an array. Then we await all of them. Once all of them have completed execution of the orchestration continues. Each activity function has pretty much the same implementation:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">[FunctionName(nameof(MyPullRequestAnalyzer))]</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task&lt;<span style="color:#66d9ef">object</span>&gt; MyPullRequestAnalyzer([ActivityTrigger] DurableActivityContext context, ILogger logger)
+{
+    <span style="color:#66d9ef">var</span> analysisContext = context.GetInput&lt;AnalysisContext&gt;();
+    <span style="color:#66d9ef">var</span> state = GetStateFromContext&lt;MyPullRequestAnalyzer.StateBag&gt;(analysisContext, nameof(MyPullRequestAnalyzer));
+    
+    <span style="color:#66d9ef">var</span> analyzer = <span style="color:#66d9ef">new</span> MyPullRequestAnalyzer(logger, _gitClientService, analysisContext, state);
+    <span style="color:#66d9ef">await</span> analyzer.Analyze();
+    
+    <span style="color:#66d9ef">return</span> state;
+}
+</code></pre></div><p>It gets the <code>AnalysisContext</code> as input, which includes a dictionary containing the state of each analyzer, where the key is the name of the analyzer and the value is an object. This allows each analyzer to define its own state bag which is just an object with some properties containing whatever state the analyzer needs. Here&rsquo;s how we get that from the context:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> TState GetStateFromContext&lt;TState&gt;(AnalysisContext analysisContext, <span style="color:#66d9ef">string</span> analyzerName)
+    <span style="color:#66d9ef">where</span> TState : class, <span style="color:#66d9ef">new</span>()
+{
+    <span style="color:#66d9ef">if</span> (!analysisContext.AnalyzerStates.TryGetValue(analyzerName, <span style="color:#66d9ef">out</span> <span style="color:#66d9ef">object</span> state))
+    {
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> TState();
+    }
+    <span style="color:#66d9ef">else</span>
+    {
+        <span style="color:#66d9ef">return</span> JsonConvert.DeserializeObject&lt;TState&gt;(state.ToString());
+    }
+}
+</code></pre></div><p>Once we have the current state for the analyzer we can go ahead and run the analyzer itself. Each analyzer inherits from the generic base class <code>PullRequestAnalyzerBase&lt;TState&gt;</code> which exposes properties for both the <code>AnalysisContext</code> and the <code>TState</code> for that analyzer. It also takes care of updating the state on the pull request itself, so that our developers can see that the analysis is running or if it has completed successfully or not.</p>
+<figure>
+    <img src="/img/building-a-pullrequest-bot/pull-request-status.png"
+         alt="Pull Request Status"/> 
+</figure>
+
+<p>From there, it&rsquo;s basically up to the analyzer itself to determine what it wants to do and we&rsquo;ve come up with different analyzers as we went along. They are mostly specific to our processes though. We do try to stick to using the abstractions I talked about earlier so that we could swap out Azure DevOps for something else without too much impact to the bot itself.</p>
+<p>What&rsquo;s more interesting though is what happens with the state of the analyzer once it has run. As seen in the code sample above each activity function returns the state of the analyzer. This is used by the orchestrator to update the state on the <code>AnalysisContext</code>. Here&rsquo;s the piece of code that ensures that we update the state correctly:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">var</span> results = <span style="color:#66d9ef">await</span> Task.WhenAll(analyzerTasks);  <span style="color:#75715e">// We saw this line earlier
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt; results.Length; i++)
+{
+    <span style="color:#66d9ef">var</span> analyzerName = PullRequestAnalyzers.Analyzers[i];
+    analysisContext.AnalyzerStates[analyzerName] = results[i];
+}
+</code></pre></div><h2 id="waiting-for-changes">Waiting for changes</h2>
+<p>After all the analyzers have run we can wait for changes to be made to the pull request, or builds that are running to complete. We do this by waiting for external events to occur, another feature of Azure Durable Functions. These external events are triggered by the HTTP triggered functions for pull request updates and build completed that we already saw at the start of this post. Let&rsquo;s have a look at how we handle these events in the orchestration:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">var</span> pullRequestUpdated = context.WaitForExternalEvent&lt;<span style="color:#66d9ef">string</span>&gt;(PULL_REQUEST_UPDATED_EVENT);
+<span style="color:#66d9ef">var</span> buildCompleted = context.WaitForExternalEvent&lt;(<span style="color:#66d9ef">int</span> buildDefinitionId, <span style="color:#66d9ef">int</span> buildId, <span style="color:#66d9ef">string</span> status)&gt;(BUILD_COMPLETED_EVENT);
+<span style="color:#66d9ef">var</span> completedTask = <span style="color:#66d9ef">await</span> Task.WhenAny(pullRequestUpdated, buildCompleted);
+</code></pre></div><p>We start two tasks, one for each event that can occur and then use <code>Task.WhenAny</code> to wait for either one to complete, whichever one comes first. This returns the task that actually completed, so we can do an if check to see which of the events has occurred. In the case of a pull request updated event we receive the new state of the pull request (ie. completed, abandoned, etc.). If the new state is completed, we quit the orchestration. In all other cases we continue the orchestration as new, using the following code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">context.ContinueAsNew(analysisContext);
+</code></pre></div><p>This will start the entire orchestration from the top, but with the updated <code>AnalysisContext</code> with all its state as the input. That means that the state of each analyzer is preserved. So for example, if the analyzer has posted a comment to the pull request, it can store the identifier of the comment in its state. When it runs again after an update has happened on the pull request it can check its state, find a comment identifier there and simply do nothing or close the comment if it has been resolved.</p>
+<p>As for the build completed event, we mostly do the same thing. We receive the identifier of the build definition, the identifier of the build and the status of completed build, put that information on the <code>AnalysisContext</code> and then restart the orchestration in the same way as above. Analyzers can then choose to use that information to do their thing.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Honestly I was quite surprised how easy it was to move my existing code into Azure Functions. What helped was that when I initially build it I already made a clear separation between the WebAPI and queue handling and the core logic of the bot. Most of the core logic could be re-used as is in Azure Functions without much changes. And the overall solution became a lot simpler as you can see:</p>
-<figure>
-    <img src="/img/building-a-pullrequest-bot/new-architecture.png"
-         alt="Azure Functions Architecture"/> 
-</figure>
-
-<p>In my <a href="/post/building-a-pull-request-bot-part2/">next post</a> I will dive into the inner workings of the bot to explain in detail how it works.</p>
+<p>Wow, that was a lot. Yet, I still think this is a much simpler solution than what we had initially that I alluded to in my <a href="/post/building-a-pull-request-bot-part1/">previous post</a>. We just keep running the same loop over and over until the pull request is completed. By running each analyzer in its own activity function we also don&rsquo;t have to worry about one of them blocking the others.</p>
+<p>Of course this setup isn&rsquo;t without its caveats either and we did run into a couple of things when we put this into production, but let&rsquo;s talk about that in more detail in my next post.</p>
 <ul class="pa0">
   
    <li class="list">
@@ -307,6 +474,10 @@ if (!doNotTrack) {
     <p class="f5 b mb3">Related</p>
     <ul class="pa0 list">
 	   
+	     <li  class="mb2">
+          <a href="/post/building-a-pull-request-bot-part1/">Building a Pull Request bot with Azure Functions - Part 1 - Introduction</a>
+        </li>
+	    
 	     <li  class="mb2">
           <a href="/post/porting-to-aspnet-core-part-three/">Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting</a>
         </li>
@@ -361,10 +532,6 @@ if (!doNotTrack) {
 	    
 	     <li  class="mb2">
           <a href="/post/creating-a-workflow-image-from-a-workflow-service/">Creating a workflow image from a workflow service</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/even-better-messsage-based-correlation/">Even better message based correlation</a>
         </li>
 	    
     </ul>
