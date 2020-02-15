@@ -26,24 +26,24 @@
     
     
     <meta property="og:title" content="Building a Pull Request bot with Azure Functions - Part 2 - How it works" />
-<meta property="og:description" content="This is the second post in my series on building a pull request bot using Azure Functions. If you haven&rsquo;t read my first post I strongly recommend doing so before diving into this post.
+<meta property="og:description" content="This is the second post in my series on building a pull request bot using Azure Functions. If you haven&rsquo;t read my first post I strongly recommend doing so before diving into this post. Remember that this series is a part of the Applied Cloud Stories initiative.
  Part 1: Introduction Part 2: How it works Part 3: Operating it  In this post I&rsquo;ll dive into the details of how the bot actually works, from receiving notifications from Azure DevOps to managing state and posting comments back to the pull request." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jmezach.github.io/post/building-a-pull-request-bot-part2/" />
 <meta property="article:published_time" content="2020-02-10T09:14:51+01:00" />
 <meta property="article:modified_time" content="2020-02-10T09:14:51+01:00" />
 <meta itemprop="name" content="Building a Pull Request bot with Azure Functions - Part 2 - How it works">
-<meta itemprop="description" content="This is the second post in my series on building a pull request bot using Azure Functions. If you haven&rsquo;t read my first post I strongly recommend doing so before diving into this post.
+<meta itemprop="description" content="This is the second post in my series on building a pull request bot using Azure Functions. If you haven&rsquo;t read my first post I strongly recommend doing so before diving into this post. Remember that this series is a part of the Applied Cloud Stories initiative.
  Part 1: Introduction Part 2: How it works Part 3: Operating it  In this post I&rsquo;ll dive into the details of how the bot actually works, from receiving notifications from Azure DevOps to managing state and posting comments back to the pull request.">
 <meta itemprop="datePublished" content="2020-02-10T09:14:51&#43;01:00" />
 <meta itemprop="dateModified" content="2020-02-10T09:14:51&#43;01:00" />
-<meta itemprop="wordCount" content="2650">
+<meta itemprop="wordCount" content="2663">
 
 
 
 <meta itemprop="keywords" content=".NET,Azure Functions,DevOps," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Building a Pull Request bot with Azure Functions - Part 2 - How it works"/>
-<meta name="twitter:description" content="This is the second post in my series on building a pull request bot using Azure Functions. If you haven&rsquo;t read my first post I strongly recommend doing so before diving into this post.
+<meta name="twitter:description" content="This is the second post in my series on building a pull request bot using Azure Functions. If you haven&rsquo;t read my first post I strongly recommend doing so before diving into this post. Remember that this series is a part of the Applied Cloud Stories initiative.
  Part 1: Introduction Part 2: How it works Part 3: Operating it  In this post I&rsquo;ll dive into the details of how the bot actually works, from receiving notifications from Azure DevOps to managing state and posting comments back to the pull request."/>
 
       
@@ -218,10 +218,10 @@ if (!doNotTrack) {
       
       
         <span class="f6 mv4 dib tracked"> - 13 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 2650 words</span>
+        <span class="f6 mv4 dib tracked"> - 2663 words</span>
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>This is the second post in my series on building a pull request bot using Azure Functions. If you haven&rsquo;t read my <a href="/post/building-a-pull-request-bot-part1/">first post</a> I strongly recommend doing so before diving into this post.</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>This is the second post in my series on building a pull request bot using Azure Functions. If you haven&rsquo;t read my <a href="/post/building-a-pull-request-bot-part1/">first post</a> I strongly recommend doing so before diving into this post. Remember that this series is a part of the <a href="http://aka.ms/applied-cloud-stories">Applied Cloud Stories</a> initiative.</p>
 <ul>
 <li><a href="/post/building-a-pull-request-bot-part1/">Part 1: Introduction</a></li>
 <li><a href="/post/building-a-pull-request-bot-part2/">Part 2: How it works</a></li>
