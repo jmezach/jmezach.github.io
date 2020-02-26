@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Jonathan&#39;s Blog  | .NET Core Hackathon 2018</title>
+    <title>Jonathan&#39;s Blog  | Building a Pull Request bot with Azure Functions - Part 3 - Operating it</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="generator" content="Hugo 0.65.3" />
     
@@ -25,23 +25,26 @@
 
     
     
-    <meta property="og:title" content=".NET Core Hackathon 2018" />
-<meta property="og:description" content="It has been a while since I&rsquo;ve posted something here on my blog. That&rsquo;s not because I haven&rsquo;t done anything, just that I&rsquo;ve been really busy lately with all kinds of things. For example, I&rsquo;ve been delving into the container world and delivered a hands-on workshop with Kubernetes on Azure as part of the Global Azure Bootcamp 2018 back in April. That was a lot of fun, since I didn&rsquo;t know much about Kubernetes before I started working on that, so I learned a lot in a relatively short amount of time, but I digress." />
+    <meta property="og:title" content="Building a Pull Request bot with Azure Functions - Part 3 - Operating it" />
+<meta property="og:description" content="This is the third post in my series on building a pull request bot using Azure Functions. If you haven&rsquo;t read my previous posts I strongly recommend doing so before diving into this post. Remember that this series is a part of the Applied Cloud Stories initiative.
+ Part 1: Introduction Part 2: How it works Part 3: Operating it  In this post I want to give you a feel for how we operate our pull request on a daily basis." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jmezach.github.io/post/net-core-hackathon-2018/" />
-<meta property="article:published_time" content="2018-06-14T20:00:00+02:00" />
-<meta property="article:modified_time" content="2018-06-14T20:00:00+02:00" />
-<meta itemprop="name" content=".NET Core Hackathon 2018">
-<meta itemprop="description" content="It has been a while since I&rsquo;ve posted something here on my blog. That&rsquo;s not because I haven&rsquo;t done anything, just that I&rsquo;ve been really busy lately with all kinds of things. For example, I&rsquo;ve been delving into the container world and delivered a hands-on workshop with Kubernetes on Azure as part of the Global Azure Bootcamp 2018 back in April. That was a lot of fun, since I didn&rsquo;t know much about Kubernetes before I started working on that, so I learned a lot in a relatively short amount of time, but I digress.">
-<meta itemprop="datePublished" content="2018-06-14T20:00:00&#43;02:00" />
-<meta itemprop="dateModified" content="2018-06-14T20:00:00&#43;02:00" />
-<meta itemprop="wordCount" content="977">
+<meta property="og:url" content="https://jmezach.github.io/post/building-a-pull-request-bot-part3/" />
+<meta property="article:published_time" content="2020-02-24T20:06:15+01:00" />
+<meta property="article:modified_time" content="2020-02-24T20:06:15+01:00" />
+<meta itemprop="name" content="Building a Pull Request bot with Azure Functions - Part 3 - Operating it">
+<meta itemprop="description" content="This is the third post in my series on building a pull request bot using Azure Functions. If you haven&rsquo;t read my previous posts I strongly recommend doing so before diving into this post. Remember that this series is a part of the Applied Cloud Stories initiative.
+ Part 1: Introduction Part 2: How it works Part 3: Operating it  In this post I want to give you a feel for how we operate our pull request on a daily basis.">
+<meta itemprop="datePublished" content="2020-02-24T20:06:15&#43;01:00" />
+<meta itemprop="dateModified" content="2020-02-24T20:06:15&#43;01:00" />
+<meta itemprop="wordCount" content="1963">
 
 
 
-<meta itemprop="keywords" content=".NET,.NET Core,.NET Development,Hackathon,open source," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=".NET Core Hackathon 2018"/>
-<meta name="twitter:description" content="It has been a while since I&rsquo;ve posted something here on my blog. That&rsquo;s not because I haven&rsquo;t done anything, just that I&rsquo;ve been really busy lately with all kinds of things. For example, I&rsquo;ve been delving into the container world and delivered a hands-on workshop with Kubernetes on Azure as part of the Global Azure Bootcamp 2018 back in April. That was a lot of fun, since I didn&rsquo;t know much about Kubernetes before I started working on that, so I learned a lot in a relatively short amount of time, but I digress."/>
+<meta itemprop="keywords" content=".NET,Azure Functions,DevOps," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Building a Pull Request bot with Azure Functions - Part 3 - Operating it"/>
+<meta name="twitter:description" content="This is the third post in my series on building a pull request bot using Azure Functions. If you haven&rsquo;t read my previous posts I strongly recommend doing so before diving into this post. Remember that this series is a part of the Applied Cloud Stories initiative.
+ Part 1: Introduction Part 2: How it works Part 3: Operating it  In this post I want to give you a feel for how we operate our pull request on a daily basis."/>
 
       
 <script type="application/javascript">
@@ -186,20 +189,20 @@ if (!doNotTrack) {
   <div id="sharing" class="mt3">
 
     
-    <a href="https://www.facebook.com/sharer.php?u=https://jmezach.github.io/post/net-core-hackathon-2018/" class="facebook no-underline" aria-label="share on Facebook">
+    <a href="https://www.facebook.com/sharer.php?u=https://jmezach.github.io/post/building-a-pull-request-bot-part3/" class="facebook no-underline" aria-label="share on Facebook">
       <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
 
     </a>
 
     
     
-    <a href="https://twitter.com/share?url=https://jmezach.github.io/post/net-core-hackathon-2018/&amp;text=.NET%20Core%20Hackathon%202018" class="twitter no-underline" aria-label="share on Twitter">
+    <a href="https://twitter.com/share?url=https://jmezach.github.io/post/building-a-pull-request-bot-part3/&amp;text=Building%20a%20Pull%20Request%20bot%20with%20Azure%20Functions%20-%20Part%203%20-%20Operating%20it" class="twitter no-underline" aria-label="share on Twitter">
       <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
 
     </a>
 
     
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://jmezach.github.io/post/net-core-hackathon-2018/&amp;title=.NET%20Core%20Hackathon%202018" class="linkedin no-underline" aria-label="share on LinkedIn">
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://jmezach.github.io/post/building-a-pull-request-bot-part3/&amp;title=Building%20a%20Pull%20Request%20bot%20with%20Azure%20Functions%20-%20Part%203%20-%20Operating%20it" class="linkedin no-underline" aria-label="share on LinkedIn">
       <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
 </svg>
@@ -207,48 +210,143 @@ if (!doNotTrack) {
     </a>
   </div>
 
-      <h1 class="f1 athelas mt3 mb1">.NET Core Hackathon 2018</h1>
+      <h1 class="f1 athelas mt3 mb1">Building a Pull Request bot with Azure Functions - Part 3 - Operating it</h1>
       
       
-      <time class="f6 mv4 dib tracked" datetime="2018-06-14T20:00:00&#43;02:00">June 14, 2018</time>
+      <time class="f6 mv4 dib tracked" datetime="2020-02-24T20:06:15&#43;01:00">February 24, 2020</time>
 
       
       
-        <span class="f6 mv4 dib tracked"> - 5 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 977 words</span>
+        <span class="f6 mv4 dib tracked"> - 10 minutes read</span>
+        <span class="f6 mv4 dib tracked"> - 1963 words</span>
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>It has been a while since I&rsquo;ve posted something here on my blog. That&rsquo;s not because I haven&rsquo;t done anything, just that I&rsquo;ve been really busy lately with all kinds of things. For example, I&rsquo;ve been delving into the container world and delivered a <a href="https://github.com/jmezach/globalazurebootcamp2018kube">hands-on workshop</a> with <a href="https://kubernetes.io/">Kubernetes</a> on <a href="https://azure.microsoft.com/en-us/">Azure</a> as part of the <a href="https://global.azurebootcamp.net/">Global Azure Bootcamp 2018</a> back in April. That was a lot of fun, since I didn&rsquo;t know much about Kubernetes before I started working on that, so I learned a lot in a relatively short amount of time, but I digress.</p>
-<p>Of course, that doesn&rsquo;t mean that I&rsquo;ve turned away from .NET Core. In fact, I had the honor to organize the second .NET Core Hackathon, which was held on the 2nd of June at Startup Village in Amsterdam. We held a similar event last year, which was organized by my colleague <a href="https://twitter.com/evanwijk">Edwin van Wijk</a>. Back then, we had about 10 of our colleagues joining us in Amsterdam to fix some bugs and submit some pull requests to the <a href="https://github.com/dotnet/corefx">corefx</a> repo. You can check out a video of that event over on <a href="https://www.youtube.com/watch?v=t1JWX8D0ptE&amp;t=16s">YouTube</a>.</p>
-<h1 id="fast-forward-to-2018">Fast-forward to 2018</h1>
-<p>So, this year it was my turn to organize a similar event. But we wanted to do things a little bit different. First of all, we wanted to include more people, so it wouldn&rsquo;t be just our colleagues. Second, we wanted to do it together with the .NET Core team at Microsoft. After last year Edwin and I stayed in contact with <a href="https://twitter.com/ziki_cz">Karel Zikmund</a> from the team. They thought our hackathon was a great idea, so we worked together this time around.</p>
-<p>That meant that on the day of the hackathon (2nd of June) we had a couple of people from the team standing by to answer our questions and to help us out if we would run into issues. Especially <a href="https://twitter.com/viktorhofer">Viktor Hofer</a> was very helpful during the day.</p>
-<h1 id="an-impression">An impression</h1>
-<p>So what did we do on that day? First of all, we gathered at <a href="https://startupvillage.nl/">Startup Village</a> in Amsterdam. It was the same location as last year, but it&rsquo;s such a great place to get into mood to do some hacking, that we decided to stick with it for this years edition. Of course, we started with some coffee, in our limited edition .NET Core Contributor mugs:</p>
-<p><img src="/img/net-core-hackathon-2018/contributor-mug.jpg" alt=".NET Core Contributor Mug"></p>
-<p>Next I started with a small presentation about what new contributors should know about the corefx repo. It&rsquo;s a big repository and there are some intricacies that can make it difficult for first time contributors to get started. There is some pretty good documentation on the <a href="https://github.com/dotnet/corefx/wiki">wiki</a> for the repo, but I think it always helps to summarize some of that information into a small crash course like presentation.</p>
-<p><img src="/img/net-core-hackathon-2018/kick-off.jpg" alt="Kick-off"></p>
-<p>After that, everybody just went straight in and tried to clone the repo, build it, run the tests, etc. Of course people ran into a couple of issues while doing that, so I tried to help them out as much as I could. And if I couldn&rsquo;t help them out myself we would turn to the Gitter channel that was set up by the team, where Viktor was more than willing to help people out with their issues. Around lunch time almost everybody had a working setup and was busy working on a bugfix or (small) new feature.</p>
-<p>For lunch we ordered pizza, with the &ldquo;something with meat&rdquo; flavour being the most favorite choice. When it arrived, we went outside to decompress a bit and just sat back and relaxed for a bit whilst chatting with each other.</p>
-<p><img src="/img/net-core-hackathon-2018/lunch.jpg" alt="Lunch"></p>
-<p><strong>Note:</strong> There were some more people there, but I didn&rsquo;t get a shot of all of us ;).</p>
-<h1 id="getting-our-pull-requests-on">Getting our pull requests on</h1>
-<p>After lunch it was time to submit some pull requests. Personally I still think it&rsquo;s kind of magic when you submit a pull request that immediately almost 18 builds are kicked-off. I&rsquo;ve been doing professional software development for almost 12 years now, but I don&rsquo;t think I&rsquo;ve ever seen that many builds running for a single pull request.</p>
-<p>In the end we ended up with a total of 6 pull requests on that day. It turned out that we even made a pull request to <a href="https://github.com/dotnet/coreclr">coreclr</a>, which is the .NET Runtime. Trust me, that&rsquo;s not the easiest piece of code to read, let alone write and tweak, so kudos to <a href="https://twitter.com/MikhailShilkov">Mikhail</a> for making that happen.</p>
-<p>Here&rsquo;s the list of pull request we have submitted:</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>This is the third post in my series on building a pull request bot using Azure Functions. If you haven&rsquo;t read my previous posts I strongly recommend doing so before diving into this post. Remember that this series is a part of the <a href="http://aka.ms/applied-cloud-stories">Applied Cloud Stories</a> initiative.</p>
 <ul>
-<li><a href="https://github.com/dotnet/corefx/pull/30075">Add All enum value to DecompressionMethods</a></li>
-<li><a href="https://github.com/dotnet/corefx/pull/30076">Remove USE_ETW Compilation Constant from System.Diagnostics.Tracing.Tests</a></li>
-<li><a href="https://github.com/dotnet/corefx/pull/30077">Implementation of IReadOnlyDictionary on GroupCollection</a></li>
-<li><a href="https://github.com/dotnet/corefx/pull/30082">Improved code coverage for System.Net.Security</a></li>
-<li><a href="https://github.com/dotnet/coreclr/pull/18253">Implement corefx/#16619: Add FormattableString.CurrentCulture</a></li>
-<li><a href="https://github.com/dotnet/corefx/pull/30083">Implement #16619: Add FormattableString.CurrentCulture</a></li>
+<li><a href="/post/building-a-pull-request-bot-part1/">Part 1: Introduction</a></li>
+<li><a href="/post/building-a-pull-request-bot-part2/">Part 2: How it works</a></li>
+<li><a href="/post/building-a-pull-request-bot-part3/">Part 3: Operating it</a></li>
 </ul>
-<h1 id="conclusion">Conclusion</h1>
-<p>So, that&rsquo;s 6 pull requests, that have since been merged as well. That&rsquo;s a couple less than last year, but I think the things we worked on this year were also a bit more involved than last year. For example, last year we had a couple of items that merely removed code that was already dead. But this time, we had some tougher things to work on, which made it a bit more of challenge.</p>
-<p>That being said, I think we all had a fun day and I hope that some of the people that were there will continue to contribute to .NET Core in the future as well. I was a bit sad that I didn&rsquo;t get to submit a pull request myself this time around, but I think that helping other people to get started contributing was worth it in the end.</p>
-<p>I&rsquo;m not sure if we&rsquo;ll do another event next year. I guess we&rsquo;ll have to wait and see. Make sure you follow me on Twitter and you&rsquo;ll be the first to know. Also, if you&rsquo;re interested in organizing such an event in your part of the world, do let me know. Together with the team, we can do some awesome things.</p>
-<p><img src="/img/net-core-hackathon-2018/impression.jpg" alt="Impression"></p>
+<p>In this post I want to give you a feel for how we operate our pull request on a daily basis. How do we deploy it, how do we make sure it is running, etc.</p>
+<h2 id="cicd">CI/CD</h2>
+<p>Of course we are applying continuous integration and continuous deployment practices to the bot, just like we do for our product. And of course we use <a href="https://azure.microsoft.com/en-us/services/devops/pipelines/">Azure Pipelines</a> to do it. For our build pipeline we don&rsquo;t have anything fancy really. Azure Functions v2 runs on .NET Core, so we have a pipeline that runs <code>dotnet restore</code>, <code>dotnet build</code>, <code>dotnet test</code> and <code>dotnet publish</code> in that order. For the publish step we target the actual Azure Functions project so that we get a nice ZIP file containing everything we need to run. Finally we have two steps that upload artifacts to Azure DevOps, one that uploads the ZIP and one that upload the Azure Resource Manager (ARM) template (more on that later).</p>
+<p>At the moment the pipeline is defined using the visual pipeline editor. I guess that&rsquo;s fine for such a simple pipeline, but we have been experimenting with YAML pipelines for parts of our product so we might switch to that at some point. But that&rsquo;s a topic in and of itself so I&rsquo;ll save that for a future post.</p>
+<p>For our deployment we&rsquo;re using Release definitions in Azure Pipelines. We have created two stages here. The first stage deploys the infrastructure we need to run on using the ARM template I mentioned earlier. It&rsquo;s really just one <a href="https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceGroupDeploymentV2/README.md">Azure Resource Group Deployment</a> step that takes the ARM template and applies it to a resource group in Azure. The nice thing about this is that its idempotent. If you deploy the same template over and over the infrastructure will just stay the same. If you do make a change only that change is applied and the rest stays the same.</p>
+<p>As for the contents of the ARM template, I&rsquo;ve made a graphical representation of it using the excellent <a href="https://marketplace.visualstudio.com/items?itemName=bencoleman.armview">ARM Template Viewer extension for Visual Studio Code</a>:</p>
+<figure>
+    <img src="/img/building-a-pullrequest-bot/arm-template.png"/> <figcaption>
+            <h4>ARM Template</h4>
+        </figcaption>
+</figure>
+
+<p>It&rsquo;s not very complicated really. We have an Azure Function App (top right) that uses a Storage Account (bottom right) to store the state and an App Service Plan (bottom left) that provides the necessary infrastructure to run our Function app. At the moment we&rsquo;re using the Consumption Plan so that we only really pay for what we use. Finally there&rsquo;s the Application Insights resource (top left) that gives us the power to monitor the bot and look at logs etc. More on that later.</p>
+<blockquote>
+<p>As a side note, I currently do not have visibility into the costs we&rsquo;re making for this bot. This is because we have CSP (Cloud Solution Provider) subscription for which Azure Cost Management has only recently became available. Unfortunately that requires some migration work that&rsquo;s currently ongoing. So far it barely registers on our overall Azure bill though.</p>
+</blockquote>
+<p>After we&rsquo;ve deployed our infrastructure we can deploy the application itself. This is done using a <a href="https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureRmWebAppDeploymentV4/README.md">Azure App Service deploy</a> step that simply uploads the ZIP we&rsquo;ve built in our build pipeline to Azure. With that deployment we also pass in some configuration variables, such as the URL to our Azure DevOps organization, a personal access token and the subscription identifiers of the service hooks we&rsquo;ve created in Azure DevOps for authentication purposes (see my <a href="/post/building-a-pull-request-bot-part2/">second post</a> in this series). Most of the variables are defined as secret variables on the release pipeline.</p>
+<p>To make sure that we leave the bot in a working state after deployment we&rsquo;ve also added a <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/release/approvals/gates?view=azure-devops">deployment gate</a> on the last stage of the pipeline. This calls into a Health Check API we&rsquo;ve implemented in the bot itself, which is just an HTTP triggered function that uses ASP.NET Core&rsquo;s <a href="https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-3.1">Health Checking</a> capabilities. In this health check we&rsquo;re checking to make sure we can access the storage account and that the subscription identifiers that have been configured are valid and are enabled by calling into Azure DevOps. So far we haven&rsquo;t set up an automatic periodic check of the health, but at least we know that after a deployment things are still working.</p>
+<h2 id="monitoring">Monitoring</h2>
+<p>As always just building something and putting it into production isn&rsquo;t enough. You&rsquo;ll need to monitor it to make sure things are working correctly, even if it&rsquo;s just a relatively simple application. Since Azure Functions integrates nicely with <a href="https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview">Application Insights</a> it made sense to use that. It comes with a whole lot of functionality right out of the box, without having to write any code. For example, we can have a look at how our bot interacts with other services quickly through the Application Map:</p>
+<figure>
+    <img src="/img/building-a-pullrequest-bot/app-insights-appmap.png"/> <figcaption>
+            <h4>AppInsights Application Map</h4>
+        </figcaption>
+</figure>
+
+<p>From this we can immediately see how many calls we are making to each service, for example Azure DevOps, as well as the average response time. If calls to those services are failing they will show up in red as well. This can be useful to look at when the bot isn&rsquo;t working as expected to quickly see where things are going wrong.</p>
+<p>In addition to that, due to the integration with Azure Functions, we also get some functions related metrics into our application insights resource. Remember that I mentioned in my previous post that we&rsquo;ve made each analyzer its own activity function. This means that we can see each individual invocation of that analyzer and see if it is working or failing right from the Azure Function App. For example in the screenshot below we can see that this particular analyzer has been run successfully <em>1768</em> times in the past 30 days, but failed <em>10</em> times:</p>
+<figure>
+    <img src="/img/building-a-pullrequest-bot/app-insights-function-monitor.png"/> <figcaption>
+            <h4>AppInsights Function Monitoring</h4>
+        </figcaption>
+</figure>
+
+<p>This gives us some really nice insights into how each individual analyzer is performing. And to make it even more useful we&rsquo;ve included some custom metrics into the bot itself as well. I mentioned in a previous post that we are authorizing request to the bot using the subscription identifiers from the service hook created in Azure DevOps. If that authorization fails that&rsquo;s an important event, because that could mean that someone is trying to abuse our bot. So we added a little bit of code to the bot to track that as a metric. We&rsquo;ve defined the metrics we want to track in a <code>CustomEvents</code> class, along with a factory method to create a <code>EventTelemtry</code> instance:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomEvents</span>
+{
+    <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InvalidSubscriptionId</span>
+    {
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> Name = <span style="color:#e6db74">&#34;PRBot.InvalidSubscriptionId&#34;</span>;
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> Scope = <span style="color:#e6db74">&#34;Scope&#34;</span>;
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> SubscriptionId = <span style="color:#e6db74">&#34;SubscriptionId&#34;</span>;
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> EventTelemetry Create(<span style="color:#66d9ef">string</span> scope, <span style="color:#66d9ef">string</span> subscriptionId)
+        {
+            <span style="color:#66d9ef">var</span> evt = <span style="color:#66d9ef">new</span> EventTelemetry(Name);
+            evt.Properties.Add(Scope, scope);
+            evt.Properties.Add(SubscriptionId, subscriptionId);
+            <span style="color:#66d9ef">return</span> evt;
+        }
+    }
+}
+</code></pre></div><p>We then use that factory method in one of the HTTP triggered functions like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">_telemetryClient.TrackEvent(CustomEvents.InvalidSubscriptionId.Create(nameof(BuildCompleted), payload.SubscriptionId));
+</code></pre></div><p>The <code>TelemetryClient</code> instance that we need to track this event is injected through Azure Function&rsquo;s dependency injection mechanism, which is already hooked up the application insights resource that&rsquo;s associated with the Function App. With this in place we were able to build a dashboard in the Azure portal that uses this metric as well as various other metrics to give an overview of the overall health of the bot. Pretty neat!</p>
+<h2 id="managing-the-state">Managing the state</h2>
+<p>There&rsquo;s one more thing we need to worry about in terms of operations which is cleaning up after ourselves. For each pull request that gets created in Azure DevOps an instance of the durable orchestration is created that captures the state of each analyzer. Once a pull request is completed that state is no longer relevant and can be deleted. Rather than having to do this manually, we&rsquo;ve automated this bit as well by using a Timer triggered function. This function runs once a day and does pretty much this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task DailyCleanup([TimerTrigger(SCHEDULE)]TimerInfo timer,
+<span style="color:#a6e22e">                                [OrchestrationClient]</span> DurableOrchestrationClientBase client,
+                                ILogger logger)
+{
+    <span style="color:#66d9ef">var</span> instances = <span style="color:#66d9ef">await</span> client.GetStatusAsync();
+    <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> instance <span style="color:#66d9ef">in</span> instances)
+    {
+        <span style="color:#75715e">// If the instance has completed, let&#39;s remove it
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (instance.RuntimeStatus == OrchestrationRuntimeStatus.Completed)
+        {
+            <span style="color:#66d9ef">await</span> client.PurgeInstanceHistoryAsync(instance.InstanceId);
+        }
+    }
+}
+</code></pre></div><blockquote>
+<p>Note that SCHEDULE is a constant that uses Cron syntax to define how often it runs. For our release builds we put in <code>0 0 0 * * *</code> which means run this once a day. To help with debugging we&rsquo;ve used an #if and put in <code>0 */1 * * * *</code> which means run this every minute.</p>
+</blockquote>
+<p>One problem we faced was how we would deal with abandoned pull requests because they could be reactivated at any time in the future. But if they would never be reactivated we would keep state around for no reason. Since there&rsquo;s a small cost involved, we needed some way to determine if it was still useful to keep that state around. To deal with this, we used a feature of Durable Functions called custom status. What that means is that we write a custom status object from within the durable orchestration at the start of it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">AnalysisContext analysisContext = context.GetInput&lt;AnalysisContext&gt;();
+context.SetCustomStatus(analysisContext.PullRequest);
+</code></pre></div><p>This allows us to read some details about the pull request from our cleanup function to do some additional checks:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">else</span>
+{
+    <span style="color:#66d9ef">var</span> customStatus = instance.CustomStatus;
+    <span style="color:#66d9ef">if</span> (customStatus == <span style="color:#66d9ef">null</span> || customStatus.Type == JTokenType.Null)
+    {
+        <span style="color:#66d9ef">await</span> client.PurgeInstanceHistoryAsync(instance.InstanceId);
+    }
+    <span style="color:#66d9ef">else</span>
+    {
+        <span style="color:#66d9ef">var</span> pullRequest = customStatus.ToObject&lt;PullRequest&gt;();
+        <span style="color:#66d9ef">if</span> (pullRequest.CurrentState == <span style="color:#e6db74">&#34;abandoned&#34;</span>)
+        {
+            <span style="color:#66d9ef">bool</span> result = <span style="color:#66d9ef">await</span> _gitClientService.DoesBranchExist(pullRequest.ProjectId, pullRequest.RepositoryId, pullRequest.SourceRefName);
+            <span style="color:#66d9ef">if</span> (!result)
+            {
+                <span style="color:#66d9ef">await</span> client.PurgeInstanceHistoryAsync(instance.InstanceId);
+            }
+            <span style="color:#66d9ef">else</span>
+            {
+                <span style="color:#75715e">// Log something
+</span><span style="color:#75715e"></span>            }
+        }
+        <span style="color:#66d9ef">else</span>
+        {
+            <span style="color:#66d9ef">bool?</span> result = <span style="color:#66d9ef">await</span> _gitClientService.IsPullRequestCompleted(pullRequest.ProjectId, pullRequest.RepositoryId, instance.InstanceId);
+            <span style="color:#66d9ef">if</span> (!result.HasValue || result.Value)
+            {
+                <span style="color:#66d9ef">await</span> client.PurgeInstanceHistoryAsync(instance.InstanceId);
+            }
+            <span style="color:#66d9ef">else</span>
+            {
+                <span style="color:#75715e">// Log something
+</span><span style="color:#75715e"></span>            }
+        }
+    }
+}
+</code></pre></div><p>Wow, that was a lot, so let me explain what&rsquo;s happening here. If the orchestration hasn&rsquo;t completed yet and we know that the pull request is in abandoned state we check if the associated source branch still exists. If it doesn&rsquo;t, we assume that the pull request isn&rsquo;t relevant anymore so we go ahead and delete the orchestration. Otherwise we will keep the state around since the pull request could still be reactivated.</p>
+<p>One other case we found is that things are going very fast and the pull request has already been completed while the bot was still running. To handle that scenario we also check if the pull request hasn&rsquo;t been completed in the mean time and clean up the state in that scenario as well. All this ensures that we don&rsquo;t keep state around that we don&rsquo;t need anymore.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>As you&rsquo;ve seen we&rsquo;ve put quite a few things in place to make sure that the bot is running smoothly and can be easily updated and expanded as we move along. Of course there&rsquo;s always more you can do, but I&rsquo;m quite happy with how its running now. A couple of my co-workers have already made some pull requests to include additional functionality as we needed it which is nice to see.</p>
+<p>One thing I&rsquo;ve been looking into is to see if it is worthwhile to make use of Durable Entities, which is a new concept in Azure Durable Functions. I think it could make some things a little bit cleaner and easier to maintain, but I haven&rsquo;t looked at it enough yet to make that choice. Maybe one day.</p>
+<p>And with that I&rsquo;ve come to the end of this series on building a pull request bot using Azure (Durable) Functions. I hope you&rsquo;ve enjoyed reading this. If you have any questions, do not hesitate to leave a comment here or tweet me on <a href="https://twitter.com/jmezach">Twitter</a>.</p>
 <ul class="pa0">
   
    <li class="list">
@@ -256,19 +354,11 @@ if (!doNotTrack) {
    </li>
   
    <li class="list">
-     <a href="/tags/.net-core" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET Core</a>
+     <a href="/tags/azure-functions" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Azure Functions</a>
    </li>
   
    <li class="list">
-     <a href="/tags/.net-development" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET Development</a>
-   </li>
-  
-   <li class="list">
-     <a href="/tags/hackathon" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Hackathon</a>
-   </li>
-  
-   <li class="list">
-     <a href="/tags/open-source" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">open source</a>
+     <a href="/tags/devops" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DevOps</a>
    </li>
   
 </ul>
@@ -309,11 +399,27 @@ if (!doNotTrack) {
     <ul class="pa0 list">
 	   
 	     <li  class="mb2">
-          <a href="/post/sharing-code-across-dotnet-platforms-with-dotnet-standard/">Sharing code across .NET platforms with .NET Standard</a>
+          <a href="/post/building-a-pull-request-bot-part2/">Building a Pull Request bot with Azure Functions - Part 2 - How it works</a>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/post/dotnetcore-versioning/">.NET Core versioning</a>
+          <a href="/post/building-a-pull-request-bot-part1/">Building a Pull Request bot with Azure Functions - Part 1 - Introduction</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/porting-to-aspnet-core-part-three/">Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/porting-to-aspnet-core-part-two/">Porting from ASP.NET to ASP.NET Core: Part 2 - Third party dependencies</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/porting-to-aspnet-core-part-one/">Porting from ASP.NET to ASP.NET Core: Part 1 - Introduction</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/net-core-hackathon-2018/">.NET Core Hackathon 2018</a>
         </li>
 	    
 	     <li  class="mb2">
@@ -333,6 +439,14 @@ if (!doNotTrack) {
         </li>
 	    
 	     <li  class="mb2">
+          <a href="/post/sharing-code-across-dotnet-platforms-with-dotnet-standard/">Sharing code across .NET platforms with .NET Standard</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dotnetcore-versioning/">.NET Core versioning</a>
+        </li>
+	    
+	     <li  class="mb2">
           <a href="/post/dotnet-platform-standard-and-the-magic-of-imports/">.NET Platform Standard and the magic of &#34;imports&#34;</a>
         </li>
 	    
@@ -341,31 +455,7 @@ if (!doNotTrack) {
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/post/developing-for-dotnet-core/">Developing for .NET Core</a>
-        </li>
-	    
-	     <li  class="mb2">
           <a href="/post/throttling-workflow-services/">Throttling workflow services</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/creating-a-workflow-image-from-a-workflow-service/">Creating a workflow image from a workflow service</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/even-better-messsage-based-correlation/">Even better message based correlation</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/message-based-correlation-with-wf-wcf-in-dotnet-35/">Message based correlation with WF/WCF in .NET 3.5</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/workflows-mysteriously-being-aborted/">Workflows mysteriously being aborted</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/service-pack-1-for-dotnet-fixes-serialization/">Service Pack 1 for .NET fixes XML serialization?</a>
         </li>
 	    
     </ul>

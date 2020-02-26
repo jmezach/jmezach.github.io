@@ -6,7 +6,7 @@
     
     <title>Jonathan&#39;s Blog  | Migrating existing .NET projects to SDK-based projects</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.64.1" />
+    <meta name="generator" content="Hugo 0.65.3" />
     
     
       <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -222,32 +222,32 @@ if (!doNotTrack) {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 <span style="color:#f92672">&lt;Project</span> <span style="color:#a6e22e">ToolsVersion=</span><span style="color:#e6db74">&#34;15.0&#34;</span><span style="color:#f92672">&gt;</span>Debug<span style="color:#f92672">&lt;/Configuration&gt;</span>
     <span style="color:#f92672">&lt;Platform</span> <span style="color:#a6e22e">Condition=</span><span style="color:#e6db74">&#34; &#39;$(Platform)&#39; == &#39;&#39; &#34;</span><span style="color:#f92672">&gt;</span>AnyCPU<span style="color:#f92672">&lt;/Platform&gt;</span>
-    <span style="color:#f92672">&lt;ProjectGuid</span><span style="color:#f92672">&gt;</span>10a6f289-0682-4624-9980-26adcf201d74<span style="color:#f92672">&lt;/ProjectGuid&gt;</span>
-    <span style="color:#f92672">&lt;OutputType</span><span style="color:#f92672">&gt;</span>Library<span style="color:#f92672">&lt;/OutputType&gt;</span>
-    <span style="color:#f92672">&lt;AppDesignerFolder</span><span style="color:#f92672">&gt;</span>Properties<span style="color:#f92672">&lt;/AppDesignerFolder&gt;</span>
-    <span style="color:#f92672">&lt;RootNamespace</span><span style="color:#f92672">&gt;</span>ClassLibrary1<span style="color:#f92672">&lt;/RootNamespace&gt;</span>
-    <span style="color:#f92672">&lt;AssemblyName</span><span style="color:#f92672">&gt;</span>ClassLibrary1<span style="color:#f92672">&lt;/AssemblyName&gt;</span>
-    <span style="color:#f92672">&lt;TargetFrameworkVersion</span><span style="color:#f92672">&gt;</span>v4.5.2<span style="color:#f92672">&lt;/TargetFrameworkVersion&gt;</span>
-    <span style="color:#f92672">&lt;FileAlignment</span><span style="color:#f92672">&gt;</span>512<span style="color:#f92672">&lt;/FileAlignment&gt;</span>
+    <span style="color:#f92672">&lt;ProjectGuid&gt;</span>10a6f289-0682-4624-9980-26adcf201d74<span style="color:#f92672">&lt;/ProjectGuid&gt;</span>
+    <span style="color:#f92672">&lt;OutputType&gt;</span>Library<span style="color:#f92672">&lt;/OutputType&gt;</span>
+    <span style="color:#f92672">&lt;AppDesignerFolder&gt;</span>Properties<span style="color:#f92672">&lt;/AppDesignerFolder&gt;</span>
+    <span style="color:#f92672">&lt;RootNamespace&gt;</span>ClassLibrary1<span style="color:#f92672">&lt;/RootNamespace&gt;</span>
+    <span style="color:#f92672">&lt;AssemblyName&gt;</span>ClassLibrary1<span style="color:#f92672">&lt;/AssemblyName&gt;</span>
+    <span style="color:#f92672">&lt;TargetFrameworkVersion&gt;</span>v4.5.2<span style="color:#f92672">&lt;/TargetFrameworkVersion&gt;</span>
+    <span style="color:#f92672">&lt;FileAlignment&gt;</span>512<span style="color:#f92672">&lt;/FileAlignment&gt;</span>
   <span style="color:#f92672">&lt;/PropertyGroup&gt;</span>
   <span style="color:#f92672">&lt;PropertyGroup</span> <span style="color:#a6e22e">Condition=</span><span style="color:#e6db74">&#34; &#39;$(Configuration)|$(Platform)&#39; == &#39;Debug|AnyCPU&#39; &#34;</span><span style="color:#f92672">&gt;</span>
-    <span style="color:#f92672">&lt;DebugSymbols</span><span style="color:#f92672">&gt;</span>true<span style="color:#f92672">&lt;/DebugSymbols&gt;</span>
-    <span style="color:#f92672">&lt;DebugType</span><span style="color:#f92672">&gt;</span>full<span style="color:#f92672">&lt;/DebugType&gt;</span>
-    <span style="color:#f92672">&lt;Optimize</span><span style="color:#f92672">&gt;</span>false<span style="color:#f92672">&lt;/Optimize&gt;</span>
-    <span style="color:#f92672">&lt;OutputPath</span><span style="color:#f92672">&gt;</span>binDebug<span style="color:#f92672">&lt;/OutputPath&gt;</span>
-    <span style="color:#f92672">&lt;DefineConstants</span><span style="color:#f92672">&gt;</span>DEBUG;TRACE<span style="color:#f92672">&lt;/DefineConstants&gt;</span>
-    <span style="color:#f92672">&lt;ErrorReport</span><span style="color:#f92672">&gt;</span>prompt<span style="color:#f92672">&lt;/ErrorReport&gt;</span>
-    <span style="color:#f92672">&lt;WarningLevel</span><span style="color:#f92672">&gt;</span>4<span style="color:#f92672">&lt;/WarningLevel&gt;</span>
+    <span style="color:#f92672">&lt;DebugSymbols&gt;</span>true<span style="color:#f92672">&lt;/DebugSymbols&gt;</span>
+    <span style="color:#f92672">&lt;DebugType&gt;</span>full<span style="color:#f92672">&lt;/DebugType&gt;</span>
+    <span style="color:#f92672">&lt;Optimize&gt;</span>false<span style="color:#f92672">&lt;/Optimize&gt;</span>
+    <span style="color:#f92672">&lt;OutputPath&gt;</span>binDebug<span style="color:#f92672">&lt;/OutputPath&gt;</span>
+    <span style="color:#f92672">&lt;DefineConstants&gt;</span>DEBUG;TRACE<span style="color:#f92672">&lt;/DefineConstants&gt;</span>
+    <span style="color:#f92672">&lt;ErrorReport&gt;</span>prompt<span style="color:#f92672">&lt;/ErrorReport&gt;</span>
+    <span style="color:#f92672">&lt;WarningLevel&gt;</span>4<span style="color:#f92672">&lt;/WarningLevel&gt;</span>
   <span style="color:#f92672">&lt;/PropertyGroup&gt;</span>
   <span style="color:#f92672">&lt;PropertyGroup</span> <span style="color:#a6e22e">Condition=</span><span style="color:#e6db74">&#34; &#39;$(Configuration)|$(Platform)&#39; == &#39;Release|AnyCPU&#39; &#34;</span><span style="color:#f92672">&gt;</span>
-    <span style="color:#f92672">&lt;DebugType</span><span style="color:#f92672">&gt;</span>pdbonly<span style="color:#f92672">&lt;/DebugType&gt;</span>
-    <span style="color:#f92672">&lt;Optimize</span><span style="color:#f92672">&gt;</span>true<span style="color:#f92672">&lt;/Optimize&gt;</span>
-    <span style="color:#f92672">&lt;OutputPath</span><span style="color:#f92672">&gt;</span>binRelease<span style="color:#f92672">&lt;/OutputPath&gt;</span>
-    <span style="color:#f92672">&lt;DefineConstants</span><span style="color:#f92672">&gt;</span>TRACE<span style="color:#f92672">&lt;/DefineConstants&gt;</span>
-    <span style="color:#f92672">&lt;ErrorReport</span><span style="color:#f92672">&gt;</span>prompt<span style="color:#f92672">&lt;/ErrorReport&gt;</span>
-    <span style="color:#f92672">&lt;WarningLevel</span><span style="color:#f92672">&gt;</span>4<span style="color:#f92672">&lt;/WarningLevel&gt;</span>
+    <span style="color:#f92672">&lt;DebugType&gt;</span>pdbonly<span style="color:#f92672">&lt;/DebugType&gt;</span>
+    <span style="color:#f92672">&lt;Optimize&gt;</span>true<span style="color:#f92672">&lt;/Optimize&gt;</span>
+    <span style="color:#f92672">&lt;OutputPath&gt;</span>binRelease<span style="color:#f92672">&lt;/OutputPath&gt;</span>
+    <span style="color:#f92672">&lt;DefineConstants&gt;</span>TRACE<span style="color:#f92672">&lt;/DefineConstants&gt;</span>
+    <span style="color:#f92672">&lt;ErrorReport&gt;</span>prompt<span style="color:#f92672">&lt;/ErrorReport&gt;</span>
+    <span style="color:#f92672">&lt;WarningLevel&gt;</span>4<span style="color:#f92672">&lt;/WarningLevel&gt;</span>
   <span style="color:#f92672">&lt;/PropertyGroup&gt;</span>
-  <span style="color:#f92672">&lt;ItemGroup</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;ItemGroup&gt;</span>
     <span style="color:#f92672">&lt;Reference</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;System&#34;</span><span style="color:#f92672">/&gt;</span>
     <span style="color:#f92672">&lt;Reference</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;System.Core&#34;</span><span style="color:#f92672">/&gt;</span>
     <span style="color:#f92672">&lt;Reference</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;System.Xml.Linq&#34;</span><span style="color:#f92672">/&gt;</span>
@@ -257,7 +257,7 @@ if (!doNotTrack) {
     <span style="color:#f92672">&lt;Reference</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;System.Net.Http&#34;</span><span style="color:#f92672">/&gt;</span>
     <span style="color:#f92672">&lt;Reference</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;System.Xml&#34;</span><span style="color:#f92672">/&gt;</span>
   <span style="color:#f92672">&lt;/ItemGroup&gt;</span>
-  <span style="color:#f92672">&lt;ItemGroup</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;ItemGroup&gt;</span>
     <span style="color:#f92672">&lt;Compile</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;Class1.cs&#34;</span> <span style="color:#f92672">/&gt;</span>
     <span style="color:#f92672">&lt;Compile</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;PropertiesAssemblyInfo.cs&#34;</span> <span style="color:#f92672">/&gt;</span>
   <span style="color:#f92672">&lt;/ItemGroup&gt;</span>
@@ -265,8 +265,8 @@ if (!doNotTrack) {
  <span style="color:#f92672">&lt;/Project&gt;</span>
 </code></pre></div><p>Let&rsquo;s compare that for a second with what I get when I create a new .NET Standard class library project using the brand new tooling:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Project</span> <span style="color:#a6e22e">Sdk=</span><span style="color:#e6db74">&#34;Microsoft.NET.Sdk&#34;</span><span style="color:#f92672">&gt;</span>
-  <span style="color:#f92672">&lt;PropertyGroup</span><span style="color:#f92672">&gt;</span>
-    <span style="color:#f92672">&lt;TargetFramework</span><span style="color:#f92672">&gt;</span>netstandard1.4<span style="color:#f92672">&lt;/TargetFramework&gt;</span>
+  <span style="color:#f92672">&lt;PropertyGroup&gt;</span>
+    <span style="color:#f92672">&lt;TargetFramework&gt;</span>netstandard1.4<span style="color:#f92672">&lt;/TargetFramework&gt;</span>
   <span style="color:#f92672">&lt;/PropertyGroup&gt;</span>
 <span style="color:#f92672">&lt;/Project&gt;</span>
 </code></pre></div><p>As you can see, the file has become a lot smaller out-of-the-box and it is much more readable as well. Most of the magic is happening through the Sdk attribute on the Project element. Hence I call these new projects SDK-based projects. No more ProjectTypeGuids to deal with, and no more including every single file causing merge conflicts when two team members have added a file to the project. All in all I think the new tooling is a great improvement, so I was curious to see if I could take an existing .NET project that uses the &ldquo;old&rdquo; tooling and migrate it over to the new SDK-based tooling. According to the <a href="https://blogs.msdn.microsoft.com/dotnet/2017/01/30/announcing-net-core-net-native-and-nuget-updates-in-vs-2017-rc/">release notes</a> we might get such a migration path within Visual Studio sometime in the future, but I wanted to try it out now and write about my experience doing so, so here it goes.</p>

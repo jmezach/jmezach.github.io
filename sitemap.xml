@@ -4,62 +4,76 @@
   
   <url>
     <loc>https://jmezach.github.io/tags/.net/</loc>
-    <lastmod>2020-02-10T09:14:51+01:00</lastmod>
+    <lastmod>2020-02-24T20:06:15+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/azure/</loc>
+    <lastmod>2020-02-24T20:06:15+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/categories/azure/</loc>
-    <lastmod>2020-02-10T09:14:51+01:00</lastmod>
+    <lastmod>2020-02-24T20:06:15+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/tags/azure-functions/</loc>
-    <lastmod>2020-02-10T09:14:51+01:00</lastmod>
+    <lastmod>2020-02-24T20:06:15+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://jmezach.github.io/post/building-a-pull-request-bot-part2/</loc>
-    <lastmod>2020-02-10T09:14:51+01:00</lastmod>
+    <loc>https://jmezach.github.io/post/building-a-pull-request-bot-part3/</loc>
+    <lastmod>2020-02-24T20:06:15+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/categories/</loc>
-    <lastmod>2020-02-10T09:14:51+01:00</lastmod>
+    <lastmod>2020-02-24T20:06:15+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/tags/devops/</loc>
-    <lastmod>2020-02-10T09:14:51+01:00</lastmod>
+    <lastmod>2020-02-24T20:06:15+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/</loc>
-    <lastmod>2020-02-10T09:14:51+01:00</lastmod>
+    <lastmod>2020-02-24T20:06:15+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/post/</loc>
-    <lastmod>2020-02-10T09:14:51+01:00</lastmod>
+    <lastmod>2020-02-24T20:06:15+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jmezach.github.io/tags/</loc>
+    <lastmod>2020-02-24T20:06:15+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/building-a-pull-request-bot-part2/</loc>
     <lastmod>2020-02-10T09:14:51+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -355,13 +369,6 @@
   <url>
     <loc>https://jmezach.github.io/post/using-invoke-sqlcmd-in-tfs-build-2015/</loc>
     <lastmod>2015-07-03T00:00:00+02:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/azure/</loc>
-    <lastmod>2012-06-30T00:00:00+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -6,7 +6,7 @@
     
     <title>Jonathan&#39;s Blog  | Having Fun with the .NET Core Generic Host</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.64.1" />
+    <meta name="generator" content="Hugo 0.65.3" />
     
     
       <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -252,8 +252,8 @@ if (!doNotTrack) {
 </code></pre></div><p>Next we&rsquo;ll need to get access to the HostBuilder API.</p>
 <h2 id="getting-the-hostbuilder-api">Getting the HostBuilder API</h2>
 <p>Since the HostBuilder API isn&rsquo;t released yet, we&rsquo;ll need to use the ASP.NET CI Feed to get a preview version of it. We can access that feed by adding a <strong>NuGet.config</strong> to our project with the following content:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;configuration</span><span style="color:#f92672">&gt;</span>
-    <span style="color:#f92672">&lt;packageSources</span><span style="color:#f92672">&gt;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;configuration&gt;</span>
+    <span style="color:#f92672">&lt;packageSources&gt;</span>
         <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;ASP.NET CI Feed&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json&#34;</span> <span style="color:#f92672">/&gt;</span>
     <span style="color:#f92672">&lt;/packageSources&gt;</span>
 <span style="color:#f92672">&lt;/configuration&gt;</span>
@@ -275,9 +275,9 @@ if (!doNotTrack) {
 }
 </code></pre></div><p>Note that in order to run this, we&rsquo;ll need to set the language version of our project to latest because an async Main function is a feature of C# 7.1:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Project</span> <span style="color:#a6e22e">Sdk=</span><span style="color:#e6db74">&#34;Microsoft.NET.Sdk&#34;</span><span style="color:#f92672">&gt;</span>
-  <span style="color:#f92672">&lt;PropertyGroup</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;PropertyGroup&gt;</span>
     ...
-    <span style="color:#f92672">&lt;LangVersion</span><span style="color:#f92672">&gt;</span>latest<span style="color:#f92672">&lt;/LangVersion&gt;</span>
+    <span style="color:#f92672">&lt;LangVersion&gt;</span>latest<span style="color:#f92672">&lt;/LangVersion&gt;</span>
     ...
   <span style="color:#f92672">&lt;/PropertyGroup&gt;</span>
 <span style="color:#f92672">&lt;/Project&gt;</span>
@@ -290,8 +290,8 @@ Content root path: /Users/jmezach/Projects/demos/MessageProcessor/bin/Debug/netc
 <h2 id="doing-something-useful">Doing something useful</h2>
 <p>Of course this isn&rsquo;t very useful right now. All we got is a console application that starts and keeps running until we stop it, but we don&rsquo;t actually do anything. To fix that, we can write what&rsquo;s known as a hosted service. A hosted service is basically a piece of code that is run by the host when the host itself is started and the same for when it is stopped. This is represented in the <strong>IHostedService</strong> interface:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span><span style="color:#75715e">/// Defines methods for objects that are managed by the host.
-</span><span style="color:#75715e"></span><span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e">/// Defines methods for objects that are managed by the host.
+</span><span style="color:#75715e">/// &lt;/summary&gt;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IHostedService
 {
     <span style="color:#75715e">/// &lt;summary&gt;

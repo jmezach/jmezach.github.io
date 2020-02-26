@@ -6,7 +6,7 @@
     
     <title>Jonathan&#39;s Blog  | Building a Pull Request bot with Azure Functions - Part 2 - How it works</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.64.1" />
+    <meta name="generator" content="Hugo 0.65.3" />
     
     
       <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -225,7 +225,7 @@ if (!doNotTrack) {
 <ul>
 <li><a href="/post/building-a-pull-request-bot-part1/">Part 1: Introduction</a></li>
 <li><a href="/post/building-a-pull-request-bot-part2/">Part 2: How it works</a></li>
-<li>Part 3: Operating it</li>
+<li><a href="/post/building-a-pull-request-bot-part3/">Part 3: Operating it</a></li>
 </ul>
 <p>In this post I&rsquo;ll dive into the details of how the bot actually works, from receiving notifications from Azure DevOps to managing state and posting comments back to the pull request.</p>
 <h2 id="receiving-notifications">Receiving notifications</h2>
@@ -422,7 +422,7 @@ if (!doNotTrack) {
 <p>As for the build completed event, we mostly do the same thing. We receive the identifier of the build definition, the identifier of the build and the status of completed build, put that information on the <code>AnalysisContext</code> and then restart the orchestration in the same way as above. Analyzers can then choose to use that information to do their thing.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Wow, that was a lot. Yet, I still think this is a much simpler solution than what we had initially that I alluded to in my <a href="/post/building-a-pull-request-bot-part1/">previous post</a>. We just keep running the same loop over and over until the pull request is completed. By running each analyzer in its own activity function we also don&rsquo;t have to worry about one of them blocking the others.</p>
-<p>Of course this setup isn&rsquo;t without its caveats either and we did run into a couple of things when we put this into production, but let&rsquo;s talk about that in more detail in my next post.</p>
+<p>Of course this setup isn&rsquo;t without its caveats either and we did run into a couple of things when we put this into production, but let&rsquo;s talk about that in more detail in my <a href="/post/building-a-pull-request-bot-part3/">next post</a>.</p>
 <ul class="pa0">
   
    <li class="list">
