@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Jonathan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Feb 2020 20:06:15 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2020 16:27:16 +0100</lastBuildDate>
     
 	<atom:link href="https://jmezach.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>.NET</title>
+      <link>https://jmezach.github.io/categories/.net/</link>
+      <pubDate>Tue, 17 Mar 2020 16:27:16 +0100</pubDate>
+      
+      <guid>https://jmezach.github.io/categories/.net/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Azure</title>
@@ -17,15 +26,6 @@
       <pubDate>Mon, 24 Feb 2020 20:06:15 +0100</pubDate>
       
       <guid>https://jmezach.github.io/categories/azure/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>.NET</title>
-      <link>https://jmezach.github.io/categories/.net/</link>
-      <pubDate>Fri, 23 Nov 2018 16:28:11 +0100</pubDate>
-      
-      <guid>https://jmezach.github.io/categories/.net/</guid>
       <description></description>
     </item>
     

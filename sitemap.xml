@@ -4,7 +4,70 @@
   
   <url>
     <loc>https://jmezach.github.io/tags/.net/</loc>
-    <lastmod>2020-02-24T20:06:15+01:00</lastmod>
+    <lastmod>2020-03-17T16:27:16+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/categories/.net/</loc>
+    <lastmod>2020-03-17T16:27:16+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/categories/</loc>
+    <lastmod>2020-03-17T16:27:16+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/devops/</loc>
+    <lastmod>2020-03-17T16:27:16+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/introducing-msbuild-sdk-sqlproj/</loc>
+    <lastmod>2020-03-17T16:27:16+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/</loc>
+    <lastmod>2020-03-17T16:27:16+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/msbuild/</loc>
+    <lastmod>2020-03-17T16:27:16+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/post/</loc>
+    <lastmod>2020-03-17T16:27:16+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/sql-server/</loc>
+    <lastmod>2020-03-17T16:27:16+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jmezach.github.io/tags/</loc>
+    <lastmod>2020-03-17T16:27:16+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -38,41 +101,6 @@
   </url>
   
   <url>
-    <loc>https://jmezach.github.io/categories/</loc>
-    <lastmod>2020-02-24T20:06:15+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/devops/</loc>
-    <lastmod>2020-02-24T20:06:15+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/</loc>
-    <lastmod>2020-02-24T20:06:15+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/post/</loc>
-    <lastmod>2020-02-24T20:06:15+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/tags/</loc>
-    <lastmod>2020-02-24T20:06:15+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://jmezach.github.io/post/building-a-pull-request-bot-part2/</loc>
     <lastmod>2020-02-10T09:14:51+01:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -82,13 +110,6 @@
   <url>
     <loc>https://jmezach.github.io/post/building-a-pull-request-bot-part1/</loc>
     <lastmod>2020-02-05T13:49:34+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://jmezach.github.io/categories/.net/</loc>
-    <lastmod>2018-11-23T16:28:11+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

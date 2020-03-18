@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Jonathan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Feb 2020 20:06:15 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2020 16:27:16 +0100</lastBuildDate>
     
 	<atom:link href="https://jmezach.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,36 @@
     <item>
       <title>.NET</title>
       <link>https://jmezach.github.io/tags/.net/</link>
-      <pubDate>Mon, 24 Feb 2020 20:06:15 +0100</pubDate>
+      <pubDate>Tue, 17 Mar 2020 16:27:16 +0100</pubDate>
       
       <guid>https://jmezach.github.io/tags/.net/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DevOps</title>
+      <link>https://jmezach.github.io/tags/devops/</link>
+      <pubDate>Tue, 17 Mar 2020 16:27:16 +0100</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MSBuild</title>
+      <link>https://jmezach.github.io/tags/msbuild/</link>
+      <pubDate>Tue, 17 Mar 2020 16:27:16 +0100</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/msbuild/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQL Server</title>
+      <link>https://jmezach.github.io/tags/sql-server/</link>
+      <pubDate>Tue, 17 Mar 2020 16:27:16 +0100</pubDate>
+      
+      <guid>https://jmezach.github.io/tags/sql-server/</guid>
       <description></description>
     </item>
     
@@ -35,15 +62,6 @@
       <pubDate>Mon, 24 Feb 2020 20:06:15 +0100</pubDate>
       
       <guid>https://jmezach.github.io/tags/azure-functions/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>DevOps</title>
-      <link>https://jmezach.github.io/tags/devops/</link>
-      <pubDate>Mon, 24 Feb 2020 20:06:15 +0100</pubDate>
-      
-      <guid>https://jmezach.github.io/tags/devops/</guid>
       <description></description>
     </item>
     

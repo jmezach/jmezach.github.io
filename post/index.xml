@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Jonathan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Feb 2020 20:06:15 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2020 16:27:16 +0100</lastBuildDate>
     
 	<atom:link href="https://jmezach.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Introducing MSBuild.Sdk.SqlProj</title>
+      <link>https://jmezach.github.io/post/introducing-msbuild-sdk-sqlproj/</link>
+      <pubDate>Tue, 17 Mar 2020 16:27:16 +0100</pubDate>
+      
+      <guid>https://jmezach.github.io/post/introducing-msbuild-sdk-sqlproj/</guid>
+      <description>At my current employer, R&amp;amp;R Workforce Management, we&amp;rsquo;ve done a pretty big investment on Microsoft&amp;rsquo;s SQL Server Data Tools (SSDT) to manage our database changes. We made that decision when we migrated off of the Oracle database onto SQL Server which is quite a few years back now. At the time it was probably the most mature tool available that allowed us to version control our database changes much like we version controlled all our source code.</description>
+    </item>
     
     <item>
       <title>Building a Pull Request bot with Azure Functions - Part 3 - Operating it</title>
