@@ -6,10 +6,19 @@
     <description>Recent content in .NET on Jonathan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Mar 2020 16:27:16 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2020 18:42:10 +0000</lastBuildDate>
     
 	<atom:link href="https://jmezach.github.io/categories/.net/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>An update on MSBuild.Sdk.SqlProj</title>
+      <link>https://jmezach.github.io/post/update-on-msbuild-sdk-sqlproj/</link>
+      <pubDate>Wed, 09 Sep 2020 18:42:10 +0000</pubDate>
+      
+      <guid>https://jmezach.github.io/post/update-on-msbuild-sdk-sqlproj/</guid>
+      <description>A couple of months ago I first wrote about an open source project that I started called MSBuild.Sdk.SqlProj. Since then it has gained some traction and I&amp;rsquo;m happy to say it is probably the most succesful open source project I&amp;rsquo;ve launched ever. So I though this would be a good time to give an update on the project and share some of the things that are new. If you&amp;rsquo;re unfamiliar with the project I recommend reading the announcement blog post first.</description>
+    </item>
     
     <item>
       <title>Introducing MSBuild.Sdk.SqlProj</title>

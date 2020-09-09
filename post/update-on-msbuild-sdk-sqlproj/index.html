@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Jonathan&#39;s Blog  | WCF</title>
+    <title>Jonathan&#39;s Blog  | An update on MSBuild.Sdk.SqlProj</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="generator" content="Hugo 0.74.3" />
     
@@ -25,21 +25,24 @@
 
     
     
-      <link href="/tags/wcf/index.xml" rel="alternate" type="application/rss+xml" title="Jonathan&#39;s Blog" />
-      <link href="/tags/wcf/index.xml" rel="feed" type="application/rss+xml" title="Jonathan&#39;s Blog" />
-      
-    
-    
-    <meta property="og:title" content="WCF" />
-<meta property="og:description" content="Hello World" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://jmezach.github.io/tags/wcf/" />
-<meta property="og:updated_time" content="2010-01-25T00:00:00+02:00" />
-<meta itemprop="name" content="WCF">
-<meta itemprop="description" content="Hello World">
+    <meta property="og:title" content="An update on MSBuild.Sdk.SqlProj" />
+<meta property="og:description" content="A couple of months ago I first wrote about an open source project that I started called MSBuild.Sdk.SqlProj. Since then it has gained some traction and I&rsquo;m happy to say it is probably the most succesful open source project I&rsquo;ve launched ever. So I though this would be a good time to give an update on the project and share some of the things that are new. If you&rsquo;re unfamiliar with the project I recommend reading the announcement blog post first." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jmezach.github.io/post/update-on-msbuild-sdk-sqlproj/" />
+<meta property="article:published_time" content="2020-09-09T18:42:10+00:00" />
+<meta property="article:modified_time" content="2020-09-09T18:42:10+00:00" />
+<meta itemprop="name" content="An update on MSBuild.Sdk.SqlProj">
+<meta itemprop="description" content="A couple of months ago I first wrote about an open source project that I started called MSBuild.Sdk.SqlProj. Since then it has gained some traction and I&rsquo;m happy to say it is probably the most succesful open source project I&rsquo;ve launched ever. So I though this would be a good time to give an update on the project and share some of the things that are new. If you&rsquo;re unfamiliar with the project I recommend reading the announcement blog post first.">
+<meta itemprop="datePublished" content="2020-09-09T18:42:10+00:00" />
+<meta itemprop="dateModified" content="2020-09-09T18:42:10+00:00" />
+<meta itemprop="wordCount" content="1059">
+
+
+
+<meta itemprop="keywords" content=".NET,SQL Server,MSBuild,DevOps," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="WCF"/>
-<meta name="twitter:description" content="Hello World"/>
+<meta name="twitter:title" content="An update on MSBuild.Sdk.SqlProj"/>
+<meta name="twitter:description" content="A couple of months ago I first wrote about an open source project that I started called MSBuild.Sdk.SqlProj. Since then it has gained some traction and I&rsquo;m happy to say it is probably the most succesful open source project I&rsquo;ve launched ever. So I though this would be a good time to give an update on the project and share some of the things that are new. If you&rsquo;re unfamiliar with the project I recommend reading the announcement blog post first."/>
 
       
 <script type="application/javascript">
@@ -69,11 +72,11 @@ if (!doNotTrack) {
   <body class="ma0 helvetica bg-light-gray production">
 
     
+   
+  
 
-  
-  
-  <header class="cover bg-top" style="background-image: url('https://jmezach.github.io/img/hero-image.jpg');">
-    <div class="bg-black-60">
+  <header>
+    <div class="bg-mid-gray">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l justify-between items-center center">
     <a href="https://jmezach.github.io" class="f3 fw2 hover-white no-underline white-90 dib">
@@ -162,217 +165,212 @@ if (!doNotTrack) {
   </div>
 </nav>
 
-      <div class="tc-l pv4 pv6-l ph3 ph4-ns">
-        <h1 class="f2 f-subheadline-l fw2 white-90 mb0 lh-title">
-          WCF
-        </h1>
-        
-      </div>
     </div>
   </header>
 
 
+
     <main class="pb7" role="main">
       
-  <article class="cf pa3 pa4-m pa4-l">
-    <div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links nested-img mid-gray">
-      <p>Below you will find pages that utilize the taxonomy term “WCF”</p>
+  
+  <article class="flex-l flex-wrap justify-between mw9 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=https://jmezach.github.io/post/update-on-msbuild-sdk-sqlproj/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=https://jmezach.github.io/post/update-on-msbuild-sdk-sqlproj/&amp;text=An%20update%20on%20MSBuild.Sdk.SqlProj" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://jmezach.github.io/post/update-on-msbuild-sdk-sqlproj/&amp;title=An%20update%20on%20MSBuild.Sdk.SqlProj" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+      <h1 class="f1 athelas mt3 mb1">An update on MSBuild.Sdk.SqlProj</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-09-09T18:42:10Z">September 9, 2020</time>
+
+      
+      
+        <span class="f6 mv4 dib tracked"> - 5 minutes read</span>
+        <span class="f6 mv4 dib tracked"> - 1059 words</span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>A couple of months ago I first wrote about an open source project that I started called <a href="/post/introducing-msbuild-sdk-sqlproj/">MSBuild.Sdk.SqlProj</a>. Since then it has gained some traction and I&rsquo;m happy to say it is probably the most succesful open source project I&rsquo;ve launched ever. So I though this would be a good time to give an update on the project and share some of the things that are new. If you&rsquo;re unfamiliar with the project I recommend reading the <a href="/post/introducing-msbuild-sdk-sqlproj/">announcement blog post</a> first.</p>
+<h2 id="community-update">Community update</h2>
+<p>Popularity of open source projects is always a though to measure, but I wanted to share some numbers just to give an idea:</p>
+<ul>
+<li>Downloads on <a href="https://www.nuget.org/packages/MSBuild.Sdk.SqlProj">NuGet.org</a>: &gt; 10.000</li>
+<li><a href="https://github.com/rr-wfm/MSBuild.Sdk.SqlProj">GitHub</a> stars: 55</li>
+<li>GitHub contributors: 7</li>
+<li>GitHub issues filed: 35</li>
+<li>GitHub issues closed: 28</li>
+<li>GitHub pull requests merged: 21</li>
+<li>Views of the original blogpost: 1650</li>
+</ul>
+<p>Now I realise that for some open source projects these numbers are peanuts, but I feel that for a project such as this with its limited scope these are not too shabby. I&rsquo;m also quite happy to say that we&rsquo;ve taken on 2 external contributors who help out with triaging issues and reviewing pull requests: <a href="https://github.com/erikej">ErikEJ</a> and <a href="https://github.com/jeffrosenberg">jeffrosenberg</a>.</p>
+<p>Initially the project was hosted on my own personal GitHub account, but we&rsquo;ve sasince then moved it to my employers <a href="https://github.com/rr-wfm/">GitHub organization</a>. We felt this was in the best interest of the project and a natural evolution of it. You can read more about that transition in the <a href="https://github.com/rr-wfm/MSBuild.Sdk.SqlProj/issues/35">announcement issue</a>.</p>
+<p>Some blog posts have also been written about this project, including <a href="https://erikej.github.io/efcore/2020/05/11/ssdt-dacpac-netcore.html">this one</a>, <a href="https://erikej.github.io/efcore/2020/08/31/ssdt-project-azure-datastudio.html">this one</a> and <a href="https://shawtyds.wordpress.com/2020/08/26/using-a-full-framework-sql-server-project-in-a-net-core-project-build/">this one</a>. I&rsquo;ve also recorded a <a href="https://dotnetflix.com/player/104">dotnetFlix episode</a> showcasing the project and how to use it. Finally I&rsquo;ve submitted a session for the upcoming <a href="https://www.dotnetconf.net/">.NET Conf 2020</a> that I&rsquo;m hoping will be selected.</p>
+<h2 id="new-features">New features</h2>
+<p>Of course we haven&rsquo;t stopped working on the project itself. Since its inception we&rsquo;ve added quite a number of features with every release. You can have a look at the <a href="https://github.com/rr-wfm/MSBuild.Sdk.SqlProj/releases">release notes</a> for every release of course, but here are some of the highlights.</p>
+<h3 id="sqlcmd-variables-and-pre-post-deployment-scripts">SQLCMD variables and pre-/post-deployment scripts</h3>
+<p>This was probably the most requested feature just after I launched the project. SSDT projects have had the possibility to include a pre- and post-deployment script, which can also leverage SQLCMD variables. These scripts are run at deployment time just before or after the model itself is being deployed. Unfortunately only one pre-deployment and one post-deployment script is supported. SSDT projects solve this limitation by allowing included scripts using the <code>:r &lt;some-other-script&gt;.sql</code> syntax. This is not yet supported by MSBuild.Sdk.SqlProj but has been requested in <a href="https://github.com/rr-wfm/MSBuild.Sdk.SqlProj/issues/23">this issue</a>. If this is important to you, feel free to give that issue a thumbsup.</p>
+<h3 id="publishing-support">Publishing support</h3>
+<p>Having the ability to build the project on Mac and Linux is great, but it would be even better to have support for deploying your project to a local SQL Server as well (perhaps one running in a Docker container). We added that in version 1.2.0. Now you can run <code>dotnet publish</code> on your project and it will be deployed to a local SQL Server. Of course you can customize things like the server to deploy to, the name of the database, the username/password used to connect and pretty much every other aspect of the deployment by setting some properties in your project file. Refer to the <a href="https://github.com/rr-wfm/MSBuild.Sdk.SqlProj#publishing-support">README</a> for more details on this feature.</p>
+<h3 id="floating-versions-and-incremental-build-support">Floating versions and incremental build support</h3>
+<p>One of the key things I wanted to achieve with MSBuild.Sdk.SqlProj was having the ability to install NuGet packages into your project. While that already worked quite well with the initial version, we made some changes in version 1.3.0 to allow for having floating versions. For example, you can now add <code>&lt;PackageReference Include=&quot;SomeOtherDatabasePackage&quot; Version=&quot;1.1.*&quot; /&gt;</code> to your project file, and you will end up with a reference to the latest patch version of the package available.</p>
+<p>We also improved build times by avoiding rebuilding everything if none of the input files had changed. This was especially useful in combination with the publish support added in the previous version since you might need to redeploy the database multiple times during development without changing the definition. Do note that there is currently <a href="https://github.com/rr-wfm/MSBuild.Sdk.SqlProj/issues/48">an issue</a> with respect to the pre- and post-deployment scripts. Changes to those do not trigger the rebuild currently.</p>
+<h3 id="template-pack">Template pack</h3>
+<p>The next thing we added was a set of templates that allows you to quickly create new projects that use MSBuild.Sdk.SqlProj using the .NET CLI. This leverages the <code>dotnet new</code> experience in the .NET SDK, so after you&rsquo;ve installed the template pack you can run <code>dotnet new sqlproj</code> and you will get a new project that&rsquo;s ready to go. We even included a bunch of item templates for common SQL objects such as tables, views and stored procedure so you can quickly create those objects in your project as well.</p>
+<p>For now these templates only work from the command line, which is good for Mac and Linux users, but not ideal for Windows users that work with Visual Studio. Fortunately the Visual Studio team is working on a feature that will allow you to use these templates from Visual Studio directly, rather than having to drop down to the command line. The feature is currently in preview and we&rsquo;ve already submitted some feedback to make sure it works great with these templates so stay tuned for that.</p>
+<h3 id="external-databases">External databases</h3>
+<p>As mentioned previously, having the ability to pull in definitions of database objects using NuGet packages is really powerful and one of the core design principles behind the project. But the SSDT projects also allow you to reference objects that are defined in an external database, thus not the one you&rsquo;re currently building. We added support for that in MSBuild.Sdk.SqlProj in version 1.6.0. For example, now you can add <code>&lt;PackageReference Include=&quot;SomeOtherDatabasePackage&quot; Version=&quot;1.1.0&quot; DatabaseVariableLiteralValue=&quot;MyOtherDatabase&quot; /&gt;</code> to your project file and then you can use objects from that database using <code>[MyOtherDatabase].[dbo].[SomeTable]</code> for example.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I feel that the future is bright for this project. I&rsquo;m really happy with the traction it is gaining and the support I&rsquo;ve been getting from the community. I&rsquo;m also pleased with the pace of innovation and how quickly we&rsquo;ve been able to add new features. If you haven&rsquo;t given it a try yet, please do so and report any issues you run into. We are happy to help out.</p>
+<ul class="pa0">
+  
+   <li class="list">
+     <a href="/tags/.net" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/sql-server" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">SQL Server</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/msbuild" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">MSBuild</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/devops" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DevOps</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jmezach" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+      
+      </div>
     </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/introducing-msbuild-sdk-sqlproj/">Introducing MSBuild.Sdk.SqlProj</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/building-a-pull-request-bot-part3/">Building a Pull Request bot with Azure Functions - Part 3 - Operating it</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/building-a-pull-request-bot-part2/">Building a Pull Request bot with Azure Functions - Part 2 - How it works</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/building-a-pull-request-bot-part1/">Building a Pull Request bot with Azure Functions - Part 1 - Introduction</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/porting-to-aspnet-core-part-three/">Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/porting-to-aspnet-core-part-two/">Porting from ASP.NET to ASP.NET Core: Part 2 - Third party dependencies</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/porting-to-aspnet-core-part-one/">Porting from ASP.NET to ASP.NET Core: Part 1 - Introduction</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/net-core-hackathon-2018/">.NET Core Hackathon 2018</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/having-fun-with-the-dotnet-core-generic-host/">Having Fun with the .NET Core Generic Host</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dotnetcore-and-dotnetstandard-2.0/">.NET Core and .NET Standard 2.0</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/my-experience-with-my-first-dotnet-core-contribution/">My experience with my first .NET Core contribution</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/migrating-existing-dotnet-projects-to-sdk-based-projects/">Migrating existing .NET projects to SDK-based projects</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/sharing-code-across-dotnet-platforms-with-dotnet-standard/">Sharing code across .NET platforms with .NET Standard</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dotnetcore-versioning/">.NET Core versioning</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dotnet-platform-standard-and-the-magic-of-imports/">.NET Platform Standard and the magic of &#34;imports&#34;</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
   </article>
-  <div class="mw8 center">    
-    <section class="flex-ns flex-wrap justify-around mt5">
-      
-        <div class="relative w-100  mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Post</span>
-    <h1 class="f3 near-black">
-      <a href="https://jmezach.github.io/post/throttling-workflow-services/" class="link black dim">
-        Throttling workflow services
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      For the project I’m currently working on I did some research into the throttling of workflow services using WCF and WF with .NET 3.5. We didn’t have much experience with throttling of services, let alone workflow services so we decided to some simple tests to determine the possibilities and effects of throttling. Before diving into the technical details of how to do throttling I want to look at the scenario we had.
-    </div>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Post</span>
-    <h1 class="f3 near-black">
-      <a href="https://jmezach.github.io/post/creating-a-workflow-image-from-a-workflow-service/" class="link black dim">
-        Creating a workflow image from a workflow service
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Introduction For the project I’m currently working on we wanted to be able to display an image of a running workflow instance for diagnostic purposes. There are numerous examples of this floating around the internet, but most of them focused on a client side application that would generate the image. This is fine if your client application has access to all the necessary assemblies, but if does not you’re going to run into some problems.
-    </div>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Post</span>
-    <h1 class="f3 near-black">
-      <a href="https://jmezach.github.io/post/even-better-messsage-based-correlation/" class="link black dim">
-        Even better message based correlation
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      As a follow up to my previous post, I&rsquo;ve been extending my implementation a bit. In the comments section of my last post you might have read that we were thinking about creating a CorrelationSequenceActivity. I&rsquo;ve implemented this activity now and it currently accepts only one child activity which should be a ReceiveActivity. This is validated using an activity validator. It has an attached property called CorrelationKey which will then appear on the ReceiveActivity.
-    </div>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Post</span>
-    <h1 class="f3 near-black">
-      <a href="https://jmezach.github.io/post/message-based-correlation-with-wf-wcf-in-dotnet-35/" class="link black dim">
-        Message based correlation with WF/WCF in .NET 3.5
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      When .NET 3.0 was released we got Windows Communication Foundation (WCF) and Windows Workflow Foundation (WF). These were great technologies, but they would have been even greater if they were used together. Unfortunately, Microsoft decided not to include this for .NET 3.0. However, with the release of .NET 3.5 we got the WCF Send and Receive activities that you can use in your workflows in order to implement a WCF service contract by using a workflow.
-    </div>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Post</span>
-    <h1 class="f3 near-black">
-      <a href="https://jmezach.github.io/post/workflows-mysteriously-being-aborted/" class="link black dim">
-        Workflows mysteriously being aborted
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Part of the project I&rsquo;m currently working on involves a workflow system we have build ourselves on top of Windows Workflow Foundation. It consist of a WCF service that contains task, a front end that displays these to users and of course several workflow activities for creating tasks and waiting for them to be completed by the users. Last Friday it was finally time to perform an installation of the system on our acceptance environment so the users could test it.
-    </div>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Post</span>
-    <h1 class="f3 near-black">
-      <a href="https://jmezach.github.io/post/service-pack-1-for-dotnet-fixes-serialization/" class="link black dim">
-        Service Pack 1 for .NET fixes XML serialization?
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Today we ran into an issue with a Windows Forms application we had written. It was working fine on our development virtual PC&rsquo;s, but for some reason it failed on the actual host machines that we needed it to run on. The application is written purely against the .NET Framework version 2.0. We do communicate with a service that is using WCF, which is part of the .NET Framework version 3.
-    </div>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Post</span>
-    <h1 class="f3 near-black">
-      <a href="https://jmezach.github.io/post/issue-fixed/" class="link black dim">
-        Issue fixed
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      I thought I&rsquo;d write a little follow up on my previous post. We found out yesterday that the bug we found in Windows Workflow Foundation which caused us to make a work around, has been fixed in the recently released .NET Framework 2.0 and 3.0 SP1. We haven&rsquo;t been able to find a mention of this bug in the release notes, but we had a small application that showed the bug was there, so we tested it on our development machine which were using the service packs and then on a test server which didn&rsquo;t have the service pack installed and it showed that it was working find on our development machines, but it didn&rsquo;t work on our test servers.
-    </div>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Post</span>
-    <h1 class="f3 near-black">
-      <a href="https://jmezach.github.io/post/state-machine-workflows/" class="link black dim">
-        State machine workflows
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      At the beginning of last week a report came in from our users which said that they were experiencing timeout issues while working with the application that has been running in production quite stable since the beginning of this year. Because this was a blocking issue we quickly started investigating what went wrong. After looking at the code for about half an hour we decided we needed to put on tracing to find out what really happens.
-    </div>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Post</span>
-    <h1 class="f3 near-black">
-      <a href="https://jmezach.github.io/post/wf-required-bindable-properties/" class="link black dim">
-        WF: Required bindable properties
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Today I was working on a bit of workflow we have in our project. We&rsquo;ve written a couple of activities to handle some of the processing done in our application (such as sending out emails at a specified point in time). These activities have been working quite well, but they lacked some kind of validation on required properties or how they were used in the workflow. So I was assigned the task to implement some of that stuff.
-    </div>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Post</span>
-    <h1 class="f3 near-black">
-      <a href="https://jmezach.github.io/post/more-on-this-wcf-issue/" class="link black dim">
-        More on this WCF issue
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      This week I&rsquo;ve been spending some more time on this WCF issue I&rsquo;ve blogged about before. Unfortunately I still don&rsquo;t have a solution for the problem, and I doubt that I will ever find one. However, I did find some interesting things I thought I should blog about.
-I found out that the bug isn&rsquo;t in the actual serialization process, but rather in the generation of the code that is supposed to do the actual serialization.
-    </div>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Post</span>
-    <h1 class="f3 near-black">
-      <a href="https://jmezach.github.io/post/possible-wcf-serialization-issue/" class="link black dim">
-        Possible WCF Serialization Issue?
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      As I was writing in my previous post there is something interesting going on in WCF. But before I go into the details, let me explain the situation.
-There are 3 services in our project, one business service, one process service and one front end. We use WCF to communicate between these services. We are using basicHttpBinding and we have a central set of XSD schema&rsquo;s from which we generate code using the svcutil tool provided with .
-    </div>
-  </div>
-</div>
-
-        </div>
-      
-    </section>
-  </div>
 
     </main>
     <footer class="bg-mid-gray bottom-0 w-100 pa3" role="contentinfo">

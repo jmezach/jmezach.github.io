@@ -6,7 +6,7 @@
     
     <title>Jonathan&#39;s Blog  | Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.67.1" />
+    <meta name="generator" content="Hugo 0.74.3" />
     
     
       <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -35,13 +35,14 @@
 <meta itemprop="name" content="Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting">
 <meta itemprop="description" content="This post is part of a series:
  Part 1: Introduction Part 2: Third party dependencies Part 3: Mechanics of porting Part 4: Deployment and packaging options  If you haven&rsquo;t read any of the previous posts I recommend you do this now to get some context that I&rsquo;ll be referring to in this post. If you have, continue on with the nitty gritty details of porting an app to ASP.">
-<meta itemprop="datePublished" content="2018-11-23T16:28:11&#43;01:00" />
-<meta itemprop="dateModified" content="2018-11-23T16:28:11&#43;01:00" />
+<meta itemprop="datePublished" content="2018-11-23T16:28:11+01:00" />
+<meta itemprop="dateModified" content="2018-11-23T16:28:11+01:00" />
 <meta itemprop="wordCount" content="1893">
 
 
 
-<meta itemprop="keywords" content=".NET,.NET Core,.NET Development,porting,open source," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content=".NET,.NET Core,.NET Development,porting,open source," />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Porting from ASP.NET to ASP.NET Core: Part 3 - Mechanics of porting"/>
 <meta name="twitter:description" content="This post is part of a series:
  Part 1: Introduction Part 2: Third party dependencies Part 3: Mechanics of porting Part 4: Deployment and packaging options  If you haven&rsquo;t read any of the previous posts I recommend you do this now to get some context that I&rsquo;ll be referring to in this post. If you have, continue on with the nitty gritty details of porting an app to ASP."/>
@@ -269,7 +270,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">app.UseFileServer()
 </code></pre></div><p>Internally this also calls <strong>UseStaticFiles()</strong> but it also sets up defaults so that going to the root will return the content of index.html (if there is such a file). There&rsquo;s a lot of middleware available that can do all kinds of things, but it isn&rsquo;t always immediately obvious which one you should use in which situation.</p>
 <h2 id="making-it-run">Making it run</h2>
-<p>With these changes in place I was able to compile and run <em>Augurk</em> on Windows and everything seemed to work. I didn&rsquo;t have any data in it yet though, so I used our existing command line tool to upload the documentation (written in <em>Gherkin</em> feature files obviously) into the new version to see if it really worked. Interestingly that didn&rsquo;t quite as I expected. I got <strong>NullReferenceException</strong>&lsquo;s while doing the upload. Initially that didn&rsquo;t make much sense to me, so I started debugging. The controller operation that handles the upload of the feature files looks like this:</p>
+<p>With these changes in place I was able to compile and run <em>Augurk</em> on Windows and everything seemed to work. I didn&rsquo;t have any data in it yet though, so I used our existing command line tool to upload the documentation (written in <em>Gherkin</em> feature files obviously) into the new version to see if it really worked. Interestingly that didn&rsquo;t quite as I expected. I got <strong>NullReferenceException</strong>&rsquo;s while doing the upload. Initially that didn&rsquo;t make much sense to me, so I started debugging. The controller operation that handles the upload of the feature files looks like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">[Route(&#34;api/v2/products/{productName}/groups/{groupName}/features&#34;)]</span>
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FeatureV2Controller</span>
 {
